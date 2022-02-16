@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Apperentice's stone",
+    "des": "When defeating 1 enemy, the champion owning this Rune will increase physical damage by 5. The effect will be reset after each round.",
+    "des2": ""
+  },
+  {
+    "id": 2,
+    "name": "Hunter's Treasure",
+    "des": "Champion's attacks deal additional damage equal to 2% of the target's missing health.",
+    "des2": ""
+  },
+  {
+    "id": 3,
+    "name": "Regeneration Rune",
+    "des": "When the champion carrying this gem has 10% health left, the champion will recover 5% of its maximum health over 5s.",
+    "des2": ""
+  },
+  {
+    "id": 4,
+    "name": "Astral Rune",
+    "des": "Attacks will have a 20% chance to apply Confused to the target. Confused mark broken by skills will cause the enemy to be confused for 2s.",
+    "des2": "Confused - Confused targets will reverse and lose ability to cast."
+  },
+  {
+    "id": 5,
+    "name": "Wicked Charm",
+    "des": "Enemies hit by a champion possessing this gem will burn 20% of the skill's damage for 10s. And take the Curse effect during that time.",
+    "des2": "Curse - Grievous Wounds reduces the target's healing by 40%."
+  },
+  {
+    "id": 6,
+    "name": "Ancestor's Relic",
+    "des": "Gain 2 mana for each enemy champion killed on the way.",
+    "des2": ""
+  },
+  {
+    "id": 7,
+    "name": "Juxtapose Chipped",
+    "des": "Within 10 seconds of spawning, when HP drops below 20%. Gems will activate Mirror Image ",
+    "des2": "Mirror Image - Champion splits into 2 entities and cannot be affected while cloned."
+  },
+  {
+    "id": 8,
+    "name": "Guardian Sign",
+    "des": "While moving on the road, the owning champion will reduce the damage taken by 10%.",
+    "des2": ""
+  },
+  {
+    "id": 9,
+    "name": "Lionheart",
+    "des": "Champions standing around the champion possessing this rune will all gain 15% attack speed. The champion owning this gem also gains 15% attack speed.",
+    "des2": ""
+  },
+  {
+    "id": 10,
+    "name": "Joomong's Eyelash",
+    "des": "All physical attacks cannot be missed.",
+    "des2": ""
+  },
+  {
+    "id": 11,
+    "name": "Chain Lightning Rune",
+    "des": "Owned champion will launch 1 lightning bolt every 5 physical attacks, the lightning will spread to 5 nearby enemies. Lightning will deal 10% AP of the champion. In addition, the lightning will also reduce the enemy's magic resistance by 50%.",
+    "des2": ""
+  },
+  {
+    "id": 12,
+    "name": "Megamorph Sphere",
+    "des": "Owned champions when attacked will gain 1 charge, each charge will increase armor and magic resistance by 2%. The maximum number of charges is 25.",
+    "des2": ""
+  },
+  {
+    "id": 13,
+    "name": "Multishot Rune",
+    "des": "Physical attacks will fire 2 extra rays to attack nearby targets. Extra ray deals 25% of original damage. The secondary ray also applies on-hit effects.",
+    "des2": ""
+  },
+  {
+    "id": 14,
+    "name": "Talisman of Demolition",
+    "des": "Physical attacks ignore 35% of the target's armor.",
+    "des2": ""
+  },
+  {
+    "id": 15,
+    "name": "Inquisitor's Command",
+    "des": "The skill hits the target, will jolt lightning to 2 nearby enemies and deal damage. Each lightning bolt deals 25% AP.",
+    "des2": ""
+  },
+  {
+    "id": 16,
+    "name": "Seal of Refraction",
+    "des": "Owned champion will gain 1 layer of virtual health equal to 10% of maximum health.",
+    "des2": ""
+  },
+  {
+    "id": 17,
+    "name": "Icewind Talon",
+    "des": "Damage skills will create an area of Cold Feet effect for 3 seconds on enemies walking in it.",
+    "des2": "Cold Feet - Effect reduces movement speed by 30%."
+  },
+  {
+    "id": 18,
+    "name": "Magic Critical Rune",
+    "des": "The champion that owns this rune will make the skill critical. Critical Chance (CC) and Critical Damage (CD) will be calculated according to %CC and %CD of its owner",
+    "des2": ""
+  },
+  {
+    "id": 19,
+    "name": "Mana Restoration Rune",
+    "des": "Champion possessing runes has a 15% increased chance to block damage from critical hits.",
+    "des2": ""
+  },
+  {
+    "id": 20,
+    "name": "Frost Armor Rune",
+    "des": "Being damaged by physical attacks applies a Frotsbite effect to enemies attacking you.",
+    "des2": "Frostbite - Hero of this effect will have his attack speed reduced by 20%."
+  }
+]

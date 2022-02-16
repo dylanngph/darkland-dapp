@@ -1,0 +1,36 @@
+.custom-scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: black;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 3px;
+  height: 79px;
+  background-color: #e24042;
+}
+
+.margin-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-purchase {
+  font-size: 17px;
+}
+
+.btn-back{
+  background-color: #272727;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border-left: 8px solid #E42531 ; 
+}
+
+@media only screen and (max-width: 640px) {
+  .btn-purchase {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,36 @@
+import React from 'react'
+import styled from 'styled-components'
+import {Heading, Card, CardBody} from 'components/Pancake-uikit'
+import {useTranslation} from 'contexts/Localization'
+import UnlockButton from 'components/UnlockButton'
+
+const StyledCardBody = styled(CardBody)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-height: 196px;
+  flex-direction: column;
+`
+
+const StyledHeading = styled(Heading)`
+  margin: 16px 0;
+`
+
+const UnlockWalletCard = () => {
+  const {t} = useTranslation()
+
+  return (
+    <Card isActive>
+      <StyledCardBody>
+        {/* <IconWrapper>
+          <Ticket />
+        </IconWrapper> */}
+        <StyledHeading size="md">{t('Unlock wallet to get your unique referral link')}</StyledHeading>
+        <UnlockButton />
+      </StyledCardBody>
+    </Card>
+  )
+}
+
+export default UnlockWalletCard

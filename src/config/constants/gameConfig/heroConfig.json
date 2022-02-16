@@ -1,0 +1,422 @@
+[
+    {
+      "heroID": 1,
+      "name": "Lucia",
+      "title": "Black Widow",
+      "quote": "Where are you~~? I need your heart for Master~~",
+      "story": "Lucia, Lucian, or Lucy, nobody knows her exact name. She doesn't remember where she comes from but deep inside her, there's huge energy waiting to explode."
+    },
+    {
+      "heroID": 2,
+      "name": "X",
+      "title": "Crimson Shadow",
+      "quote": "No one can encroach on my territory",
+      "story": "X doesn't have any memories. He was a failed experimental specimen with no memories. This outcast was rescued and raised as a human by the people of Bellmare fishing village. This might be a happy ending for X, but instantly, he went mad and massacred the entire village with his exploding energy. Being heartbroken, he fled to the abyss of Nadarzel to commit suicide but was saved by Kaos' arrow."
+    },
+    {
+      "heroID": 3,
+      "name": "Karla",
+      "title": "The Grey Claw",
+      "quote": "Fate forced me to become an assassin",
+      "story": "Possessing the Demon's Circlet, Karla took over the body of a female ninja. This resurrection is to balance the world with the power of the Great Gray Witch."
+    },
+    {
+      "heroID": 4,
+      "name": "Hunken",
+      "title": "Sacred Lancer",
+      "quote": "When you gaze into the abyss, the abyss gazes back!.",
+      "story": "A childhood friend with Lord Sieg. After the Vergas incident, Hunken was pushed to the Thalathan Oasis by a tornado."
+    },
+    {
+      "heroID": 5,
+      "name": "Dart",
+      "title": "Iron Will",
+      "quote": "Muscle of Iron, Bone of Steel..",
+      "story": "The most famous swordsman in the Cloudspire Realm. Possessing the fanciful power of the Conqueror Sword, Dart can easily cut through a mountain and road with his unique technique."
+    },
+    {
+      "heroID": 6,
+      "name": "Balthazar",
+      "title": "The Necromancer",
+      "quote": "Let if be all that we see or seem..",
+      "story": "Leader of the Oni Tribe, a tribe that worships Evil and Crime. Balthazar has the ability to revive and destroy the souls of enemies. He controls the fate of bystanders easily."
+    },
+    {
+      "heroID": 7,
+      "name": "Wukong",
+      "title": "Monkey King",
+      "quote": "I hope they're stronger than me.",
+      "story": "Super beast of the world. Wukong loves to use his enormous power, crushing opponents to despair. Later, with Thanatos, he founded the HollowBreaker organization with the infamous \"Three-Step One-Kill\" battle technique."
+    },
+    {
+      "heroID": 8,
+      "name": "Anub",
+      "title": "Wrath Sanction",
+      "quote": "Failure of creation, Eden...",
+      "story": "The courtier of Queen Zenith. He always comes up with initiatives to help reform the living condition here. Anub holds the Sutra of Longevity - one of the most dangerous ancient magic in the world."
+    },
+    {
+      "heroID": 9,
+      "name": "Zandalor",
+      "title": "Purist Bamboofat",
+      "quote": "Gupa gupa. Do not worry my dear children. The Gupa Tribe will thrive. Gupa gupa.",
+      "story": "Gupa tribe's leader. He is very good at using poison and elves' magic. His character is as worse as the way he attacks."
+    },
+    {
+      "heroID": 10,
+      "name": "Yol",
+      "title": "Fate Dissector",
+      "quote": "Cultivation requires enlightenment to become the strongest.",
+      "story": "A living guru evangelizing in Cloudspire. Yol is the one who predicted the collapse of Zenith Tower."
+    },
+    {
+      "heroID": 11,
+      "name": "Amuka",
+      "title": "Dragon's Son",
+      "quote": "Resilient, strong and determined!",
+      "story": "Yagami's adversary in the World Best Fighter. Even though Aeon was turned upside down due to the Vergas event, the only thing he cares about is to defeat Yagami at all cost."
+    },
+    {
+      "heroID": 12,
+      "name": "Lenus",
+      "title": "Blade of Fervor",
+      "quote": "Many wield swords, but I am the only swordmaster.",
+      "story": "One of the Five Greatest Swordman of the world. Obtaining the title of the Best Swordman, she has practiced swordmanship since her youth and defeated a lot of great swordmaster."
+    },
+    {
+      "heroID": 13,
+      "name": "Sena",
+      "title": "Apprentice Wizard",
+      "quote": "Even your own breath can deceive you sometimes.",
+      "story": "A sorcerer apprentice. Lloyd's little sister. She is very good at spellcasting, though an apprentice is still an apprentice."
+    },
+    {
+      "heroID": 14,
+      "name": "Lonah",
+      "title": "Fortune Teller",
+      "quote": "Only those who doesn't think of stabbing people in the back, are the bloodiest murderers.",
+      "story": "Lonah is a person of principles who is always attentive to details and keeps all her mind on her work. When Lonah was 7 years old, she had to endured the pain of losing her father and her beloved little sister. She dedicated her life to revenge on Ladja."
+    },
+    {
+      "heroID": 15,
+      "name": "Fangorn",
+      "title": "Eden Protector",
+      "quote": "Be it past or future. As long as I live, Eden will always have peace.",
+      "story": "The protector of the Pine Forest. In the past, Fangorn used to be a god, however, because of his love for the Eden people, he decided to leave Cloudspire."
+    },
+    {
+      "heroID": 16,
+      "name": "Harley",
+      "title": "Quinn",
+      "quote": "Fate has no forgiveness for those who dare stand against it",
+      "story": "A girl who loves to dress up and be praised for her singing voice. It's too bad that she is madly into magic which has caused her to shrink to her current mini-size."
+    },
+    {
+      "heroID": 17,
+      "name": "Ragnar",
+      "title": "Flyleaf",
+      "quote": "Feather is a love-gift. It is also a weapon of Iluvada to fight against the invaders.",
+      "story": "Ragnar was rescued by Clemens and the company when he was captured by the Oni clan, in order to have him served as a sacrifice."
+    },
+    {
+      "heroID": 18,
+      "name": "Thanatos",
+      "title": "The Deceiver",
+      "quote": "Welcome to HollowBreaker. Here is where you will become the strongest champions",
+      "story": "The petite leader of HollowBreaker obtains unknown power hidden behind his leather jacket. Those who knows the true face of Thanatos are all dead."
+    },
+    {
+      "heroID": 19,
+      "name": "Clemens",
+      "title": "The Wanderer",
+      "quote": "Is there anyone who knows English?",
+      "story": "A guy who got thrown into Aeon world through the spooky gate created by the 3 Grandmaster. Luckily, Clemens has a very good Ancient Language understanding, thus he can cope with Aeon world quickly."
+    },
+    {
+      "heroID": 20,
+      "name": "Leah",
+      "title": "Woodpecker",
+      "quote": "I'm not just some plucky girl you can string along",
+      "story": "Ragnar's friend. The two had feelings for each other but were separated by their families. The gap among the social classes in Iluvada was too big, only leaving can give both complete happiness."
+    },
+    {
+      "heroID": 21,
+      "name": "Otho",
+      "title": "One-brow",
+      "quote": "For better or for worse, battle changes people",
+      "story": ""
+    },
+    {
+      "heroID": 22,
+      "name": "Glenn",
+      "title": "Shining Swordmaster",
+      "quote": "Do you see? My sword lies between the moon and the sun.",
+      "story": ""
+    },
+    {
+      "heroID": 23,
+      "name": "Kabuki",
+      "title": "Earthbreath",
+      "quote": "Dawn... again. I always feel bad.",
+      "story": ""
+    },
+    {
+      "heroID": 24,
+      "name": "Phiroth",
+      "title": "Legendary Commander",
+      "quote": "There are always worms trying to get to cloudspire. Unfortunately they are still just worms",
+      "story": ""
+    },
+    {
+      "heroID": 25,
+      "name": "Svasis",
+      "title": "Bloodthirsty",
+      "quote": "How much will you pay? Is it enough to get drunk and forget about heaven and earth?",
+      "story": ""
+    },
+    {
+      "heroID": 26,
+      "name": "Flash",
+      "title": "Razor ThunderWrath",
+      "quote": "Halt! Your limits are drawn by my scythe",
+      "story": ""
+    },
+    {
+      "heroID": 27,
+      "name": "Montblanc",
+      "title": "Bardy Bowlful",
+      "quote": "I don't care about the taste. Edible is enough. Just salt is enough for flavor!",
+      "story": ""
+    },
+    {
+      "heroID": 28,
+      "name": "Kaos",
+      "title": "Wolpertinger",
+      "quote": "The weak only strive to be weaker.....",
+      "story": ""
+    },
+    {
+      "heroID": 29,
+      "name": "Alena",
+      "title": "Strikeforce",
+      "quote": "To bring back loved ones; that's what everyone wants.",
+      "story": ""
+    },
+    {
+      "heroID": 30,
+      "name": "Lloyd",
+      "title": "Humankind",
+      "quote": "Everything is turning out just as Sieg wished. But...",
+      "story": ""
+    },
+    {
+      "heroID": 31,
+      "name": "Cyrus",
+      "title": "Defiler",
+      "quote": "I feel naked without my sword",
+      "story": ""
+    },
+    {
+      "heroID": 32,
+      "name": "Emilia",
+      "title": "The Sage",
+      "quote": "At least you're more interesting than my puppets, kiddo",
+      "story": ""
+    },
+    {
+      "heroID": 33,
+      "name": "ymir",
+      "title": "Star-Stealing",
+      "quote": "My name is Ymir, a girl who is brave and ready to fight for her pride",
+      "story": ""
+    },
+    {
+      "heroID": 34,
+      "name": "Muné",
+      "title": "Forsaken God",
+      "quote": "Ohh. What a big liver. So it's a pity... a pity",
+      "story": ""
+    },
+    {
+      "heroID": 35,
+      "name": "Alix",
+      "title": "The kid",
+      "quote": "Everything is meaningless if you can't get to cloudspire",
+      "story": ""
+    },
+    {
+      "heroID": 36,
+      "name": "Taixuan",
+      "title": "Wingfoot",
+      "quote": "Master. I will still remember every technique you taught me. Please stay by my side",
+      "story": ""
+    },
+    {
+      "heroID": 37,
+      "name": "Dimm",
+      "title": "Destroyer",
+      "quote": "Hah.. If it wasn't for the summoning by the great mage, I would have been buried deep underground",
+      "story": ""
+    },
+    {
+      "heroID": 38,
+      "name": "Lynx",
+      "title": "Windy Tail",
+      "quote": "I keep forgetting my chestnuts. Hey Yagami! Give me a new chestnut",
+      "story": ""
+    },
+    {
+      "heroID": 39,
+      "name": "Lubao",
+      "title": "Mandrill",
+      "quote": "The spear is still faster than your feet",
+      "story": ""
+    },
+    {
+      "heroID": 40,
+      "name": "Romuth",
+      "title": "Golden Finery",
+      "quote": "The value of dust is when you feel your bones turn to dust",
+      "story": ""
+    },
+    {
+      "heroID": 41,
+      "name": "Yagami",
+      "title": "Godhand",
+      "quote": "Strong? Is that what you call strong? Haha",
+      "story": ""
+    },
+    {
+      "heroID": 42,
+      "name": "Hurdy",
+      "title": "Tinker",
+      "quote": "Stay away. You can't understand the technology we're working on",
+      "story": ""
+    },
+    {
+      "heroID": 43,
+      "name": "Brisingr",
+      "title": "Brisingr",
+      "quote": "...Play with fire and you get burned.",
+      "story": ""
+    },
+    {
+      "heroID": 44,
+      "name": "Eidolos",
+      "title": "Armed-Strong",
+      "quote": "If there is the most powerful weapon in the world, only the shield of Eidolos can stand against it",
+      "story": ""
+    },
+    {
+      "heroID": 45,
+      "name": "Fadur Steelberd",
+      "title": "Steelberd",
+      "quote": "Northern's pride is not nominal",
+      "story": ""
+    },
+    {
+      "heroID": 46,
+      "name": "Sylvia",
+      "title": "Flamepunch",
+      "quote": "Who can withstand one of my punches? you? or you?",
+      "story": ""
+    },
+    {
+      "heroID": 47,
+      "name": "Anakin",
+      "title": "Dawnbreaker",
+      "quote": "We won't be back anymore. Let's go to the battle and fight to the end",
+      "story": ""
+    },
+    {
+      "heroID": 48,
+      "name": "Shiira",
+      "title": "Freezerain Creature",
+      "quote": "You feel so annoying. I want to sleep some more",
+      "story": ""
+    },
+    {
+      "heroID": 49,
+      "name": "Halfdini",
+      "title": "Steel Hammer",
+      "quote": "Why do I always forget? Why do I have this crisis power",
+      "story": ""
+    },
+    {
+      "heroID": 50,
+      "name": "Fahn",
+      "title": "The Holy Knight",
+      "quote": "Our mission is to destroy the demon king, let's ignore all hatred",
+      "story": ""
+    },
+    {
+      "heroID": 51,
+      "name": "Odaja",
+      "title": "Bigdaddy",
+      "quote": "I need Soul Crusher to win your heart, dear Siren.",
+      "story": ""
+    },
+    {
+      "heroID": 52,
+      "name": "Clara",
+      "title": "Dreamcatcher",
+      "quote": "What are you looking for? Give me a piece of them",
+      "story": ""
+    },
+    {
+      "heroID": 53,
+      "name": "Blanka",
+      "title": "Blanka",
+      "quote": "It's not our weaknesses that frighten us. It's our strengths",
+      "story": ""
+    },
+    {
+      "heroID": 54,
+      "name": "Rémi",
+      "title": "LockHeart",
+      "quote": "Not much business in weapons anymore. But I like it that way.",
+      "story": ""
+    },
+    {
+      "heroID": 55,
+      "name": "Einlanzer",
+      "title": "Fury Within",
+      "quote": "I smell magic in the air.",
+      "story": ""
+    },
+    {
+      "heroID": 56,
+      "name": "Parn",
+      "title": "Wildfire",
+      "quote": "Use me as a tool against the forces of EVIL",
+      "story": ""
+    },
+    {
+      "heroID": 57,
+      "name": "Bash",
+      "title": "The Token Master",
+      "quote": "Give me more coin, I give you more pain.",
+      "story": ""
+    },
+    {
+      "heroID": 58,
+      "name": "Guile",
+      "title": "Seer",
+      "quote": "There is no satisfaction in any good without a companion.",
+      "story": ""
+    },
+    {
+      "heroID": 59,
+      "name": "Rosé",
+      "title": "Snakebite",
+      "quote": "Swordsmanship is still weaker than martial arts. I must prove this to my master",
+      "story": ""
+    },
+    {
+      "heroID": 60,
+      "name": "Zulula",
+      "title": "Lighting Sightseer",
+      "quote": "My eyes always follow the nape of your back",
+      "story": ""
+    }
+  ]

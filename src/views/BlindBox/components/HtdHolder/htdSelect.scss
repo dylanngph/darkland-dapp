@@ -1,0 +1,127 @@
+.custom-select-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.custom-select-wrapper .custom-select-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+  min-height: 30px;
+  padding: 0 10px;
+  width: 100%;
+
+  background: #272727;
+  border-radius: 10px;
+}
+
+.custom-select-wrapper .custom-select-header__title {
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  right: 2%;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-select-wrapper .custom-select-list {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  padding: 0;
+  background: #111111;
+  border: 1px solid #686868;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 14px rgba(99, 99, 99, 0.25);
+  border-radius: 5px;
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  z-index: 100;
+}
+
+// .custom-select-list li:hover,
+// .custom-select-list li:focus,
+// .active-selected-row {
+//   cursor: pointer;
+//   background-color: #d7d7d7 !important;
+// }
+
+// .custom-select-list-item {
+//   background: white;
+//   padding: 5px 10px;
+// }
+
+// .custom-select-list-item__name {
+//   font-size: 15px;
+//   font-weight: normal;
+// }
+
+.rc-slider-vertical {
+  height: 70%;
+  margin-bottom: 25px;
+}
+
+.rc-slider-vertical .rc-slider-mark {
+  top: -5px;
+}
+.rc-slider-mark-text {
+  display: flex;
+  width: 90%;
+  color: #666;
+}
+.rc-slider-mark-text-active {
+  color: #fff !important;
+}
+.rc-slider {
+  width: 100%;
+}
+
+.rc-slider-handle,
+.rc-slider-track,
+.rc-slider-dot-active {
+  border-color: #686868;
+  background: #ffab04;
+}
+
+.current-selected-slider {
+  position: absolute;
+  top: 10px;
+  // left: 0px;
+  height: 65.4%;
+  .rc-slider-handle,
+  .rc-slider-track,
+  .rc-slider-dot-active {
+    border-color: #686868;
+    background: #ffab04;
+  };
+  .rc-slider-track,
+  .rc-slider-handle {
+    z-index: 2;
+    opacity: 0.8;
+  }
+}
+.container-width{
+  width: 112%;
+}
+
+@media only screen and (max-width: 662px) {
+
+  .container-width{
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+
+  .container-width{
+    width: 160% !important;
+  }
+}

@@ -1,0 +1,115 @@
+.margin-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.presale {
+}
+
+.card-nft-image{
+
+}
+
+.card-nft{
+  width:100%
+}
+
+.block-blind-box{
+  margin-top: 25px;
+}
+
+.lotteries-container{
+}
+
+.dash{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 2px;
+  width: 100%;
+  margin-top: 10px;
+  border-top: 1px solid #424243;
+  color: #FFAB04;
+}
+
+.border-rate{
+  border-bottom: 1px solid #101010;
+  padding: 5px 0px;
+}
+
+@media only screen and (max-width: 640px) {
+  .btn-purchase {
+    font-size: 12px;
+  }
+
+  .presale {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .block-blind-box{
+    margin-top: 50px;
+  }
+
+  .lotteries-container{
+    background: #000000;
+  }
+  
+}
+
+@media only screen and (max-width: 768px) {
+
+  .presale {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}
+
+@media only screen and (max-width: 992px) {
+
+  .presale {
+    display: flex;
+    flex-direction: column;
+  }
+  
+}
+
+@media only screen and (max-width: 1250px) {
+
+  .presale {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .card-nft{
+    width:114%
+  }
+  .presale {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+
+  .card-nft-image{
+    flex:1;
+  }
+}

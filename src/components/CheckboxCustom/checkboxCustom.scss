@@ -1,0 +1,25 @@
+.custom-checkbox {
+  // margin-top: 20px;
+  .ant-checkbox .ant-checkbox-inner,
+  .ant-checkbox-checked::after {
+    border-color: #686868 !important;
+  }
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #f2435c;
+    border-color: #686868 !important;
+  }
+  .ant-checkbox-inner {
+    background-color: #0e0e0e;
+  }
+  .ant-checkbox-checked .ant-checkbox-inner::after {
+    opacity: 0;
+  }
+
+  .ant-checkbox + span {
+    padding: 0;
+  }
+
+  .checkbox-active {
+    filter: brightness(1.5);
+  }
+}

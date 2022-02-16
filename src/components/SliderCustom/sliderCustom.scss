@@ -1,0 +1,35 @@
+.slider-custom {
+  width: 100%;
+  .ant-slider-track {
+    background: linear-gradient(270deg, #fd476a 0%, #fe335b 0.01%, #df222b 105.1%);
+  }
+  .ant-slider-rail {
+    background: #000000 !important;
+  }
+  .ant-slider-handle,
+  .ant-slider-handle.ant-tooltip-open {
+    border: 1px solid #df222b;
+    background-color: #df222b;
+    box-shadow: unset;
+  }
+}
+.ant-tooltip-content {
+  .ant-tooltip-arrow {
+    display: none !important;
+  }
+  .ant-tooltip-inner {
+    width: 30px;
+    max-height: 12px;
+    min-height: 12px;
+    background: linear-gradient(270deg, #fd476a 0%, #fe335b 0.01%, #df222b 105.1%) !important;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 13px;
+  }
+}

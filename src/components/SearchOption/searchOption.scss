@@ -1,0 +1,110 @@
+.search-wapper {
+  font-size: 14px;
+  font-weight: 400;
+  .group-filter {
+    margin-top: 15px;
+  }
+  @media screen and (max-width: 425px) {
+    margin-top: 10px;
+  }
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  padding: 8px 14px !important;
+  height: 40px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.ant-select-clear,
+.ant-select-clear:hover {
+  color: white;
+  background: transparent;
+}
+
+.ant-input-affix-wrapper .ant-select-selection-search-input,
+.select-dropdown {
+  border-radius: 5px;
+  background-color: #000;
+  border: 1.5px solid #464646;
+}
+
+.ant-select-auto-complete {
+  width: 100%;
+  background-color: transparent !important;
+  color: #fff;
+}
+
+.ant-input-prefix,
+.ant-select-arrow {
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.ant-select-selector {
+  border-radius: 5px !important;
+  background: #272727 !important;
+  border: 1.5px solid #464646 !important;
+  box-shadow: unset !important;
+}
+
+.ant-input-affix-wrapper,
+.ant-select-item-option-content,
+.ant-select-selection-item {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ant-select-auto-complete {
+  .ant-select-selector {
+    border: none !important;
+  }
+}
+
+.ant-input-affix-wrapper {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1.5px solid #464646 !important;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: unset;
+}
+
+.ant-input,
+.ant-select-selection-item,
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  color: #fff !important;
+  font-weight: 600;
+  background-color: transparent;
+}
+
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: #000;
+  color: #fff;
+}
+.ant-select-item,
+.search-option {
+  border-radius: 5px;
+  color: #b1b1b1;
+  &:hover {
+    color: #fff;
+    background-color: #606060;
+  }
+}
+.search-content {
+  width: 100%;
+}
+
+.form-item {
+  margin: 0 5px 10px 5px;
+
+  label {
+    font-weight: bold;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}

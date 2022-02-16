@@ -1,0 +1,52 @@
+.text-hero-id {
+    background-color: #19b911;
+    padding-left: 2px;
+    padding-right: 2px;
+    text-align: center;
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+
+.text-header {
+    color: #768389;
+}
+
+.top-properties-img {
+    position: relative;
+    top: -18px;
+    left: 0px !important;
+}
+
+.top-properties-classImg {
+    transform: scale(0.5);
+    transform-origin: top left;
+    pointer-events: none;
+    position: relative;
+    left: 12px;
+    bottom: 2px;
+}
+
+.top-properties-runeHolder {
+    position: relative;
+    width: 100%;
+    height: auto;
+    left: 5px;
+    z-index: 999999;
+}
+.text-title-bottom {
+    color: #ff7f50;
+}
+
+.text-gen-full {
+    background: linear-gradient(180deg, #9c9c9c 0%, #656565 100%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+}
+
+.btn-back{
+    background-color: #272727;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-left: 8px solid #E42531 ; 
+}
