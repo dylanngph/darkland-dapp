@@ -17,7 +17,6 @@ const ConnectWalletButton = (props) => {
     padding: ${padding};
     // border-radius: 8px;
     background-color: transparent;
-    background-image: url('images/connect-button.png');
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: cover;
