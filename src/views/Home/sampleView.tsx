@@ -4,70 +4,46 @@ import {
     Box
 } from '@mui/material'
 import { Button, useMatchBreakpoints } from '@pancakeswap/uikit'
+import Title from 'components/Layout/Title'
 
 const SampleView = () => {
     const { isMobile } = useMatchBreakpoints()
 
     return (
         <Wrapper>
-            <Header>
+            {/* <Header>
                 <img src="/images/coins/adt.png" alt="" />
                 <div>
                     <span style={{fontSize: '30px', fontWeight: '700'}}>DotArcade TOKEN</span>
                     <div>Hold ADT to take part in our events !</div> 
                 </div>
+            </Header> */}
+            <Header>
+                <div>
+                    <WrapImage>
+                        <img src="/images/welcome.png" alt="welcome" />
+                        <img src="/images/dark-land.png" alt="dark-land" />
+                        <Button>PLAY TO EARN NOW</Button>
+                        <Socials>
+                            {/* <ul>
+                                <li></li>
+                            </ul> */}
+                        </Socials>
+                    </WrapImage>
+                </div>
             </Header>
-            <Flex>
-                <Line/>
-                <div style={{fontSize: '22px', fontWeight: '700'}}>
-                    FARM & POOL
-                </div>
-            </Flex>
-            <DashboardCard>
+            <Section>
+                <Title text="Marketplace" icon='/images/icons/marketplace-icon.png' />
                 <GridLayout sx={{
-                    gridTemplateColumns: isMobile ? 'auto' : 'auto auto auto',
-                    
+                    gridTemplateColumns: isMobile ? 'auto' : 'auto auto auto auto',
+                    justifyContent: isMobile ? 'center' : null
                 }}>
-                    <MiniBox>
-                        <Title>Liquidity</Title>
-                        <Money>$ ---</Money>
-                    </MiniBox>
-                    <MiniBox>
-                        <Title>Your Investment</Title>
-                        <Money>$ ---</Money>
-                    </MiniBox>
-                    <MiniBox>
-                        <Flex justifyContent='space-between'>
-                            <Box>
-                                <Title>Your Reward</Title>
-                                <Money>$ ---</Money>
-                            </Box>
-                            <Button>
-                                Harvest all
-                            </Button>
-                        </Flex>
-                        
-                    </MiniBox>
+                    <img src="/images/card1.png" alt="" />
+                    <img src="/images/card2.png" alt="" />
+                    <img src="/images/card3.png" alt="" />
+                    <img src="/images/card4.png" alt="" />
                 </GridLayout>
-            </DashboardCard>
-            <Flex>
-                <Line/>
-                <div style={{fontSize: '22px', fontWeight: '700'}}>
-                    MARKETPLACE
-                </div>
-                <Box sx={{color: '#E6AB58', border: '1px solid #747475', borderRadius: '10px', padding: '8px 15px', fontWeight: '700', textTransform: 'uppercase'}}>
-                    Coming soon
-                </Box>
-            </Flex>
-            <GridLayout sx={{
-                gridTemplateColumns: isMobile ? 'auto' : 'auto auto auto auto',
-                justifyContent: isMobile ? 'center' : null
-            }}>
-                <img src="/images/card1.png" alt="" />
-                <img src="/images/card2.png" alt="" />
-                <img src="/images/card3.png" alt="" />
-                <img src="/images/card4.png" alt="" />
-            </GridLayout>
+            </Section>
         </Wrapper>
     )
 }
@@ -75,8 +51,27 @@ const Wrapper = styled(Box)`
     display: flex;
     flex-direction: column;
     gap: 20px;
+`
+const WrapImage = styled(Box)`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    top: 15%;
+    position: absolute;
+    left: 5%;
+    
+    > img {
+        width: auto;
+        max-width: fit-content;
+        margin-bottom: 24px;
+    }
+`
+
+const Socials = styled(Box)`
 
 `
+
 const Flex = styled(Box)`
     display: flex;
     align-items: center;
@@ -86,6 +81,11 @@ const Header = styled(Box)`
     display: flex;
     gap: 20px;
     align-items: center;
+    background-image: url('/images/dark-land-banner.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    aspect-ratio: 2/1.0313;
+    position: relative;
 `
 const Line = styled(Box)`
     width: 7px;
@@ -113,15 +113,15 @@ const MiniBox = styled(Box)`
     padding: 20px;
     min-height: 125px
 `
-const Title = styled(Box)`
-    font-size: 16px;
-    font-weight: 700;
-    color: #E6AB58
-`
+
 const Money = styled(Box)`
     font-size: 20px;
     font-weight: 700;
     color: #fff
+`
+
+const Section = styled(Box)`
+
 `
 
 export default SampleView

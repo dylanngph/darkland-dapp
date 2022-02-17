@@ -13,26 +13,20 @@ const ConnectWalletButton = (props) => {
   const {onPresentConnectModal} = useWalletModal(login, logout)
 
   const ColorButton = styled(Box)`
-    color: #E6AB58;
+    color: #ffffff;
     padding: ${padding};
-    // border-radius: 8px;
-    background-color: transparent;
-    background-size: cover;
-    background-repeat: no-repeat;
-    object-fit: cover;
+    background-color: #FFA800;
     background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 60px;
+    height: 84px;
     width: 180px;
     cursor: pointer;
     font-weight: 700;
     font-size: 14px;
-    &:hover {
-      opacity: .8
-    }
+    border-bottom: solid 4px #C16000;
   `
 
   const NormalButton = styled(Button)`
@@ -47,11 +41,11 @@ const ConnectWalletButton = (props) => {
       {
         isCustom ?
           <ColorButton onClick={onPresentConnectModal} {...props}>
-            {t('Connect Your Wallet')}
+            {t('Connect Wallet')}
           </ColorButton>
         :
           <NormalButton onClick={onPresentConnectModal} {...props}>
-            {t('Connect Your Wallet')}
+            {t('Connect Wallet')}
           </NormalButton>
       }
     </>

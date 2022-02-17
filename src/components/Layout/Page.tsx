@@ -14,11 +14,9 @@ const ContainerPage = styled(Container)`
       background: ${props.background || 'transparent'};
     `}
   min-height: 100vh;
-  padding: 16px;
   padding-top: 90px !important;
   ${({theme}) => theme.mediaQueries.md} {
     padding-top: 16px;
-    padding: 90px;
   }
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,17 +28,17 @@ const ContainerPage = styled(Container)`
 
 const StyledPage = styled(Container)`
   ${({ theme }) => theme.mediaQueries.sm} {
-    padding-top: 64px;
+    // padding-top: 64px;
     // padding-bottom: 24px;
     // padding-left: 16px;
     // padding-right: 16px;
   }
 
   ${({theme}) => theme.mediaQueries.lg} {
-    padding-top: 64px;
+    // padding-top: 64px;
     // padding-bottom: 32px;
   }
-  max-width: 1440px;
+  max-width: 100%;
 `
 
 // const StyledPage = styled(Container)`
