@@ -158,6 +158,6 @@ export const socials = [
 ]
 
 export const MENU_HEIGHT = 84
-export const MENU_ENTRY_HEIGHT = 45
+export const MENU_ENTRY_HEIGHT = 84
 export const SIDEBAR_WIDTH_FULL = 240
 export const SIDEBAR_WIDTH_REDUCED = 56

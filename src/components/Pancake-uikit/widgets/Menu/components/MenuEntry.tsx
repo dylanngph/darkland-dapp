@@ -43,9 +43,10 @@ const MenuEntry = styled.div<Props>`
   align-items: center;
   height: ${MENU_ENTRY_HEIGHT}px;
   font-size: ${({secondary}) => (secondary ? '16px' : '18px')};
-  // background-color: ${({isActive}) => (isActive ? '#464646' : 'transparent')};
+  background-color: ${({isActive}) => (isActive ? '#2647CB' : 'transparent')};
+  border-bottom: ${({isActive}) => (isActive ? 'solid 4px #1A2B6D' : 'none')};
   color: ${({isActive, theme}) => (isActive ? '#fff' : theme.colors.text)};
-  opacity: ${({isActive}) => (isActive ? 1 : '0.9')};
+  // opacity: ${({isActive}) => (isActive ? 1 : '0.9')};
   padding: 0 20px;
 
   &:hover {
@@ -59,11 +60,7 @@ const MenuEntry = styled.div<Props>`
     width: 100%;
     font-size: 12px;
     height: 100%;
-    color: ${({isActive, theme}) => {
-      if (isActive) return '#E6AB58'
-      // if (theme.isDark) return theme.colors.text
-      return '#fff'
-    }};
+    color: #fff;
   }
 
   svg {
