@@ -15,7 +15,7 @@ const myAssetMenuItems = [
   {
     id: MyAssetMenuTab.WALLET,
     title: 'Wallet',
-    imgIcon: 'wallet-icon.svg',
+    imgIcon: 'wallet-minus.svg',
   },
   {
     id: MyAssetMenuTab.INVENTORY,
@@ -61,8 +61,8 @@ const MenuAsset = ({setCurrentAssetMenuTab, currentAssetMenuTab}) => {
 
 const MenuItem = ({myAssetMenuItem, isCurrentMenuTab, setCurrentAssetMenuTab}) => {
   return (
-    <div
-      className="flex flex-row justify-center flex-wrap p-4 items-center gap-2"
+    <Card
+      className={`flex flex-row flex-wrap py-4 px-6 items-center gap-2 ${isCurrentMenuTab ? 'active' : ''}`}
       role="button"
       tabIndex={0}
       onClick={() => setCurrentAssetMenuTab(myAssetMenuItem.id)}
@@ -78,10 +78,10 @@ const MenuItem = ({myAssetMenuItem, isCurrentMenuTab, setCurrentAssetMenuTab}) =
           />
         </CardIcon>
       </div>
-      <div className="">
+      <div className="font-bold">
         <Text className={`${isCurrentMenuTab && 'currentMenuTabText'}`}>{myAssetMenuItem.title}</Text>
       </div>
-    </div>
+    </Card>
   )
 }
 
@@ -93,6 +93,13 @@ const MenuItem = ({myAssetMenuItem, isCurrentMenuTab, setCurrentAssetMenuTab}) =
 
 const CardIcon = styled.div`
 
+`
+
+const Card = styled.div`
+  &.active {
+    background-color: #2647CB;
+    color: #ffffff;
+  }
 `
 
 // const AccountDetails = styled.div`

@@ -6,62 +6,56 @@ import PopupSwap from 'views/IDO/packs/PopupSwap'
 import { AppState } from 'state'
 import './wallet.modules.scss'
 import { useSelector } from 'react-redux'
+import ConnectWalletButton from 'components/ConnectWalletButton'
+import {useWeb3React} from '@web3-react/core'
 
 const ClaimToken = () => {
+  const {account} = useWeb3React()
   const userData = useSelector((state: AppState) => state.user.userInfo)
   return (
-    <div className='w-full' >
-      <div className='grid grid-cols-1 md:grid-cols-2 md:gap-4 w-full' >
-        <div className='smart-chain'>
-          <CurrencyBox>
-            <img src='/images/coins/htd_token.png' alt='htd' className="ml-5" height={60} width={60} />
-            <RightCurrency>
-              <h1 className='text-xl' > {userData?.htd ?? 0} HTD </h1>
-              {/* <h1 style={{ color: "#929292" }} className='mt-1 text-xl' >~2524 USD</h1> */}
-            </RightCurrency>
-
-          </CurrencyBox>
-          {/* <Popup
-            className='w-full'
-            modal
-            closeOnDocumentClick
-            trigger={
-              <Button style={{ width: "90%", marginLeft: "5%" }} size="lg" >
-                Claim
-              </Button>
-            }>{(close) => <PopupSwap close={close} currencyType="HTD" />}
-          </Popup> */}
-
+    <Card className='w-full lg:w-2/3' >
+      <CurrencyBox>
+        <div>
+          <img src='/images/coins/token-dak.png' alt='htd' className="ml-5" height={42} width={42} />
         </div>
-        <div className='smart-chain mt-5 sm:mt-0'>
-          <CurrencyBox >
-            <img src='/images/coins/cgc_token.png' alt='cgc3' className="ml-5" height={60} width={60} />
-            <RightCurrency>
-              <h1 className='text-xl' > {userData?.cgc ?? 0} CGC </h1>
-              {/* <h1 style={{ color: "#929292" }} className='mt-1 text-xl' >~2524 USD</h1> */}
-            </RightCurrency>
-          </CurrencyBox>
-          {/* <Popup
-            className='w-full'
-            modal
-            closeOnDocumentClick
-            trigger={
-              <Button style={{ width: "90%", marginLeft: "5%", marginBottom: "4%" }} size="lg" >
-                Claim
-              </Button>
-            }>{(close) => <PopupSwap close={close} currencyType="CGC" />}
-          </Popup> */}
-        </div>
+        <RightCurrency>
+          <h2 className='text-xl' > {userData?.htd ?? 0}DAK </h2>
+          <h2 style={{ color: "#00A3FF" }} className='mt-1 text-sm' >~2524 USD</h2>
+        </RightCurrency>
 
+        
+      </CurrencyBox>
+
+      <div className='w-full mt-5 px-5' >
+        <ConnectWalletButton className="cn-wallet-btn" isCustom='true' scale="sm" />
       </div>
-    </div>
+      {/* <Popup
+        className='w-full'
+        modal
+        closeOnDocumentClick
+        trigger={
+          <Button style={{ width: "90%", marginLeft: "5%" }} size="lg" >
+            Claim
+          </Button>
+        }>{(close) => <PopupSwap close={close} currencyType="HTD" />}
+      </Popup> */}
+
+    </Card>
   )
 }
+const Card = styled.div`
+  background: #1D2D71;
+  border: 1px solid #00BFD5;
+  padding: 24px 0px;
+  .cn-wallet-btn {
+    height: 40px;
+    width: 100%;
+  }
+`
 
 const CurrencyBox = styled.div`
   flex-direction: row;
   display: flex;
-  padding: 37px 0px;
   font-size: 14px;
 `
 

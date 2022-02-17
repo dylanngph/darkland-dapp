@@ -10,7 +10,7 @@ import heroestdApi from 'api/heroestdApi'
 import { mapHeroData } from 'utils/mapHeroData'
 import { useHistory } from 'react-router-dom'
 import useRefresh from 'hooks/useRefresh'
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Select } from '@chakra-ui/react'
 import Empty from 'components/Empty/Empty'
 import EggCard from 'views/HeroesCard/EggCard'
 import HeroesInWallet from './HeroesInWallet'
@@ -28,7 +28,7 @@ const Heroes = ({ currentLayout }) => {
     total: 0,
   })
   const listTabs = [
-    { label: 'In wallet', value: 0 },
+    { label: 'All', value: 0 },
     { label: 'Alpha Test Heroes', value: 1 },
   ]
   const [heroesList, setHeroesList] = useState([])
@@ -72,7 +72,62 @@ const Heroes = ({ currentLayout }) => {
 
   return (
     <Container>
-      <Tabs variant="soft-rounded" mt={5}>
+      <div className='mt-4 flex justify-between'>
+        <div style={{fontSize: '24px', fontWeight: 'bold'}}>{dataHeroMapping?.length ?? 0} Heroes</div>
+        <div style={{width: '200px'}}>
+          <Select color='white' sx={{borderRadius: '0', borderColor: '#00BFD5', backgroundColor: '#091749'}}>
+          {listTabs.map((item) => (
+            <option style={{ color: 'black' }} key={item.value} value={item.value}>{item.label}</option>
+          ))}
+        </Select>
+        </div>
+      </div>
+
+      <div>
+        <HeroesListWrap>
+          <HeroesInWallet dataHeroes={dataHeroMapping} />
+        </HeroesListWrap>
+      </div>
+
+      <div>
+      {isLogin ? (
+        <>
+          <div className="flex flex-wrap justify-center">
+            <div id="heroes-id">
+              {currentLayout === 0 && (
+                <HeroesListWrap>
+                  {heroesList?.map((hero: any) => (
+                    <RubyBlock
+                      key={hero?._id}
+                      className="flex flex-row flex-wrap cursor-pointer"
+                      onClick={() => {
+                        history.push({
+                          pathname: `/heroes-details/${hero._id}`,
+                          state: '/my-assets',
+                        })
+                      }}
+                    >
+                      <HeroesCard hero={hero} />
+                    </RubyBlock>
+                  ))}
+                </HeroesListWrap>
+              )}
+
+              <PaginationCustom
+                current={pagination.page}
+                total={pagination.total}
+                onChange={handleChagePage}
+                pageSize={pagination.limit}
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <Empty message="Please login to see your data" />
+      )}
+      </div>
+      
+      {/* <Tabs variant="soft-rounded" mt={5}>
         <TabList
           className="bg-gray rounded-3xl border border-solid border-gray-400 m-auto"
           sx={{ maxWidth: 'fit-content' }}
@@ -94,7 +149,6 @@ const Heroes = ({ currentLayout }) => {
 
         <TabPanels>
           <TabPanel>
-            <Box>{dataHeroMapping?.length ?? 0} Heroes</Box>
             <HeroesListWrap>
               <HeroesInWallet dataHeroes={dataHeroMapping} />
             </HeroesListWrap>
@@ -138,7 +192,7 @@ const Heroes = ({ currentLayout }) => {
             )}
           </TabPanel>
         </TabPanels>
-      </Tabs>
+      </Tabs> */}
     </Container>
   )
 }
