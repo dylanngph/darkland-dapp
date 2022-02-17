@@ -46,11 +46,6 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   //     }
   //   ],
   // },
-  {
-    label: t('Swap'),
-    icon: 'TradeIcon',
-    href: '/swap',
-  },
   // {
   //   label: t('IDO'),
   //   icon: 'IdoIcon',
@@ -96,6 +91,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     label: t('Pools'),
     icon: 'PoolIcon',
     href: '/pools',
+  },
+  {
+    label: t('Liquidity'),
+    icon: 'TradeIcon',
+    href: '/liquidity',
   },
   {
     label: t('Vesting'),

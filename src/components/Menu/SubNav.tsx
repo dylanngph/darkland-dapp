@@ -5,8 +5,8 @@ import {ButtonMenu, ButtonMenuItem} from '@pancakeswap/uikit'
 import {useTranslation} from 'contexts/Localization'
 
 const StyledNav = styled.nav`
-  background: #27262c;
-  border-radius: 20px;
+  background: #0D1A4E;
+  // border-radius: 20px;
   margin-top: 13vh;
   margin-bottom: 32px;
   justify-content: center;
@@ -20,14 +20,14 @@ const StyledNav = styled.nav`
     max-width: 330px;
   }
   a {
-    border-radius: 20px;
+    // border-radius: 20px;
     flex-grow: 1;
     padding-top: 12px;
     padding-bottom: 12px;
-    background: ${({theme}) => (theme.isDark ? '#27262c' : '#fff')};
+    background: ${({theme}) => (theme.isDark ? '#0D1A4E' : '#fff')};
     color: ${({theme}) => (theme.isDark ? theme.colors.textSubtle : '#202224')};
     font-weight: 400;
-    font-size: 12px;
+    font-size: 20px;
     line-height: 16px;
     text-align: center;
     height: 40px;
@@ -57,7 +57,8 @@ const getActiveIndex = (pathname: string): number => {
 }
 
 const styleActive = {
-  background: 'linear-gradient(180deg, #E8A639 0%, #EBB340 50.84%, #F2CA4C 100%)',
+  // background: 'linear-gradient(180deg, #E8A639 0%, #EBB340 50.84%, #F2CA4C 100%)',
+  background: 'rgba(0, 191, 213, 0.5)',
   color: '#fff',
 }
 

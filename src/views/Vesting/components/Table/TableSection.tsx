@@ -3,7 +3,8 @@ import {Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption} from '@chakra-ui/r
 import styled from '@emotion/styled'
 import {Skeleton, Button} from 'components/Pancake-uikit'
 import {formatNumber} from 'utils/formatBalance'
-import {ReactComponent as ArrowRightIcon} from 'assets/icons/ArrowRight.svg'
+// import {ReactComponent as ArrowRightIcon} from 'assets/icons/ArrowRight.svg'
+import {ChevronRightIcon, ChevronLeftIcon} from '@pancakeswap/uikit'
 
 const TableSection = () => {
   // const {totalTokenLock, startTimeTGE, TGE_RELEASE, id, userIsClaimTGE, slug} = tgeData
@@ -106,13 +107,13 @@ const TableSection = () => {
         <Tr>
           <Td colSpan={6} sx={{borderBottom: 0}}>
             <Flex>
-              <PagButton className="prevButton">
-                <ArrowRightIcon />
+              <PagButton>
+                <ChevronLeftIcon />
               </PagButton>
               <PagButton>1</PagButton>
               <PagButton>2</PagButton>
               <PagButton>
-                <ArrowRightIcon />
+                <ChevronRightIcon />
               </PagButton>
             </Flex>
           </Td>
@@ -267,9 +268,6 @@ const PagButton = styled(Button)`
   min-width: 20px;
   font-size: 12px;
   margin: 0 5px;
-  &.prevButton {
-    transform: rotate(180deg);
-  }
 `
 
 const ClaimButton = styled(Button)`
