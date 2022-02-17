@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 import {
   Box,
 } from '@mui/material'
+import {NavLink} from 'react-router-dom'
 import useToast from 'hooks/useToast'
 import styled from 'styled-components'
 import {useCallWithGasPrice} from 'hooks/useCallWithGasPrice'
@@ -73,110 +74,167 @@ const Vesting = () => {
   const isMobile = isXl === false
 
   return (
-    <Page>
-      <Wrapper>
-        <Header>
-            <img src="logo.png" alt="" />
-            <div>
-                <span style={{fontSize: '30px', fontWeight: '700', textTransform: 'uppercase'}}>DotArcade</span>
-                <div>Vesting site for investors.</div> 
-            </div>
-        </Header>
-        <Body>
-          <LayoutCard sx={{
-            gridTemplateColumns: isMobile ? 'auto' :'auto auto auto'
-          }}>
-            <Card>
-              <CardHeader>
-                <Box sx={{
-                  fontSize: '22px',
-                  color: '#E6AB58',
-                  fontWeight: '700'
-                }}>Private Sales Round</Box>
-                <Button variant='secondary' onClick={() => history.push('/vesting/private-round')}>
-                  Open
-                </Button>
-              </CardHeader>
-              <CardBody>
-                <Flex>
-                  <div>
-                    Price:
-                  </div>
-                  <div style={{fontSize: '16px', fontWeight: '700'}} >
-                    1 ADT = 0.075 BUSD
-                  </div>
-                </Flex>
-                <Flex>
-                  <div>
-                    Max Supply:
-                  </div>
-                  <div style={{fontSize: '16px', fontWeight: '700'}} >
-                    17.000.000 ADT
-                  </div>
-                </Flex>
-              </CardBody>
-            </Card>
+    <Wrapper>
+      <Header>
+          <img src="logo.png" alt="" />
+          <div>
+              <span style={{fontSize: '30px', fontWeight: '700', textTransform: 'uppercase'}}>DARKLAND</span>
+              <div>Vesting section for investors.</div> 
+          </div>
+      </Header>
+      <Body>
+        <LayoutCard sx={{
+          gridTemplateColumns: isMobile ? 'auto' :'auto auto auto'
+        }}>
+          <Card>
+            <CardHeader>
+              <Box sx={{
+                fontSize: '22px',
+                color: '#ffffff',
+                fontWeight: '700',
+                '& a:hover': {
+                  opacity: '0.7',
+                }
+              }}><NavLink to='/vesting/private-round' aria-hidden="true">Private Sales Round</NavLink></Box>
+              {/* <Button variant='secondary' onClick={() => history.push('/vesting/private-round')}>
+                Open
+              </Button> */}
+            </CardHeader>
+            <CardBody>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Price:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  1 BIG = 0.04 BUSD
+                </div>
+              </Flex>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Token allocationn:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  1 BIG = 0.04 BUSD
+                </div>
+              </Flex>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Max supply:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  0 BIG
+                </div>
+              </Flex>
+            </CardBody>
+          </Card>
 
 
-            <Card>
-              <CardHeader>
-                <Box sx={{
-                  fontSize: '22px',
-                  color: '#E6AB58',
-                  fontWeight: '700'
-                }}>Strategic Round</Box>
-                <Button variant='secondary' onClick={() => history.push('/vesting/strategic-round')}>
-                  Open
-                </Button>
-              </CardHeader>
-              <CardBody>
-                <Flex>
-                  <div>
-                    Price:
-                  </div>
-                  <div style={{fontSize: '16px', fontWeight: '700'}} >
-                    1 ADT = 0.05 BUSD
-                  </div> 
-                </Flex>
-                
-                <Flex>
-                  <div>
-                    Max Supply:
-                  </div>
-                  <div style={{fontSize: '16px', fontWeight: '700'}} >
-                    12.000.000 ADT
-                  </div>
-                </Flex>
-              </CardBody>
-            </Card>
-          
-          </LayoutCard>
-        </Body>
-      </Wrapper>
-    </Page>
+          <Card>
+            <CardHeader>
+              <Box sx={{
+                fontSize: '22px',
+                color: '#ffffff',
+                fontWeight: '700',
+                '& a:hover': {
+                  opacity: '0.7',
+                }
+              }}>
+                <NavLink to='/vesting/strategic-round' aria-hidden="true">Strategic Round</NavLink>
+              </Box>
+              {/* <Button variant='secondary' onClick={() => history.push('/vesting/strategic-round')}>
+                Open
+              </Button> */}
+            </CardHeader>
+            <CardBody>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Price:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  1 ADT = 0.04 BUSD
+                </div> 
+              </Flex>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Token allocationn:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  1 ADT = 0.04 BUSD
+                </div> 
+              </Flex>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Max Supply:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  0 BIG
+                </div>
+              </Flex>
+            </CardBody>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <Box sx={{
+                fontSize: '22px',
+                color: '#ffffff',
+                fontWeight: '700',
+                '& a:hover': {
+                  opacity: '0.7',
+                }
+              }}>
+                <NavLink to='/vesting/airdrop' aria-hidden="true">Airdrop</NavLink>
+              </Box>
+              {/* <Button variant='secondary' onClick={() => history.push('/vesting/strategic-round')}>
+                Open
+              </Button> */}
+            </CardHeader>
+            <CardBody>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Price:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  1 ADT = 0.04 BUSD
+                </div> 
+              </Flex>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Token allocationn:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  1 ADT = 0.04 BUSD
+                </div> 
+              </Flex>
+              <Flex>
+                <div style={{color: '#F7F7F7'}} >
+                  Max Supply:
+                </div>
+                <div style={{fontSize: '16px', fontWeight: '700'}} >
+                  0 BIG
+                </div>
+              </Flex>
+            </CardBody>
+          </Card>
+        
+        </LayoutCard>
+      </Body>
+    </Wrapper>
   )
 }
 const Header = styled(Box)`
     display: flex;
     gap: 20px;
     align-items: center;
-    background: url('/images/vesting/vesting-bg.png');
-    background-position: center;
-    object-fit: cover;
-    background-size: cover;
     min-height: 144px;
     padding: 20px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: 1px solid #747475;
+    background: rgba(26, 43, 109, 0.5);
 `
 const Body = styled(Box)`
     display: flex;
     gap: 20px;
     align-items: center;
     padding: 40px 20px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
     border: 1px solid #747475;
     border-top: none;
 `
@@ -189,6 +247,10 @@ const Flex = styled(Box)`
 const Wrapper = styled(Box)`
     display: flex;
     flex-direction: column;
+    background: url('/images/vesting/vesting-img-bg.png');
+    background-position: center;
+    object-fit: cover;
+    background-size: cover;
 `
 const LayoutCard = styled(Box)`
     display: grid;
@@ -197,10 +259,11 @@ const LayoutCard = styled(Box)`
     width: 100%;
 `
 const Card = styled(Box)`
-    background: rgba(255,255,255, .05);
+    background-color: #1D2D71;
     border: 1px solid #747475;
-    border-radius: 10px;
+    // border-radius: 10px;
     padding: 20px;
+    color: #ffffff;
 `
 const CardHeader = styled(Box)`
   border-bottom: 1px solid #747475;

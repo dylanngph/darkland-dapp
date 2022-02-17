@@ -1,31 +1,63 @@
-import React , {useState, useEffect} from 'react'
+import React , {useState , useEffect} from 'react'
 import styled from '@emotion/styled'
 import {
     Box
 } from '@mui/material'
+import { Hero } from 'components/KShark'
+import {Heading, Text} from 'components/Pancake-uikit'
 import Page from 'components/Layout/Page'
 import history from 'routerHistory'
-import useToast from 'hooks/useToast'
-import {useCallWithGasPrice} from 'hooks/useCallWithGasPrice'
-import {useVesting} from 'hooks/useContract'
 import TableSection from 'views/Vesting/components/Table/TableSection'
 import { Button , useMatchBreakpoints , Skeleton } from '@pancakeswap/uikit'
-import { useFetchVestingTGE } from 'views/Vesting/hooks/useFetchVesting'
+import { useFetchVestingTGE } from 'views/Vesting/hooks/useFetchVestingStrategic'
 import { formatNumber } from 'utils/formatBalance'
+import { useVestingStrategic } from 'hooks/useContract'
+import useToast from 'hooks/useToast'
+import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useWeb3React } from '@web3-react/core'
+import {useFetchVestingTGE as useFetchPrivate, useFetchVestingStage} from 'views/Vesting/hooks/useFetchVesting'
 
-const PrivateZone = () => {
+const StrategicZone = () => {
     const {isMobile} = useMatchBreakpoints()
     const [isClaimedTGE, setIsClaimTGE] = useState(false)
     const {account} = useWeb3React()
 
+    const stageData = useFetchVestingStage()
     const [pendingTx, setPendingTx] = useState(false)
     const {toastSuccess, toastError} = useToast()
     const {callWithGasPrice} = useCallWithGasPrice()
-    const vestingContract = useVesting()
+    const vestingContract = useVestingStrategic()
 
     const [swictchIndex, setSwitchIndex] = useState(0)
 
+
+    const handleClaimTGE = async () => {
+        try {
+            setPendingTx(true)
+            const tx = await callWithGasPrice(vestingContract, 'claimTGE', [])
+            const receipt = await tx.wait()
+            toastSuccess('Success', 'Your transaction was successful')
+        } catch (e) {
+            console.log(e)
+        toastError('Error', 'Please try again. Confirm the transaction and make sure you are paying enough gas!')
+        } finally {
+            setPendingTx(false)
+        }
+    }
+
+    const handleClaimStage = async (params: number) => {
+        try {
+            setPendingTx(true)
+            const tx = await callWithGasPrice(vestingContract, 'claimStage', [params])
+            const receipt = await tx.wait()
+            toastSuccess('Success', 'Your transaction was successful')
+        } catch (e) {
+            console.log(e)
+            toastError('Error', 'Please try again. Confirm the transaction and make sure you are paying enough gas!')
+        } finally {
+            setPendingTx(false)
+        }
+    }
 
     const handleClaim = async () => {
         try {
@@ -39,9 +71,8 @@ const PrivateZone = () => {
         } finally {
           setPendingTx(false)
         }
-      }
+    }
 
-    
     const {
         getAllocation, 
         getReleased,
@@ -56,11 +87,17 @@ const PrivateZone = () => {
         
     }, [getTGERelease])
 
-    console.log(vestable)
-
-    
     return (
         <Page>
+            {/* <BackButton variant='text' onClick={() => history.push('/vesting')}>
+                Back
+            </BackButton> */}
+            <Hero>
+                <Heading as="h1" size="xl" color="#fff">
+                Vesting
+                </Heading>
+                <Text color="#fff">Airdrop</Text>
+            </Hero>
             <Wrapper sx={{
                 gridTemplateColumns: isMobile ? '100%' : '70% 30%'
             }}>
@@ -89,7 +126,7 @@ const PrivateZone = () => {
                     </StyledBox>
                     <StyledBox>
                         <div>
-                            <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px' }}>Private Sale Round</div>
+                            <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px' }}>Airdrop</div>
                             <StyledNav>
                                 <button type='button' style={swictchIndex === 0 ? styleActive : null} onClick={() => setSwitchIndex(0)}>
                                     <strong>Information</strong>
@@ -119,16 +156,20 @@ const PrivateZone = () => {
                                 </div>
                             ) : (
                                 <div>
-                                    In case you would like to sell your $ADT, we ask that you strictly follow the Price Management Policy below: 
+                                    In case you would like to sell your $ADT, we ask that you strictly follow the Price Management Policy below:
                                     <ul>
                                         <li>
-                                            Between 19th January 2022 and 25th January 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 1,000 (or equivalent) per transaction and no more than twenty-five (25) sale transactions per day. </li>
+                                        Between 19th January 2022 and 25th January 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 1,000 (or equivalent) per transaction and no more than twenty-five (25) sale transactions per day.
+                                        </li>
                                         <li>
-                                            Between 26th January 2022 (00:00 UTC) and 5th February 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 1,500 (or equivalent) per transaction and no more than thirty (30) sale transactions per day.                                </li>
+                                        Between 26th January 2022 (00:00 UTC) and 5th February 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 1,500 (or equivalent) per transaction and no more than thirty (30) sale transactions per day.
+                                        </li>
                                         <li>
-                                            Between 6th February 2022 (00:00 UTC) and 20th February 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 2,000 (or equivalent) per transaction and no more than thirty-five (35) sale transactions per day.                                </li>
+                                        Between 6th February 2022 (00:00 UTC) and 20th February 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 2,000 (or equivalent) per transaction and no more than thirty-five (35) sale transactions per day.
+                                        </li>
                                         <li>
-                                        The limitations above apply to your wallet address and any other wallet addresses that you transfer the $ADT tokens to. It will be considered to be a breach if any or all of such wallet addresses breach the policy set out above.                                </li>
+                                        The limitations above apply to your wallet address and any other wallet addresses that you transfer the $ADT tokens to. It will be considered to be a breach if any or all of such wallet addresses breach the policy set out above.
+                                        </li>
                                     </ul>
                                 </div>
                             )}
@@ -260,5 +301,4 @@ const defaultStyle = {
     // borderLeft: '0.4px solid rgba(151, 151, 151, 0.7)',
   }
 
-
-export default PrivateZone
+export default StrategicZone
