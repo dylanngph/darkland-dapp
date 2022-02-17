@@ -32,8 +32,9 @@ const ConnectWalletButton = (props) => {
   const NormalButton = styled(Button)`
     color: ${color};
     padding: ${padding};
-    border-radius: 8px;
-    background: ${variant === 'text' ? null : 'linear-gradient(180deg, #E8A639 0%, #E5A219 50.84%, #FCC312 100%)'};
+    border-radius: 0;
+    background: ${variant === 'text' ? null : '#FFA800'};
+    border-bottom: 3px solid #C16000;
   `
 
   return (

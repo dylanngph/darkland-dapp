@@ -56,6 +56,7 @@ const AppHeader: React.FC<Props> = ({title, subtitle, helper, backTo, noConfig =
         style={{
           paddingRight: '5px',
           flex: 1,
+          borderRight: '1px solid #424243'
         }}
         alignItems="center"
         mr={noConfig ? 0 : '16px'}

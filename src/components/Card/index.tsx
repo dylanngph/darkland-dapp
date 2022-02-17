@@ -18,15 +18,21 @@ const Card = styled(Box)<{
 export default Card
 
 export const LightCard = styled(Card)`
-  border: 1px solid ${({theme}) => theme.colors.background};
-  background-color: rgba(255,255,255,.05);
+  // border: 1px solid ${({theme}) => theme.colors.background};
+  // background-color: rgba(255,255,255,.05);
+  background: #1A2B6D;
+  border-radius: 0;
 `
 
 export const LightGreyCard = styled(Card)`
-  border: 1px solid ${({theme}) => theme.colors.cardBorder};
-  background-color: ${({theme}) => theme.colors.background};
+  // border: 1px solid ${({theme}) => theme.colors.cardBorder};
+  // background-color: ${({theme}) => theme.colors.background};
+  background: #1A2B6D;
+  border-radius: 0;
 `
 
 export const GreyCard = styled(Card)`
-  background-color: ${({theme}) => theme.colors.dropdown};
+  // background-color: ${({theme}) => theme.colors.dropdown};
+  background: #1A2B6D;
+  border-radius: 0;
 `

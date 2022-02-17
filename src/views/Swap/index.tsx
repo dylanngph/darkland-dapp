@@ -440,7 +440,10 @@ export default function Swap({history}: RouteComponentProps) {
               </Button>
             ) : !account ? (
               <Box style={{color: '#fff', textAlign: 'center'}}>
-                To exchange, you have to <ConnectWalletButton padding="0" color="#EBB340" variant="text" /> first{' '}
+                {/* To exchange, you have to <ConnectWalletButton padding="0" color="#EBB340" variant="text" isCustom /> first{' '} */}
+                <Button style={{borderRadius: '0', borderBottom: '2px solid #C16000'}}  id="join-pool-button" width="100%">
+                  {t('Unlock Wallet')}
+                </Button>
               </Box>
             ) : showWrap ? (
               <Button width="100%" disabled={Boolean(wrapInputError)} onClick={onWrap}>

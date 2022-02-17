@@ -23,10 +23,10 @@ export const BodyWrapper = styled.div`
   max-width: 550px;
   width: 100%;
   z-index: 5;
-  background: #181819;
-  border: 1px solid #686868;
+  background: #091749;
+  border: 1px solid #00BFD5;
   box-sizing: border-box;
-  border-radius: 10px;
+  // border-radius: 10px;
   padding: 40px 16px 28px;
 `
 
