@@ -3,7 +3,8 @@ import Page from 'components/Layout/Page'
 import React from 'react'
 import { Box , useMediaQuery } from '@mui/material'
 import NotFound from 'views/NotFound'
-import {  } from '@pancakeswap/uikit'
+import { Hero } from 'components/KShark'
+import {Heading, Text} from 'components/Pancake-uikit'
 import styled from '@emotion/styled'
 import Vesting from './Vesting'
 import {useFetchVestingTGE as useFetchPrivate} from './hooks/useFetchVesting'
@@ -17,23 +18,19 @@ const VestingSection = () => {
 
   const {account} = useWeb3React()  
 
-  return <Vesting/>
+  // return <Vesting/>
   // if ((account && privateSale.getAllocation) || (account && strategic.getAllocation)) {
   // }
 
   return (
     <Page>
-      <div className="flex justify-center w-full" style={{alignItems: 'center', height: '600px', flexDirection: isMobile ? 'column' : null}}>
-        <MessageBox>
-          <span style={{fontSize: '21px', color: '#E6AB58'}}>
-            Greetings, Commander!
-          </span>
-          <span>
-            You have to be a private sale or stragegic investor to entrance this section.
-          </span>
-        </MessageBox>
-        <img src="/images/vesting-greet.png" alt="" />
-      </div>
+      <Hero>
+        <Heading as="h1" size="xl" color="#fff">
+          Vesting
+        </Heading>
+        <Text color="#fff">Wellcome, Investors!</Text>
+      </Hero>
+      <Vesting/>
     </Page>
   )
 }
