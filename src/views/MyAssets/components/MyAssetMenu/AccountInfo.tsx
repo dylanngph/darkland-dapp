@@ -67,15 +67,14 @@ const AccountInfo = () => {
   const avatar = localStorage.getItem('avatar')
 
   return (
-    <div style={{ borderBottom: '1px solid #535353' }}>
+    <div>
       <div className="flex flex-row flex-wrap">
-        <div className="margin-center w-2/5">
-          <CardIcon className="flex justify-center">
+        <div className="margin-center w-full">
+          <CardIcon className="flex justify-center mr-auto ml-auto" style={{width: '100px'}}>
             <img
               className="h-20 w-20"
               src={`../images/avatars/${avatar && avatar.length > 0 ? avatar : 'BigBoss.gif'}`}
               alt="account-info"
-              style={{ borderRadius: '100%' }}
             />
             <Popup
               className="w-full"
@@ -98,13 +97,14 @@ const AccountInfo = () => {
             </Popup>
           </CardIcon>
         </div>
-        <AccountDetails className="w-3/5">
+        {/* <AccountDetails className="w-3/5">
           <Text className="text-xs lg:text-lg"> {userInfo?.email} </Text>
           <Text className="text-xs lg:text-lg">Ranking point: {formatNumber(userInfo?.rankingPoint)} </Text>
-        </AccountDetails>
+        </AccountDetails> */}
       </div>
       <TextAddress className="flex justify-center">
         {splitAddress()}
+        65a6..986b8a6
         <Tooltip placement="top-start" label="Copy">
           <div
             role="button"
@@ -117,7 +117,7 @@ const AccountInfo = () => {
             }}
           >
             <img
-              className="h-4 w-4 mr-8"
+              className="h-4 w-4"
               src="/images/my-assets/copy_btn.png"
               alt="copy"
               style={{ marginLeft: '10px' }}
@@ -171,9 +171,14 @@ const Text = styled.div`
 
 const TextAddress = styled(Text)`
   margin-top: 20px;
-  font-size: 12px;
-  color: #a0a0a0;
+  padding: 0 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 `
 
 export default AccountInfo

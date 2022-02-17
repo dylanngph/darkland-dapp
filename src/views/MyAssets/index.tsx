@@ -71,18 +71,13 @@ const MyAssets = () => {
 
   return (
     <Page>
-      <Hero>
-        <Heading as="h1" size="xl" color="#ffffff">
-          {`${t('My Assets')}`}
-        </Heading>
-      </Hero>
       {/* <Block>
         <NavLink to="/my-assets"> {`${t('My Assets')} / `} </NavLink>
         <Text style={{ fontWeight: 700, paddingLeft: '2px' }}>{t(` Inventory`)}</Text>
       </Block> */}
       <div className="flex lg:flex-row md:flex-row flex-col flex-wrap">
-        {/* <div className="margin-center w-full sm:w-3/4 md:w-1/3 lg:w-1/3 xl:w-1/4">
-          {isLogin ? (
+        <div className="margin-center w-full sm:w-4/4 md:w-1/3 lg:w-3/12 xl:w-3/12">
+          {!isLogin ? (
             <MyAssetMenu
               setCurrentAssetMenuTab={setCurrentAssetMenuTab}
               currentAssetMenuTab={currentAssetMenuTab}
@@ -90,13 +85,13 @@ const MyAssets = () => {
           ) : (
             <Card className="flex flex-col items-center p-4">
               <CardIcon className="m-4">
-                <img src="/logo.svg" alt="logo" style={{ height: '44px', width: 'auto' }} />
+                <img src="/logo.png" alt="logo" style={{ height: '44px', width: 'auto' }} />
               </CardIcon>
               <Title className="text-center">Please login to view your assets menu</Title>
             </Card>
           )}
-        </div> */}
-        <div className="margin-center w-full mt-7">
+        </div>
+        <div className="margin-center w-full sm:mt-7 md:mt-0 sm:w-4/4 md:w-2/3 lg:w-9/12 xl:w-9/12">
           {renderBodyMenuTab()}
         </div>
       </div>
@@ -118,10 +113,9 @@ const CardIcon = styled.div`
 const Card = styled.div`
   width: auto;
   height: auto;
-  background: #0f0f0f;
-  border: 1px solid #535353;
+  background: #091749;
+  border: 1px solid #091749;
   box-sizing: border-box;
-  border-radius: 10px;
   margin-right: 20px;
 `
 

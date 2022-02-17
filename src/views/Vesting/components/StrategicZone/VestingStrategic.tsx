@@ -229,6 +229,7 @@ const Card = styled(Box)`
     border: 1px solid #091749;
     padding: 20px;
     width: 100%;
+    overflow: auto;
 `
 const CardHeader = styled(Box)`
   border-bottom: 1px solid #747475;

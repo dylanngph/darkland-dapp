@@ -15,9 +15,10 @@ const MyAssetsInventory = () => {
   const [currentTab, setCurrentTab] = useState(2)
 
   const customActiveTab = {
-    borderColor: '#da3754',
-    color: '#FFFFFF',
-    borderBottom: '4px solid #da3754',
+    // borderColor: '#da3754',
+    // color: '#FFFFFF',
+    // borderBottom: '4px solid #da3754',
+    backgroundColor: 'rgba(0, 191, 213)',
   }
 
   const getCustomActiveTab = (index: number) => (currentTab === index ? customActiveTab : {})
@@ -42,44 +43,44 @@ const MyAssetsInventory = () => {
 
   return (
     <Card className="card text-center">
-      <div className="card-header" style={{borderBottom: '1px solid #505050', fontSize: '16px'}} >
-        <ul className="grid grid-cols-3 justify-between border-b" style={{textAlign:"center"}} >
-          <li className="list-none">
-            <NavLink
-              key={2}
-              className="text-xs md:text-lg flex gap-2 sm:p-2 pb-0 justify-center"
-              style={{color: '#9E9E9E', fontWeight: 'bold', ...getCustomActiveTab(2)}}
-              onClick={() => onChangeCurrentTab(2)}
-            >
-              <Flex gridGap={1} alignItems="center">
-                <div><img className="" src="/images/blindbox/my-asset-tab-2.png" alt="common" height="20px" width="20px" /></div>
-                Heroes
-              </Flex>
-            </NavLink>
-          </li>
-          <li className="list-none">
+      <div className="card-header" style={{fontSize: '16px'}} >
+        <ul className="border-b" style={{textAlign:"left"}} >
+          <li className="list-none" style={{width: '130px', display: 'inline-block'}}>
             <NavLink
               key={0}
               className="nav-link text-xs md:text-lg flex gap-2 sm:p-2 justify-center"
-              style={{color: '#9E9E9E', fontWeight: 'bold', ...getCustomActiveTab(0)}}
+              style={{backgroundColor: '#0D1A4E', color: '#ffffff', fontWeight: 'bold', ...getCustomActiveTab(0)}}
               onClick={() => onChangeCurrentTab(0)}
             >
               <Flex gridGap={1} alignItems="center">
-                <div><img className="" src="/images/blindbox/my-asset-tab-1.png" alt="common" height="20px" width="20px" /></div>
-                Boxes
+                {/* <div><img className="" src="/images/blindbox/my-asset-tab-1.png" alt="common" height="20px" width="20px" /></div> */}
+                Box
               </Flex>
             </NavLink>
           </li>
-          <li className="list-none text-xs">
+          <li className="list-none" style={{width: '130px', display: 'inline-block'}}>
+            <NavLink
+              key={2}
+              className="text-xs md:text-lg flex gap-2 sm:p-2 pb-0 justify-center"
+              style={{backgroundColor: '#0D1A4E', color: '#ffffff', fontWeight: 'bold', ...getCustomActiveTab(2)}}
+              onClick={() => onChangeCurrentTab(2)}
+            >
+              <Flex gridGap={1} alignItems="center">
+                {/* <div><img className="" src="/images/blindbox/my-asset-tab-2.png" alt="common" height="20px" width="20px" /></div> */}
+                Hero
+              </Flex>
+            </NavLink>
+          </li>
+          <li className="list-none text-xs" style={{width: '130px', display: 'inline-block'}}>
             <NavLink
               key={1}
               className="text-xs md:text-lg flex md:gap-2 sm:p-2 justify-center"
-              style={{color: '#9E9E9E', fontWeight: 'bold', ...getCustomActiveTab(1)}}
+              style={{backgroundColor: '#0D1A4E', color: '#ffffff', fontWeight: 'bold', ...getCustomActiveTab(1)}}
               onClick={() => onChangeCurrentTab(1)}
             >
               <Flex gridGap={1} alignItems="center">
-                <div><img className="" src="/images/blindbox/my-asset-tab-3.png" alt="common" height="20px" width="20px" /></div>
-                NFT Bounty
+                {/* <div><img className="" src="/images/blindbox/my-asset-tab-3.png" alt="common" height="20px" width="20px" /></div> */}
+                Weapon
               </Flex>
             </NavLink>
           </li>

@@ -126,6 +126,8 @@ const App: React.FC = () => {
               <AirdropZone />
             </Route>
 
+            <Route exact strict path="/my-assets" component={MyAssets} />
+
             <Route exact strict path="/bounty-detail/:bountyId" component={RedirectBountyWithId} />
             <Route exact strict path="/ido/:idoId" component={IdoDetails} />
             {/* Using this format because these components use routes injected props. We need to rework them with hooks */}

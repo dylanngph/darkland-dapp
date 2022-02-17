@@ -15,10 +15,9 @@ const MyAssetMenu = ({setCurrentAssetMenuTab, currentAssetMenuTab}) => {
 const Card = styled.div`
   width: auto;
   height: auto;
-  background: #0f0f0f;
-  border: 1px solid #535353;
+  background: #091749;
+  border: 1px solid #091749;
   box-sizing: border-box;
-  border-radius: 10px;
 `
 
 // const Block = styled.div`

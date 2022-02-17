@@ -22,32 +22,45 @@ const BinanceSmartChain = () => {
   }
 
   return (
-    <div className='flex flex-col justify-between w-full mt-3 lg:mt-0 lg:w-1/2 mr-5'
+    <div className='flex flex-col justify-between w-full mt-3 lg:mt-0 lg:w-2/3 mr-5'
       style={{ 
-        backgroundImage: "url('/images/my-assets/bg-binance-1.png')", 
-        backgroundRepeat: "no-repeat", 
-        backgroundPosition: "center", 
-        backgroundSize: "cover", 
-        objectFit: 'cover',
-        border: '1px solid #424243',
-        borderRadius: '10px'
+        // backgroundImage: "url('/images/my-assets/bg-binance-1.png')", 
+        // backgroundRepeat: "no-repeat", 
+        // backgroundPosition: "center", 
+        // backgroundSize: "cover", 
+        // objectFit: 'cover',
+        backgroundColor: '#1D2D71',
+        border: '1px solid #00BFD5',
         }}
       >
-      <div className='mt-8 ml-8' >
-        <h1 className='h-5' style={{ color: "#FFC247" , fontWeight: '700' }} >Binance Smart Chain</h1>
-        <div className='grid grid-cols-5 mt-5' >
-          <div className='col-span-1' >
-            <img className="h-15 w-15" src="/images/coins/busd.png" alt="BUSD" />
+      <div className='mt-5 ml-5' >
+        {/* <h1 className='h-5' style={{ color: "#FFC247" , fontWeight: '700' }} >Binance Smart Chain</h1> */}
+        <div className='flex items-center' >
+          <div className='mr-3'>
+            <img className="h-15 w-15" src="/images/coins/busd.png" alt="BUSD" width={42} height={42} />
           </div>
-          <div className='col-span-4' >
-            <p className='text-white text-2xl md:text-3xl' > {formatNumber(busd) ?? 0} BUSD</p>
+          <div>
+            <p className='text-white text-xl' > {formatNumber(busd) ?? 0} BUSD</p>
             {/* <p style={{ color: "#929292" }} className='mt-1' > {formatNumber(busd) ?? 0} USD</p> */}
-            <p className='text-sm mt-1' style={{ color: "#2BA400" }} >Buy BUSD</p>
+            <p className='text-sm mt-1' style={{ color: "#00FB28" }} >Buy BUSD</p>
           </div>
         </div>
       </div>
-      <div className='address-bottom flex flex-row justify-between' >
-        <h1 className='ml-8 text-xs'>Address: {splitAddress()}</h1>
+      <div className='mt-5 ml-5 mb-5' >
+        {/* <h1 className='h-5' style={{ color: "#FFC247" , fontWeight: '700' }} >Binance Smart Chain</h1> */}
+        <div className='flex items-center' >
+          <div className='mr-3'>
+            <img className="h-15 w-15" src="/images/coins/token-dak.png" alt="BUSD" width={42} height={42} />
+          </div>
+          <div>
+            <p className='text-white text-xl' > {formatNumber(busd) ?? 0} DAK</p>
+            {/* <p style={{ color: "#929292" }} className='mt-1' > {formatNumber(busd) ?? 0} USD</p> */}
+            <p className='text-sm mt-1' style={{ color: "#00FB28" }} >Buy DAK</p>
+          </div>
+        </div>
+      </div>
+      <div className='address-bottom flex flex-row justify-between' style={{borderTopColor: '#00BFD5'}} >
+        <h1 className='ml-8 text-xs' style={{ color: "#FFFFFF" }} >Address: {splitAddress()}</h1>
         <Tooltip placement="top-start" 
         label={copy} >
           <div role="button" tabIndex={0}
