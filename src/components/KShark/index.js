@@ -3,6 +3,7 @@ import {Text} from '../Pancake-uikit'
 
 export const Hero = styled.div`
   margin-bottom: 22px;
+  text-align: center;
   > h1 {
     font-weight: 900;
     font-size: 30px;
