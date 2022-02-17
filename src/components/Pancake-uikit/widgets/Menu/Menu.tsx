@@ -77,12 +77,12 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate3d(0, 0, 0);
   max-width: 100%;
-  background-color: ${({ theme }) => (theme.isDark ? '#261D22' : '#261D22')};
+  background-color: ${({ theme }) => (theme.isDark ? '#091749' : '#091749')};
   ${({ theme }) => theme.mediaQueries.nav} {
     max-width: 100%;
     // padding-left: ${({ isPushed }) => (isPushed ? '240px' : 0)};
   };
-  background-image: url('/footer_background.png');
+  background-image: url('/bg-page.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
