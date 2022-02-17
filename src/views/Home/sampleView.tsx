@@ -5,7 +5,8 @@ import {
 } from '@mui/material'
 import { Button, useMatchBreakpoints } from '@pancakeswap/uikit'
 import Title from 'components/Layout/Title'
-import IconCard from './components/IconCard';
+import MarketplaceItem from './components/MarketplaceItem';
+import FarmPoolItem from './components/FarmPoolItem';
 
 const SampleView = () => {
     const { isMobile } = useMatchBreakpoints()
@@ -35,7 +36,24 @@ const SampleView = () => {
             </Header>
             <Section>
                 <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
-                
+                <Box>
+                    <MarketplaceItem buttonTitle='MYSTERY BOX' imageUrl='/images/marketplace-images/MYSTERY-BOX.png' />
+                    <MarketplaceItem buttonTitle='MYSTERY WAEPON' imageUrl='/images/marketplace-images/MYSTERY-WAEPON.png' />
+                    <MarketplaceItem buttonTitle='MYSTERY ARMOR' imageUrl='/images/marketplace-images/MYSTERY-ARMOR.png' />
+                    <MarketplaceItem buttonTitle='MYSTERY HELMET' imageUrl='/images/marketplace-images/MYSTERY-HELMET.png' />
+                </Box>
+            </Section>
+            <Section mt={5} mb={5}>
+                <ImageDecord className='decord-left' src="/images/avarta-arrow/men-arrow.png" alt="men-arrow" />
+                <ImageDecord className='decord-right' src="/images/avarta-arrow/girld-arrow.png" alt="girld-arrow" />
+            </Section>
+            <Section sx={{marginTop: '100px'}}>
+                <Title mb={5} text="Farm & Pool" icon='/images/icons/farm-pool-icon.png' />
+                <Box sx={{display: 'flex'}}>
+                    <FarmPoolItem title='Liquidity' price='$456.565' />
+                    <FarmPoolItem title='Liquidity' price='$456.565' />
+                    <FarmPoolItem title='Liquidity' price='$456.565' buttonTitle='Connect Wallet' />
+                </Box>
             </Section>
         </Wrapper>
     )
@@ -64,12 +82,6 @@ const WrapImage = styled(Box)`
 const Socials = styled(Box)`
 
 `
-
-const Flex = styled(Box)`
-    display: flex;
-    align-items: center;
-    gap: 20px
-`
 const Header = styled(Box)`
     display: flex;
     gap: 20px;
@@ -80,41 +92,21 @@ const Header = styled(Box)`
     aspect-ratio: 2/1.0313;
     position: relative;
 `
-const Line = styled(Box)`
-    width: 7px;
-    height: 21px;
-    background: linear-gradient(180deg, #E8A639 0%, #EBB340 50.84%, #F2CA4C 100%); 
-`
-const DashboardCard = styled(Box)`
-    width: 100%;
-    border: 1px solid #747475;
-    border-radius: 10px;
-    padding: 15px;
-    background: rgba(255,255,255, .05)
-`
-const GridLayout = styled(Box)`
-    display: grid;
-    gap: 15px;
-    align-items: center;    
-`
-const MiniBox = styled(Box)`
-    border: 1px solid #747475;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    min-height: 125px
-`
-
-const Money = styled(Box)`
-    font-size: 20px;
-    font-weight: 700;
-    color: #fff
-`
-
 const Section = styled(Box)`
+    position: relative;
 
+    .decord-left {
+        left: -90px;
+        z-index: -1;
+    }
+
+    .decord-right {
+        right: -90px;
+        z-index: -1;z
+    }
+`
+const ImageDecord = styled.img`
+    position: absolute;
 `
 
 export default SampleView
