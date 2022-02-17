@@ -5,6 +5,7 @@ import {
 } from '@mui/material'
 import { Button, useMatchBreakpoints } from '@pancakeswap/uikit'
 import Title from 'components/Layout/Title'
+import IconCard from './components/IconCard';
 
 const SampleView = () => {
     const { isMobile } = useMatchBreakpoints()
@@ -33,16 +34,8 @@ const SampleView = () => {
                 </div>
             </Header>
             <Section>
-                <Title text="Marketplace" icon='/images/icons/marketplace-icon.png' />
-                <GridLayout sx={{
-                    gridTemplateColumns: isMobile ? 'auto' : 'auto auto auto auto',
-                    justifyContent: isMobile ? 'center' : null
-                }}>
-                    <img src="/images/card1.png" alt="" />
-                    <img src="/images/card2.png" alt="" />
-                    <img src="/images/card3.png" alt="" />
-                    <img src="/images/card4.png" alt="" />
-                </GridLayout>
+                <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
+                
             </Section>
         </Wrapper>
     )

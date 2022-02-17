@@ -11,17 +11,17 @@ const Title = (prop) => {
     const {text, icon, mt, mb} = prop;
 
     return (
-        <Flex mt={mt} mb={mb}>
+        <Item mt={mt} mb={mb}>
             <TitleContent>{text}</TitleContent>
             {icon ? <Img src={icon} alt={text} /> : null}
-        </Flex>
+        </Item>
     )
 }
 
-const Flex = styled(Box)`
-    display: flex;
-    align-item: center;
-    justify-content: center;
+const Item = styled(Box)`
+    display: inline-block;
+    width: auto;
+    
 `
 
 const TitleContent = styled.h3`
