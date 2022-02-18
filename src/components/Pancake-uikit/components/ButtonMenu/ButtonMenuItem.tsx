@@ -16,18 +16,18 @@ const InactiveButton: PolymorphicComponent<InactiveButtonProps, 'button'> = styl
   //   background-color: ${({theme, variant}) =>
     variant === variants.PRIMARY ? theme.colors.primary : theme.colors.backgroundTab};
   // }
-  background: #3c3a3a;
+  background: #1A2B6D;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 26px;
+  border-radius: 0;
 `
 
 const ButtonActive = styled(Button)`
-  background: linear-gradient(180deg, #E8A639 0%, #EBB340 50.84%, #F2CA4C 100%);
+  background: rgba(0, 191, 213, 0.5);
   border: 1px solid #7a7a7a;
   box-sizing: border-box;
   box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.5);
-  border-radius: 26px;
+  border-radius: 0;
   display: flex;
   justify-content: center;
   align-items: center;

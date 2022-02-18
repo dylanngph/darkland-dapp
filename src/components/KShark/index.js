@@ -22,26 +22,20 @@ export const ControlContainer = styled.div`
   width: 100%;
   align-items: center;
   position: relative;
-  border: 0.6px solid #686868;
+  // border: 0.6px solid #686868;
   box-sizing: border-box;
   border-radius: 10px;
   /* height: 70px; */
-  background-color: ${({theme}) => {
-    if (theme.isDark) {
-      return 'rgba(24,24,25, .35)'
-    }
-    return '#c9c9c9'
-  }};
   justify-content: center;
   align-items: center;
 
   flex-direction: column;
-  padding: 19px 20px;
+  padding: 19px 0;
   gap: 20px;
   ${({theme}) => theme.mediaQueries.sm} {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     // align-items: center;
   }
 `
