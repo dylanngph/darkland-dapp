@@ -21,14 +21,16 @@ export const ModalTitle = styled(Flex)`
 
 export const ModalBody = styled(Flex)`
   flex-direction: column;
-  max-height: 90vh;
+  max-height: 65vh;
   overflow-y: auto;
 `
 
 export const ModalCloseButton: React.FC<{onDismiss: ModalProps['onDismiss']}> = ({onDismiss}) => {
   return (
     <IconButton variant="text" onClick={onDismiss} aria-label="Close the dialog">
-      <CloseIcon color="primary" />
+      <span style={{border: '1px solid #ffffff', borderRadius: '50%'}}>
+        <CloseIcon color="white" />
+      </span>
     </IconButton>
   )
 }

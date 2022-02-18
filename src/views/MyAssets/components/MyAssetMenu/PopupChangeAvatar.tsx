@@ -76,7 +76,7 @@ export default ({ close, currentAva }) => {
       </ListAvatar>
       <p> {avaErr} </p>
       <WrapButton>
-        <Button onClick={onSetAvatar} > Save change </Button>
+        <Button style={{borderBottom: '3px solid #C16000', borderRadius: 0}} onClick={onSetAvatar} > Save change </Button>
       </WrapButton>
     </AppBody>
   )

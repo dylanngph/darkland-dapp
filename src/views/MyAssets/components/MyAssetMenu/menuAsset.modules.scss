@@ -1,5 +1,6 @@
 .currentMenuTab {
-  filter: invert(64%) sepia(78%) saturate(473%) hue-rotate(10deg) brightness(92%) contrast(86%);
+  // filter: invert(64%) sepia(78%) saturate(473%) hue-rotate(10deg) brightness(92%) contrast(86%);
+  filter: brightness(2);
 }
 
 .currentMenuTabText {

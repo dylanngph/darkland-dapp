@@ -33,7 +33,7 @@ const StyledModalContainer = styled(ModalContainer)`
 `
 
 const StyledModalBody = styled(ModalBody)`
-  padding: 24px;
+  padding: 10px 24px 24px;
 `
 
 interface CurrencySearchModalProps extends InjectedModalProps {
@@ -85,10 +85,10 @@ export default function CurrencySearchModal({
 
   return (
     <StyledModalContainer minWidth="320px">
-      <ModalHeader>
+      <ModalHeader style={{border: 0, paddingBottom: 0}}>
         <ModalTitle>
           {config[modalView].onBack && <ModalBackButton onBack={config[modalView].onBack} />}
-          <Heading>{config[modalView].title}</Heading>
+          <Heading style={{fontWeight: '700'}}>{config[modalView].title}</Heading>
         </ModalTitle>
         <ModalCloseButton onDismiss={onDismiss} />
       </ModalHeader>
@@ -123,6 +123,12 @@ export default function CurrencySearchModal({
               variant="text"
               onClick={() => setModalView(CurrencyModalView.manage)}
               className="list-token-manage-button"
+              style={{
+                background: '#FFA800',
+                borderBottom: '3px solid #C16000',
+                width: '100%',
+                borderRadius: '0',
+              }}
             >
               {t('Manage Tokens')}
             </Button>
