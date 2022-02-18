@@ -40,7 +40,7 @@ const StyledCardHeader: React.FC<{
       return t('Automatic restaking')
     }
     if (isCakePool) {
-      return t('Earn ADT, stake ADT')
+      return t('Earn DAK, stake DAK')
     }
     return t('Stake %symbol%', {symbol: stakingToken.symbol})
   }
@@ -48,17 +48,17 @@ const StyledCardHeader: React.FC<{
   return (
     <Wrapper isFinished={isFinished} background={background}>
       <Flex alignItems="center" justifyContent="space-between">
-        <Flex flexDirection="column">
-          <Heading color={isFinished ? 'textDisabled' : 'body'} scale="lg">
-            {`${getHeadingPrefix()} ${earningToken.symbol}`}
-          </Heading>
-          <Text color={isFinished ? 'textDisabled' : 'textSubtle'}>{getSubHeading()}</Text>
-        </Flex>
         {isAutoVault ? (
           <CakeVaultTokenPairImage width={64} height={64} />
         ) : (
           <TokenPairImage primaryToken={earningToken} secondaryToken={stakingToken} width={64} height={64} />
         )}
+        <Flex alignItems="end" flexDirection="column">
+          <Heading color="#ffffff" scale="lg">
+            {`${getHeadingPrefix()} ${earningToken.symbol}`}
+          </Heading>
+          <Text color={isFinished ? 'textDisabled' : 'textSubtle'}>{getSubHeading()}</Text>
+        </Flex>
       </Flex>
     </Wrapper>
   )

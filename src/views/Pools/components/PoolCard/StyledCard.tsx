@@ -11,7 +11,8 @@ export const StyledCard = styled(Card)<{isFinished?: boolean}>`
   color: ${({isFinished, theme}) => theme.colors[isFinished ? 'textDisabled' : 'secondary']};
   background: rgba(255,255,255, .05);
   padding: 0;
-  border: 1px solid #747475;
+  border: 1px solid #00BFD5;
+  border-radius: 0;
 
   ${({theme}) => theme.mediaQueries.sm} {
     margin: 0 12px 46px;

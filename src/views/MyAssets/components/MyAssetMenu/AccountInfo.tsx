@@ -73,6 +73,7 @@ const AccountInfo = () => {
           <CardIcon className="flex justify-center mr-auto ml-auto" style={{width: '100px'}}>
             <img
               className="h-20 w-20"
+              style={{border: '3px solid #2647CB'}}
               src={`../images/avatars/${avatar && avatar.length > 0 ? avatar : 'BigBoss.gif'}`}
               alt="account-info"
             />
@@ -81,11 +82,20 @@ const AccountInfo = () => {
               modal
               closeOnDocumentClick
               trigger={
-                <ChangeAvatarIcon
-                  className="cursor-pointer"
-                  src="../images/blindbox/change-avatar-icon.svg"
-                  alt="change-avatar-icon"
-                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  right: '10px',
+                  width: '37px',
+                  height: '27px',
+                  backgroundImage: 'url("/images/blindbox/bg-icon-change-avatar.png")',
+                }}>
+                  <ChangeAvatarIcon
+                    className="cursor-pointer"
+                    src="../images/blindbox/arrow-swap-horizontal.png"
+                    alt="change-avatar-icon"
+                  />
+                </div>
               }
             >
               {(close) => (
@@ -131,8 +141,8 @@ const AccountInfo = () => {
 
 const ChangeAvatarIcon = styled.img`
   position: absolute;
-  bottom: 0;
-  right: 10px;
+  bottom: 3px;
+  right: 5px;
 `
 
 const CardIcon = styled.div`

@@ -38,7 +38,7 @@ const StyledButtonMenu = styled.div<StyledButtonMenuProps>`
   & a {
     box-shadow: none;
     width: 120px;
-    border-radius: 20px;
+    // border-radius: 20px;
     
     font-style: normal;
     font-weight: bold;

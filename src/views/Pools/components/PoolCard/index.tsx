@@ -19,7 +19,7 @@ const PoolCard: React.FC<{pool: Pool; account: string}> = ({pool, account}) => {
 
   return (
     <StyledCard
-      background="transparent"
+      background="#1D2D71"
       isFinished={isFinished && sousId !== 0}
       ribbon={isFinished && <CardRibbon variantColor="textDisabled" text={t('Finished')} />}
     >
@@ -37,7 +37,7 @@ const PoolCard: React.FC<{pool: Pool; account: string}> = ({pool, account}) => {
           ) : (
             <>
               <Text mb="10px" textTransform="uppercase" fontSize="12px" color="textSubtle" bold>
-                {t('Start earning')}
+                {t('STAKED DAK')}
               </Text>
               <ConnectWalletButton />
             </>

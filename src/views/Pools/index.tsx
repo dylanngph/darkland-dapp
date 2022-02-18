@@ -231,9 +231,9 @@ const Pools: React.FC = () => {
       <Page>
         <Hero>
           <Heading as="h1" size="xl" color="#fff">
-            ADT Pool
+            Pool
           </Heading>
-          <Text color="#fff">Stake ADT to earn new token. You can unstake at any time.</Text>
+          <Text color="#fff">Just stake some tokens to earn. High APR, low risk..</Text>
         </Hero>
         <ControlContainer>
           <ViewControls>

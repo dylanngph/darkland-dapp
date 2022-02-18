@@ -146,7 +146,7 @@ function CurrencySearch({
         ) : filteredSortedTokens?.length > 0 || filteredInactiveTokens?.length > 0 ? (
           <Box margin="24px -24px">
             <CurrencyList
-              height={390}
+              height={280}
               showETH={showETH}
               currencies={
                 filteredInactiveTokens ? filteredSortedTokens.concat(filteredInactiveTokens) : filteredSortedTokens
