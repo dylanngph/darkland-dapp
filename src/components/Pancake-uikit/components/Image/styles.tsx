@@ -21,14 +21,14 @@ export const StyledPrimaryImage = styled(TokenImage)<StyledImageProps>`
         left: 0,
         right: 'auto',
         top: 0,
-        zIndex: 5,
+        zIndex: 1,
       },
       [variants.INVERTED]: {
         bottom: 0,
         left: 'auto',
         right: 0,
         top: 'auto',
-        zIndex: 6,
+        zIndex: 1,
       },
     },
   })}
@@ -46,14 +46,14 @@ export const StyledSecondaryImage = styled(TokenImage)<StyledImageProps>`
         left: 'auto',
         right: 0,
         top: 'auto',
-        zIndex: 6,
+        zIndex: 2,
       },
       [variants.INVERTED]: {
         bottom: 'auto',
         left: 0,
         right: 'auto',
         top: 0,
-        zIndex: 5,
+        zIndex: 2,
       },
     },
   })}

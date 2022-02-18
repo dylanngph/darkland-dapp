@@ -22,9 +22,10 @@ export interface FarmWithStakedValue extends Farm {
 
 const StyledCard = styled(Card)`
   align-self: baseline;
-  border: 1px solid #747475;
+  border: 1px solid #00BFD5;
   background: rgba(255,255,255, .05);
   padding: 0;
+  border-radius: 0;
 `
 
 const FarmCardInnerContainer = styled(Flex)`

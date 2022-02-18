@@ -52,7 +52,7 @@ const Container = styled.div<{expanded}>`
           ${collapseAnimation} 300ms linear forwards
         `};
   overflow: hidden;
-  background: ${({theme}) => theme.colors.background};
+  background: #091749;
   display: flex;
   width: 100%;
   flex-direction: column-reverse;
@@ -173,10 +173,10 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({
         {/* <StyledLinkExternal href={bsc}>{t('View Contract')}</StyledLinkExternal>
         <StyledLinkExternal href={info}>{t('See Pair Info')}</StyledLinkExternal> */}
         <StyledLinkExternal style={{paddingTop: '5px'}}>
-          <a href={bsc}>{t('View Contract')}</a>
+          <Link to="/swap">{t('Exchange')}</Link>
         </StyledLinkExternal>
         <StyledLinkExternal style={{paddingTop: '5px'}}>
-          <Link to="/swap">{t('Exchange')}</Link>
+          <a href={bsc}>{t('View Contract')}</a>
         </StyledLinkExternal>
         <TagsContainer>
           {farm.isCommunity ? <CommunityTag /> : <CoreTag />}

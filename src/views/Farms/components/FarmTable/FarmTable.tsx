@@ -15,13 +15,16 @@ export interface ITableProps {
 const Container = styled.div`
   width: 100%;
   background: rgba(255,255,255, .05);
-  border-radius: 8px;
+  border-radius: 0;
   margin: 16px 0px;
-  border: 1px solid #747475;
+  border: 1px solid #00BFD5;
+  background-color: #1D2D71;
 `
 
 const TableWrapper = styled.div`
   overflow: visible;
+  padding-left: 24px;
+  padding-right: 24px;
 
   &::-webkit-scrollbar {
     display: none;

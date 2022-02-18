@@ -11,22 +11,23 @@ import {
   VoteIcon,
 } from '@pancakeswap/uikit'
 import {useTranslation} from 'contexts/Localization'
+import styled from 'styled-components'
 
 const CoreTag: React.FC<TagProps> = (props) => {
   const {t} = useTranslation()
   return (
-    <Tag variant="warning" outline startIcon={<VerifiedIcon width="18px" color="warning" mr="4px" />} {...props}>
+    <TagSquare variant="warning" outline startIcon={<VerifiedIcon width="18px" color="warning" mr="4px" />} {...props}>
       {t('Core')}
-    </Tag>
+    </TagSquare>
   )
 }
 
 const CommunityTag: React.FC<TagProps> = (props) => {
   const {t} = useTranslation()
   return (
-    <Tag variant="failure" outline startIcon={<CommunityIcon width="18px" color="failure" mr="4px" />} {...props}>
+    <TagSquare variant="failure" outline startIcon={<CommunityIcon width="18px" color="failure" mr="4px" />} {...props}>
       {t('Community')}
-    </Tag>
+    </TagSquare>
   )
 }
 
@@ -83,5 +84,9 @@ const ClosedTag: React.FC<TagProps> = (props) => {
     </Tag>
   )
 }
+
+const TagSquare = styled(Tag)`
+  border-radius: 0px;
+`
 
 export {CoreTag, CommunityTag, DualTag, ManualPoolTag, CompoundingPoolTag, VoteNowTag, SoonTag, ClosedTag}

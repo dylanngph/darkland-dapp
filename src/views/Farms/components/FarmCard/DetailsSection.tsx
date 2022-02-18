@@ -38,7 +38,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
     <Wrapper>
       <Flex justifyContent="space-between">
         <Text color="#fff">{t('Total Liquidity')}:</Text>
-        {totalValueFormatted ? <Text color="#85D7B6">{totalValueFormatted}</Text> : <Skeleton width={75} height={25} />}
+        {totalValueFormatted ? <Text color="#ffffff">{totalValueFormatted}</Text> : <Skeleton width={75} height={25} />}
       </Flex>
       {!removed && (
         <StyledLinkExternal href={addLiquidityUrl}>{t('Get %symbol%', {symbol: lpLabel})}</StyledLinkExternal>

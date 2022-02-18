@@ -21,7 +21,7 @@ export const styleVariants = {
     backgroundColor: 'secondary',
   },
   [variants.SUCCESS]: {
-    backgroundColor: '#FFB237',
+    backgroundColor: '#FFA800',
     color: 'success',
   },
   [variants.TEXTDISABLED]: {

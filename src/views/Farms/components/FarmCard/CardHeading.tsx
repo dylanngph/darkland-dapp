@@ -25,13 +25,14 @@ const Wrapper = styled(Flex)`
 
 const MultiplierTag = styled(Tag)`
   margin-left: 4px;
+  border-radius: 0;
 `
 
 const CardHeading: React.FC<ExpandableSectionProps> = ({lpLabel, multiplier, isCommunityFarm, token, quoteToken}) => {
   return (
     <Wrapper justifyContent="start" alignItems="center" mb="12px">
       <TokenPairImage variant="inverted" primaryToken={token} secondaryToken={quoteToken} width={64} height={64} />
-      <Flex ml="15px" flexDirection="column" alignItems="start">
+      <Flex ml="15px" flexDirection="column" alignItems="end">
         <Heading mb="4px">
           <Text color="#fff">{lpLabel.split(' ')[0]}</Text>
         </Heading>

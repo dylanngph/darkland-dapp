@@ -7,7 +7,7 @@ export const baseColors = {
   primaryDark: '#4072D3',
   secondary: '#FFC247',
   success: '#38CB89',
-  warning: '#FFB237',
+  warning: '#FFA800',
   custom: 'linear-gradient(180deg, #292929 0%, #131313 100%)',
 }
 
@@ -28,7 +28,7 @@ export const lightColors: Colors = {
   ...additionalColors,
   background: '#fff',
   backgroundMenu: '#fff',
-  backgroundDisabled: '#E9EAEB',
+  backgroundDisabled: '#C0C0C0',
   backgroundAlt: '#edf0f5',
   cardBorder: '#FFFFFF',
   contrast: '#191326',
@@ -63,9 +63,9 @@ export const darkColors: Colors = {
   secondary: '#9A6AFF',
   background: '#272727',
   backgroundMenu: '#0f0f0f',
-  backgroundDisabled: '#3c3742',
+  backgroundDisabled: '#C0C0C0',
   backgroundAlt: '#181819',
-  cardBorder: '#686868',
+  cardBorder: '#5A648E',
   contrast: '#FFFFFF',
   dropdown: '#1E1D20',
   dropdownDeep: '#1A2B6D',
@@ -74,7 +74,7 @@ export const darkColors: Colors = {
   inputSecondary: '#262130',
   tertiary: '#202020',
   text: '#ffffff',
-  textDisabled: '#666171',
+  textDisabled: '#FFFFFF',
   textSubtle: '#fff',
   disabled: '#524B63',
   gradients: {

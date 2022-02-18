@@ -46,7 +46,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({pid, userDa
         <Text bold textTransform="uppercase" color="#FFC247" fontSize="12px" pr="4px">
           ADT
         </Text>
-        <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+        <Text bold textTransform="uppercase" color="#00A3FF" fontSize="12px">
           {t('Earned')}
         </Text>
       </ActionTitles>
