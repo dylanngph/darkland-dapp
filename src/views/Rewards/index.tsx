@@ -10,7 +10,7 @@ const RewardsSection = () => {
 
   return (
     <Page>
-      <div>
+      {/* <div>
         <BackButton><ChevronLeftIcon />Back</BackButton>
       </div>
       <div style={{
@@ -24,7 +24,7 @@ const RewardsSection = () => {
           <TblTitle><span>Claimed</span> (2534 heroes claimed)</TblTitle>
           <TableSection />
         </div>
-      </div>
+      </div> */}
       <div className='mb-8'>
         <SectionTitle>Lands: [Total lands left]</SectionTitle>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
