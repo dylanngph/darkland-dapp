@@ -71,6 +71,7 @@ const HeroNftDetails = lazy(() => import('./views/HeroNftDetails'))
 const DashboardMarket = lazy(() => import('./views/DashboardMarket'))
 const TransactionHistory = lazy(() => import('./views/TransactionHistory'))
 const PoolNft = lazy(() => import('./views/PoolNft'))
+const Rewards = lazy(() => import('./views/Rewards'))
 // This config is required for number formatting
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -125,6 +126,7 @@ const App: React.FC = () => {
             <Route exact path="/vesting/airdrop">
               <AirdropZone />
             </Route>
+            <Route exact strict path="/rewards" component={Rewards} />
 
             <Route exact strict path="/my-assets" component={MyAssets} />
 
