@@ -200,11 +200,11 @@ const ActionPanel: React.FC<ActionPanelProps> = ({account, pool, userDataLoaded,
         <Text>{hasPoolStarted ? t('Ends in') : t('Starts in')}:</Text>
         <Flex>
           <Link external href={getBscScanLink(hasPoolStarted ? endBlock : startBlock, 'countdown')}>
-            <Balance fontSize="16px" value={blocksToDisplay} decimals={0} color="primary" />
-            <Text ml="4px" color="primary" textTransform="lowercase">
+            <Balance fontSize="16px" value={blocksToDisplay} decimals={0} color="#ffffff" />
+            <Text ml="4px" color="#ffffff" textTransform="lowercase">
               {t('Blocks')}
             </Text>
-            <TimerIcon ml="4px" color="primary" />
+            <TimerIcon ml="4px" color="#ffffff" />
           </Link>
         </Flex>
       </Flex>
@@ -249,7 +249,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({account, pool, userDataLoaded,
         {maxStakeRow}
         {(isXs || isSm) && aprRow}
         {(isXs || isSm || isMd) && totalStakedRow}
-        {shouldShowBlockCountdown && blocksRow}
+        {/* {shouldShowBlockCountdown && blocksRow} */}
         <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
           <LinkExternal
             color="#00A3FF"
@@ -290,14 +290,14 @@ const ActionPanel: React.FC<ActionPanelProps> = ({account, pool, userDataLoaded,
         )}
         {isAutoVault ? <CompoundingPoolTag /> : <ManualPoolTag />}
         {tagTooltipVisible && tagTooltip}
-        <span ref={tagTargetRef}>
+        {/* <span ref={tagTargetRef}>
           <HelpIcon ml="4px" width="20px" height="20px" color="textSubtle" />
-        </span>
+        </span> */}
       </InfoSection>
       <ActionContainer>
         {showSubtitle && (
           <Text mt="4px" mb="16px" color="textSubtle">
-            {isAutoVault ? t('Automatic restaking') : `${t('Earn')} ADT ${t('Stake').toLocaleLowerCase()} ADT`}
+            {isAutoVault ? t('Automatic restaking') : `${t('Earn')} DAK ${t('Stake').toLocaleLowerCase()} DAK`}
           </Text>
         )}
         {pool.isAutoVault ? (

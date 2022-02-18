@@ -23,6 +23,12 @@ const Item = styled(Box)`
     width: 100%;
     max-width: calc(100% / 4);
     text-align: center;
+
+    @media only screen and (max-width: 767px) {
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
 `
 
 const Button = styled.button`

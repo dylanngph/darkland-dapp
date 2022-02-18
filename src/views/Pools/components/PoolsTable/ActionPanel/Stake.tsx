@@ -135,7 +135,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({pool, userDataLoad
       <ActionContainer>
         <ActionTitles>
           <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
-            {t('Start staking')}
+            {t('ENABLE POOL')}
           </Text>
         </ActionTitles>
         <ActionContent>
@@ -150,7 +150,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({pool, userDataLoad
       <ActionContainer>
         <ActionTitles>
           <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
-            {t('Start staking')}
+            {t('ENABLE POOL')}
           </Text>
         </ActionTitles>
         <ActionContent>

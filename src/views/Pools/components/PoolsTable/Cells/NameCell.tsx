@@ -71,11 +71,11 @@ const NameCell: React.FC<NameCellProps> = ({pool}) => {
         <Text color="#fff" bold={!isMobile} small={isMobile}>
           {title}
         </Text>
-        {showSubtitle && (
+        {/* {showSubtitle && (
           <Text fontSize="12px" color="textSubtle">
             {subtitle}
           </Text>
-        )}
+        )} */}
       </CellContent>
     </StyledCell>
   )

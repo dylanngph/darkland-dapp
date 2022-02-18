@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const ActionContainer = styled.div<{isAutoVault?: boolean}>`
   padding: 16px;
-  border: 2px solid #d8d8d8;
-  border-radius: 16px;
+  border: 2px solid #0295B2;
+  border-radius: 0;
   flex-grow: 1;
   flex-basis: 0;
   margin-bottom: 16px;

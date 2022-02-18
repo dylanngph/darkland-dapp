@@ -77,7 +77,7 @@ const EarningsCell: React.FC<EarningsCellProps> = ({pool, account, userDataLoade
                   decimals={hasEarnings ? 5 : 1}
                   value={hasEarnings ? earningTokenBalance : 0}
                 />
-                {hasEarnings ? (
+                {/* {hasEarnings ? (
                   <>
                     {earningTokenPrice > 0 && (
                       <Balance
@@ -95,7 +95,7 @@ const EarningsCell: React.FC<EarningsCellProps> = ({pool, account, userDataLoade
                   <Text mt="4px" fontSize="12px" color="textDisabled">
                     0 USD
                   </Text>
-                )}
+                )} */}
               </Box>
             </Flex>
           </>

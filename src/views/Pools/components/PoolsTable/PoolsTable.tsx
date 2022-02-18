@@ -12,9 +12,9 @@ interface PoolsTableProps {
 }
 
 const StyledTable = styled.div`
-  border-radius: ${({theme}) => theme.radii.card};
-  border: 1px solid #747475;
-  background-color: rgba(255,255,255, .05);
+  border-radius: 0;
+  border: 1px solid #10A1BD;
+  background-color: #1D2D71;
   > div:not(:last-child) {
     border-bottom: 2px solid ${({theme}) => theme.colors.disabled};
   }

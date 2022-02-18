@@ -36,7 +36,7 @@ const SampleView = () => {
             </Header>
             <Section>
                 <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
-                <Box>
+                <Box alignItems='end' flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
                     <MarketplaceItem buttonTitle='MYSTERY BOX' imageUrl='/images/marketplace-images/MYSTERY-BOX.png' />
                     <MarketplaceItem buttonTitle='MYSTERY WAEPON' imageUrl='/images/marketplace-images/MYSTERY-WAEPON.png' />
                     <MarketplaceItem buttonTitle='MYSTERY ARMOR' imageUrl='/images/marketplace-images/MYSTERY-ARMOR.png' />
@@ -49,7 +49,7 @@ const SampleView = () => {
             </Section>
             <Section sx={{marginTop: '100px'}}>
                 <Title mb={5} text="Farm & Pool" icon='/images/icons/farm-pool-icon.png' />
-                <Box sx={{display: 'flex'}}>
+                <Box flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
                     <FarmPoolItem title='Liquidity' price='$456.565' />
                     <FarmPoolItem title='Liquidity' price='$456.565' />
                     <FarmPoolItem title='Liquidity' price='$456.565' buttonTitle='Connect Wallet' />
@@ -73,9 +73,14 @@ const WrapImage = styled(Box)`
     left: 5%;
     
     > img {
-        width: auto;
+        width: 100%;
         max-width: fit-content;
         margin-bottom: 24px;
+    }
+
+    @media only screen and (max-width: 767px) {
+        max-width: 320px;
+        position: relative;
     }
 `
 
@@ -96,13 +101,20 @@ const Section = styled(Box)`
     position: relative;
 
     .decord-left {
-        left: -90px;
+        left: -217px;
         z-index: -1;
     }
 
     .decord-right {
-        right: -90px;
+        right: -217px;
         z-index: -1;z
+    }
+
+    @media only screen and (max-width: 767px) {
+        .decord-left,
+        .decord-right {
+            display: none;
+        }
     }
 `
 const ImageDecord = styled.img`

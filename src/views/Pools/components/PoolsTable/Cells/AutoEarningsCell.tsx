@@ -82,7 +82,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({pool, account, userD
                   decimals={hasEarnings ? 5 : 1}
                   value={hasEarnings ? earningTokenBalance : 0}
                 />
-                {hasEarnings ? (
+                {/* {hasEarnings ? (
                   <>
                     {earningTokenPrice > 0 && (
                       <Balance
@@ -100,7 +100,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({pool, account, userD
                   <Text mt="4px" fontSize="12px" color="textDisabled">
                     0 USD
                   </Text>
-                )}
+                )} */}
               </Box>
               {hasEarnings && !isMobile && (
                 <HelpIconWrapper ref={targetRef}>

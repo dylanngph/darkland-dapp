@@ -32,6 +32,12 @@ const Item = styled(Box)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (max-width: 767px) {
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
 `
 
 const Button = styled.button`
