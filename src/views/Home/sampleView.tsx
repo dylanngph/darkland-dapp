@@ -13,46 +13,47 @@ const SampleView = () => {
 
     return (
         <Wrapper>
-            {/* <Header>
-                <img src="/images/coins/adt.png" alt="" />
-                <div>
-                    <span style={{fontSize: '30px', fontWeight: '700'}}>DotArcade TOKEN</span>
-                    <div>Hold ADT to take part in our events !</div> 
-                </div>
-            </Header> */}
             <Header>
                 <div>
                     <WrapImage>
                         <img src="/images/welcome.png" alt="welcome" />
                         <img src="/images/dark-land.png" alt="dark-land" />
-                        <Button>PLAY TO EARN NOW</Button>
+                        <PlayToEarn>PLAY TO EARN NOW</PlayToEarn>
                         <Socials>
-                            {/* <ul>
-                                <li></li>
-                            </ul> */}
+                            <ul>
+                                <li><img src="/images/socials/discord.svg" alt="discord" /></li>
+                                <li><img src="/images/socials/telegram.svg" alt="telegram" /></li>
+                                <li><img src="/images/socials/twitter.svg" alt="twitter" /></li>
+                                <li><img src="/images/socials/facebook.svg" alt="facebook" /></li>
+                                <li><img src="/images/socials/youtube.svg" alt="youtube" /></li>
+                            </ul>
                         </Socials>
                     </WrapImage>
                 </div>
             </Header>
-            <Section>
-                <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
-                <Box alignItems='end' flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
-                    <MarketplaceItem buttonTitle='MYSTERY BOX' imageUrl='/images/marketplace-images/MYSTERY-BOX.png' />
-                    <MarketplaceItem buttonTitle='MYSTERY WAEPON' imageUrl='/images/marketplace-images/MYSTERY-WAEPON.png' />
-                    <MarketplaceItem buttonTitle='MYSTERY ARMOR' imageUrl='/images/marketplace-images/MYSTERY-ARMOR.png' />
-                    <MarketplaceItem buttonTitle='MYSTERY HELMET' imageUrl='/images/marketplace-images/MYSTERY-HELMET.png' />
+            <Section sx={{paddingLeft: '90px', paddingRight: '90px'}}>
+                <Box sx={{maxWidth: '1440px', margin: 'auto'}}>
+                    <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
+                    <Box alignItems='end' flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
+                        <MarketplaceItem buttonTitle='MYSTERY BOX' imageUrl='/images/marketplace-images/MYSTERY-BOX.png' />
+                        <MarketplaceItem buttonTitle='MYSTERY WAEPON' imageUrl='/images/marketplace-images/MYSTERY-WAEPON.png' />
+                        <MarketplaceItem buttonTitle='MYSTERY ARMOR' imageUrl='/images/marketplace-images/MYSTERY-ARMOR.png' />
+                        <MarketplaceItem buttonTitle='MYSTERY HELMET' imageUrl='/images/marketplace-images/MYSTERY-HELMET.png' />
+                    </Box>
                 </Box>
             </Section>
             <Section mt={5} mb={5}>
                 <ImageDecord className='decord-left' src="/images/avarta-arrow/men-arrow.png" alt="men-arrow" />
                 <ImageDecord className='decord-right' src="/images/avarta-arrow/girld-arrow.png" alt="girld-arrow" />
             </Section>
-            <Section sx={{marginTop: '100px'}}>
-                <Title mb={5} text="Farm & Pool" icon='/images/icons/farm-pool-icon.png' />
-                <Box flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
-                    <FarmPoolItem title='Liquidity' price='$456.565' />
-                    <FarmPoolItem title='Liquidity' price='$456.565' />
-                    <FarmPoolItem title='Liquidity' price='$456.565' buttonTitle='Connect Wallet' />
+            <Section sx={{marginTop: '100px', marginBottom: '140px', paddingLeft: '90px', paddingRight: '90px', zIndex: '10'}}>
+                <Box sx={{maxWidth: '1440px', margin: 'auto'}}>
+                    <Title mb={5} text="Farm & Pool" icon='/images/icons/farm-pool-icon.png' />
+                    <Box flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
+                        <FarmPoolItem title='Liquidity' price='$456.565' />
+                        <FarmPoolItem title='Liquidity' price='$456.565' />
+                        <FarmPoolItem title='Liquidity' price='$456.565' buttonTitle='Connect Wallet' />
+                    </Box>
                 </Box>
             </Section>
         </Wrapper>
@@ -83,9 +84,30 @@ const WrapImage = styled(Box)`
         position: relative;
     }
 `
-
 const Socials = styled(Box)`
+    ul {
+        list-style: none;
+        display: flex;
 
+        li {
+            width: 40px;
+            height: 40px;
+            background-image: url( )
+        }
+    }
+`
+const PlayToEarn = styled(Button)`
+    background: #FFA800;
+    height: 40px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0;
+    border-bottom: 7px solid #C16000;
+    box-sizing: content-box;
 `
 const Header = styled(Box)`
     display: flex;
@@ -101,13 +123,13 @@ const Section = styled(Box)`
     position: relative;
 
     .decord-left {
-        left: -217px;
-        z-index: -1;
+        left: 0;
+        z-index: 1;
     }
 
     .decord-right {
-        right: -217px;
-        z-index: -1;z
+        right: 0;
+        z-index: 1;
     }
 
     @media only screen and (max-width: 767px) {

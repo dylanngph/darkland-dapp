@@ -32,6 +32,8 @@ const Item = styled(Box)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     @media only screen and (max-width: 767px) {
         max-width: 100%;
