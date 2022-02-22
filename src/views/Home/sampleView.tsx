@@ -51,8 +51,8 @@ const SampleView = () => {
                     <Title mb={5} text="Farm & Pool" icon='/images/icons/farm-pool-icon.png' />
                     <Box flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
                         <FarmPoolItem title='Liquidity' price='$456.565' />
-                        <FarmPoolItem title='Liquidity' price='$456.565' />
-                        <FarmPoolItem title='Liquidity' price='$456.565' buttonTitle='Connect Wallet' />
+                        <FarmPoolItem title='Your investment' price='$0.000' />
+                        <FarmPoolItem title='Your reward' price='$0.000' buttonTitle='Connect Wallet' />
                     </Box>
                 </Box>
             </Section>

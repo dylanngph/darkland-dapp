@@ -69,7 +69,7 @@ const Price = styled.p`
 const Title = styled.p`
     color: #FFA800;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 600;
     font-size: 24px;
     line-height: 30px;
     margin: 0;
