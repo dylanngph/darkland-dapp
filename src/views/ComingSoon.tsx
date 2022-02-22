@@ -22,10 +22,9 @@ const ComingSoon = () => {
         Your browser does not support HTML video.
       </video>
       <LogoStyle>
-        <img src="txt_logo.png" alt="Dot Arcade" />
+        <img src="logo.png" alt="DARKLAND SURVIVAL – NFT GAME" />
         <div className="text-white text-lg md:text-2xl leading-7 mt-5">
-          Dot Arcade is a Free-to-Play or Play-to-Earn 3D GameFi built with Heroes Metaverse. You can play with each
-          other and trade items on the NFT Marketplace! Join Dot Arcade today and get your life-time investment!
+        Dark Land Survival is beyond a Zombie Defense Game in blockchain technology, the game is a open world with a huge game scope. Beside Play to Earn with deep content, Dark Land Survival provides top notch experience in endless gameplay modes and various features
         </div>
         {/* <Button className="mt-5">Play to earn, now !</Button> */}
         {/* <img src="heroestd.png" alt="HeroesTD" width="350px" className="pl-2" />

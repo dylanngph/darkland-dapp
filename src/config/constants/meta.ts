@@ -2,49 +2,49 @@ import {ContextApi} from 'contexts/Localization/types'
 import {PageMeta} from './types'
 
 export const DEFAULT_META: PageMeta = {
-  title: 'Dot Arcade - Arcade and Moba game genre',
+  title: 'DARKLAND SURVIVAL – NFT GAME',
   description:
-    'The most popular AMM on BSC by user count! Earn CAKE through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by KShark), NFTs, and more, on a platform you can trust.',
-  image: 'https://dapp.kshark.io/images/hero.png',
+    'Dark Land Survival is beyond a Zombie Defense Game in blockchain technology, the game is a open world with a huge game scope. Beside Play to Earn with deep content, Dark Land Survival provides top notch experience in endless gameplay modes and various features',
+  image: 'https://darkland.io/images/logo.png',
 }
 
 export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
   switch (path) {
     case '/home':
       return {
-        title: `${t('Home')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('Home')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     case '/bounty':
       return {
-        title: `${t('Bounty')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('Bounty')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     case '/vesting':
       return {
-        title: `${t('Vesting')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('Vesting')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     case '/ido':
       return {
-        title: `${t('IDO')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('IDO')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     case '/leaderboard':
       return {
-        title: `${t('Leaderboard')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('Leaderboard')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     case '/farms':
       return {
-        title: `${t('Farms')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('Farms')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     case '/pools':
       return {
-        title: `${t('Pools')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('Pools')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     case '/swap':
       return {
-        title: `${t('Swap')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('Swap')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     case '/blind-box':
       return {
-        title: `${t('Blind Box')} | ${t('Dot Arcade - Arcade and Moba game genre')}`,
+        title: `${t('Blind Box')} | ${t('DARKLAND SURVIVAL – NFT GAME')}`,
       }
     default:
       return null

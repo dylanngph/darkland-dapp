@@ -29,9 +29,7 @@ const BountyInfo = ({type}) => {
       <div className="w-full md:w-2/3 bg-black rounded-xl mt-10 px-5 py-10 shadow">
         <div className="text-white text-2xl capitalize mb-5">Bounty Details</div>
         <div className="text-gray leading-7">
-        Dot Arcade is a defense strategy game by building fortresses, with a whole new style of play. You can collect
-          and build your deck to win. You can not only relax while playing the game, but also make a lot of money from
-          it.
+        Dark Land Survival is beyond a Zombie Defense Game in blockchain technology, the game is a open world with a huge game scope. Beside Play to Earn with deep content, Dark Land Survival provides top notch experience in endless gameplay modes and various features
         </div>
       </div>
       <div className="hidden md:block w-full md:w-1/3" />
