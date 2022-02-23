@@ -275,7 +275,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({account, pool, userDataLoaded,
             </LinkExternal>
           </Flex>
         )}
-        {account && isMetaMaskInScope && tokenAddress && (
+        {/* {account && isMetaMaskInScope && tokenAddress && (
           <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
             <Button
               variant="text"
@@ -287,7 +287,18 @@ const ActionPanel: React.FC<ActionPanelProps> = ({account, pool, userDataLoaded,
               <MetamaskIcon ml="4px" />
             </Button>
           </Flex>
-        )}
+        )} */}
+        <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
+            <Button
+              variant="text"
+              p="0"
+              height="auto"
+              onClick={() => registerToken(tokenAddress, earningToken.symbol, earningToken.decimals)}
+            >
+              <Text color="#00A3FF">{t('Add to Metamask')}</Text>
+              <MetamaskIcon ml="4px" />
+            </Button>
+          </Flex>
         {isAutoVault ? <CompoundingPoolTag /> : <ManualPoolTag />}
         {tagTooltipVisible && tagTooltip}
         {/* <span ref={tagTargetRef}>

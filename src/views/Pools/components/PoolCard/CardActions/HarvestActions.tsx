@@ -71,10 +71,10 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
               </>
             ) : (
               <>
-                <Heading color="textDisabled">0</Heading>
-                <Text fontSize="12px" color="textDisabled">
+                <Heading color="textDisabled">0.000</Heading>
+                {/* <Text fontSize="12px" color="textDisabled">
                   0 USD
-                </Text>
+                </Text> */}
               </>
             )}
           </>
@@ -88,7 +88,8 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
 }
 
 const CustomButton = styled(Button)`
-  background: linear-gradient(180deg, #E8A639 0%, #EBB340 50.84%, #F2CA4C 100%);
+  height: 34px;
+  border-radius: 0;
 `
 
 export default HarvestActions

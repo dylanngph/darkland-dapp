@@ -146,7 +146,9 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({pool, account}) => {
           </Flex>
         </Flex>
       )}
-      <Flex mb="2px" justifyContent="flex-end">
+
+      <div className='xl:grid xl:grid-cols-2'>
+      <Flex className='xl:flex xl:justify-start justify-end' mb="2px">
         <LinkExternal
           color="#00A3FF"
           href={`https://dapp.dotarcade.io/swap/${getAddress(earningToken.address)}`}
@@ -162,7 +164,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({pool, account}) => {
         </LinkExternal>
       </Flex>
       {poolContractAddress && (
-        <Flex mb="2px" justifyContent="flex-end">
+        <Flex mb="2px" className='xl:flex xl:justify-start justify-end'>
           <LinkExternal
             color="#00A3FF"
             href={`${BASE_BSC_SCAN_URL}/address/${isAutoVault ? cakeVaultContractAddress : poolContractAddress}`}
@@ -173,7 +175,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({pool, account}) => {
           </LinkExternal>
         </Flex>
       )}
-      {account && isMetaMaskInScope && tokenAddress && (
+      {/* {account && isMetaMaskInScope && tokenAddress && (
         <Flex justifyContent="flex-end">
           <Button
             variant="text"
@@ -187,7 +189,22 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({pool, account}) => {
             <MetamaskIcon ml="4px" />
           </Button>
         </Flex>
-      )}
+      )} */}
+      <Flex justifyContent="flex-end">
+          <Button
+            variant="text"
+            p="0"
+            height="auto"
+            onClick={() => registerToken(tokenAddress, earningToken.symbol, earningToken.decimals)}
+          >
+            <Text color="#00A3FF" fontSize="14px">
+              {t('Add to Metamask')}
+            </Text>
+            <MetamaskIcon ml="4px" />
+          </Button>
+        </Flex>
+
+      </div>
     </ExpandedWrapper>
   )
 }

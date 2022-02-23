@@ -242,9 +242,11 @@ const Pools: React.FC = () => {
               <Toggle checked={stakedOnly} onChange={() => setStakedOnly(!stakedOnly)} scale="md" />
               <Text> {t('Staked only')}</Text>
             </ToggleWrapper>
+
+            <PoolTabButtons hasStakeInFinishedPools={hasStakeInFinishedPools} />
           </ViewControls>
-          <PoolTabButtons hasStakeInFinishedPools={hasStakeInFinishedPools} />
-          <FilterContainer>
+          
+          {/* <FilterContainer>
             <LabelWrapper>
               <SortText>{t('Sort by:')}</SortText>
               <Select
@@ -272,7 +274,7 @@ const Pools: React.FC = () => {
             <LabelWrapper style={{marginLeft: 16}}>
               <SearchInput onChange={handleChangeSearchQuery} placeholder="Search Pools" />
             </LabelWrapper>
-          </FilterContainer>
+          </FilterContainer> */}
         </ControlContainer>
         {/* <PoolControls>
           <PoolTabButtons

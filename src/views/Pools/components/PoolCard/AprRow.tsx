@@ -64,6 +64,9 @@ const AprRow: React.FC<AprRowProps> = ({pool, stakedBalance, performanceFee = 0}
         <Skeleton width="82px" height="32px" />
       ) : (
         <ApyLabelContainer alignItems="center" onClick={onPresentApyModal}>
+          <IconButton variant="text" scale="sm">
+            <CalculateIcon color="textSubtle" width="18px" />
+          </IconButton>
           <Balance
             fontSize="16px"
             isDisabled={isFinished}
@@ -72,9 +75,6 @@ const AprRow: React.FC<AprRowProps> = ({pool, stakedBalance, performanceFee = 0}
             unit="%"
             onClick={onPresentApyModal}
           />
-          <IconButton variant="text" scale="sm">
-            <CalculateIcon color="textSubtle" width="18px" />
-          </IconButton>
         </ApyLabelContainer>
       )}
     </Flex>
