@@ -124,7 +124,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
     return (
       <ActionContainer>
         <ActionTitles>
-          <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+          <Text textTransform="uppercase" color="textSubtle" fontSize="12px">
             {t('ENABLE FARM')}
           </Text>
         </ActionTitles>
@@ -206,7 +206,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
     return (
       <ActionContainer>
         <ActionTitles>
-          <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+          <Text textTransform="uppercase" color="textSubtle" fontSize="12px">
             {t('ENABLE FARM')}
           </Text>
         </ActionTitles>
@@ -220,7 +220,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
   return (
     <ActionContainer>
       <ActionTitles>
-        <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
+        <Text textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t('Enable Farm')}
         </Text>
       </ActionTitles>

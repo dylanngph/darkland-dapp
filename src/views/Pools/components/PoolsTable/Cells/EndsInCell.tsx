@@ -45,13 +45,13 @@ const EndsInCell: React.FC<FinishCellProps> = ({pool}) => {
           {timeToDisplay}
         </Text>
       </Flex>
-      <Flex flex="1">
+      <Flex>
         <Link
           external
           href={getBscScanLink(hasPoolStarted ? endBlock : startBlock, 'countdown')}
           onClick={(e) => e.stopPropagation()}
         >
-          <TimerIcon ml="4px" />
+          {/* <TimerIcon ml="4px" /> */}
         </Link>
       </Flex>
     </Flex>

@@ -43,10 +43,10 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({pid, userDa
   return (
     <ActionContainer>
       <ActionTitles>
-        <Text bold textTransform="uppercase" color="#FFC247" fontSize="12px" pr="4px">
+        <Text textTransform="uppercase" color="#FFC247" fontSize="12px" pr="4px">
         BIG
         </Text>
-        <Text bold textTransform="uppercase" color="#00A3FF" fontSize="12px">
+        <Text textTransform="uppercase" color="#00A3FF" fontSize="12px">
           {t('Earned')}
         </Text>
       </ActionTitles>

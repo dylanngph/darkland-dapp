@@ -7,7 +7,9 @@ import Balance from 'components/Balance'
 import {Pool} from 'state/types'
 import {useCakeVault} from 'state/pools/hooks'
 import {getBalanceNumber} from 'utils/formatBalance'
+import {ReactComponent as QuestionCircleIcon} from 'assets/icons/QuestionCircle.svg'
 import BaseCell, {CellContent} from './BaseCell'
+
 
 interface TotalStakedCellProps {
   pool: Pool
@@ -45,6 +47,7 @@ const TotalStakedCell: React.FC<TotalStakedCellProps> = ({pool}) => {
         {totalStaked && totalStaked.gte(0) ? (
           <Flex height="20px" alignItems="center">
             <Balance fontSize="16px" value={totalStakedBalance} decimals={0} unit="$" />
+            <span style={{marginLeft: '20px'}}><QuestionCircleIcon /></span>
           </Flex>
         ) : (
           <Skeleton width="80px" height="16px" />

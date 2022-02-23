@@ -3,7 +3,7 @@ import {
   Tag,
   VerifiedIcon,
   CommunityIcon,
-  RefreshIcon,
+  // RefreshIcon,
   AutoRenewIcon,
   TagProps,
   TimerIcon,
@@ -12,12 +12,14 @@ import {
 } from '@pancakeswap/uikit'
 import {useTranslation} from 'contexts/Localization'
 import styled from 'styled-components'
+import {ReactComponent as RefreshIcon} from 'assets/icons/Refresh.svg'
+import {ReactComponent as CoreCheck} from 'assets/icons/CoreCheck.svg'
 
 const CoreTag: React.FC<TagProps> = (props) => {
   const {t} = useTranslation()
   return (
-    <TagSquare variant="warning" outline startIcon={<VerifiedIcon width="18px" color="warning" mr="4px" />} {...props}>
-      {t('Core')}
+    <TagSquare variant="warning" outline startIcon={<CoreCheck />} {...props}>
+      <span style={{marginLeft: '4px'}}>{t('Core')}</span>
     </TagSquare>
   )
 }
@@ -25,7 +27,7 @@ const CoreTag: React.FC<TagProps> = (props) => {
 const CommunityTag: React.FC<TagProps> = (props) => {
   const {t} = useTranslation()
   return (
-    <TagSquare variant="failure" outline startIcon={<CommunityIcon width="18px" color="failure" mr="4px" />} {...props}>
+    <TagSquare variant="failure" outline startIcon={<CommunityIcon width="18px" color="failure" mr="6px" />} {...props}>
       {t('Community')}
     </TagSquare>
   )
@@ -43,9 +45,9 @@ const DualTag: React.FC<TagProps> = (props) => {
 const ManualPoolTag: React.FC<TagProps> = (props) => {
   const {t} = useTranslation()
   return (
-    <TagSquare variant="warning" outline startIcon={<RefreshIcon width="18px" color="warning" mr="4px" />} {...props}>
-      {t('Manual')}
-    </TagSquare>
+    <TagSquareBlue variant="warning" outline startIcon={<RefreshIcon />} {...props}>
+      <span style={{marginLeft: '4px'}}>{t('Manual')}</span>
+    </TagSquareBlue>
   )
 }
 
@@ -87,6 +89,13 @@ const ClosedTag: React.FC<TagProps> = (props) => {
 
 const TagSquare = styled(Tag)`
   border-radius: 0px;
+`
+
+const TagSquareBlue = styled(Tag)`
+  border-radius: 0px;
+  color: #00A3FF;
+  border-color: #686868;
+  border-radius: 6px;
 `
 
 export {CoreTag, CommunityTag, DualTag, ManualPoolTag, CompoundingPoolTag, VoteNowTag, SoonTag, ClosedTag}
