@@ -63,7 +63,7 @@ const SampleView = () => {
             {/* <Section sx={{paddingLeft: '90px', paddingRight: '90px'}}>
                 
             </Section> */}
-            <Section sx={{paddingLeft: '90px', paddingRight: '90px'}}>
+            <Section className='marketplace'>
                 <Box sx={{maxWidth: '1440px', margin: 'auto'}}>
                     <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
                     <WrapMarketplaceItem className='grid'>
@@ -95,6 +95,10 @@ const Wrapper = styled(Box)`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @media only screen and (max-width: 767px) {
+        margin-top: 15px;
+    }
 `
 const WrapImage = styled(Box)`
     display: flex;
@@ -114,12 +118,6 @@ const WrapImage = styled(Box)`
     @media only screen and (max-width: 851px) {
         max-width: 320px;
         position: relative;
-    }
-
-    @media only screen and (max-width: 767px) {
-        max-width: 320px;
-        top: 0;
-        left: 0;
     }
 `
 const WrapMarketplaceItem = styled(Box)`
@@ -183,7 +181,9 @@ const Header = styled(Box)`
     position: relative;
 
     @media only screen and (max-width: 767px) {
-        aspect-ratio: 10;
+        background-size: cover;
+        padding-bottom: 30px;
+        padding-top: 30px;
     }
 `
 const Section = styled(Box)`
@@ -208,6 +208,11 @@ const Section = styled(Box)`
         z-index: 10;
     }
 
+    .marketplace {
+        padding-left: 90px;
+        padding-right: 90px;
+    }
+
     @media only screen and (max-width: 851px) {
         .decord-left,
         .decord-right {
@@ -217,6 +222,13 @@ const Section = styled(Box)`
         .farm-pool {
             margin-top: 0;
             margin-bottom: 40px;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .marketplace {
+            padding-left: 15px;
+            padding-right: 15px;
         }
     }
 `
