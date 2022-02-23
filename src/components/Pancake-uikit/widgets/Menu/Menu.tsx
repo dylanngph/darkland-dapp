@@ -62,7 +62,7 @@ const StyledNav = styled.nav<{ showMenu: boolean }>`
   height: ${MENU_HEIGHT}px;
   background-color: #091749;
   // border-bottom: solid 2px rgba(133, 133, 133, 0.1);
-  z-index: 100;
+  z-index: 10;
   transform: translate3d(0, 0, 0);
 `
 
