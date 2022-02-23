@@ -47,9 +47,18 @@ const Item = styled(Box)`
     background-repeat: no-repeat;
     background-size: cover;
 
+    @media only screen and (max-width: 1199px) {
+        aspect-ratio: 1;
+    }
+
+    @media only screen and (max-width: 859px) {
+        aspect-ratio: 1/0.4;
+        max-width: 100%;
+        margin-bottom: 20px
+    }
+
     @media only screen and (max-width: 767px) {
         max-width: 100%;
-        margin-left: 0;
         margin-top: 10px;
     }
 `

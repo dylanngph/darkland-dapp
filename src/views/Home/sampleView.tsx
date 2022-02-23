@@ -78,10 +78,10 @@ const SampleView = () => {
                 <ImageDecord className='decord-left' src="/images/avarta-arrow/men-arrow.png" alt="men-arrow" />
                 <ImageDecord className='decord-right' src="/images/avarta-arrow/girld-arrow.png" alt="girld-arrow" />
             </Section>
-            <Section sx={{marginTop: '100px', marginBottom: '140px', paddingLeft: '90px', paddingRight: '90px', zIndex: '10'}}>
+            <Section className='farm-pool' sx={{}}>
                 <Box sx={{maxWidth: '1440px', margin: 'auto'}}>
                     <Title mb={5} text="Farm & Pool" icon='/images/icons/farm-pool-icon.png' />
-                    <Box flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
+                    <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
                         <FarmPoolItem title='Liquidity' price='$456.565' />
                         <FarmPoolItem title='Your investment' price='$0.000' />
                         <FarmPoolItem title='Your reward' price='$0.000' buttonTitle='Connect Wallet' />
@@ -111,9 +111,15 @@ const WrapImage = styled(Box)`
         margin-bottom: 24px;
     }
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 851px) {
         max-width: 320px;
         position: relative;
+    }
+
+    @media only screen and (max-width: 767px) {
+        max-width: 320px;
+        top: 0;
+        left: 0;
     }
 `
 const WrapMarketplaceItem = styled(Box)`
@@ -121,6 +127,11 @@ const WrapMarketplaceItem = styled(Box)`
 
     @media only screen and (max-width: 1199px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 50px;
+    }
+
+    @media only screen and (max-width: 767px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
         row-gap: 50px;
     }
 `
@@ -170,6 +181,10 @@ const Header = styled(Box)`
     background-size: contain;
     aspect-ratio: 2/1.0313;
     position: relative;
+
+    @media only screen and (max-width: 767px) {
+        aspect-ratio: 10;
+    }
 `
 const Section = styled(Box)`
     position: relative;
@@ -185,10 +200,23 @@ const Section = styled(Box)`
         top: -82px
     }
 
-    @media only screen and (max-width: 767px) {
+    .farm-pool {
+        margin-top: 100px;
+        margin-bottom: 140px;
+        padding-left: 90px;
+        padding-right: 90px;
+        z-index: 10;
+    }
+
+    @media only screen and (max-width: 851px) {
         .decord-left,
         .decord-right {
             display: none;
+        }
+        
+        .farm-pool {
+            margin-top: 0;
+            margin-bottom: 40px;
         }
     }
 `

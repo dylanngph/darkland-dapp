@@ -78,18 +78,22 @@ const Page: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...pro
     min-height: 100vh;
     padding: 16px;
     padding-top: 90px !important;
+
     ${({ theme }) => theme.mediaQueries.md} {
       padding-top: 16px;
       padding: ${pathname === '/home' ? '0' : '90px'};
     }
+
+    @media only screen and (max-width: 851px) {
+      padding: ${pathname === '/home' ? '0' : '16px'};
+    }
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    // max-width: 1400px;
     color: #fff;
   `
-
   const StyledPage = styled(Container)`
   ${({ theme }) => theme.mediaQueries.sm} {
     padding-top: 64px;
@@ -102,7 +106,7 @@ const Page: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...pro
   ${({ theme }) => theme.mediaQueries.lg} {
     padding-top: ${pathname === '/home' ? '0' : '64px'};
   }
-  max-width: ${pathname === '/home' ? '100%' : '1440px'};
+  max-width: ${pathname === '/home' ? '100%' : '1440px'}; 
   background-image: ${pathname === '/home' ? "url('/images/Home.png')" : 'none'};
   background-repeat: no-repeat;
   background-size: cover;
