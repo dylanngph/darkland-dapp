@@ -32,10 +32,10 @@ const TableSectionTeam = ({tgeData, pendingTx, stageData, handleClaimStage}) => 
         }}
       >
         <Tr>
-          <Th>No#</Th>
+          <Th>No</Th>
           <Th>Name</Th>
           <Th>Date</Th>
-          <Th>ADT Amount</Th>
+          <Th>BIG Amount</Th>
           <Th>Action</Th>
         </Tr>
       </Thead>

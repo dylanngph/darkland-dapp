@@ -76,7 +76,7 @@ const Vesting = () => {
   return (
     <Wrapper>
       <Header>
-          <img src="logo.png" alt="" />
+          <img src="logo_darkland.png" alt="" />
           <div>
               <span style={{fontSize: '30px', fontWeight: '700', textTransform: 'uppercase'}}>DARKLAND</span>
               <div>Vesting section for investors.</div> 
@@ -111,7 +111,7 @@ const Vesting = () => {
               </Flex>
               <Flex>
                 <div style={{color: '#F7F7F7'}} >
-                  Token allocationn:
+                  Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
                   1 BIG = 0.04 BUSD
@@ -151,15 +151,15 @@ const Vesting = () => {
                   Price:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 ADT = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
                 <div style={{color: '#F7F7F7'}} >
-                  Token allocationn:
+                  Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 ADT = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
@@ -195,15 +195,15 @@ const Vesting = () => {
                   Price:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 ADT = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
                 <div style={{color: '#F7F7F7'}} >
-                  Token allocationn:
+                  Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 ADT = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>

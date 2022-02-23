@@ -36,7 +36,7 @@ const TableSection = () => {
         }}
       >
         <Tr>
-          <Th>No#</Th>
+          <Th>No</Th>
           <Th>Name</Th>
           <Th>Date</Th>
           <Th>% Unlocked Token</Th>
@@ -110,7 +110,7 @@ const TableSection = () => {
               <PagButton>
                 <ChevronLeftIcon />
               </PagButton>
-              <PagButton>1</PagButton>
+              <PagButton className="active">1</PagButton>
               <PagButton>2</PagButton>
               <PagButton>
                 <ChevronRightIcon />
@@ -261,13 +261,16 @@ const TableSection = () => {
 // }
 
 const PagButton = styled(Button)`
-  background: #1D2D71;
+  background: transparent;
   border-radius: 0;
   padding: 4px;
   height: 20px;
   min-width: 20px;
   font-size: 12px;
   margin: 0 5px;
+  &.active {
+    background: #1D2D71;
+  }
 `
 
 const ClaimButton = styled(Button)`

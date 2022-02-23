@@ -58,11 +58,11 @@ const RoiCalculatorFooter: React.FC<RoiCalculatorFooterProps> = ({
     <>
       <Text>
         {t(
-          'The Multiplier represents the proportion of ADT rewards each farm receives, as a proportion of the ADT produced each block.',
+          'The Multiplier represents the proportion of BIG rewards each farm receives, as a proportion of the BIG produced each block.',
         )}
       </Text>
       <Text my="24px">
-        {t('For example, if a 1x farm received 1 ADT per block, a 40x farm would receive 40 ADT per block.')}
+        {t('For example, if a 1x farm received 1 BIG per block, a 40x farm would receive 40 BIG per block.')}
       </Text>
       <Text>{t('This amount is already included in all APR calculations for the farm.')}</Text>
     </>,
@@ -91,7 +91,7 @@ const RoiCalculatorFooter: React.FC<RoiCalculatorFooterProps> = ({
               </>
             )}
             <Text color="textSubtle" small>
-              {isFarm ? t('Base APR (ADT yield only)') : t('APR')}
+              {isFarm ? t('Base APR (BIG yield only)') : t('APR')}
             </Text>
             <Text small textAlign="right">
               {apr.toFixed(2)}%

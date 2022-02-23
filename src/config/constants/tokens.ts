@@ -73,7 +73,7 @@ const tokens = {
     decimals: 18,
   },
   adt: {
-    symbol: 'ADT',
+    symbol: 'BIG',
     address: {
       56: '0xc008debbb1f33d9453ffd2104feb1fe7e9663524',
       97: '0x85A0B362648a04B0ed33Ed5DeCd4b506D673c44b',

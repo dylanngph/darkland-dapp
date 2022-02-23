@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Page from 'components/Layout/Page'
 import {ChevronRightIcon, ChevronLeftIcon} from '@pancakeswap/uikit'
 import {Button} from 'components/Pancake-uikit'
@@ -7,98 +7,121 @@ import TableSection from './components/TableSection'
 
 
 const RewardsSection = () => {
-
+  const [stateHistory, setStateHistory] = useState(false);
   return (
     <Page>
-      {/* <div>
-        <BackButton><ChevronLeftIcon />Back</BackButton>
-      </div>
-      <div style={{
-        width: '100%',
-        maxWidth: '676px',
-        margin: '0 auto',
-      }}>
-        <TitlePage>Heroes: [Total heroes left]</TitlePage>
-        <div className='p-6' style={{backgroundColor: '#091749'}}>
-          <TblTitle><span>Legendary</span> (2534 heroes left)</TblTitle>
-          <TblTitle><span>Claimed</span> (2534 heroes claimed)</TblTitle>
-          <TableSection />
-        </div>
-      </div> */}
-      <div className='mb-8'>
-        <SectionTitle>Lands: [Total lands left]</SectionTitle>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <Card className='grid grid-cols-2 gap-4'>
-            <img src='/images/rewards/rewards-land.png' alt='rewards' />
-            <div className='flex flex-col justify-between'>
-              <CardTitle>Coming soon</CardTitle>
+      {stateHistory ? (
+        <>
+          <div>
+            <BackButton onClick={() => setStateHistory(false)}><ChevronLeftIcon />Back</BackButton>
+          </div>
+          <div style={{
+            width: '100%',
+            maxWidth: '676px',
+            margin: '0 auto',
+          }}>
+            <TitlePage>Heroes: [Total heroes left]</TitlePage>
+            <div className='p-6' style={{backgroundColor: '#091749', marginBottom: '25px'}}>
+              <TblTitle><span>Legendary</span> (2534 heroes left)</TblTitle>
+              <TblTitle><span>Claimed</span> (2534 heroes claimed)</TblTitle>
+              <TableSection />
             </div>
-          </Card>
-        </div>
-      </div>
-      <div className='mb-8'>
-        <SectionTitle>Heroes: [Total heroes left]</SectionTitle>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <Card className='grid grid-cols-2 gap-4'>
-            <img src='/images/rewards/rewards-heros-legendary.png' alt='rewards' />
-            <div className='flex flex-col justify-between'>
-              <div>
-                <CardTitle>LEGENDARY</CardTitle>
-                <CardSubTitle>[2563 Heroes left]</CardSubTitle>
+            <Flex>
+              <PagButton>
+                <ChevronLeftIcon />
+              </PagButton>
+              <div style={{fontSize: '10px', fontWeight: 'bold', margin: '0 10px'}}>
+                Page <PagButton className='active'> 1 </PagButton> of 100
               </div>
-              <CardButton>History</CardButton>
-            </div>
-          </Card>
-          <Card className='grid grid-cols-2 gap-4'>
-            <img src='/images/rewards/rewards-heros-epic.png' alt='rewards' />
-            <div className='flex flex-col justify-between'>
-              <div>
-                <CardTitle>EPIC</CardTitle>
-                <CardSubTitle>[15474 Heroes left]</CardSubTitle>
+              <PagButton>
+                <ChevronRightIcon />
+              </PagButton>
+            </Flex>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className='mb-8'>
+          <SectionTitle>Lands: [Total lands left]</SectionTitle>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <Card className='grid grid-cols-2 gap-4'>
+              <img src='/images/rewards/rewards-land.png' alt='rewards' />
+              <div className='flex flex-col justify-between'>
+                <div>
+                  <CardTitle>Coming soon</CardTitle>
+                </div>
+                <CardButton onClick={() => setStateHistory(true)}>History</CardButton>
               </div>
-              <CardButton>History</CardButton>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </div>
-      </div>
-      <div className='mb-8'>
-        <SectionTitle>Weapons: [Total weapons left]</SectionTitle>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <Card className='grid grid-cols-2 gap-4'>
-            <img src='/images/rewards/rewards-weapons-legendary.png' alt='rewards' />
-            <div className='flex flex-col justify-between'>
-              <div>
-                <CardTitle>LEGENDARY</CardTitle>
-                <CardSubTitle>[2563 Weapons left]</CardSubTitle>
+        <div className='mb-8'>
+          <SectionTitle>Heroes: [Total heroes left]</SectionTitle>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <Card className='grid grid-cols-2 gap-4'>
+              <img src='/images/rewards/rewards-heros-legendary.png' alt='rewards' />
+              <div className='flex flex-col justify-between'>
+                <div>
+                  <CardTitle>LEGENDARY</CardTitle>
+                  <CardSubTitle>[2563 Heroes left]</CardSubTitle>
+                </div>
+                <CardButton onClick={() => setStateHistory(true)}>History</CardButton>
               </div>
-              <CardButton>History</CardButton>
-            </div>
-          </Card>
-          <Card className='grid grid-cols-2 gap-4'>
-            <img src='/images/rewards/rewards-weapons-epic.png' alt='rewards' />
-            <div className='flex flex-col justify-between'>
-              <div>
-                <CardTitle>EPIC</CardTitle>
-                <CardSubTitle>[15474 Weapons left]</CardSubTitle>
+            </Card>
+            <Card className='grid grid-cols-2 gap-4'>
+              <img src='/images/rewards/rewards-heros-epic.png' alt='rewards' />
+              <div className='flex flex-col justify-between'>
+                <div>
+                  <CardTitle>EPIC</CardTitle>
+                  <CardSubTitle>[15474 Heroes left]</CardSubTitle>
+                </div>
+                <CardButton onClick={() => setStateHistory(true)}>History</CardButton>
               </div>
-              <CardButton>History</CardButton>
-            </div>
-          </Card>
+            </Card>
+          </div>
         </div>
-      </div>
-      <div className='mb-8'>
-        <SectionTitle>Relics: [Total relics left]</SectionTitle>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <Card className='grid grid-cols-2 gap-4'>
-            <img src='/images/rewards/rewards-relics.png' alt='rewards' />
-            <div className='flex flex-col justify-between'>
-              <div>
-                <CardTitle>Coming soon</CardTitle>
+        <div className='mb-8'>
+          <SectionTitle>Weapons: [Total weapons left]</SectionTitle>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <Card className='grid grid-cols-2 gap-4'>
+              <img src='/images/rewards/rewards-weapons-legendary.png' alt='rewards' />
+              <div className='flex flex-col justify-between'>
+                <div>
+                  <CardTitle>LEGENDARY</CardTitle>
+                  <CardSubTitle>[2563 Weapons left]</CardSubTitle>
+                </div>
+                <CardButton onClick={() => setStateHistory(true)}>History</CardButton>
               </div>
-            </div>
-          </Card>
+            </Card>
+            <Card className='grid grid-cols-2 gap-4'>
+              <img src='/images/rewards/rewards-weapons-epic.png' alt='rewards' />
+              <div className='flex flex-col justify-between'>
+                <div>
+                  <CardTitle>EPIC</CardTitle>
+                  <CardSubTitle>[15474 Weapons left]</CardSubTitle>
+                </div>
+                <CardButton onClick={() => setStateHistory(true)}>History</CardButton>
+              </div>
+            </Card>
+          </div>
         </div>
-      </div>
+        <div className='mb-8'>
+          <SectionTitle>Relics: [Total relics left]</SectionTitle>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            <Card className='grid grid-cols-2 gap-4'>
+              <img src='/images/rewards/rewards-relics.png' alt='rewards' />
+              <div className='flex flex-col justify-between'>
+                <div>
+                  <CardTitle>Coming soon</CardTitle>
+                </div>
+                <CardButton onClick={() => setStateHistory(true)}>History</CardButton>
+              </div>
+            </Card>
+          </div>
+        </div>
+        </>
+      )}
+      
     </Page>
   )
 }
@@ -168,5 +191,24 @@ const BackButton =  styled(Button)`
   width: 150px;
   height: 38px;
 `;
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const PagButton = styled(Button)`
+  background: #00BFD5;
+  border-radius: 0;
+  padding: 4px;
+  height: 20px;
+  width: 40px;
+  font-size: 12px;
+  margin: 0 5px;
+  &.active {
+    background: #091749;
+  }
+`
 
 export default RewardsSection

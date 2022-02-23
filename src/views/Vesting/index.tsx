@@ -28,7 +28,7 @@ const VestingSection = () => {
         <Heading as="h1" size="xl" color="#fff">
           Vesting
         </Heading>
-        <Text color="#fff">Wellcome, Investors!</Text>
+        <Text color="#fff">Welcome, Investors!</Text>
       </Hero>
       <Vesting/>
     </Page>
