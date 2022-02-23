@@ -86,6 +86,7 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
+  background-attachment: fixed;
   transition: padding-left 0.3s;
 `
 
