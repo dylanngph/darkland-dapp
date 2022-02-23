@@ -151,7 +151,7 @@ const Vesting = () => {
                   Price:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 ADT = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
@@ -159,7 +159,7 @@ const Vesting = () => {
                   Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 ADT = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
@@ -195,7 +195,7 @@ const Vesting = () => {
                   Price:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 ADT = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
@@ -203,7 +203,7 @@ const Vesting = () => {
                   Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 ADT = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>

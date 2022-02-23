@@ -84,7 +84,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({farm, account, addLiquidit
     <Action>
       <Flex>
         <Text bold textTransform="uppercase" color="#FFC247" fontSize="12px" pr="4px">
-          ADT
+        BIG
         </Text>
         <Text bold textTransform="uppercase" color="#00A3FF" fontSize="12px">
           {t('Earned')}

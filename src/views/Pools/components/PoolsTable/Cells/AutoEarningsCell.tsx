@@ -42,7 +42,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({pool, account, userD
     earningTokenPrice,
   )
 
-  const labelText = t('Recent ADT profit')
+  const labelText = t('Recent BIG profit')
   const earningTokenBalance = autoCakeToDisplay
   const hasEarnings = hasAutoEarnings
   const earningTokenDollarBalance = autoUsdToDisplay
@@ -53,7 +53,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({pool, account, userD
 
   const {targetRef, tooltip, tooltipVisible} = useTooltip(
     <>
-      <Balance fontSize="16px" value={autoCakeToDisplay} decimals={3} bold unit=" ADT" />
+      <Balance fontSize="16px" value={autoCakeToDisplay} decimals={3} bold unit=" BIG" />
       <Balance fontSize="16px" value={autoUsdToDisplay} decimals={2} bold prefix="~$" />
       {t('Earned since your last action')}
       <Text>{dateStringToDisplay}</Text>

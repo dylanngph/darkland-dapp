@@ -119,14 +119,14 @@ const StrategicZone = () => {
                         <Flex>
                             <img src="/images/coins/adt.png" alt="" width="27px" />
                             <Money>
-                                {getAllocation ? formatNumber(getAllocation) : <Skeleton/>} ADT
+                                {getAllocation ? formatNumber(getAllocation) : <Skeleton/>} BIG
                             </Money>
                         </Flex>
                         <div style={{color: '#E6AB58', fontWeight: '500'}}>Token Claimed</div>
                         <Flex>
                             <img src="/images/coins/adt.png" alt="" width="27px" />
                             <Money>
-                                {getReleased ? formatNumber(getReleased) : <Skeleton/>} ADT
+                                {getReleased ? formatNumber(getReleased) : <Skeleton/>} BIG
                             </Money>
                         </Flex>
                     </StyledBox>
@@ -147,24 +147,24 @@ const StrategicZone = () => {
                                         Price:
                                     </div>
                                     <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        1 ADT = 0.125 BUSD
+                                        1 BIG = 0.125 BUSD
                                     </div>
                                 </Flex>
                             </div>
                             <div>
-                                In case you would like to sell your $ADT, we ask that you strictly follow the Price Management Policy below:
+                                In case you would like to sell your $BIG, we ask that you strictly follow the Price Management Policy below:
                                 <ul>
                                     <li>
-                                    Between 19th January 2022 and 25th January 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 1,000 (or equivalent) per transaction and no more than twenty-five (25) sale transactions per day.
+                                    Between 19th January 2022 and 25th January 2022 (23:59 UTC): Maximum sale amount of $BIG tokens is BUSD 1,000 (or equivalent) per transaction and no more than twenty-five (25) sale transactions per day.
                                     </li>
                                     <li>
-                                    Between 26th January 2022 (00:00 UTC) and 5th February 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 1,500 (or equivalent) per transaction and no more than thirty (30) sale transactions per day.
+                                    Between 26th January 2022 (00:00 UTC) and 5th February 2022 (23:59 UTC): Maximum sale amount of $BIG tokens is BUSD 1,500 (or equivalent) per transaction and no more than thirty (30) sale transactions per day.
                                     </li>
                                     <li>
-                                    Between 6th February 2022 (00:00 UTC) and 20th February 2022 (23:59 UTC): Maximum sale amount of $ADT tokens is BUSD 2,000 (or equivalent) per transaction and no more than thirty-five (35) sale transactions per day.
+                                    Between 6th February 2022 (00:00 UTC) and 20th February 2022 (23:59 UTC): Maximum sale amount of $BIG tokens is BUSD 2,000 (or equivalent) per transaction and no more than thirty-five (35) sale transactions per day.
                                     </li>
                                     <li>
-                                    The limitations above apply to your wallet address and any other wallet addresses that you transfer the $ADT tokens to. It will be considered to be a breach if any or all of such wallet addresses breach the policy set out above.
+                                    The limitations above apply to your wallet address and any other wallet addresses that you transfer the $BIG tokens to. It will be considered to be a breach if any or all of such wallet addresses breach the policy set out above.
                                     </li>
                                 </ul>
                             </div>
