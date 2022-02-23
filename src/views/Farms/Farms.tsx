@@ -337,10 +337,12 @@ const Farms: React.FC = () => {
             <Toggle checked={stakedOnly} onChange={() => setStakedOnly(!stakedOnly)} scale="md" />
             <Text color="#fff">{t('Staked only')}</Text>
           </ToggleWrapper>
-        </ViewControls>
-        <FarmTabButtons hasStakeInFinishedFarms={stakedInactiveFarms.length > 0} />
 
-        <FilterContainer>
+          <FarmTabButtons hasStakeInFinishedFarms={stakedInactiveFarms.length > 0} />
+        </ViewControls>
+        
+
+        {/* <FilterContainer>
           <LabelWrapper>
             <SortText>{t('Sort by:')}</SortText>
             <Select
@@ -372,7 +374,7 @@ const Farms: React.FC = () => {
           <LabelWrapper style={{marginLeft: 16}}>
             <SearchInput onChange={handleChangeQuery} placeholder="Search Farms" />
           </LabelWrapper>
-        </FilterContainer>
+        </FilterContainer> */}
       </ControlContainer>
       {renderContent()}
       {account && !userDataLoaded && stakedOnly && (
