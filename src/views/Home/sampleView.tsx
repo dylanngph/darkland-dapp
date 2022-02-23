@@ -10,6 +10,33 @@ import FarmPoolItem from './components/FarmPoolItem';
 
 const SampleView = () => {
     const { isMobile } = useMatchBreakpoints()
+    const socials = [
+        {
+            title: 'Discord',
+            link: "https://discord.com/invite/5TqqMHX9Sz",
+            image: '/images/socials/discord.svg'
+        },
+        {
+            title: 'Telegram',
+            link: "https://t.me/DarkLandSurvivalAnnounce",
+            image: '/images/socials/telegram.svg'
+        },
+        {
+            title: 'Twitter',
+            link: "https://twitter.com/DarkLandGame",
+            image: '/images/socials/twitter.svg'
+        },
+        {
+            title: 'Facebook',
+            link: "https://www.facebook.com/darklandsurvival/",
+            image: '/images/socials/facebook.svg'
+        },
+        {
+            title: 'Youtube',
+            link: "https://www.youtube.com/channel/UC29_ydawYyxoDw7hlMASI1g",
+            image: '/images/socials/youtube.svg'
+        },
+    ]
 
     return (
         <Wrapper>
@@ -21,16 +48,21 @@ const SampleView = () => {
                         <PlayToEarn>PLAY TO EARN NOW</PlayToEarn>
                         <Socials>
                             <ul>
-                                <li><img src="/images/socials/discord.svg" alt="discord" /></li>
-                                <li><img src="/images/socials/telegram.svg" alt="telegram" /></li>
-                                <li><img src="/images/socials/twitter.svg" alt="twitter" /></li>
-                                <li><img src="/images/socials/facebook.svg" alt="facebook" /></li>
-                                <li><img src="/images/socials/youtube.svg" alt="youtube" /></li>
+                                {socials?.map((item, index) => (
+                                    <li>
+                                        <a target='_blank' href={item.link} rel="noreferrer">
+                                            <img src={item.image} alt={item.title} />
+                                        </a>
+                                    </li>
+                                ))}
                             </ul>
                         </Socials>
                     </WrapImage>
                 </div>
             </Header>
+            {/* <Section sx={{paddingLeft: '90px', paddingRight: '90px'}}>
+                
+            </Section> */}
             <Section sx={{paddingLeft: '90px', paddingRight: '90px'}}>
                 <Box sx={{maxWidth: '1440px', margin: 'auto'}}>
                     <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
@@ -92,7 +124,18 @@ const Socials = styled(Box)`
         li {
             width: 40px;
             height: 40px;
-            background-image: url( )
+            background-image: url('/bg-social.png');
+            position: relative;
+            background-repeat: no-repeat;
+            margin-left: 6px;
+            margin-right: 6px;
+        }
+
+        a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-55%, -55%);
         }
     }
 `
@@ -108,6 +151,7 @@ const PlayToEarn = styled(Button)`
     border-radius: 0;
     border-bottom: 7px solid #C16000;
     box-sizing: content-box;
+    margin-bottom: 25px;
 `
 const Header = styled(Box)`
     display: flex;
@@ -130,6 +174,7 @@ const Section = styled(Box)`
     .decord-right {
         right: 0;
         z-index: 1;
+        top: -82px
     }
 
     @media only screen and (max-width: 767px) {
