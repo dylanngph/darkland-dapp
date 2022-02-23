@@ -12,12 +12,13 @@ import {
 } from '@pancakeswap/uikit'
 import {useTranslation} from 'contexts/Localization'
 import styled from 'styled-components'
+import {ReactComponent as CoreCheck} from 'assets/icons/CoreCheck.svg'
 
 const CoreTag: React.FC<TagProps> = (props) => {
   const {t} = useTranslation()
   return (
-    <TagSquare variant="warning" outline startIcon={<VerifiedIcon width="18px" color="warning" mr="4px" />} {...props}>
-      {t('Core')}
+    <TagSquare variant="warning" outline startIcon={<CoreCheck />} {...props}>
+      <span style={{marginLeft: '4px'}}>{t('Core')}</span>
     </TagSquare>
   )
 }
@@ -25,7 +26,7 @@ const CoreTag: React.FC<TagProps> = (props) => {
 const CommunityTag: React.FC<TagProps> = (props) => {
   const {t} = useTranslation()
   return (
-    <TagSquare variant="failure" outline startIcon={<CommunityIcon width="18px" color="failure" mr="4px" />} {...props}>
+    <TagSquare variant="failure" outline startIcon={<CommunityIcon width="18px" color="failure" mr="6px" />} {...props}>
       {t('Community')}
     </TagSquare>
   )
