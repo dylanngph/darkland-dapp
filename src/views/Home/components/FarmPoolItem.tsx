@@ -5,16 +5,28 @@ import {
 } from '@mui/material'
 import { useMatchBreakpoints } from '@pancakeswap/uikit'
 import { style } from '@mui/system'
+import ConnectWalletButton from 'components/ConnectWalletButton'
 
 const FarmPoolItem = (prop) => {
     const { isMobile } = useMatchBreakpoints()
     const {buttonTitle, title, price, mt, mb} = prop;
 
+    const Price = styled.p`
+        color: #FFFFFF;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 40px;
+        line-height: 54px;
+        letter-spacing: 1px;
+        margin: 0;
+        ${buttonTitle ? 'margin-bottom: 24px;' : '' }
+    `
+
     return (
         <Item mt={mt} mb={mb}>
             <Title>{title}</Title>
             <Price>{price}</Price>
-            {buttonTitle ? <Button>{buttonTitle}</Button> : null}
+            {buttonTitle ? <ConnectWalletButton /> : null}
         </Item>
     )
 }
@@ -40,30 +52,6 @@ const Item = styled(Box)`
         margin-left: 0;
         margin-top: 10px;
     }
-`
-
-const Button = styled.button`
-    font-style: normal;
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 25px;
-    max-width: 200px;
-    width: 100%;
-    background: #FFA800;
-    text-align: center;
-    padding: 9px 5px 8px;
-    border-bottom: 4px solid #C16000;
-    margin-top: 15px;
-`
-
-const Price = styled.p`
-    color: #FFFFFF;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 40px;
-    line-height: 54px;
-    letter-spacing: 1px;
-    margin: 0;
 `
 
 const Title = styled.p`

@@ -66,12 +66,12 @@ const SampleView = () => {
             <Section sx={{paddingLeft: '90px', paddingRight: '90px'}}>
                 <Box sx={{maxWidth: '1440px', margin: 'auto'}}>
                     <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
-                    <Box alignItems='end' flexDirection={isMobile ? 'column' : 'row'} sx={{display: 'flex'}}>
+                    <WrapMarketplaceItem className='grid'>
                         <MarketplaceItem buttonTitle='MYSTERY BOX' imageUrl='/images/marketplace-images/MYSTERY-BOX.png' />
                         <MarketplaceItem buttonTitle='MYSTERY WAEPON' imageUrl='/images/marketplace-images/MYSTERY-WAEPON.png' />
                         <MarketplaceItem buttonTitle='MYSTERY ARMOR' imageUrl='/images/marketplace-images/MYSTERY-ARMOR.png' />
                         <MarketplaceItem buttonTitle='MYSTERY HELMET' imageUrl='/images/marketplace-images/MYSTERY-HELMET.png' />
-                    </Box>
+                    </WrapMarketplaceItem>
                 </Box>
             </Section>
             <Section mt={5} mb={5}>
@@ -114,6 +114,14 @@ const WrapImage = styled(Box)`
     @media only screen and (max-width: 767px) {
         max-width: 320px;
         position: relative;
+    }
+`
+const WrapMarketplaceItem = styled(Box)`
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    @media only screen and (max-width: 1199px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 50px;
     }
 `
 const Socials = styled(Box)`
