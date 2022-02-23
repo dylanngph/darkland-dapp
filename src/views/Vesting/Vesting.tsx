@@ -76,7 +76,7 @@ const Vesting = () => {
   return (
     <Wrapper>
       <Header>
-          <img src="logo.png" alt="" />
+          <img src="logo_darkland.png" alt="" />
           <div>
               <span style={{fontSize: '30px', fontWeight: '700', textTransform: 'uppercase'}}>DARKLAND</span>
               <div>Vesting section for investors.</div> 

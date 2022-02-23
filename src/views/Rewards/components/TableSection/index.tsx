@@ -69,36 +69,23 @@ const TableSection = () => {
           <Td>01/01/2022</Td>
         </Tr>
       </Tbody>
-      <Tfoot>
-        <Tr>
-          <Td colSpan={4} sx={{borderBottom: 0}}>
-            <Flex>
-              <PagButton>
-                <ChevronLeftIcon />
-              </PagButton>
-              <PagButton>1</PagButton>
-              <PagButton>2</PagButton>
-              <PagButton>
-                <ChevronRightIcon />
-              </PagButton>
-            </Flex>
-          </Td>
-        </Tr>
-      </Tfoot>
     </Table>
   )
 }
 
 const PagButton = styled(Button)`
-  background: #1D2D71;
+  background: #00BFD5;
   border-radius: 0;
   padding: 4px;
   height: 20px;
-  min-width: 20px;
+  width: 30px;
   font-size: 12px;
   margin: 0 5px;
-  &:hover {
-    background: #00BFD5;
+  // &:hover {
+  //   background: #00BFD5;
+  // }
+  &.active {
+    background: #091749;
   }
 `
 

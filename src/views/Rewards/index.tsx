@@ -21,11 +21,22 @@ const RewardsSection = () => {
             margin: '0 auto',
           }}>
             <TitlePage>Heroes: [Total heroes left]</TitlePage>
-            <div className='p-6' style={{backgroundColor: '#091749'}}>
+            <div className='p-6' style={{backgroundColor: '#091749', marginBottom: '25px'}}>
               <TblTitle><span>Legendary</span> (2534 heroes left)</TblTitle>
               <TblTitle><span>Claimed</span> (2534 heroes claimed)</TblTitle>
               <TableSection />
             </div>
+            <Flex>
+              <PagButton>
+                <ChevronLeftIcon />
+              </PagButton>
+              <div style={{fontSize: '10px', fontWeight: 'bold', margin: '0 10px'}}>
+                Page <PagButton className='active'> 1 </PagButton> of 100
+              </div>
+              <PagButton>
+                <ChevronRightIcon />
+              </PagButton>
+            </Flex>
           </div>
         </>
       ) : (
@@ -180,5 +191,24 @@ const BackButton =  styled(Button)`
   width: 150px;
   height: 38px;
 `;
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const PagButton = styled(Button)`
+  background: #00BFD5;
+  border-radius: 0;
+  padding: 4px;
+  height: 20px;
+  width: 40px;
+  font-size: 12px;
+  margin: 0 5px;
+  &.active {
+    background: #091749;
+  }
+`
 
 export default RewardsSection
