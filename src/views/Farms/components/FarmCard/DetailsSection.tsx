@@ -40,11 +40,14 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
         <Text color="#fff">{t('Total Liquidity')}:</Text>
         {totalValueFormatted ? <Text color="#ffffff">{totalValueFormatted}</Text> : <Skeleton width={75} height={25} />}
       </Flex>
+      <div className='xl:grid xl:grid-cols-2'>
       {!removed && (
-        <StyledLinkExternal href={addLiquidityUrl}>{t('Get %symbol%', {symbol: lpLabel})}</StyledLinkExternal>
+        // <StyledLinkExternal href={addLiquidityUrl}>{t('Get %symbol%', {symbol: lpLabel})}</StyledLinkExternal>
+        <div><StyledLinkExternal href={addLiquidityUrl}>{t('Get COIN CC LP', {symbol: lpLabel})}</StyledLinkExternal></div>
       )}
-      <StyledLinkExternal href={bscScanAddress}>{t('View Contract')}</StyledLinkExternal>
-      <StyledLinkExternal href={infoAddress}>{t('See Pair Info')}</StyledLinkExternal>
+        <div className='xl:flex xl:justify-end'><StyledLinkExternal href={bscScanAddress}>{t('View Contract')}</StyledLinkExternal></div>
+        <div><StyledLinkExternal href={infoAddress}>{t('See Pair Info')}</StyledLinkExternal></div>
+      </div>
     </Wrapper>
   )
 }
