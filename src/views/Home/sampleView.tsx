@@ -191,16 +191,16 @@ const Section = styled(Box)`
 
     .decord-left {
         left: 0;
-        z-index: 1;
+        z-index: 0;
     }
 
     .decord-right {
         right: 0;
-        z-index: 1;
+        z-index: 0;
         top: -82px
     }
 
-    .farm-pool {
+    &.farm-pool {
         margin-top: 100px;
         margin-bottom: 140px;
         padding-left: 90px;
@@ -208,7 +208,7 @@ const Section = styled(Box)`
         z-index: 10;
     }
 
-    .marketplace {
+    &.marketplace {
         padding-left: 90px;
         padding-right: 90px;
     }
@@ -219,14 +219,19 @@ const Section = styled(Box)`
             display: none;
         }
         
-        .farm-pool {
+        &.farm-pool {
             margin-top: 0;
             margin-bottom: 40px;
         }
     }
 
     @media only screen and (max-width: 767px) {
-        .marketplace {
+        &.marketplace {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        &.farm-pool {
             padding-left: 15px;
             padding-right: 15px;
         }

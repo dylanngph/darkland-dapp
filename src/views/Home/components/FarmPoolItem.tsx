@@ -60,6 +60,7 @@ const Item = styled(Box)`
     @media only screen and (max-width: 767px) {
         max-width: 100%;
         margin-top: 10px;
+        aspect-ratio: 1/0.6;
     }
 `
 
