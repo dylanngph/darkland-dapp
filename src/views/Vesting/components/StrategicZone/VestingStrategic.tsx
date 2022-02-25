@@ -118,15 +118,15 @@ const StrategicZone = () => {
                         <div style={{color: '#E6AB58', fontWeight: '500'}}>Your Vesting Balance</div>
                         <Flex>
                             <img src="/images/coins/adt.png" alt="" width="27px" />
-                            <Money>
-                                {getAllocation ? formatNumber(getAllocation) : <Skeleton/>} BIG
+                            <Money sx={{ display: 'flex', alignItems: 'center' }}>
+                                {getAllocation ? formatNumber(getAllocation) : <Skeleton mr={2} width={40} height={20} />} BIG
                             </Money>
                         </Flex>
                         <div style={{color: '#E6AB58', fontWeight: '500'}}>Token Claimed</div>
                         <Flex>
                             <img src="/images/coins/adt.png" alt="" width="27px" />
-                            <Money>
-                                {getReleased ? formatNumber(getReleased) : <Skeleton/>} BIG
+                            <Money sx={{ display: 'flex', alignItems: 'center' }}>
+                                {getReleased ? formatNumber(getReleased) : <Skeleton mr={2} width={40} height={20} />} BIG
                             </Money>
                         </Flex>
                     </StyledBox>
