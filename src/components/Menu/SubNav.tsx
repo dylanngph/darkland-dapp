@@ -67,8 +67,6 @@ const Nav = () => {
   const {t} = useTranslation()
   const activeIndex = getActiveIndex(location.pathname)
 
-  console.log('activeIndex==>', activeIndex);
-
   return (
     <StyledNav>
       {/* <ButtonMenu activeIndex={getActiveIndex(location.pathname)} scale="sm" variant="subtle">
