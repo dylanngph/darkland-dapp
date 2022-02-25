@@ -67,6 +67,8 @@ const Nav = () => {
   const {t} = useTranslation()
   const activeIndex = getActiveIndex(location.pathname)
 
+  console.log('activeIndex==>', activeIndex);
+
   return (
     <StyledNav>
       {/* <ButtonMenu activeIndex={getActiveIndex(location.pathname)} scale="sm" variant="subtle">
@@ -77,10 +79,10 @@ const Nav = () => {
           {t('Liquidity')}
         </ButtonMenuItem>
       </ButtonMenu> */}
-      <NavLink style={activeIndex === 0 ? styleActive : {}} to="/swap" aria-hidden="true">
+      <NavLink style={activeIndex === 0 && location.pathname !== '/add' ? styleActive : {}} to="/swap" aria-hidden="true">
         <strong>{t('Swap')}</strong>
       </NavLink>
-      <NavLink style={activeIndex === 1 ? styleActive : defaultStyle} to="/pool" aria-hidden="true">
+      <NavLink style={activeIndex === 1 || location.pathname === '/add' ? styleActive : defaultStyle} to="/pool" aria-hidden="true">
         <strong>{t('Liquidity')}</strong>
       </NavLink>
       {/* <NavLink style={activeIndex === 2 ? styleActive : defaultStyle} to="/bridge" aria-hidden="true">
