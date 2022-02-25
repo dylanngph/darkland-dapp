@@ -18,13 +18,13 @@ const InactiveButton: PolymorphicComponent<InactiveButtonProps, 'button'> = styl
   // }
   background: #1A2B6D;
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
   border-radius: 0;
 `
 
 const ButtonActive = styled(Button)`
   background: rgba(0, 191, 213, 0.5);
-  border: 1px solid #7a7a7a;
+  border: none;
   box-sizing: border-box;
   box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.5);
   border-radius: 0;

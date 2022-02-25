@@ -47,7 +47,6 @@ import Container from './Container'
 const PageMeta = () => {
   const { t } = useTranslation()
   const { pathname } = useLocation()
-  console.log('pathname==>', pathname);
   const cakePriceUsd = usePriceCakeBusd()
   const cakePriceUsdDisplay = cakePriceUsd.gt(0)
     ? `$${cakePriceUsd.toNumber().toLocaleString(undefined, {

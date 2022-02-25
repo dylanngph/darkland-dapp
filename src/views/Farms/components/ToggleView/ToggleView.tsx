@@ -13,7 +13,7 @@ const Container = styled.div`
   border: none;
   display: flex;
   ${({theme}) => theme.mediaQueries.sm} {
-    border-right: 0.15px solid rgba(151, 151, 151, 0.69);
+    border-right: 0.15px solid #00BFD5;
   }
   /* margin-left: -8px;
   ${({theme}) => theme.mediaQueries.sm} {
@@ -31,10 +31,10 @@ const ToggleView: React.FunctionComponent<ToggleViewProps> = ({viewMode, onToggl
   return (
     <Container>
       <IconButton style={{background: viewMode === ViewMode.CARD ? 'rgba(0, 191, 213, 0.5)' : '#1A2B6D', border: '0.825px solid #00BFD5', borderRadius: '0'}} variant="text" scale="sm" onClick={() => handleToggle(ViewMode.CARD)}>
-        <CardViewIcon color={viewMode === ViewMode.CARD ? '#fff' : '#333'} />
+        <CardViewIcon color={viewMode === ViewMode.CARD ? '#fff' : '#9E9E9E'} />
       </IconButton>
       <IconButton style={{background: viewMode === ViewMode.TABLE ? 'rgba(0, 191, 213, 0.5)' : '#1A2B6D', border: '0.825px solid #00BFD5', borderRadius: '0'}} variant="text" scale="sm" onClick={() => handleToggle(ViewMode.TABLE)}>
-        <ListViewIcon color={viewMode === ViewMode.TABLE ? '#fff' : '#333'} />
+        <ListViewIcon color={viewMode === ViewMode.TABLE ? '#fff' : '#9E9E9E'} />
       </IconButton>
     </Container>
   )

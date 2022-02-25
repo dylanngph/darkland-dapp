@@ -8,7 +8,7 @@ import CakeVaultTokenPairImage from '../CakeVaultCard/CakeVaultTokenPairImage'
 
 const Wrapper = styled(CardHeader)<{isFinished?: boolean; background?: string}>`
   background: transparent;
-  border-radius: ${({theme}) => `${theme.radii.card} ${theme.radii.card} 0 0`};
+  border-bottom: 1px solid #686868;
 `
 
 const StyledCardHeader: React.FC<{

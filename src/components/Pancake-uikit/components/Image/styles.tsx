@@ -13,6 +13,7 @@ export const StyledPrimaryImage = styled(TokenImage)<StyledImageProps>`
   over-flow: hidden;
   width: ${({variant}) =>
     variant === variants.DEFAULT ? '92%' : '82%'}; // 92, 82 are arbitrary numbers to fit the variant
+  z-index: 10;
 
   ${StyledSystemVariant({
     variants: {
@@ -21,14 +22,12 @@ export const StyledPrimaryImage = styled(TokenImage)<StyledImageProps>`
         left: 0,
         right: 'auto',
         top: 0,
-        zIndex: 1,
       },
       [variants.INVERTED]: {
         bottom: 0,
         left: 'auto',
         right: 0,
         top: 'auto',
-        zIndex: 1,
       },
     },
   })}
@@ -39,6 +38,8 @@ export const StyledSecondaryImage = styled(TokenImage)<StyledImageProps>`
   width: 50%;
   border-radius: 50%;
   over-flow: hidden;
+  z-index: 1;
+
   ${StyledSystemVariant({
     variants: {
       [variants.DEFAULT]: {
@@ -46,14 +47,12 @@ export const StyledSecondaryImage = styled(TokenImage)<StyledImageProps>`
         left: 'auto',
         right: 0,
         top: 'auto',
-        zIndex: 2,
       },
       [variants.INVERTED]: {
         bottom: 'auto',
         left: 0,
         right: 'auto',
         top: 0,
-        zIndex: 2,
       },
     },
   })}

@@ -11,7 +11,7 @@ const TokenImage = styled(Image)`
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 7;
+    z-index: 100;
   }
 `
 

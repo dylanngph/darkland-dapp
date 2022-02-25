@@ -47,7 +47,7 @@ const StyleName = styled.div`
 const CardBody = styled.div`
   background-color: #fff;
   padding: 15px;
-  border-radius: 14px 14px 0 0;
+  // border-radius: 14px 14px 0 0;
   border-top: 1px dashed #ddd;
   display: flex;
   justify-content: space-between;

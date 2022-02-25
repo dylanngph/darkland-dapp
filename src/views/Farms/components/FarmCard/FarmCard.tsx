@@ -9,6 +9,7 @@ import ExpandableSectionButton from 'components/ExpandableSectionButton'
 import {BASE_ADD_LIQUIDITY_URL} from 'config'
 import {getAddress} from 'utils/addressHelpers'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
+import { Box } from '@mui/material'
 import DetailsSection from './DetailsSection'
 import CardHeading from './CardHeading'
 import CardActionsContainer from './CardActionsContainer'
@@ -23,7 +24,7 @@ export interface FarmWithStakedValue extends Farm {
 const StyledCard = styled(Card)`
   align-self: baseline;
   border: 1px solid #00BFD5;
-  background: rgba(255,255,255, .05);
+  background: #1D2D71;
   padding: 0;
   border-radius: 0;
 `

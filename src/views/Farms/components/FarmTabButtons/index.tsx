@@ -19,7 +19,7 @@ const StyledNav = styled.nav`
     background: ${({theme}) => (theme.isDark ? '#27262c' : '#fff')};
     color: ${({theme}) => (theme.isDark ? theme.colors.textSubtle : '#202224')};
     background: #fafbfc;
-    border: 1px solid #e4e7eb;
+    border: 1px solid #00BFD5;
     box-sizing: border-box;
     border-radius: 8px;
     height: 32px;
