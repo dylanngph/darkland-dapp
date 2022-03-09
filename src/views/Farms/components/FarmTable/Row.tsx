@@ -50,6 +50,13 @@ const CellInner = styled.div`
   }
 `
 
+const CellInnerRight = styled.div`
+  padding: 24px 0px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+`
+
 const StyledTr = styled.tr`
   cursor: pointer;
   border-bottom: 2px solid ${({theme}) => theme.colors.cardBorder};
@@ -103,11 +110,11 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
               case 'details':
                 return (
                   <td key={key}>
-                    <CellInner>
+                    <CellInnerRight>
                       <CellLayout>
                         <Details actionPanelToggled={actionPanelExpanded} />
                       </CellLayout>
-                    </CellInner>
+                    </CellInnerRight>
                   </td>
                 )
               case 'apr':
@@ -160,11 +167,11 @@ const Row: React.FunctionComponent<RowPropsWithLoading> = (props) => {
           </tr>
         </td>
         <td>
-          <CellInner>
+          <CellInnerRight>
             <CellLayout>
               <Details actionPanelToggled={actionPanelExpanded} />
             </CellLayout>
-          </CellInner>
+          </CellInnerRight>
         </td>
       </StyledTr>
     )

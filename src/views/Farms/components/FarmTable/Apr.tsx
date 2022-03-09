@@ -61,7 +61,7 @@ const Apr: React.FC<AprProps> = ({
     <Container>
       {originalValue ? (
         <ApyButton
-          variant={hideButton ? 'text' : 'text-and-button'}
+          variant={hideButton ? 'text' : 'text-and-button-right'}
           pid={pid}
           lpSymbol={lpSymbol}
           lpLabel={lpLabel}

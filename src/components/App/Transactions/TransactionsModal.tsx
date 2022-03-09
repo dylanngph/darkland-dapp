@@ -1,6 +1,7 @@
 import React, {useMemo, useCallback} from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import {useDispatch} from 'react-redux'
+import ConnectWalletButton from 'components/ConnectWalletButton'
 import {Modal, ModalBody, Text, Button, Flex, InjectedModalProps} from '@pancakeswap/uikit'
 import {useTranslation} from 'contexts/Localization'
 import {isTransactionRecent, useAllTransactions} from 'state/transactions/hooks'
@@ -63,6 +64,10 @@ const TransactionsModal: React.FC<InjectedModalProps> = ({onDismiss}) => {
             <Text>{t('No recent transactions')}</Text>
           )}
         </ModalBody>
+      )}
+
+      {!account && (
+        <ConnectWalletButton />
       )}
     </Modal>
   )

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import {Flex, IconButton, useModal, CalculateIcon} from '@pancakeswap/uikit'
+import {Box, Flex, IconButton, useModal, CalculateIcon} from '@pancakeswap/uikit'
 import RoiCalculatorModal from 'components/RoiCalculatorModal'
 import {useTranslation} from 'contexts/Localization'
 import {useFarmUser, useLpTokenPrice} from 'state/farms/hooks'
@@ -15,7 +15,7 @@ const ApyLabelContainer = styled(Flex)`
 `
 
 export interface ApyButtonProps {
-  variant: 'text' | 'text-and-button'
+  variant: 'text' | 'text-and-button-right' | 'text-and-button-left'
   pid: number
   lpSymbol: string
   lpLabel?: string
@@ -62,11 +62,19 @@ const ApyButton: React.FC<ApyButtonProps> = ({
 
   return (
     <ApyLabelContainer alignItems="center" onClick={handleClickButton}>
-      {displayApr}%
-      {variant === 'text-and-button' && (
+      {variant === 'text-and-button-left' && (
         <IconButton variant="text" scale="sm" ml="4px">
           <CalculateIcon width="18px" />
         </IconButton>
+      )}
+      {displayApr}%
+      {variant === 'text-and-button-right' && (
+        // <IconButton variant="text" scale="sm" ml="4px">
+        //   <CalculateIcon width="18px" color="#FFAB04" />
+        // </IconButton>
+        <Box ml={10}>
+          <CalculateIcon width="18px" color="#FFAB04" />
+        </Box>
       )}
     </ApyLabelContainer>
   )
