@@ -106,7 +106,7 @@ const Vesting = () => {
                   Price:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 DAK = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div>
               </Flex>
               <Flex>
@@ -114,7 +114,7 @@ const Vesting = () => {
                   Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 DAK = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div>
               </Flex>
               <Flex>
@@ -122,7 +122,7 @@ const Vesting = () => {
                   Max supply:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  0 DAK
+                  0 BIG
                 </div>
               </Flex>
             </CardBody>
@@ -151,7 +151,7 @@ const Vesting = () => {
                   Price:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 DAK = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
@@ -159,7 +159,7 @@ const Vesting = () => {
                   Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 DAK = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
@@ -167,7 +167,7 @@ const Vesting = () => {
                   Max Supply:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  0 DAK
+                  0 BIG
                 </div>
               </Flex>
             </CardBody>
@@ -195,7 +195,7 @@ const Vesting = () => {
                   Price:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 DAK = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
@@ -203,7 +203,7 @@ const Vesting = () => {
                   Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 DAK = 0.04 BUSD
+                  1 BIG = 0.04 BUSD
                 </div> 
               </Flex>
               <Flex>
@@ -211,7 +211,7 @@ const Vesting = () => {
                   Max Supply:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  0 DAK
+                  0 BIG
                 </div>
               </Flex>
             </CardBody>

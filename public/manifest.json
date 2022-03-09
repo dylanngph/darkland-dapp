@@ -1,7 +1,7 @@
 {
-  "short_name": "DotArcade",
-  "name": "DotArcade",
-  "description": "Farm ADT with DotArcade LP Tokens",
+  "short_name": "DarkLand",
+  "name": "DarkLand",
+  "description": "Farm ADT with DarkLand LP Tokens",
   "homepage_url": "https://dotarcade.io",
   "start_url": ".",
   "display": "standalone",

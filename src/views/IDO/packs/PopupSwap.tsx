@@ -148,7 +148,7 @@ export default ({ close, currencyType }) => {
                 MAX
               </Button>
               <WrapCurrency>
-                <img src={`/images/coins/${currencyType}${!isReverseCurrency ? '_token' : ''}.png`} alt='DAK' className="ml-5" height={30} width={30} />
+                <img src={`/images/coins/${currencyType}${!isReverseCurrency ? '_token' : ''}.png`} alt='BIG' className="ml-5" height={30} width={30} />
                 <p className='px-4 pt-1' > {t(`${!isReverseCurrency ? 'e' : ''}${currencyType}`)} </p>
               </WrapCurrency>
             </div>
@@ -172,7 +172,7 @@ export default ({ close, currencyType }) => {
             <p className='mt-3 font-bold' >{exchangeAmount}</p>
             <div className='flex flex-row' >
               <WrapCurrency>
-                <img src={`/images/coins/${currencyType}${isReverseCurrency ? '_token' : ''}.png`} alt='DAK' className="ml-5" height={30} width={30} />
+                <img src={`/images/coins/${currencyType}${isReverseCurrency ? '_token' : ''}.png`} alt='BIG' className="ml-5" height={30} width={30} />
                 <p className='px-4 pt-1' > {t(`${isReverseCurrency ? 'e' : ''}${currencyType}`)} </p>
               </WrapCurrency>
             </div>

@@ -35,7 +35,7 @@ const TableSectionTeam = ({tgeData, pendingTx, stageData, handleClaimStage}) => 
           <Th>No</Th>
           <Th>Name</Th>
           <Th>Date</Th>
-          <Th>DAK Amount</Th>
+          <Th>BIG Amount</Th>
           <Th>Action</Th>
         </Tr>
       </Thead>

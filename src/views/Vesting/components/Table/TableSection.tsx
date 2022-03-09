@@ -40,7 +40,7 @@ const TableSection = () => {
           <Th>Name</Th>
           <Th>Date</Th>
           <Th>% Unlocked Token</Th>
-          <Th>DAK Amount</Th>
+          <Th>BIG Amount</Th>
           <Th>Action</Th>
         </Tr>
       </Thead>

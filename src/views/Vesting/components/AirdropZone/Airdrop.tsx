@@ -139,7 +139,7 @@ const StrategicZone = () => {
                                         Max Supply:
                                     </div>
                                     <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        300.000.000 DAK
+                                        300.000.000 BIG
                                     </div>
                                 </Flex>
                                 <Flex justifyContent='space-between'>

@@ -37,8 +37,8 @@ const BuyToken: React.FC<BuyTokenProps> = ({ tokenNeedHold, onDismiss }) => {
 			</ModalHeader>
 			<ModalBody p="24px" maxWidth="400px" width="100%">
 				<Flex minHeight={120} flexDirection='column' justifyContent='space-between'>
-					<Text textColor="white">You need hold more than <Text as="span" fontWeight="bold" textColor="yellow.500">{tokenNeedHold} DAK</Text> for add to game</Text>
-					<Button onClick={handleBuy}>Buy DAK</Button>
+					<Text textColor="white">You need hold more than <Text as="span" fontWeight="bold" textColor="yellow.500">{tokenNeedHold} BIG</Text> for add to game</Text>
+					<Button onClick={handleBuy}>Buy BIG</Button>
 				</Flex>
 			</ModalBody>
 		</ModalContainer>

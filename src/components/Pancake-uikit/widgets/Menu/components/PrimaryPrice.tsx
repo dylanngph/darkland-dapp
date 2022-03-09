@@ -13,7 +13,7 @@ const KSharkPrice: React.FC<Props> = ({primaryPriceUsd}) => {
       <ImageToken src="/images/prices/adt.png" alt="adt" height='30px' width='30px' />
       <GirdCard>
         <Text color="textSubtle" bold>
-          DAK
+          BIG
         </Text>
         <Text color="textSubtle" fontSize="12px">{`$${primaryPriceUsd.toFixed(3)}`}</Text>
       </GirdCard>

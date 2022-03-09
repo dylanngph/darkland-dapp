@@ -12,8 +12,8 @@
   "tokens": [
     
     {
-      "name": "DotArcade",
-      "symbol": "DAK",
+      "name": "DarkLand",
+      "symbol": "BIG",
       "address": "0xc008debbb1f33d9453ffd2104feb1fe7e9663524",
       "chainId": 56,
       "decimals": 18,

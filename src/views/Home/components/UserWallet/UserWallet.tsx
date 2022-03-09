@@ -94,9 +94,9 @@ const UserWallet = () => {
           <Flex alignItems="center">
             <img src="/images/coins/adt.png" alt='adt' width={65} />
             <Col ml="10px">
-              <Label>{formatNumber(adt)} DAK</Label>
+              <Label>{formatNumber(adt)} BIG</Label>
               <NavLink to="/swap">
-                <BuyText>Buy DAK</BuyText>
+                <BuyText>Buy BIG</BuyText>
               </NavLink>
             </Col>
           </Flex>
