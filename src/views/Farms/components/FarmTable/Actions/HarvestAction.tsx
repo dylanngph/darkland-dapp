@@ -44,7 +44,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({pid, userDa
     <ActionContainer>
       <ActionTitles>
         <Text textTransform="uppercase" color="#FFC247" fontSize="12px" pr="4px">
-        BIG
+        DAK
         </Text>
         <Text textTransform="uppercase" color="#00A3FF" fontSize="12px">
           {t('Earned')}
@@ -65,7 +65,7 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({pid, userDa
               await onReward()
               toastSuccess(
                 `${t('Harvested')}!`,
-                t('Your %symbol% earnings have been sent to your wallet!', {symbol: 'BIG'}),
+                t('Your %symbol% earnings have been sent to your wallet!', {symbol: 'DAK'}),
               )
             } catch (e) {
               toastError(

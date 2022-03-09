@@ -57,7 +57,7 @@ const Row = styled.div`
   align-items: center;
 `
 
-const LP_SYMBOL = 'BIG-BUSD'
+const LP_SYMBOL = 'DAK-BUSD'
 
 const FarmStakingCard = () => {
   const [pendingTx, setPendingTx] = useState(false)

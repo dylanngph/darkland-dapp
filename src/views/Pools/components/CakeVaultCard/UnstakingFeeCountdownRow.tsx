@@ -25,7 +25,7 @@ const UnstakingFeeCountdownRow: React.FC<UnstakingFeeCountdownRowProps> = ({isTa
       </Text>
       <Text>
         {t(
-          'Only applies within 3 days of staking. Unstaking after 3 days will not include a fee. Timer resets every time you stake new BIG in the pool.',
+          'Only applies within 3 days of staking. Unstaking after 3 days will not include a fee. Timer resets every time you stake new DAK in the pool.',
         )}
       </Text>
     </>,

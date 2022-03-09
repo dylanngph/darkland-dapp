@@ -17,7 +17,7 @@ const farms: FarmConfig[] = [
   // },
   {
     pid: 1,
-    lpSymbol: 'BIG-BUSD',
+    lpSymbol: 'DAK-BUSD',
     lpAddresses: {
       97: '',
       56: '0x1471f69c24a9bba486c2a23bf9f55ffc64376bed',

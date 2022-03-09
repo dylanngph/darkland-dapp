@@ -50,10 +50,10 @@ const HarvestAction: React.FunctionComponent<HarvestActionProps> = ({
 
   const actionTitle = (
     <>
-      <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
+      <Text fontSize="12px" color="warning" as="span" textTransform="uppercase">
         {earningToken.symbol}{' '}
       </Text>
-      <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
+      <Text fontSize="12px" color="success" as="span" textTransform="uppercase">
         {t('Earned')}
       </Text>
     </>

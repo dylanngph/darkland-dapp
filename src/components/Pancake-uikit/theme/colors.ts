@@ -6,7 +6,7 @@ export const baseColors = {
   primaryBright: '#9BBAFF',
   primaryDark: '#4072D3',
   secondary: '#FFC247',
-  success: '#38CB89',
+  success: '#00FB28',
   warning: '#FFA800',
   custom: 'linear-gradient(180deg, #292929 0%, #131313 100%)',
 }
