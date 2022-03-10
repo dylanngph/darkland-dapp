@@ -327,7 +327,7 @@ const Farms: React.FC = () => {
         <Heading as="h1" size="xl" color="#fff">
           <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           {t('Farm')}
-          <img style={{display: 'inline-block', marginLeft: '10px'}} src='./images/icons/farm-pool-icon.png' alt='farm-pool-icon' />
+          <img style={{display: 'inline-block', marginLeft: '10px'}} src='/images/icons/farm-pool-icon.png' alt='farm-pool-icon' />
           </div>
         </Heading>
         <Text color="#fff">{t('Stake Liquidity Pool (LP) tokens to earn.')}</Text>

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {Flex, TooltipText, IconButton, useModal, CalculateIcon, Skeleton, useTooltip} from '@pancakeswap/uikit'
+import {Flex, TooltipText, Text, IconButton, useModal, CalculateIcon, Skeleton, useTooltip} from '@pancakeswap/uikit'
 import {useTranslation} from 'contexts/Localization'
 import Balance from 'components/Balance'
 import RoiCalculatorModal from 'components/RoiCalculatorModal'
@@ -58,8 +58,9 @@ const AprRow: React.FC<AprRowProps> = ({pool, stakedBalance, performanceFee = 0}
 
   return (
     <Flex alignItems="center" justifyContent="space-between">
-      {tooltipVisible && tooltip}
-      <TooltipText ref={targetRef}>{isAutoVault ? `${t('APY')}:` : `${t('APR')}:`}</TooltipText>
+      {/* {tooltipVisible && tooltip}
+      <TooltipText ref={targetRef}>{isAutoVault ? `${t('APY')}:` : `${t('APR')}:`}</TooltipText> */}
+      <Text>{isAutoVault ? `${t('APY')}:` : `${t('APR')}:`}</Text>
       {isFinished || !apr ? (
         <Skeleton width="82px" height="32px" />
       ) : (
