@@ -134,7 +134,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({pool, userDataLoad
     return (
       <ActionContainer>
         <ActionTitles>
-          <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
+          <Text fontSize="12px" color="textSubtle" as="span" textTransform="uppercase">
             {t('ENABLE POOL')}
           </Text>
         </ActionTitles>
@@ -149,7 +149,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({pool, userDataLoad
     return (
       <ActionContainer>
         <ActionTitles>
-          <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
+          <Text fontSize="12px" color="textSubtle" as="span" textTransform="uppercase">
             {t('ENABLE POOL')}
           </Text>
         </ActionTitles>
@@ -164,7 +164,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({pool, userDataLoad
     return (
       <ActionContainer>
         <ActionTitles>
-          <Text fontSize="12px" bold color="textSubtle" as="span" textTransform="uppercase">
+          <Text fontSize="12px" color="textSubtle" as="span" textTransform="uppercase">
             {t('Enable pool')}
           </Text>
         </ActionTitles>

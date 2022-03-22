@@ -53,9 +53,9 @@ const BinanceSmartChain = () => {
             <img className="h-15 w-15" src="/images/coins/token-dak.png" alt="BUSD" width={42} height={42} />
           </div>
           <div>
-            <p className='text-white text-xl' > {formatNumber(busd) ?? 0} DAK</p>
+            <p className='text-white text-xl' > {formatNumber(busd) ?? 0} BIG</p>
             {/* <p style={{ color: "#929292" }} className='mt-1' > {formatNumber(busd) ?? 0} USD</p> */}
-            <p className='text-sm mt-1' style={{ color: "#00FB28" }} >Buy DAK</p>
+            <p className='text-sm mt-1' style={{ color: "#00FB28" }} >Buy BIG</p>
           </div>
         </div>
       </div>

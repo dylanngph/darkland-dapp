@@ -40,7 +40,7 @@ const StyledCardHeader: React.FC<{
       return t('Automatic restaking')
     }
     if (isCakePool) {
-      return t('Earn DAK, stake DAK')
+      return t('Earn BIG, stake BIG')
     }
     return t('Stake %symbol%', {symbol: stakingToken.symbol})
   }
@@ -51,7 +51,7 @@ const StyledCardHeader: React.FC<{
         {isAutoVault ? (
           <CakeVaultTokenPairImage width={64} height={64} />
         ) : (
-          <TokenPairImage primaryToken={earningToken} secondaryToken={stakingToken} width={64} height={64} />
+          <TokenPairImage variant="inverted" primaryToken={earningToken} secondaryToken={stakingToken} width={64} height={64} />
         )}
         <Flex alignItems="end" flexDirection="column">
           <Heading color="#ffffff" scale="lg">

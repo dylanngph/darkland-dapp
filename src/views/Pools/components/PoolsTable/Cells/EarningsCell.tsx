@@ -38,7 +38,8 @@ const EarningsCell: React.FC<EarningsCellProps> = ({pool, account, userDataLoade
   const formattedBalance = formatNumber(earningTokenBalance, 3, 3)
   const isBnbPool = poolCategory === PoolCategory.BINANCE
 
-  const labelText = t('%asset% Earned', {asset: earningToken.symbol})
+  // const labelText = t('%asset% Earned', {asset: earningToken.symbol})
+  const labelText = t('Earned')
 
   const [onPresentCollect] = useModal(
     <CollectModal

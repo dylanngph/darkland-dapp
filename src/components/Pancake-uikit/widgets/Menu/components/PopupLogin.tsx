@@ -433,7 +433,7 @@ const PopupLogin = ({ close, setToken }) => {
             <CardIcon>
               <img src="/logo.svg" alt="logo" style={{ height: '44px', width: 'auto' }} />
             </CardIcon>
-            <Title>Welcome to DotArcade!</Title>
+            <Title>Welcome to DarkLand!</Title>
             <div className="w-full flex flex-col justify-center mt-2">
               <Text className="text-gray text-center">What should we call you?</Text>{' '}
               <Text className="text-gray text-center">This can be changed later.</Text>

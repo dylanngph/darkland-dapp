@@ -8,6 +8,7 @@ import {
 import tokens from 'config/constants/tokens'
 import {Token} from 'config/constants/types'
 import {getAddress} from 'utils/addressHelpers'
+import styled from 'styled-components'
 
 interface TokenPairImageProps extends Omit<UIKitTokenPairImageProps, 'primarySrc' | 'secondarySrc'> {
   primaryToken: Token
@@ -21,13 +22,21 @@ const getImageUrlFromToken = (token: Token) => {
 
 export const TokenPairImage: React.FC<TokenPairImageProps> = ({primaryToken, secondaryToken, ...props}) => {
   return (
-    <UIKitTokenPairImage
+    <StyledUIKitTokenPairImage
       primarySrc={getImageUrlFromToken(primaryToken)}
       secondarySrc={getImageUrlFromToken(secondaryToken)}
       {...props}
     />
   )
 }
+
+
+// fix with new design....
+const StyledUIKitTokenPairImage = styled(UIKitTokenPairImage)`
+  & > div:last-child {
+    z-index: 10;
+  }
+`
 
 interface TokenImageProps extends ImageProps {
   token: Token

@@ -28,8 +28,8 @@ const InfoScreen = () => {
   return (
     <div className="infoScreen">
       <div className="infoScreen__Top">
-        <p className="infoScreen__Top__title">DotArcade app</p>
-        <p className="infoScreen__Top__description">One-stop quick experience of DotArcade services</p>
+        <p className="infoScreen__Top__title">DarkLand app</p>
+        <p className="infoScreen__Top__description">One-stop quick experience of DarkLand services</p>
       </div>
       {/* <div className="infoScreen__Center">
         <div className="infoScreen__Center__Left">
@@ -80,10 +80,10 @@ const InfoScreen = () => {
         </HeroRight>
       </Hero>
       <div style={{marginBottom: '20px'}} className="infoScreen__Middle">
-        {viewContentMiddle(Images.info.icInfo1, 'Provide DotArcade trading, currency price inquiry services')}
+        {viewContentMiddle(Images.info.icInfo1, 'Provide DarkLand trading, currency price inquiry services')}
         {viewContentMiddle(
           Images.info.icInfo2,
-          'Open up a special area to help DotArcade ecological access to more high-quality NFTs',
+          'Open up a special area to help DarkLand ecological access to more high-quality NFTs',
         )}
         {viewContentMiddle(
           Images.info.icInfo3,
@@ -98,7 +98,7 @@ const InfoScreen = () => {
           <div className="infoScreen__Bottom__Top__Right">
             <p className="infoScreen__Bottom__Top__Right__title">One-stop experience KSHARK NFT function</p>
             <p className="infoScreen__Bottom__Top__Right__description">
-              Quickly experience DotArcade NFT mining pool, blind box, minting, trading and other functions
+              Quickly experience DarkLand NFT mining pool, blind box, minting, trading and other functions
             </p>
           </div>
         </div>
@@ -106,7 +106,7 @@ const InfoScreen = () => {
           <div className="infoScreen__Bottom__Bottom__Left">
             <p className="infoScreen__Bottom__Bottom__Left__title">BitBack Pool</p>
             <p className="infoScreen__Bottom__Bottom__Left__description">
-              Stake DotArcade to earn new token. You can unstake at any time.
+              Stake DarkLand to earn new token. You can unstake at any time.
             </p>
           </div>
           <div className="infoScreen__Bottom__Bottom__Right">

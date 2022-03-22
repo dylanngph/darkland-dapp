@@ -13,7 +13,6 @@ export interface LiquidityProps {
 }
 
 const LiquidityWrapper = styled.div`
-  min-width: 110px;
   font-weight: 600;
   text-align: right;
   margin-right: 14px;
@@ -48,7 +47,7 @@ const Liquidity: React.FunctionComponent<LiquidityProps> = ({liquidity}) => {
         <Text>{displayLiquidity}</Text>
       </LiquidityWrapper>
       <ReferenceElement ref={targetRef}>
-        <HelpIcon color="#FFAB04" />
+        <HelpIcon color="#FFAB04" ml={10} />
       </ReferenceElement>
       {tooltipVisible && tooltip}
     </Container>

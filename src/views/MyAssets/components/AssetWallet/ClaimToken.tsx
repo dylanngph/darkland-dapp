@@ -19,7 +19,7 @@ const ClaimToken = () => {
           <img src='/images/coins/token-dak.png' alt='htd' className="ml-5" height={42} width={42} />
         </div>
         <RightCurrency>
-          <h2 className='text-xl' > {userData?.htd ?? 0}DAK </h2>
+          <h2 className='text-xl' > {userData?.htd ?? 0}BIG </h2>
           <h2 style={{ color: "#00A3FF" }} className='mt-1 text-sm' >~2524 USD</h2>
         </RightCurrency>
 

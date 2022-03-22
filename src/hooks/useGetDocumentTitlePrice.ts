@@ -5,7 +5,7 @@ const useGetDocumentTitlePrice = () => {
   const cakePriceBusd = useCakeBusdPrice()
   useEffect(() => {
     const cakePriceBusdString = cakePriceBusd ? cakePriceBusd.toFixed(2) : ''
-    document.title = `DotArcade - ${cakePriceBusdString}`
+    document.title = `DarkLand - ${cakePriceBusdString}`
   }, [cakePriceBusd])
 }
 export default useGetDocumentTitlePrice

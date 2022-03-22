@@ -70,21 +70,21 @@ const Logo: React.FC<Props> = ({links , isMobile , isPushed, togglePush, isDark,
         ) : null}
       </MenuButton>
       {isAbsoluteUrl ? (
-        <StyledLink to={absoluteHref} aria-label="DotArcade home page">
-          <img src="#" alt="DotArcade" width="35px" height="40px" />
-          <StyledP to={absoluteHref} aria-label="DotArcade home page">
-            <p>DotArcade Swap</p>
+        <StyledLink to={absoluteHref} aria-label="DarkLand home page">
+          <img src="#" alt="DarkLand" width="35px" height="40px" />
+          <StyledP to={absoluteHref} aria-label="DarkLand home page">
+            <p>DarkLand Swap</p>
           </StyledP>
           {innerLogo}
         </StyledLink>
       ) : (
-        <StyledLink to={absoluteHref} aria-label="DotArcade home page">
-          <StyledP to={absoluteHref} aria-label="DotArcade home page">
+        <StyledLink to={absoluteHref} aria-label="DarkLand home page">
+          <StyledP to={absoluteHref} aria-label="DarkLand home page">
             <img
               src="/logo.png"
               height="42px"
               style={{paddingLeft: '30px', transform: 'translateX(-15px)', width: 'auto'}}
-              alt="DotArcade"
+              alt="DarkLand"
             />
             {/* <DotArcadeLogo/> */}
           </StyledP>

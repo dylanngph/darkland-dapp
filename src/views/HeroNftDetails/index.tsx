@@ -319,7 +319,7 @@ const HeroNftDetails = () => {
                             height: '24px',
                             width: 'auto',
                           }}
-                          alt="DotArcade"
+                          alt="DarkLand"
                         />
                         Login
                       </Button>
