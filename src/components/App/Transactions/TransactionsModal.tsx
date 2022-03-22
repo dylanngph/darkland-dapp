@@ -8,7 +8,6 @@ import {isTransactionRecent, useAllTransactions} from 'state/transactions/hooks'
 import {TransactionDetails} from 'state/transactions/reducer'
 import {AppDispatch} from 'state'
 import {clearAllTransactions} from 'state/transactions/actions'
-import ConnectWalletButton from 'components/ConnectWalletButton'
 import {AutoRow} from '../../Layout/Row'
 import Transaction from './Transaction'
 
@@ -71,10 +70,6 @@ const TransactionsModal: React.FC<InjectedModalProps> = ({onDismiss}) => {
         <ModalBody>
           <ConnectWalletButton />
         </ModalBody>
-      )}
-
-      {!account && (
-        <ConnectWalletButton />
       )}
     </Modal>
   )
