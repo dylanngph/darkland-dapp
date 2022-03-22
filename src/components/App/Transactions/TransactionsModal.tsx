@@ -7,6 +7,7 @@ import {isTransactionRecent, useAllTransactions} from 'state/transactions/hooks'
 import {TransactionDetails} from 'state/transactions/reducer'
 import {AppDispatch} from 'state'
 import {clearAllTransactions} from 'state/transactions/actions'
+import ConnectWalletButton from 'components/ConnectWalletButton'
 import {AutoRow} from '../../Layout/Row'
 import Transaction from './Transaction'
 
@@ -48,7 +49,7 @@ const TransactionsModal: React.FC<InjectedModalProps> = ({onDismiss}) => {
     <Modal style={{borderRadius: 0}} title={t('Recent Transactions')} headerBackground="gradients.cardHeader" onDismiss={onDismiss}>
       {account && (
         <ModalBody>
-          {!!pending.length || !!confirmed.length ? (
+          {!!pending.length || !!confirmed.length ? 
             <>
               <AutoRow mb="1rem" style={{justifyContent: 'space-between'}}>
                 <Text>{t('Recent Transactions')}</Text>
@@ -59,9 +60,15 @@ const TransactionsModal: React.FC<InjectedModalProps> = ({onDismiss}) => {
               {renderTransactions(pending)}
               {renderTransactions(confirmed)}
             </>
-          ) : (
+           : 
             <Text>{t('No recent transactions')}</Text>
-          )}
+          }
+        </ModalBody>
+      )}
+
+      {!account && (
+        <ModalBody>
+          <ConnectWalletButton />
         </ModalBody>
       )}
     </Modal>
