@@ -71,7 +71,7 @@ const HeroNftDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const balance = await getBalanceOf(account, tokens.htd.address)
+        const balance = await getBalanceOf(account, tokens.big.address)
         const res: any = await fetchAttributeHero(id)
         setIdHero(id)
         setHeroesDetail(res)

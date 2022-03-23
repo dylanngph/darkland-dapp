@@ -46,7 +46,7 @@ const idos: PropsIDO[] = [
     startTime: 1637938800,
     endTime: 1638086400,
     tokenPrice: tokens.busd,
-    tokenEarn: tokens.htd,
+    tokenEarn: tokens.big,
     idoDescription: `✨ In the IDO on https://heroestd.io, everyone must buy $HTD with $BUSD. 
         Max cap/whitelist person: $50
         Max cap/freezone person: $50/purchase, no limit on number of purchases
@@ -74,7 +74,7 @@ const idos: PropsIDO[] = [
     startTime: 1638104400,
     endTime: 1638198000,
     tokenPrice: tokens.busd,
-    tokenEarn: tokens.htd,
+    tokenEarn: tokens.big,
     priceBuy: 50,
     status: OPEN_IDO,
     logo: '/images/sample-ido.png',

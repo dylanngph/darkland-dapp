@@ -22,7 +22,7 @@ interface PropStats {
 }
 
 const useStats = (): PropStats => {
-  const htdTokenAddress = getAddress(tokens.htd.address)
+  const htdTokenAddress = getAddress(tokens.big.address)
   const burnedBalance = useBurnedBalance(htdTokenAddress)
 
   const teamHolderBalances: any = {}

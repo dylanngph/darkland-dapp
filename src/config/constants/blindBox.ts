@@ -5,7 +5,7 @@ import tokens from './tokens'
 
 export const blindBoxConfig = {
   nftRequired: [addressBounty.gold, addressBounty.ruby],
-  tokenRequire: tokens.htd,
+  tokenRequire: tokens.big,
   contractAddress: {
     97: '0xe6B6c2Fc829760d967AD060445EFB0b9F02c3693',
     56: '0xFf6FfD60fa5445cb0e2d647A270D458c9cdb734f',
@@ -13,7 +13,7 @@ export const blindBoxConfig = {
 }
 
 export const lotteryConfig = {
-  tokenRequire: tokens.htd,
+  tokenRequire: tokens.big,
   priceTicket: 200,
   participants: 1025,
   contractAddress: {

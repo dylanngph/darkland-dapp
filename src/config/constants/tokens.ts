@@ -64,19 +64,11 @@ const tokens = {
     symbol: 'BNB',
     projectLink: 'https://www.binance.com/',
   },
-  htd: {
-    symbol: 'HTD',
-    address: {
-      56: '0x5e2689412fae5c29bd575fbe1d5c1cd1e0622a8f',
-      97: '0x2f3f39b2578904c1a80b14d03a94315a2a5c2d44',
-    },
-    decimals: 18,
-  },
-  adt: {
+  big: {
     symbol: 'BIG',
     address: {
-      56: '0xc008debbb1f33d9453ffd2104feb1fe7e9663524',
-      97: '0x85A0B362648a04B0ed33Ed5DeCd4b506D673c44b',
+      56: '0x6fDDA284250795DfBAB53955dA78de4b6F72c4f9',
+      97: '0x6fDDA284250795DfBAB53955dA78de4b6F72c4f9',
     },
     decimals: 18,
   },

@@ -14,10 +14,10 @@
     {
       "name": "DarkLand",
       "symbol": "BIG",
-      "address": "0xc008debbb1f33d9453ffd2104feb1fe7e9663524",
+      "address": "0x6fDDA284250795DfBAB53955dA78de4b6F72c4f9",
       "chainId": 56,
       "decimals": 18,
-      "logoURI": "/images/tokens/0xc008debbb1f33d9453ffd2104feb1fe7e9663524.png"
+      "logoURI": "/images/tokens/0x6fDDA284250795DfBAB53955dA78de4b6F72c4f9.png"
     },
     {
       "name": "WBNB Token",

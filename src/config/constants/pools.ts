@@ -5,7 +5,7 @@ const pools: PoolConfig[] = [
   {
     sousId: 1,
     stakingToken: tokens.busd,
-    earningToken: tokens.adt,
+    earningToken: tokens.big,
     contractAddress: {
       97: '',
       56: '0xB0D88f77b380fAF7699bF27C2d8e0098b7DC1366',

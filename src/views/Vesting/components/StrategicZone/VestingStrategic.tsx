@@ -172,7 +172,7 @@ const StrategicZone = () => {
                         <Flex>
                             <img src="/images/coins/adt.png" alt="" width="27px" />
                             <Money>
-                                {vestable ? formatNumber(vestable): '--'} ADT
+                                {vestable ? formatNumber(vestable): '--'} BIG
                             </Money>
                         </Flex>
                         <Button

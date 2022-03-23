@@ -44,6 +44,7 @@ const CardLayout = styled(FlexLayout)`
 const NUMBER_OF_POOLS_VISIBLE = 12
 
 const Pools: React.FC = () => {
+  console.log("pool....")
   const {isMobile} = useMatchBreakpoints()
   const location = useLocation()
   const {t} = useTranslation()
@@ -242,9 +243,8 @@ const Pools: React.FC = () => {
               <Toggle checked={stakedOnly} onChange={() => setStakedOnly(!stakedOnly)} scale="md" />
               <Text> {t('Staked only')}</Text>
             </ToggleWrapper>
-
-            <PoolTabButtons hasStakeInFinishedPools={hasStakeInFinishedPools} />
           </ViewControls>
+          <PoolTabButtons hasStakeInFinishedPools={hasStakeInFinishedPools} />
           
           {/* <FilterContainer>
             <LabelWrapper>

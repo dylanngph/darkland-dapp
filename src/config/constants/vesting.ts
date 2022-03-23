@@ -13,7 +13,7 @@ export const VestingTGE = {
       97: '0x14eC49aa453967DD6cf728D499DcC1e57b06aD73',
     },
   },
-  token: tokens.adt,
+  token: tokens.big,
 }
 
 export const VestingStage = []
