@@ -84,7 +84,7 @@ const Vesting = () => {
       </Header>
       <Body>
         <LayoutCard sx={{
-          gridTemplateColumns: isMobile ? 'auto' :'auto auto auto'
+          gridTemplateColumns: isMobile ? 'auto' :'auto auto'
         }}>
           <Card>
             <CardHeader>
@@ -173,7 +173,7 @@ const Vesting = () => {
             </CardBody>
           </Card>
 
-          <Card>
+          {/* <Card>
             <CardHeader>
               <Box sx={{
                 fontSize: '22px',
@@ -185,9 +185,9 @@ const Vesting = () => {
               }}>
                 <NavLink to='/vesting/airdrop' aria-hidden="true">Airdrop</NavLink>
               </Box>
-              {/* <Button variant='secondary' onClick={() => history.push('/vesting/strategic-round')}>
+              <Button variant='secondary' onClick={() => history.push('/vesting/strategic-round')}>
                 Open
-              </Button> */}
+              </Button>
             </CardHeader>
             <CardBody>
               <Flex>
@@ -215,7 +215,7 @@ const Vesting = () => {
                 </div>
               </Flex>
             </CardBody>
-          </Card>
+          </Card> */}
         
         </LayoutCard>
       </Body>

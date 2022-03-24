@@ -68,7 +68,7 @@ const tokens = {
     symbol: 'BIG',
     address: {
       56: '0x6fDDA284250795DfBAB53955dA78de4b6F72c4f9',
-      97: '0x6fDDA284250795DfBAB53955dA78de4b6F72c4f9',
+      97: '0x09E47c7fa06Ce009111B22d8A78A08EcfbB40406',
     },
     decimals: 18,
   },

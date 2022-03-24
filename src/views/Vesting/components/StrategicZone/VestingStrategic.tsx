@@ -63,7 +63,7 @@ const StrategicZone = () => {
     const handleClaim = async () => {
         try {
           setPendingTx(true)
-          const tx = await callWithGasPrice(vestingContract, 'release', [account])
+          const tx = await callWithGasPrice(vestingContract, 'claim', [])
           const receipt = await tx.wait()
           toastSuccess('Success', 'Your transaction was successful')
         } catch (e) {
@@ -75,18 +75,10 @@ const StrategicZone = () => {
     }
 
     const {
-        getAllocation, 
-        getReleased,
-        vestable, 
-        getTGERelease,
-        getCliffDuration
+        canUnlockAmount, 
+        infoWallet,
+        balanceOf, 
     } = useFetchVestingTGE()
-
-    useEffect(() => {
-        if(getTGERelease === 0) setIsClaimTGE(true)
-        else setIsClaimTGE(false)
-        
-    }, [getTGERelease])
 
     return (
         <Page>
@@ -108,28 +100,49 @@ const StrategicZone = () => {
                 gridTemplateColumns: isMobile ? '100%' : '70% 30%'
             }}>
                 <Col>
-                    <Card>
+                    {/* <Card>
                         <TableSection />
-                    </Card>
-                </Col>
-                <Col>
+                    </Card> */}
                     <StyledBox>
-                        <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px' }}>Your Info</div>
-                        <div style={{color: '#E6AB58', fontWeight: '500'}}>Your Vesting Balance</div>
+                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Your Vesting Balance</div>
                         <Flex>
                             <img src="/images/coins/big.png" alt="" width="27px" />
-                            <Money sx={{ display: 'flex', alignItems: 'center' }}>
-                                {getAllocation ? formatNumber(getAllocation) : <Skeleton mr={2} width={40} height={20} />} BIG
+                            <Money>
+                            {balanceOf !== undefined  ? formatNumber(balanceOf) : 0} BIG
                             </Money>
                         </Flex>
-                        <div style={{color: '#E6AB58', fontWeight: '500'}}>Token Claimed</div>
+                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Token Claimed</div>
                         <Flex>
                             <img src="/images/coins/big.png" alt="" width="27px" />
-                            <Money sx={{ display: 'flex', alignItems: 'center' }}>
-                                {getReleased ? formatNumber(getReleased) : <Skeleton mr={2} width={40} height={20} />} BIG
+                            <Money>
+                            {infoWallet ? formatNumber(infoWallet[1]) : 0 } BIG
+                            </Money>
+                        </Flex>
+                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Token Remaining</div>
+                        <Flex>
+                            <img src="/images/coins/big.png" alt="" width="27px" />
+                            <Money>
+                            {infoWallet ? formatNumber(infoWallet[0] - infoWallet[1] ) : 0 } BIG
                             </Money>
                         </Flex>
                     </StyledBox>
+                    <StyledBox>
+                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Claimable token</div>
+                        <Flex>
+                            <img src="/images/coins/big.png" alt="" width="27px" />
+                            <Money>
+                            {infoWallet ? formatNumber(infoWallet[2]) : 0 } BIG
+                            </Money>
+                        </Flex>
+                        <Button
+                            disabled={canUnlockAmount === 0}
+                            onClick={() => handleClaim()}
+                        >
+                            Claim
+                        </Button>
+                    </StyledBox>
+                </Col>
+                <Col>
                     <StyledBox>
                         <div>
                             <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px' }}>Stragegic Round</div>
@@ -170,7 +183,7 @@ const StrategicZone = () => {
                             </div>
                         {/* <div style={{color: '#E6AB58', fontWeight: '500'}}>Claimable token</div>
                         <Flex>
-                            <img src="/images/coins/adt.png" alt="" width="27px" />
+                            <img src="/images/coins/BIG.png" alt="" width="27px" />
                             <Money>
                                 {vestable ? formatNumber(vestable): '--'} BIG
                             </Money>
