@@ -4,7 +4,7 @@ import React, {useState} from 'react'
 import {
   Box,
 } from '@mui/material'
-import {NavLink} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 import useToast from 'hooks/useToast'
 import styled from 'styled-components'
 import {useCallWithGasPrice} from 'hooks/useCallWithGasPrice'
@@ -86,7 +86,7 @@ const Vesting = () => {
         <LayoutCard sx={{
           gridTemplateColumns: isMobile ? 'auto' :'auto auto auto'
         }}>
-          <Card>
+          <Card onClick={() => history.push('/vesting/private-round')}>
             <CardHeader>
               <Box sx={{
                 fontSize: '22px',
@@ -128,8 +128,7 @@ const Vesting = () => {
             </CardBody>
           </Card>
 
-
-          <Card>
+          <Card onClick={() => history.push('/vesting/strategic-round')}>
             <CardHeader>
               <Box sx={{
                 fontSize: '22px',
@@ -173,7 +172,7 @@ const Vesting = () => {
             </CardBody>
           </Card>
 
-          <Card>
+          <Card onClick={() => history.push('/vesting/airdrop')}>
             <CardHeader>
               <Box sx={{
                 fontSize: '22px',
@@ -264,6 +263,11 @@ const Card = styled(Box)`
     // border-radius: 10px;
     padding: 20px;
     color: #ffffff;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    }
 `
 const CardHeader = styled(Box)`
   border-bottom: 1px solid #747475;
