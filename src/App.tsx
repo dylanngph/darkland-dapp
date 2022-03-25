@@ -147,16 +147,6 @@ const App: React.FC = () => {
             <Route exact path="/create/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
             <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
             <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
-            {/* <Route exact strict path="/blind-box" component={BlindBox} />
-            <Route exact strict path="/blind-box/:boxId" component={BlindBoxDetails} />
-            <Route exact strict path="/leaderboard" component={LeaderBoardStaking} />
-            <Route exact strict path="/leaderboardpooling" component={LeaderboardPooling} />
-            <Route exact strict path="/leaderboardalphatest" component={LeaderBoardAlphaTest} />
-            <Route exact strict path="/heroes-details/:id" component={HeroInGameDetails} />
-            <Route exact strict path="/heroes-order/:id" component={MarketPlaceHeroDetails} />
-            <Route exact strict path="/heroes-nft-details/:id" component={HeroNftDetails} />
-            <Route exact strict path="/dashboard-market" component={DashboardMarket} />
-            <Route exact strict path="/transaction-history" component={TransactionHistory} /> */}
             
             {/* Redirect */}
             <Route path="/pool">

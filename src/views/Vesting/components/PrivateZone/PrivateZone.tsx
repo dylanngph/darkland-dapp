@@ -108,51 +108,79 @@ const PrivateZone = () => {
                 <Col>
                     <StyledBox>
                         <div>
-                            <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px' }}>Private Sale Round</div>
+                            <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px', color: '#FFA800' }}>Stragegic Sale Round</div>
                             <div style={{borderBottom: '1px solid #747475', padding: '20px 0', marginBottom: '20px'}}>
                                 <Flex justifyContent='space-between' sx={{marginBottom: '15px'}}>
                                     <div>
-                                        Max Supply:
+                                        Price:
+                                    </div>
+                                    <div style={{fontSize: '16px', fontWeight: '700'}} >
+                                        1 $BIG = 0.04$
+                                    </div>
+                                </Flex>
+                                <Flex justifyContent='space-between'>
+                                    <div>
+                                        Token allocation:
                                     </div>
                                     <div style={{fontSize: '16px', fontWeight: '700'}} >
                                         45,000,000 BIG
                                     </div>
                                 </Flex>
-                                <Flex justifyContent='space-between'>
-                                    <div>
-                                        Price:
-                                    </div>
-                                    <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        1 BIG = 0.04 BUSD
-                                    </div>
-                                </Flex>
                             </div>
                             <div>
-                                In case you would like to sell your $BIG, we ask that you strictly follow the Price Management Policy below: 
-                                <ul>
-                                    <li>
-                                        Between 19th January 2022 and 25th January 2022 (23:59 UTC): Maximum sale amount of $BIG tokens is BUSD 1,000 (or equivalent) per transaction and no more than twenty-five (25) sale transactions per day. </li>
-                                    <li>
-                                        Between 26th January 2022 (00:00 UTC) and 5th February 2022 (23:59 UTC): Maximum sale amount of $BIG tokens is BUSD 1,500 (or equivalent) per transaction and no more than thirty (30) sale transactions per day.                                </li>
-                                    <li>
-                                        Between 6th February 2022 (00:00 UTC) and 20th February 2022 (23:59 UTC): Maximum sale amount of $BIG tokens is BUSD 2,000 (or equivalent) per transaction and no more than thirty-five (35) sale transactions per day.                                </li>
-                                    <li>
-                                    The limitations above apply to your wallet address and any other wallet addresses that you transfer the $BIG tokens to. It will be considered to be a breach if any or all of such wallet addresses breach the policy set out above.                                </li>
-                                </ul>
+                                Thank you for placing your trust and investment in <strong style={{color: '#FFA800'}}>Dark Land Survival</strong>. We&apos;re honored to have you on board and it&apos;s our responsibility to expand the project&apos;s vision and bring a good return on investment to you!
+                                <br/>
+                                To ensure the success of our project and your return on investment, please follow these instructions:
+                                <br/>
+                                <br/>
+                                <strong>🎯 First 24 hours</strong>
+                                <br/>
+                                <strong>Limit per order: 500 USD</strong>
+                                <br/>
+                                <strong>Limit: 1 order every 5 minutes</strong>
+                                <br/>
+                                <strong>Limit per day: 5000 USD</strong>
+                                <br/>
+                                <strong>Stop selling when price goes below: 0.15</strong>
+                                <br/>
+                                <br/>
+                                <strong>🎯  Day 2-7</strong>
+                                <br/>
+                                <strong>Limit per order: 750 USD</strong>
+                                <br/>
+                                <strong>Limit: 1 order every 5 minutes</strong>
+                                <br/>
+                                <strong>Limit per day: 7500 USD</strong>
+                                <br/>
+                                <strong>Stop selling when price goes below: 0.15</strong>
+                                <br/>
+                                <br/>
+                                <strong>🎯  Day 7 - 30</strong>
+                                <br/>
+                                <strong>Limit per order: 1000 USD</strong>
+                                <br/>
+                                <strong>Limit: 1 order every 2 minutes</strong>
+                                <br/>
+                                <strong>Limit per day: 15000 USD</strong>
+                                <br/>
+                                <strong>Stop selling when price goes below: 0.2</strong>
+                                <br/>
+                                <br/>
+                                <strong>🎯   After day 30</strong>
+                                <br/>
+                                <strong>Limit per order: 1500 USD</strong>
+                                <br/>
+                                <strong>Limit: 1 order every 2 minutes</strong>
+                                <br/>
+                                <strong>Limit per day: No limit</strong>
+                                <br/>
+                                <strong>Stop selling when price goes below: No restrict</strong>
+                                <br/>
+                                <br/>
+                                <strong>$BIG listing time : 16:00pm UTC 26/3/2022</strong>
+                                <br/>
+                                <strong>TGE time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 18:00pm UTC 26/3/2022</strong>
                             </div>
-                        {/* <div style={{color: '#E6AB58', fontWeight: '500'}}>Claimable token</div>
-                        <Flex>
-                            <img src="/images/coins/BIG.png" alt="" width="27px" />
-                            <Money>
-                                {vestable ? formatNumber(vestable): '--'} BIG
-                            </Money>
-                        </Flex>
-                        <Button
-                            disabled={vestable === 0}
-                            onClick={() => handleClaim()}
-                        >
-                            Claim
-                        </Button> */}
                         </div>
                     </StyledBox>
                 </Col>
