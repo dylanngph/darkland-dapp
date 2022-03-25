@@ -57,7 +57,7 @@ const PrivateZone = () => {
                     Vesting
                 </BackButton>
                 <span className='font-bold text-xl mx-2' style={{fontSize: '22px'}}>/</span>
-                <span className='font-bold text-xl'>Private Sales Round</span>
+                <span className='font-bold text-xl'>Stragegic Round</span>
             </div>
             <Wrapper sx={{
                 gridTemplateColumns: isMobile ? '100%' : '70% 30%'
@@ -115,7 +115,7 @@ const PrivateZone = () => {
                                         Max Supply:
                                     </div>
                                     <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        300.000.000 BIG
+                                        45,000,000 BIG
                                     </div>
                                 </Flex>
                                 <Flex justifyContent='space-between'>
@@ -123,7 +123,7 @@ const PrivateZone = () => {
                                         Price:
                                     </div>
                                     <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        1 BIG = 0.125 BUSD
+                                        1 BIG = 0.04 BUSD
                                     </div>
                                 </Flex>
                             </div>

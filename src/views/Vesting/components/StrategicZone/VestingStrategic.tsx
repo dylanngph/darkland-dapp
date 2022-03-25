@@ -88,7 +88,7 @@ const StrategicZone = () => {
                     Vesting
                 </BackButton>
                 <span className='font-bold text-xl mx-2' style={{fontSize: '22px'}}>/</span>
-                <span className='font-bold text-xl'>Stragegic Round</span>
+                <span className='font-bold text-xl'>Seed Round</span>
             </div>
             {/* <Hero>
                 <Heading as="h1" size="xl" color="#fff">
@@ -152,7 +152,7 @@ const StrategicZone = () => {
                                         Max Supply:
                                     </div>
                                     <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        300.000.000 BIG
+                                        8,000,000 BIG
                                     </div>
                                 </Flex>
                                 <Flex justifyContent='space-between'>
@@ -160,7 +160,7 @@ const StrategicZone = () => {
                                         Price:
                                     </div>
                                     <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        1 BIG = 0.125 BUSD
+                                        1 BIG = 0.03 BUSD
                                     </div>
                                 </Flex>
                             </div>

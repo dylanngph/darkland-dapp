@@ -117,10 +117,10 @@ const App: React.FC = () => {
             <Route exact path="/vesting">
               <Vesting />
             </Route>
-            <Route exact path="/vesting/private-round">
+            <Route exact path="/vesting/strategic-round">
               <PrivateZone />
             </Route>
-            <Route exact path="/vesting/strategic-round">
+            <Route exact path="/vesting/seed-round">
               <StrategicZone/>
             </Route>
             <Route exact path="/vesting/airdrop">

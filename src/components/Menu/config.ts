@@ -82,21 +82,21 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   //   icon: 'BlindIcon',
   //   href: '/blind-box',
   // },
-  {
-    label: t('Farms'),
-    icon: 'FarmIcon',
-    href: '/farms',
-  },
-  {
-    label: t('Rewards'),
-    icon: 'VestingIcon',
-    href: '/rewards',
-  },
-  {
-    label: t('Pools'),
-    icon: 'PoolIcon',
-    href: '/pools',
-  },
+  // {
+  //   label: t('Farms'),
+  //   icon: 'FarmIcon',
+  //   href: '/farms',
+  // },
+  // {
+  //   label: t('Rewards'),
+  //   icon: 'VestingIcon',
+  //   href: '/rewards',
+  // },
+  // {
+  //   label: t('Pools'),
+  //   icon: 'PoolIcon',
+  //   href: '/pools',
+  // },
   {
     label: t('Liquidity'),
     icon: 'TradeIcon',
