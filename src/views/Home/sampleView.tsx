@@ -40,26 +40,23 @@ const SampleView = () => {
 
     return (
         <Wrapper>
-            <Header>
-                <div>
-                    <WrapImage>
-                        <img src="/images/welcome.png" alt="welcome" />
-                        <img src="/images/dark-land.png" alt="dark-land" />
-                        <PlayToEarn>PLAY TO EARN NOW</PlayToEarn>
-                        <Socials>
-                            <ul>
-                                {socials?.map((item, index) => (
-                                    <li>
-                                        <a target='_blank' href={item.link} rel="noreferrer">
-                                            <img src={item.image} alt={item.title} />
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </Socials>
-                    </WrapImage>
-                </div>
-            </Header>
+            <VideoWrap>
+                <Header src="https://slate.textile.io/ipfs/bafybeihsb6mjre37jrvlz3jz7f6o5lzoxp55aoywc4z7in5npt44n6swau" loop autoPlay muted/>
+                <WrapImage>
+                    <PlayToEarn>PLAY TO EARN NOW</PlayToEarn>
+                    <Socials>
+                        <ul>
+                            {socials?.map((item, index) => (
+                                <li>
+                                    <a target='_blank' href={item.link} rel="noreferrer">
+                                        <img src={item.image} alt={item.title} />
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </Socials>
+                </WrapImage>
+            </VideoWrap>
             {/* <Section sx={{paddingLeft: '90px', paddingRight: '90px'}}>
                 
             </Section> */}
@@ -105,10 +102,10 @@ const WrapImage = styled(Box)`
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    top: 15%;
+    top: calc(100vw - 127%);
+    left: calc(100vw - 84%);
     position: absolute;
-    left: 5%;
-    
+    z-index: 2;
     > img {
         width: 100%;
         max-width: fit-content;
@@ -118,6 +115,8 @@ const WrapImage = styled(Box)`
     @media only screen and (max-width: 851px) {
         max-width: 320px;
         position: relative;
+        left: 50%;
+        transform: translate(-50%, 0);
     }
 `
 const WrapMarketplaceItem = styled(Box)`
@@ -170,20 +169,19 @@ const PlayToEarn = styled(Button)`
     box-sizing: content-box;
     margin-bottom: 25px;
 `
-const Header = styled(Box)`
+const Header = styled.video`
     display: flex;
     gap: 20px;
     align-items: center;
-    background-image: url('/images/dark-land-banner.png');
     background-repeat: no-repeat;
     background-size: contain;
-    aspect-ratio: 2/1.0313;
+    width: 100%;
+    z-index: 1;
     position: relative;
 
     @media only screen and (max-width: 767px) {
         background-size: cover;
         padding-bottom: 30px;
-        padding-top: 30px;
     }
 `
 const Section = styled(Box)`
@@ -239,6 +237,10 @@ const Section = styled(Box)`
 `
 const ImageDecord = styled.img`
     position: absolute;
+`
+
+const VideoWrap = styled.div`
+    position: relative;
 `
 
 export default SampleView

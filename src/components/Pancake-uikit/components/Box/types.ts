@@ -19,6 +19,7 @@ export interface BoxProps
 
 export interface ContainerProps extends BoxProps {
   isBackgroundImage?: any
+  pathName?: string
 }
 
 export interface FlexProps extends BoxProps, FlexboxProps {}
