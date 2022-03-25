@@ -1,32 +1,32 @@
-import React , {useState , useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import {
     Box
 } from '@mui/material'
 import { Hero } from 'components/KShark'
-import {Heading, Text} from 'components/Pancake-uikit'
+import { Heading, Text } from 'components/Pancake-uikit'
 import Page from 'components/Layout/Page'
 import history from 'routerHistory'
 import TableSection from 'views/Vesting/components/Table/TableSection'
-import { Button , useMatchBreakpoints , Skeleton } from '@pancakeswap/uikit'
+import { Button, useMatchBreakpoints, Skeleton } from '@pancakeswap/uikit'
 import { useFetchVestingTGE } from 'views/Vesting/hooks/useFetchVestingStrategic'
 import { formatNumber } from 'utils/formatBalance'
 import { useVestingStrategic } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useWeb3React } from '@web3-react/core'
-import {useFetchVestingTGE as useFetchPrivate, useFetchVestingStage} from 'views/Vesting/hooks/useFetchVesting'
-import {ReactComponent as ArrowLeftBrownIcon} from 'assets/icons/ArrowLeftBrown.svg'
+import { useFetchVestingTGE as useFetchPrivate, useFetchVestingStage } from 'views/Vesting/hooks/useFetchVesting'
+import { ReactComponent as ArrowLeftBrownIcon } from 'assets/icons/ArrowLeftBrown.svg'
 
 const StrategicZone = () => {
-    const {isMobile} = useMatchBreakpoints()
+    const { isMobile } = useMatchBreakpoints()
     const [isClaimedTGE, setIsClaimTGE] = useState(false)
-    const {account} = useWeb3React()
+    const { account } = useWeb3React()
 
     const stageData = useFetchVestingStage()
     const [pendingTx, setPendingTx] = useState(false)
-    const {toastSuccess, toastError} = useToast()
-    const {callWithGasPrice} = useCallWithGasPrice()
+    const { toastSuccess, toastError } = useToast()
+    const { callWithGasPrice } = useCallWithGasPrice()
     const vestingContract = useVestingStrategic()
 
     const [swictchIndex, setSwitchIndex] = useState(0)
@@ -40,7 +40,7 @@ const StrategicZone = () => {
             toastSuccess('Success', 'Your transaction was successful')
         } catch (e) {
             console.log(e)
-        toastError('Error', 'Please try again. Confirm the transaction and make sure you are paying enough gas!')
+            toastError('Error', 'Please try again. Confirm the transaction and make sure you are paying enough gas!')
         } finally {
             setPendingTx(false)
         }
@@ -62,31 +62,23 @@ const StrategicZone = () => {
 
     const handleClaim = async () => {
         try {
-          setPendingTx(true)
-          const tx = await callWithGasPrice(vestingContract, 'release', [account])
-          const receipt = await tx.wait()
-          toastSuccess('Success', 'Your transaction was successful')
+            setPendingTx(true)
+            const tx = await callWithGasPrice(vestingContract, 'claim', [])
+            const receipt = await tx.wait()
+            toastSuccess('Success', 'Your transaction was successful')
         } catch (e) {
-          console.log(e)
-          toastError('Error', 'Please try again. Confirm the transaction and make sure you are paying enough gas!')
+            console.log(e)
+            toastError('Error', 'Please try again. Confirm the transaction and make sure you are paying enough gas!')
         } finally {
-          setPendingTx(false)
+            setPendingTx(false)
         }
     }
 
     const {
-        getAllocation, 
-        getReleased,
-        vestable, 
-        getTGERelease,
-        getCliffDuration
+        canUnlockAmount,
+        infoWallet,
+        balanceOf,
     } = useFetchVestingTGE()
-
-    useEffect(() => {
-        if(getTGERelease === 0) setIsClaimTGE(true)
-        else setIsClaimTGE(false)
-        
-    }, [getTGERelease])
 
     return (
         <Page>
@@ -95,8 +87,8 @@ const StrategicZone = () => {
                     <ArrowLeftBrownIcon />
                     Vesting
                 </BackButton>
-                <span className='font-bold text-xl mx-2' style={{fontSize: '22px'}}>/</span>
-                <span className='font-bold text-xl'>Stragegic Round</span>
+                <span className='font-bold text-xl mx-2' style={{ fontSize: '22px' }}>/</span>
+                <span className='font-bold text-xl'>Seed Round</span>
             </div>
             {/* <Hero>
                 <Heading as="h1" size="xl" color="#fff">
@@ -108,101 +100,122 @@ const StrategicZone = () => {
                 gridTemplateColumns: isMobile ? '100%' : '70% 30%'
             }}>
                 <Col>
-                    <Card>
+                    {/* <Card>
                         <TableSection />
-                    </Card>
-                </Col>
-                <Col>
+                    </Card> */}
                     <StyledBox>
-                        <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px' }}>Your Info</div>
-                        <div style={{color: '#E6AB58', fontWeight: '500'}}>Your Vesting Balance</div>
+                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Your Vesting Balance</div>
                         <Flex>
-                            <img src="/images/coins/adt.png" alt="" width="27px" />
-                            <Money sx={{ display: 'flex', alignItems: 'center' }}>
-                                {getAllocation ? formatNumber(getAllocation) : <Skeleton mr={2} width={40} height={20} />} BIG
+                            <img src="/images/coins/big.png" alt="" width="27px" />
+                            <Money>
+                                {balanceOf !== undefined ? formatNumber(balanceOf) : 0} BIG
                             </Money>
                         </Flex>
-                        <div style={{color: '#E6AB58', fontWeight: '500'}}>Token Claimed</div>
+                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Token Claimed</div>
                         <Flex>
-                            <img src="/images/coins/adt.png" alt="" width="27px" />
-                            <Money sx={{ display: 'flex', alignItems: 'center' }}>
-                                {getReleased ? formatNumber(getReleased) : <Skeleton mr={2} width={40} height={20} />} BIG
+                            <img src="/images/coins/big.png" alt="" width="27px" />
+                            <Money>
+                                {infoWallet ? formatNumber(infoWallet[1]) : 0} BIG
+                            </Money>
+                        </Flex>
+                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Token Remaining</div>
+                        <Flex>
+                            <img src="/images/coins/big.png" alt="" width="27px" />
+                            <Money>
+                                {infoWallet ? formatNumber(infoWallet[0] - infoWallet[1]) : 0} BIG
                             </Money>
                         </Flex>
                     </StyledBox>
                     <StyledBox>
+                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Claimable token</div>
+                        <Flex>
+                            <img src="/images/coins/big.png" alt="" width="27px" />
+                            <Money>
+                                {infoWallet ? formatNumber(infoWallet[2]) : 0} BIG
+                            </Money>
+                        </Flex>
+                        <Button
+                            disabled={canUnlockAmount === 0}
+                            onClick={() => handleClaim()}
+                        >
+                            Claim
+                        </Button>
+                    </StyledBox>
+                </Col>
+                <Col>
+                    <StyledBox>
                         <div>
-                            <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px' }}>Stragegic Round</div>
-                            <div style={{borderBottom: '1px solid #747475', padding: '20px 0', marginBottom: '20px'}}>
-                                <Flex justifyContent='space-between' sx={{marginBottom: '15px'}}>
+                            <div style={{ fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px', color: '#FFA800' }}>Seed Round</div>
+                            <div style={{ borderBottom: '1px solid #747475', padding: '20px 0', marginBottom: '20px' }}>
+                                <Flex justifyContent='space-between' sx={{ marginBottom: '15px' }}>
                                     <div>
                                         Price:
                                     </div>
-                                    <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        1 $BIG = 0.04$
+                                    <div style={{ fontSize: '16px', fontWeight: '700' }} >
+                                        1 $BIG = 0.03$
                                     </div>
                                 </Flex>
                                 <Flex justifyContent='space-between'>
                                     <div>
                                         Token allocation:
                                     </div>
-                                    <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        45,000,000 BIG
+                                    <div style={{ fontSize: '16px', fontWeight: '700' }} >
+                                        8,000,000 BIG
                                     </div>
                                 </Flex>
                             </div>
                             <div>
-                                Thank you for placing your trust and investment in <strong style={{color: '#FFA800'}}>Dark Land Survival</strong>. We&apos;re honored to have you on board and it&apos;s our responsibility to expand the project&apos;s vision and bring a good return on investment to you!
-                                <br/>
+                                Thank you for placing your trust and investment in <strong style={{ color: '#FFA800' }}>Dark Land Survival</strong>. We&apos;re honored to have you on board and it&apos;s our responsibility to expand the project&apos;s vision and bring a good return on investment to you!
+                                <br />
                                 To ensure the success of our project and your return on investment, please follow these instructions:
-                                <br/>
-                                <br/>
+                                <br />
+                                <br />
                                 <strong>🎯 First 24 hours</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit per order: 500 USD</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit: 1 order every 5 minutes</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit per day: 5000 USD</strong>
-                                <br/>
+                                <br />
                                 <strong>Stop selling when price goes below: 0.15</strong>
-                                <br/>
-                                <br/>
+                                <br />
+                                <br />
                                 <strong>🎯  Day 2-7</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit per order: 750 USD</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit: 1 order every 5 minutes</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit per day: 7500 USD</strong>
-                                <br/>
+                                <br />
                                 <strong>Stop selling when price goes below: 0.15</strong>
-                                <br/>
-                                <br/>
+                                <br />
+                                <br />
                                 <strong>🎯  Day 7 - 30</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit per order: 1000 USD</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit: 1 order every 2 minutes</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit per day: 15000 USD</strong>
-                                <br/>
+                                <br />
                                 <strong>Stop selling when price goes below: 0.2</strong>
-                                <br/>
-                                <br/>
+                                <br />
+                                <br />
                                 <strong>🎯   After day 30</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit per order: 1500 USD</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit: 1 order every 2 minutes</strong>
-                                <br/>
+                                <br />
                                 <strong>Limit per day: No limit</strong>
-                                <br/>
+                                <br />
                                 <strong>Stop selling when price goes below: No restrict</strong>
-                                <br/>
-                                <br/>
+                                <br />
+                                <br />
                                 <strong>$BIG listing time : 16:00pm UTC 26/3/2022</strong>
-                                <br/>
+                                <br />
                                 <strong>TGE time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 18:00pm UTC 26/3/2022</strong>
                             </div>
                         </div>
@@ -322,6 +335,6 @@ const styleActive = {
 const defaultStyle = {
     // borderRight: '0.4px solid rgba(151, 151, 151, 0.7)',
     // borderLeft: '0.4px solid rgba(151, 151, 151, 0.7)',
-  }
+}
 
 export default StrategicZone

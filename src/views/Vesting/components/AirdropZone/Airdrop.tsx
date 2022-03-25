@@ -117,16 +117,16 @@ const StrategicZone = () => {
                         <div style={{fontSize: '22px', fontWeight: '700', borderBottom: '1px solid #747475', paddingBottom: '20px' }}>Your Info</div>
                         <div style={{color: '#E6AB58', fontWeight: '500'}}>Your Vesting Balance</div>
                         <Flex>
-                            <img src="/images/coins/adt.png" alt="" width="27px" />
+                            <img src="/images/coins/big.png" alt="" width="27px" />
                             <Money sx={{ display: 'flex', alignItems: 'center' }}>
-                                {getAllocation ? formatNumber(getAllocation) : <Skeleton mr={2} width={40} height={20} />} ADT
+                                {getAllocation ? formatNumber(getAllocation) : <Skeleton mr={2} width={40} height={20} />} BIG
                             </Money>
                         </Flex>
                         <div style={{color: '#E6AB58', fontWeight: '500'}}>Token Claimed</div>
                         <Flex>
-                            <img src="/images/coins/adt.png" alt="" width="27px" />
+                            <img src="/images/coins/big.png" alt="" width="27px" />
                             <Money sx={{ display: 'flex', alignItems: 'center' }}>
-                                {getReleased ? formatNumber(getReleased) : <Skeleton mr={2} width={40} height={20} />} ADT
+                                {getReleased ? formatNumber(getReleased) : <Skeleton mr={2} width={40} height={20} />} BIG
                             </Money>
                         </Flex>
                     </StyledBox>
@@ -147,7 +147,7 @@ const StrategicZone = () => {
                                         Token allocation:
                                     </div>
                                     <div style={{fontSize: '16px', fontWeight: '700'}} >
-                                        8,000,000 BIG
+                                        1 BIG = 0.125 BUSD
                                     </div>
                                 </Flex>
                             </div>

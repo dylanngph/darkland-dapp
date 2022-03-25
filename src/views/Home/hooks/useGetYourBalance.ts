@@ -27,7 +27,7 @@ const useGetYourBalance = (): PropToken => {
           params: [account],
         },
         {
-          address: getAddress(tokens.adt.address),
+          address: getAddress(tokens.big.address),
           name: 'balanceOf',
           params: [account],
         },

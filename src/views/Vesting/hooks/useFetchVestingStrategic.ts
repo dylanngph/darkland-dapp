@@ -34,6 +34,8 @@ export interface vestingPropsType {
   vestable?: any
   getTGERelease?: any
   getCliffDuration?: any
+  canUnlockAmount?:any
+  infoWallet?:any
 }
 
 export const useFetchVestingTGE = (): vestingPropsType => {
@@ -50,27 +52,12 @@ export const useFetchVestingTGE = (): vestingPropsType => {
       const calls = [
         {
           address: getAddress(contractAddress),
-          name: 'getAllocation',
+          name: 'canUnlockAmount',
           params: [account],
         },
         {
           address: getAddress(contractAddress),
-          name: 'getReleased',
-          params: [account],
-        },
-        {
-          address: getAddress(contractAddress),
-          name: 'getTGERelease',
-          params: [account],
-        },
-        {
-          address: getAddress(contractAddress),
-          name: 'vestable',
-          params: [account],
-        },
-        {
-          address: getAddress(contractAddress),
-          name: 'getCliffDuration',
+          name: 'infoWallet',
           params: [account],
         },
       ]
@@ -81,17 +68,14 @@ export const useFetchVestingTGE = (): vestingPropsType => {
           params: [account],
         },
       ]
-      const [getAllocation , getReleased , getTGERelease , vestable , getCliffDuration] = await multicallv2(vestingStrategicAbi, calls)
+      const [canUnlockAmount , infoWallet] = await multicallv2(vestingStrategicAbi, calls)
       const [balanceOf] = await multicallv2(erc20Abi, calls2)
 
 
       const result = {
         ...vestingData,
-        getAllocation: Number(new BigNumber(getAllocation).div(BIG_TEN.pow(vestingData.token.decimals)).toJSON()),
-        getReleased: Number(new BigNumber(getReleased).div(BIG_TEN.pow(vestingData.token.decimals)).toJSON()),
-        vestable: Number(new BigNumber(vestable).div(BIG_TEN.pow(vestingData.token.decimals)).toJSON()),
-        getTGERelease: Number(new BigNumber(getTGERelease).div(BIG_TEN.pow(vestingData.token.decimals)).toJSON()),
-        getCliffDuration: Number(new BigNumber(getCliffDuration).toJSON()),
+        canUnlockAmount: Number(new BigNumber(canUnlockAmount).toJSON()),
+        infoWallet: infoWallet.map(entry => Number(new BigNumber(entry._hex).toJSON())),
         balanceOf: Number(new BigNumber(balanceOf / 10 ** vestingData.token.decimals).toJSON()),
       }
       setState(result)

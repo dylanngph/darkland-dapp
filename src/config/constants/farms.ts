@@ -22,7 +22,7 @@ const farms: FarmConfig[] = [
       97: '',
       56: '0x1471f69c24a9bba486c2a23bf9f55ffc64376bed',
     },
-    token: tokens.adt,
+    token: tokens.big,
     quoteToken: tokens.busd,
   },
   // {

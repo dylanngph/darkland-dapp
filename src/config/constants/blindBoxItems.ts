@@ -46,7 +46,7 @@ const blindBoxItems = [
     title: 'EPIC BOX',
     remainingBoxes: 1620,
     price: 700,
-    tokenPrice: tokens.htd,
+    tokenPrice: tokens.big,
     boxAddress: {
       56: '0x6a571C005870aa0F89176C2227ABBa71B4BC03B6',
       97: '0x36b435970A861cA4384f0dcF925E15094f88d781',
@@ -65,7 +65,7 @@ const blindBoxItems = [
     title: 'LEGENDARY BOX',
     remainingBoxes: 370,
     price: 1000,
-    tokenPrice: tokens.htd,
+    tokenPrice: tokens.big,
     boxAddress: {
       56: '0x7FbC0ed604873058DA63127dD3a16cbCCB16Fe06',
       97: '0xEFeeaD12fCb7C13eDf58bC5e67DcDeb6Ccbe8cd7',
