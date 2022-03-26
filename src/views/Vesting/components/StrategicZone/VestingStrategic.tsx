@@ -140,6 +140,7 @@ const StrategicZone = () => {
                         >
                             Claim
                         </Button>
+                        <Text>*Note: Tokens are vested at the time of TG will be automatically sent to the investors wallets at the time of TGE.</Text>
                     </StyledBox>
                 </Col>
                 <Col>

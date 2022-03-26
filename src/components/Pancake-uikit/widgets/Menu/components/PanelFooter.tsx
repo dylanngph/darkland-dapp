@@ -77,11 +77,11 @@ const PanelFooter: React.FC<Props> = ({
         {/* <img src="/images/coins/0x244b0fd79fc79d34c26ecf1603e88de7c773a95d.png" width="30px" height="30px" alt="" />
         <b style={{color:'#FFAB00'}}>17.11$</b> */}
       </SocialEntry>
-      <SettingsEntry>
+      {/* <SettingsEntry> */}
         {/* <SocialLinks /> */}
         {/* <ThemeSwitcher isDark={isDark} toggleTheme={toggleTheme} /> */}
-        <LangSelector currentLang={currentLang} langs={langs} setLang={setLang} />
-      </SettingsEntry>
+        {/* <LangSelector currentLang={currentLang} langs={langs} setLang={setLang} /> */}
+      {/* </SettingsEntry> */}
     </Container>
   )
 }

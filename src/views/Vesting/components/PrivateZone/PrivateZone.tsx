@@ -14,6 +14,7 @@ import { useFetchVestingTGE } from 'views/Vesting/hooks/useFetchVesting'
 import { formatNumber } from 'utils/formatBalance'
 import { useWeb3React } from '@web3-react/core'
 import {ReactComponent as ArrowLeftBrownIcon} from 'assets/icons/ArrowLeftBrown.svg'
+import { Text } from 'components/Pancake-uikit'
 
 const PrivateZone = () => {
     const {isMobile} = useMatchBreakpoints()
@@ -103,6 +104,7 @@ const PrivateZone = () => {
                         >
                             Claim
                         </Button>
+                        <Text>*Note: Tokens are vested at the time of TG will be automatically sent to the investors wallets at the time of TGE.</Text>
                     </StyledBox>
                 </Col>
                 <Col>

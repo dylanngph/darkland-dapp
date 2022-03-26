@@ -10,7 +10,7 @@ interface Props {
 const KSharkPrice: React.FC<Props> = ({primaryPriceUsd}) => {
   return primaryPriceUsd ? (
     <PriceCard>
-      <ImageToken src="/images/prices/adt.png" alt="adt" height='30px' width='30px' />
+      <ImageToken src="/images/prices/big.png" alt="adt" height='30px' width='30px' />
       <GirdCard>
         <Text color="textSubtle" bold>
           BIG
