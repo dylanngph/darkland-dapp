@@ -196,6 +196,7 @@ const Menu: React.FC<NavProps> = ({
         toast(`Logout failed: ${error}`)
       })
   }
+  
   return (
     <Wrapper>
       <StyledNav showMenu={showMenu}>
