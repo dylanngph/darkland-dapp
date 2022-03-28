@@ -65,7 +65,7 @@ const SampleView = () => {
                     <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
                     <WrapMarketplaceItem className='grid'>
                         <MarketplaceItem buttonTitle='MYSTERY BOX' imageUrl='/images/marketplace-images/MYSTERY-BOX.png' />
-                        <MarketplaceItem buttonTitle='MYSTERY WAEPON' imageUrl='/images/marketplace-images/MYSTERY-WAEPON.png' />
+                        <MarketplaceItem buttonTitle='MYSTERY WEAPON' imageUrl='/images/marketplace-images/MYSTERY-WAEPON.png' />
                         <MarketplaceItem buttonTitle='MYSTERY ARMOR' imageUrl='/images/marketplace-images/MYSTERY-ARMOR.png' />
                         <MarketplaceItem buttonTitle='MYSTERY HELMET' imageUrl='/images/marketplace-images/MYSTERY-HELMET.png' />
                     </WrapMarketplaceItem>

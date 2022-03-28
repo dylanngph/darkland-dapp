@@ -17,6 +17,7 @@ import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useWeb3React } from '@web3-react/core'
 import { useFetchVestingTGE as useFetchPrivate, useFetchVestingStage } from 'views/Vesting/hooks/useFetchVesting'
 import { ReactComponent as ArrowLeftBrownIcon } from 'assets/icons/ArrowLeftBrown.svg'
+import ConnectWalletButton from 'components/ConnectWalletButton'
 
 const StrategicZone = () => {
     const { isMobile } = useMatchBreakpoints()
@@ -88,7 +89,7 @@ const StrategicZone = () => {
                     Vesting
                 </BackButton>
                 <span className='font-bold text-xl mx-2' style={{ fontSize: '22px' }}>/</span>
-                <span className='font-bold text-xl'>Seed Round</span>
+                <span className='font-bold text-xl'>Seed Partners</span>
             </div>
             {/* <Hero>
                 <Heading as="h1" size="xl" color="#fff">
@@ -104,21 +105,21 @@ const StrategicZone = () => {
                         <TableSection />
                     </Card> */}
                     <StyledBox>
-                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Your Vesting Balance</div>
+                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Your vesting balance</div>
                         <Flex>
                             <img src="/images/coins/big.png" alt="" width="27px" />
                             <Money>
                                 {balanceOf !== undefined ? formatNumber(balanceOf) : 0} BIG
                             </Money>
                         </Flex>
-                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Token Claimed</div>
+                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Token claimed</div>
                         <Flex>
                             <img src="/images/coins/big.png" alt="" width="27px" />
                             <Money>
                                 {infoWallet ? formatNumber(infoWallet[1]) : 0} BIG
                             </Money>
                         </Flex>
-                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Token Remaining</div>
+                        <div style={{ color: '#E6AB58', fontWeight: '700' }}>Next claimable on</div>
                         <Flex>
                             <img src="/images/coins/big.png" alt="" width="27px" />
                             <Money>
@@ -141,6 +142,8 @@ const StrategicZone = () => {
                             Claim
                         </Button>
                         <Text>*Note: Tokens are vested at the time of TG will be automatically sent to the investors wallets at the time of TGE.</Text>
+                        {/* </Button>
+                        <ConnectWalletButton /> */}
                     </StyledBox>
                 </Col>
                 <Col>

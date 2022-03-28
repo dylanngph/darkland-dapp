@@ -95,7 +95,7 @@ const Vesting = () => {
                 '& a:hover': {
                   opacity: '0.7',
                 }
-              }}><NavLink to='/vesting/strategic-round' aria-hidden="true">Strategic Round</NavLink></Box>
+              }}><NavLink to='/vesting/strategic-round' aria-hidden="true">Stragegic Partners</NavLink></Box>
               {/* <Button variant='secondary' onClick={() => history.push('/vesting/private-round')}>
                 Open
               </Button> */}
@@ -114,15 +114,15 @@ const Vesting = () => {
                   Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 BIG = 0.04 BUSD
+                  45,000,000 BIG
                 </div>
               </Flex>
               <Flex>
                 <div style={{color: '#F7F7F7'}} >
-                  Max supply:
+                  Raised:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  45,000,000 BIG
+                  1,800,000$
                 </div>
               </Flex>
             </CardBody>
@@ -138,7 +138,7 @@ const Vesting = () => {
                   opacity: '0.7',
                 }
               }}>
-                <NavLink to='/vesting/seed-round' aria-hidden="true">Seed Round</NavLink>
+                <NavLink to='/vesting/seed-round' aria-hidden="true">Seed Partners</NavLink>
               </Box>
               {/* <Button variant='secondary' onClick={() => history.push('/vesting/strategic-round')}>
                 Open
@@ -158,15 +158,15 @@ const Vesting = () => {
                   Token allocation:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  1 BIG = 0.03 BUSD
+                  8,000,000 BIG
                 </div> 
               </Flex>
               <Flex>
                 <div style={{color: '#F7F7F7'}} >
-                  Max Supply:
+                  Raised:
                 </div>
                 <div style={{fontSize: '16px', fontWeight: '700'}} >
-                  8,000,000 BIG
+                  240,000$
                 </div>
               </Flex>
             </CardBody>
