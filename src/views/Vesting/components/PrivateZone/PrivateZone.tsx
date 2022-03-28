@@ -14,6 +14,7 @@ import { useFetchVestingTGE } from 'views/Vesting/hooks/useFetchVesting'
 import { formatNumber } from 'utils/formatBalance'
 import { useWeb3React } from '@web3-react/core'
 import {ReactComponent as ArrowLeftBrownIcon} from 'assets/icons/ArrowLeftBrown.svg'
+import ConnectWalletButton from 'components/ConnectWalletButton'
 
 const PrivateZone = () => {
     const {isMobile} = useMatchBreakpoints()
@@ -57,7 +58,7 @@ const PrivateZone = () => {
                     Vesting
                 </BackButton>
                 <span className='font-bold text-xl mx-2' style={{fontSize: '22px'}}>/</span>
-                <span className='font-bold text-xl'>Stragegic Round</span>
+                <span className='font-bold text-xl'>Stragegic Partners</span>
             </div>
             <Wrapper sx={{
                 gridTemplateColumns: isMobile ? '100%' : '70% 30%'
@@ -67,21 +68,21 @@ const PrivateZone = () => {
                         <TableSection />
                     </Card> */}
                     <StyledBox>
-                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Your Vesting Balance</div>
+                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Your vesting balance</div>
                         <Flex>
                             <img src="/images/coins/big.png" alt="" width="27px" />
                             <Money>
                             {balanceOf !== undefined  ? formatNumber(balanceOf) : 0} BIG
                             </Money>
                         </Flex>
-                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Token Claimed</div>
+                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Token claimed</div>
                         <Flex>
                             <img src="/images/coins/big.png" alt="" width="27px" />
                             <Money>
                             {infoWallet ? formatNumber(infoWallet[1]) : 0 } BIG
                             </Money>
                         </Flex>
-                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Token Remaining</div>
+                        <div style={{color: '#E6AB58', fontWeight: '700'}}>Next claimable on</div>
                         <Flex>
                             <img src="/images/coins/big.png" alt="" width="27px" />
                             <Money>
@@ -97,12 +98,13 @@ const PrivateZone = () => {
                             {infoWallet ? formatNumber(infoWallet[2]) : 0 } BIG
                             </Money>
                         </Flex>
-                        <Button
+                        {/* <Button
                             disabled={canUnlockAmount === 0}
                             onClick={() => handleClaim()}
                         >
                             Claim
-                        </Button>
+                        </Button> */}
+                        <ConnectWalletButton />
                     </StyledBox>
                 </Col>
                 <Col>
