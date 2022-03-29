@@ -71,6 +71,7 @@ const tokens = {
       97: '0x09E47c7fa06Ce009111B22d8A78A08EcfbB40406',
     },
     decimals: 18,
+    projectLink: 'https://darkland.io/',
   },
   cake: {
     symbol: 'CAKE',

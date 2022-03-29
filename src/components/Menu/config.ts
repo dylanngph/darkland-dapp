@@ -92,15 +92,15 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   //   icon: 'VestingIcon',
   //   href: '/rewards',
   // },
-  // {
-  //   label: t('Pools'),
-  //   icon: 'PoolIcon',
-  //   href: '/pools',
-  // },
   {
     label: t('Liquidity'),
     icon: 'TradeIcon',
     href: '/liquidity',
+  },
+  {
+    label: t('Pools'),
+    icon: 'PoolIcon',
+    href: '/pools',
   },
   {
     label: t('Vesting'),

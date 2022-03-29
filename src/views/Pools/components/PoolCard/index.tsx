@@ -44,19 +44,19 @@ const PoolCard: React.FC<{pool: Pool; account: string}> = ({pool, account}) => {
       <CardBody>
         <AprRow pool={pool} stakedBalance={stakedBalance} />
 
-        <Flex mt="24px" flexDirection="column">
+        {/* <Flex mt="24px" flexDirection="column">
           <Text mb="10px" textTransform="uppercase" fontSize="12px" color="textSubtle" bold>
             <span style={{color: '#FFA800'}}>BIG </span><span style={{color: '#00FB28'}}>{t('EARNED')}</span>
           </Text>
         </Flex>
         <HarvestActions
-              earnings={earnings}
-              earningToken={earningToken}
-              sousId={sousId}
-              earningTokenPrice={earningTokenPrice}
-              isBnbPool={isBnbPool}
-              isLoading={isLoading}
-            />
+          earnings={earnings}
+          earningToken={earningToken}
+          sousId={sousId}
+          earningTokenPrice={earningTokenPrice}
+          isBnbPool={isBnbPool}
+          isLoading={isLoading}
+        /> */}
 
         <Flex mt="24px" flexDirection="column">
           {account ? (

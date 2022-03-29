@@ -4,16 +4,16 @@ import {PoolConfig, PoolCategory} from './types'
 const pools: PoolConfig[] = [
   {
     sousId: 1,
-    stakingToken: tokens.busd,
+    stakingToken: tokens.big,
     earningToken: tokens.big,
     contractAddress: {
       97: '',
-      56: '0xB0D88f77b380fAF7699bF27C2d8e0098b7DC1366',
+      56: '0xa78a5bfc2ced9cf5071aebd0a3c47dc8e678becc',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
     sortOrder: 999,
-    tokenPerBlock: '85559675310000000',
+    tokenPerBlock: '50000000000000000',
     tokenReward: '0',
   },
   // {
