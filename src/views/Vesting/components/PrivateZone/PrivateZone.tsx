@@ -59,7 +59,7 @@ const PrivateZone = () => {
                     Vesting
                 </BackButton>
                 <span className='font-bold text-xl mx-2' style={{fontSize: '22px'}}>/</span>
-                <span className='font-bold text-xl'>Stragegic Partners</span>
+                <span className='font-bold text-xl'>Strategic Partners</span>
             </div>
             <Wrapper sx={{
                 gridTemplateColumns: isMobile ? '100%' : '70% 30%'

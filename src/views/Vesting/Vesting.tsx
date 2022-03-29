@@ -95,7 +95,7 @@ const Vesting = () => {
                 '& a:hover': {
                   opacity: '0.7',
                 }
-              }}><NavLink to='/vesting/strategic-round' aria-hidden="true">Stragegic Partners</NavLink></Box>
+              }}><NavLink to='/vesting/strategic-round' aria-hidden="true">Strategic Partners</NavLink></Box>
               {/* <Button variant='secondary' onClick={() => history.push('/vesting/private-round')}>
                 Open
               </Button> */}

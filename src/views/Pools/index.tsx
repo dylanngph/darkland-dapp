@@ -234,7 +234,7 @@ const Pools: React.FC = () => {
           <Heading as="h1" size="xl" color="#fff">
             Pool
           </Heading>
-          <Text color="#fff">Just stake some tokens to earn. High APR, low risk..</Text>
+          <Text color="#fff">Stake more, Earn more, Grow more</Text>
         </Hero>
         <ControlContainer>
           <ViewControls>
