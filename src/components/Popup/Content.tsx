@@ -61,7 +61,7 @@ export default ({close}) => {
         <br />
         <br />
         Note: the winner will be announced up to 48 hours after phase ended! Or you can check{' '}
-        <span className="text-red-400">dapp.dotarcade.io/bounty</span> and login with your wallet
+        <span className="text-red-400">dapp.darkland.io/bounty</span> and login with your wallet
         <br />
         Check your current rank at:{' '}
         <a className="text-red-400" target="_blank" rel="noreferrer" href="https://heroestd.io/bounty-leaderboard">

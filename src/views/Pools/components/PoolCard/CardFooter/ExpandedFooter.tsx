@@ -151,7 +151,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({pool, account}) => {
       <Flex className='xl:flex xl:justify-start justify-end' mb="2px">
         <LinkExternal
           color="#00A3FF"
-          href={`https://dapp.dotarcade.io/swap/${getAddress(earningToken.address)}`}
+          href={`https://dapp.darkland.io/swap/${getAddress(earningToken.address)}`}
           bold={false}
           small
         >

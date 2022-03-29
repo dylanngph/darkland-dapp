@@ -253,7 +253,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({account, pool, userDataLoaded,
         <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
           <LinkExternal
             color="#00A3FF"
-            href={`https://dapp.dotarcade.io/swap/${getAddress(earningToken.address)}`}
+            href={`https://dapp.darkland.io/swap/${getAddress(earningToken.address)}`}
             bold={false}
           >
             {t('See Token Info')}
