@@ -135,13 +135,15 @@ const StrategicZone = () => {
                                 {infoWallet ? formatNumber(infoWallet[2]) : 0} BIG
                             </Money>
                         </Flex>
-                        {/* <Button
+                        <Button
                             disabled={canUnlockAmount === 0}
                             onClick={() => handleClaim()}
                         >
                             Claim
-                        </Button> */}
-                        <ConnectWalletButton />
+                        </Button>
+                        <Text>*Note: Tokens are vested at the time of TG will be automatically sent to the investors wallets at the time of TGE.</Text>
+                        {/* </Button>
+                        <ConnectWalletButton /> */}
                     </StyledBox>
                 </Col>
                 <Col>

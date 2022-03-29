@@ -14,6 +14,7 @@ import { useFetchVestingTGE } from 'views/Vesting/hooks/useFetchVesting'
 import { formatNumber } from 'utils/formatBalance'
 import { useWeb3React } from '@web3-react/core'
 import {ReactComponent as ArrowLeftBrownIcon} from 'assets/icons/ArrowLeftBrown.svg'
+import { Text } from 'components/Pancake-uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 
 const PrivateZone = () => {
@@ -98,13 +99,14 @@ const PrivateZone = () => {
                             {infoWallet ? formatNumber(infoWallet[2]) : 0 } BIG
                             </Money>
                         </Flex>
-                        {/* <Button
+                        <Button
                             disabled={canUnlockAmount === 0}
                             onClick={() => handleClaim()}
                         >
                             Claim
-                        </Button> */}
-                        <ConnectWalletButton />
+                        </Button>
+                        <Text>*Note: Tokens are vested at the time of TG will be automatically sent to the investors wallets at the time of TGE.</Text>
+                        {/* <ConnectWalletButton /> */}
                     </StyledBox>
                 </Col>
                 <Col>
