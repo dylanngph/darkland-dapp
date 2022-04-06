@@ -1,0 +1,105 @@
+import React from 'react'
+import styled, { keyframes } from 'styled-components'
+import { Box } from '@mui/material'
+import StepBox from './StepBox'
+
+export type BoxProp = {
+    isMobile?: boolean
+    boxType?: string
+    quantity?: number
+    image?: string
+}
+
+const BoxSection = ({isMobile, boxType , quantity , image}:BoxProp) => {
+  return (
+    <Wrapper>
+        <Flex sx={{
+            flexDirection: isMobile? 'column' : 'row'
+        }}>
+            <Box width={isMobile ? "100%" : "43%"} >
+                <Box sx={{
+                    'img':{
+                        height: '378px',
+                        position: 'absolute',
+                        zIndex: '1',
+                    }
+                }}>
+                    <img src="images/nftStaking/light.png" alt="" />
+                </Box>
+                <StyledBox sx={{
+                    'img':{
+                        width: '247px',
+                        position: 'relative',
+                        zIndex: '2',
+                        top: '70px',
+                        left: isMobile ? '20%' : '110px'
+                    }
+                }}>
+                    <img src={`images/nftStaking/${image}`} alt="" />
+                </StyledBox>
+                <Box sx={{
+                    position: 'relative',
+                    zIndex: '2',
+                    top: '90px',
+                    // left: isMobile ? '33%' : '110px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}>
+                    <Box sx={{
+                        color: '#FFA800',
+                        textTransform: 'uppercase',
+                        fontWeight: '700',
+                        fontSize: '30px',
+                        marginBottom: '10px'
+                    }}>
+                        {boxType} Box
+                    </Box>
+                    <Box sx={{fontSize: '20px'}} >
+                        <span style={{color: '#00FB28'}}>{quantity}</span>/2000
+                    </Box>
+                </Box>
+            </Box>
+            <Box width={isMobile ? "100%" : "57%"} p="30px" mt={isMobile && '100px'}  >
+                <StepBox isMobile={isMobile} />
+            </Box>
+        </Flex>
+        
+    </Wrapper>
+  )
+}
+
+const Wrapper = styled(Box)`
+    width: 100%;
+    max-width: 1080px;
+    min-height: 444px;
+    background-image: url('images/nftStaking/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    object-fit: cover;
+    display: flex;
+`
+const Floating = keyframes`
+    0% {
+        transform: translateY(0)
+    }
+    50% {
+        transform: translateY(30px)
+    }
+    100% {
+        transform: translateY(0px)
+    }
+`
+const StyledBox = styled(Box)`
+    transition: .3s ease-in;
+    animation: ${Floating} 4s linear infinite;
+`
+const Flex = styled(Box)`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+`
+
+export default BoxSection

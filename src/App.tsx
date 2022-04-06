@@ -19,6 +19,8 @@ import GameCardDetails from 'views/MarketPlace/components/games/GameCardDetails'
 import FirebaseListener from 'config/firebase/firebaseListener'
 import PrivateZone from 'views/Vesting/components/PrivateZone/PrivateZone'
 import AirdropZone from 'views/Vesting/components/AirdropZone/Airdrop'
+import NFTStaking from 'views/NFTStaking/NFTStaking'
+
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
 import SuspenseWithChunkError from './components/SuspenseWithChunkError'
@@ -125,6 +127,9 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/vesting/airdrop">
               <AirdropZone />
+            </Route>
+            <Route exact path="/nft-staking">
+              <NFTStaking />
             </Route>
             <Route exact strict path="/rewards" component={Rewards} />
 
