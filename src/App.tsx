@@ -153,7 +153,7 @@ const App: React.FC = () => {
             <Route exact path="/create/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
             <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
             <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
-            <Route exact strict path="/play-game" component={PlayGame} />
+            {/* <Route exact strict path="/play-game" component={PlayGame} /> */}
             {/* Redirect */}
             <Route path="/pool">
               <Redirect to="/liquidity" />
