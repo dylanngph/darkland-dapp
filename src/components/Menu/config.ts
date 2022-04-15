@@ -107,6 +107,16 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     icon: 'VestingIcon',
     href: '/vesting',
   },
+  {
+    label: t('Stake NFT'),
+    icon: 'VestingIcon',
+    href: '/nft-staking',
+  },
+  {
+    label: t('Beta Test'),
+    icon: 'VestingIcon',
+    href: '/play-game',
+  },
   // {
   //   label: t('NFT Staking'),
   //   icon: 'VestingIcon',

@@ -12,7 +12,7 @@ const PlayGame = () => {
     const tokenAccess = getCookie(TOKEN_ID)
     const isLogin = !!tokenAccess
     return(
-        <Page style={{ padding: 0 }}>
+        <Page style={{ padding: 0, maxWidth: '100%' }}>
             {
                 isLogin && <iframe src={`https://testgame.darkland.io?jwt_token=${tokenAccess}`} title="Play game" width="100%" style={{ height: '90vh ', overflow: 'hidden' }} />
             }

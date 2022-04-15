@@ -137,7 +137,7 @@ const PopupLogin = ({ close, setToken }) => {
                     <IconSocial src="/google.svg" alt="logo" />
                     Login with Google
                   </ButtonLogin>
-                  <ButtonLogin
+                  {/* <ButtonLogin
                     onClick={() => {
                       onLoginSocialNetWork('apple')
                     }}
@@ -147,7 +147,7 @@ const PopupLogin = ({ close, setToken }) => {
                   >
                     <IconSocial src="/apple.svg" alt="logo" />
                     Login with Apple
-                  </ButtonLogin>
+                  </ButtonLogin> */}
                 </div>
               </Box>
             </ContainerPopup>
