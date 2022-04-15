@@ -36,12 +36,7 @@ export const getLibrary = (provider): ethers.providers.Web3Provider => {
  * @see https://docs.binance.org/smart-chain/wallet/wallet_api.html#binancechainbnbsignaddress-string-message-string-promisepublickey-string-signature-string
  */
 export const signMessage = async (provider: any, account: string, message: string): Promise<string> => {
-  if (window.BinanceChain) {
-    const {signature} = await window.BinanceChain.bnbSign(account, message)
-    return signature
-  }
-
-  /**
+    /**
    * Wallet Connect does not sign the message correctly unless you use their method
    * @see https://github.com/WalletConnect/walletconnect-monorepo/issues/462
    */
@@ -50,6 +45,11 @@ export const signMessage = async (provider: any, account: string, message: strin
     const signature = await provider.provider?.wc.signPersonalMessage([wcMessage, account])
     return signature
   }
+
+  // if (window.BinanceChain) {
+  //   const {signature} = await window.BinanceChain.bnbSign(account, message)
+  //   return signature
+  // }
 
   return provider.getSigner(account).signMessage(message)
 }

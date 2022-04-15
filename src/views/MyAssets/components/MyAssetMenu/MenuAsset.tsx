@@ -13,19 +13,14 @@ enum MyAssetMenuTab {
 
 const myAssetMenuItems = [
   {
-    id: MyAssetMenuTab.WALLET,
-    title: 'Wallet',
-    imgIcon: 'wallet-minus.svg',
-  },
-  {
     id: MyAssetMenuTab.INVENTORY,
     title: 'Inventory',
     imgIcon: 'inventory-icon.svg',
   },
   {
-    id: MyAssetMenuTab.FUSION,
-    title: 'Fusion',
-    imgIcon: 'fusion-icon.svg',
+    id: MyAssetMenuTab.WALLET,
+    title: 'Wallet',
+    imgIcon: 'wallet-minus.svg',
   },
   // {
   //   id: MyAssetMenuTab.SETTINGS,
@@ -49,7 +44,7 @@ const MenuAsset = ({setCurrentAssetMenuTab, currentAssetMenuTab}) => {
     <div>
       {myAssetMenuItems.map((item) => (
         <MenuItem
-        key={item.id}
+          key={item.id}
           myAssetMenuItem={item}
           isCurrentMenuTab={currentAssetMenuTab === item.id}
           setCurrentAssetMenuTab={setCurrentAssetMenuTab}

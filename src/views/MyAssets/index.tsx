@@ -15,19 +15,18 @@ import Activities from './components/Activities'
 import AccountSetting from './components/Setting'
 
 export enum MyAssetMenuTab {
-  WALLET = 'wallet',
-  INVENTORY = 'inventory',
-  SETTINGS = 'settings',
-  ACTIVITIES = 'activities',
-  QR_CODE = 'qr-code',
+  WALLET = 0,
+  INVENTORY = 1,
+  SETTINGS = 2,
+  ACTIVITIES = 3,
+  QR_CODE = 4,
 }
 
 const MyAssets = () => {
   const location = useLocation();
   const { isLogin } = useSelector((state: AppState) => state.common)
-
   const { t } = useTranslation()
-  const [currentAssetMenuTab, setCurrentAssetMenuTab] = useState('inventory')
+  const [currentAssetMenuTab, setCurrentAssetMenuTab] = useState(1)
   const renderBodyMenuTab = () => {
     switch (currentAssetMenuTab) {
       case MyAssetMenuTab.WALLET:
@@ -45,10 +44,10 @@ const MyAssets = () => {
     }
   }
 
-  useEffect(() => {
-    const path = location?.pathname?.split('/')[2]
-    setCurrentAssetMenuTab(path)
-  }, [location])
+  // useEffect(() => {
+  //   const path = location?.pathname?.split('/')[2]
+  //   setCurrentAssetMenuTab(path)
+  // }, [location])
 
   // const [token, setToken] = useState(undefined)
   // const getToken = useCallback(async () => {
@@ -77,7 +76,7 @@ const MyAssets = () => {
       </Block> */}
       <div className="flex lg:flex-row md:flex-row flex-col flex-wrap">
         <div className="margin-center w-full sm:w-4/4 md:w-1/3 lg:w-3/12 xl:w-3/12">
-          {!isLogin ? (
+          {isLogin ? (
             <MyAssetMenu
               setCurrentAssetMenuTab={setCurrentAssetMenuTab}
               currentAssetMenuTab={currentAssetMenuTab}

@@ -63,7 +63,7 @@ export const darkColors: Colors = {
   secondary: '#9A6AFF',
   background: '#272727',
   backgroundMenu: '#0f0f0f',
-  backgroundDisabled: '#3c3742',
+  backgroundDisabled: '#C16000',
   backgroundAlt: '#091749',
   cardBorder: '#00BFD5',
   contrast: '#FFFFFF',
@@ -74,7 +74,7 @@ export const darkColors: Colors = {
   inputSecondary: '#262130',
   tertiary: '#202020',
   text: '#ffffff',
-  textDisabled: '#FFFFFF',
+  textDisabled: '#bdbdbd',
   textSubtle: '#fff',
   disabled: '#524B63',
   gradients: {

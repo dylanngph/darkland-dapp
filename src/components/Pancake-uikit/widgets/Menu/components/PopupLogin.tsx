@@ -19,19 +19,23 @@ import useToast from 'hooks/useToast'
 import history from 'routerHistory'
 import events from 'utils/events'
 import Popup from 'reactjs-popup'
+import { useModal } from '@pancakeswap/uikit'
+import LinkWallet from 'components/LinkWallet'
 import PopupRegister from 'components/Pancake-uikit/widgets/Menu/components/RegisterComponent/PopupRegister'
 import { AppState, useAppDispatch } from 'state'
 import { setLogin } from 'state/common/commonSlice'
 import { REFRESH_TOKEN, TOKEN_ID } from 'contants'
 import heroestdApi from 'api/heroestdApi'
 import { updateUserInGame } from 'state/user/actions'
+import { useSelector } from 'react-redux'
 import PopupRetrieve from './RetrievePassword/PopupRetrieve'
 
 const PopupLogin = ({ close, setToken }) => {
   const { account } = useWeb3React()
   const dispatch = useAppDispatch()
   const [loginSuccess, setLoginSuccess] = useState(false)
-  const { toastSuccess, toastError } = useToast()
+  const { toastError, toastSuccess } = useToast()
+  const [openLinkWallet] = useModal(<LinkWallet />, false)
   const onClosePopup = () => {
     close()
   }
@@ -58,178 +62,25 @@ const PopupLogin = ({ close, setToken }) => {
         const { refreshToken } = result.user
         setCookie(TOKEN_ID, idToken)
         setCookie(REFRESH_TOKEN, refreshToken)
-        // // This gives you a Google Access Token. You can use it to access the Google API.
-        // const credentialMapped = Object.fromEntries(Object.entries(credential));
-        // const tokenFromGG = credentialMapped.idToken
-        // const tokenFromGGAccess = credentialMapped.accessToken
         
-        const loginInfo: any = await heroestdApi.loginWithToken(idToken)
-        dispatch(updateUserInGame(loginInfo.user))
-        dispatch(setLogin(!!idToken))
+        const loginInfo: any = await heroestdApi.loginFirebase(idToken)
+        const jwtToken = loginInfo.data.jwt_token
+        setCookie(TOKEN_ID, jwtToken)
+        dispatch(updateUserInGame(loginInfo.data))
+        dispatch(setLogin(!!jwtToken))
         setLoginSuccess(true)
-        const toast = toastSuccess
-        toast(`Login succeed`)
-        history.push('/my-assets')
-        setToken(idToken)
+        
+        toastSuccess(`Login succeed`)
+        // history.push('/my-assets')
+        setToken(jwtToken)
         // close()
         events.emit('LOGIN_SUCCESS')
+        if (!loginInfo.data.address) {
+          openLinkWallet()
+        }
       })
       .catch((error) => {
-        console.log("error", error)
-        console.log(`Login with ${type} Error`, error.message)
-        const toast = toastError
-        toast(`Login with ${type} Error `, error.message)
-        const errorCode = error.code
-        const errorMessage = error.message
-        const email = error.email
-        const credential = error.credential
-      })
-  }
-
-  const onLoginWithEmailPassword = ( username, password ) => {
-    firebase.auth().signInWithEmailAndPassword(username, password).then(async (result) => {
-      const idToken = await result.user.getIdToken(true)
-      const { refreshToken } = result.user
-      const loginInfo: any = await heroestdApi.loginWithToken(idToken)
-      setCookie(TOKEN_ID, idToken)
-      setCookie(REFRESH_TOKEN, refreshToken)
-      dispatch(updateUserInGame(loginInfo.user))
-      dispatch(setLogin(!!idToken))
-      setLoginSuccess(true)
-      const toast = toastSuccess
-      toast(`Login succeed`)
-      history.push('/my-assets')
-      setToken(idToken)
-      // close()
-      events.emit('LOGIN_SUCCESS')
-    })
-    .catch((error) => {
-      console.log(`Login Error`, error.message)
-      const toast = toastError
-      toast('Login fail ', error.message)
-      const errorCode = error.code
-      const errorMessage = error.message
-      const email = error.email
-      const credential = error.credential
-    })
-  }
-
-  const onLoginWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(async (result) => {
-        const { credential } = result
-        const tokenID = await result.user.getIdToken(true)
-        const { refreshToken } = result.user
-        setCookie(TOKEN_ID, tokenID)
-        setCookie(REFRESH_TOKEN, refreshToken)
-        dispatch(setLogin(!!tokenID))
-        // // This gives you a Google Access Token. You can use it to access the Google API.
-        // const credentialMapped = Object.fromEntries(Object.entries(credential));
-        // const tokenFromGG = credentialMapped.idToken
-        // const tokenFromGGAccess = credentialMapped.accessToken
-        const response = await fetch(`https://beta-dot-heroes-td-6fa95.as.r.appspot.com/login`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${tokenID}` },
-        })
-        const dataUser = await response.json()
-
-        // const data = await response.json()
-        // await window.localStorage.setItem('_ut', tokenID)
-        setLoginSuccess(true)
-        const toast = toastSuccess
-        toast(`Login succeed`)
-        history.push('/my-assets')
-        setToken(tokenID)
-        // close()
-        events.emit('LOGIN_SUCCESS')
-      })
-      .catch((error) => {
-        console.log('Login with google Error', error.message)
-        const errorCode = error.code
-        const errorMessage = error.message
-        const email = error.email
-        const credential = error.credential
-      })
-  }
-
-  const onLoginWithFacebook = () => {
-    const provider = new firebase.auth.FacebookAuthProvider()
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(async (result) => {
-        const credential = result.credential
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const tokenFromGG = Object.fromEntries(Object.entries(credential)).idToken
-        const { refreshToken } = result.user
-
-        // const response = await fetch(`https://beta-dot-heroes-td-6fa95.as.r.appspot.com/login`, {
-        //   method: 'POST',
-        //   headers: {'Content-Type': 'application/json', "Authorization": `Bearer ${tokenFromGG}`},
-        // })
-
-        // const data = await response.json()
-        // await window.localStorage.setItem('_ut', tokenFromGG)
-        setCookie(TOKEN_ID, tokenFromGG)
-        setCookie(REFRESH_TOKEN, refreshToken)
-        dispatch(setLogin(!!tokenFromGG))
-
-        setLoginSuccess(true)
-        const toast = toastSuccess
-        toast(`Login succeed`)
-        history.push('/my-assets')
-        setToken(tokenFromGG)
-        // close()
-        events.emit('LOGIN_SUCCESS')
-      })
-      .catch((error) => {
-        console.log('Login with Facebook Error', error.message)
-        const errorCode = error.code
-        const errorMessage = error.message
-        const email = error.email
-        const credential = error.credential
-      })
-  }
-
-  const onLoginWithApple = () => {
-    const provider = new firebase.auth.OAuthProvider('apple.com')
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then(async (result) => {
-        const credential = result.credential
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const tokenFromGG = Object.fromEntries(Object.entries(credential)).idToken
-        const { refreshToken } = result.user
-
-        // const response = await fetch(`https://beta-dot-heroes-td-6fa95.as.r.appspot.com/login`, {
-        //   method: 'POST',
-        //   headers: {'Content-Type': 'application/json', "Authorization": `Bearer ${tokenFromGG}`},
-        // })
-
-        // const data = await response.json()
-        // await window.localStorage.setItem('_ut', tokenFromGG)
-        setCookie(TOKEN_ID, tokenFromGG)
-        setCookie(REFRESH_TOKEN, refreshToken)
-        dispatch(setLogin(!!tokenFromGG))
-
-        setLoginSuccess(true)
-        const toast = toastSuccess
-        toast(`Login succeed`)
-        history.push('/my-assets')
-        setToken(tokenFromGG)
-        // close()
-        events.emit('LOGIN_SUCCESS')
-      })
-      .catch((error) => {
-        console.log('Login with Apple Error', error.message)
-        const errorCode = error.code
-        const errorMessage = error.message
-        const email = error.email
-        const credential = error.credential
+        toastError(`Login with ${type} Error `, error.message)
       })
   }
 
@@ -252,7 +103,7 @@ const PopupLogin = ({ close, setToken }) => {
     setAccountName(value)
   }
   return (
-    <Wrapper>
+    <Wrapper width={{ lg: '45rem', sm: '90%' }}>
       <Box
         onClick={() => onClosePopup()}
         style={{ top: '10px', right: '10px', position: 'absolute', cursor: 'pointer' }}
@@ -260,178 +111,53 @@ const PopupLogin = ({ close, setToken }) => {
         <img src="/close.svg" alt="close" />
       </Box>
       {!loginSuccess ? (
-        <>
-          <ContainerPopup>
-            <CardIcon>
-              <img src="/logo.svg" alt="logo" style={{ height: '44px', width: 'auto' }} />
-            </CardIcon>
-            <Title>Login</Title>
-            <div className="w-full flex flex-row justify-center mt-2">
-              <Text className="text-gray mr-2">New user ?</Text>{' '}
-              <Popup
-                className="w-full"
-                modal
-                closeOnDocumentClick
-                trigger={
-                  <Text
-                    onClick={() => onClosePopup()}
-                    style={{ color: '#FFC247', cursor: 'pointer' }}
-                  >
-                    Register now
-                  </Text>
-                }
-              >
-                {(closeReg) => <PopupRegister close={closeReg} />}
-              </Popup>
-            </div>
-          </ContainerPopup>
-          <ContainerPopup style={{ alignItems: 'center', padding: '0' }} flexDirection="column">
-            <div className="text-gray text-sm flex flex-col items-center">
-              <Flex flexDirection="column" gridGap={1}>
-                <Text fontWeight="bolder">E-mail or username</Text>
-                <Input
-                  value={username}
-                  placeholder="Enter E-mail or username"
-                  type="text"
-                  borderColor="#555"
-                  backgroundColor="#222"
-                  onChange={handleChangeUsername}
-                  _focus={{
-                    borderColor: 'none',
-                  }}
-                  style={{ width: '304px' }}
-                />
-              </Flex>
-              <Flex flexDirection="column" gridGap={1}>
-                <Text fontWeight="bolder">Password</Text>
-                <Input
-                  width="304px"
-                  value={password}
-                  placeholder="Enter Password"
-                  type="password"
-                  borderColor="#555"
-                  backgroundColor="#222"
-                  onChange={handleChangePassword}
-                  _focus={{
-                    borderColor: 'none',
-                  }}
-                />
-              </Flex>
-              <div className="w-full flex flex-row justify-between mt-2">
-                <Checkbox>Remember Me</Checkbox>
-                <Popup
-                  className="w-full"
-                  modal
-                  closeOnDocumentClick
-                  trigger={
-                    <Text
-                      onClick={() => onClosePopup()}
-                      style={{ color: '#FFC247', cursor: 'pointer' }}
-                    >
-                      Forgot password?
-                    </Text>
-                  }
-                >
-                  <PopupRetrieve close={close} />
-                </Popup>
-              </div>
-              <div className="w-full flex flex-col items-center">
-                <Button
-                  onClick={() => onLoginWithEmailPassword(username, password)}
-                  variant="primary"
-                  className="w-full"
-                  style={{ marginTop: '10px', width: '304px', padding: '0px' }}
-                  scale="sm"
-                >
-                  Login
-                </Button>
-                <Button
-                  onClick={() => {
-                    onLoginSocialNetWork('google')
-                  }}
-                  variant="text"
-                  className="w-full"
-                  style={{
-                    marginTop: '10px',
-                    border: '1px solid #969696',
-                    backgroundColor: '#454344',
-                    color: 'white',
-                    fontWeight: 'normal',
-                    width: '304px',
-                    padding: '0px',
-                  }}
-                  scale="sm"
-                >
-                  <img
-                    src="/google.svg"
-                    alt="logo"
-                    style={{ height: '22px', width: 'auto', marginRight: ' 12px' }}
-                  />
-                  Login with Google
-                </Button>
-                {/* <Button
-                  onClick={() => {
-                    onLoginSocialNetWork('facebook')
-                  }}
-                  variant="text"
-                  className="w-full"
-                  style={{
-                    marginTop: '10px',
-                    border: '1px solid #969696',
-                    backgroundColor: '#454344',
-                    color: 'white',
-                    fontWeight: 'normal',
-                    width: '304px',
-                    padding: '0px',
-                  }}
-                  scale="sm"
-                >
-                  <img
-                    src="/facebook.svg"
-                    alt="logo"
-                    style={{
-                      height: '22px',
-                      width: 'auto',
-                      marginLeft: '20px',
-                      marginRight: ' 12px',
+        <Box display="flex" height='100%'>
+          <Box backgroundImage='/images/bg_login.png' style={{ backgroundSize: 'cover', backgroundPosition: 'top' }} flex={{ lg: '1 27%' }} />
+          <Box flex={{ lg: '1 50%' }} padding='2.6rem'>
+            <Box textAlign='left'>
+              <TextTitle fontSize={26}>
+                <Title>Login to</Title>
+                <Title>DARKLAND SURVIVAL</Title>
+              </TextTitle>
+              <Text color="#D6D1D1" paddingY='1rem'>
+                Please login your game account to link with your wallet address.
+              </Text>
+            </Box>
+            <ContainerPopup style={{ alignItems: 'center', padding: '0' }} flexDirection="column">
+              <Box width='100%'>
+                <div className="w-full flex flex-col items-center">
+                  <ButtonLogin
+                    onClick={() => {
+                      onLoginSocialNetWork('google')
                     }}
-                  />
-                  Login with Facebook
-                </Button> */}
-                <Button
-                  onClick={() => {
-                    onLoginSocialNetWork('apple')
-                  }}
-                  variant="text"
-                  className="w-full"
-                  style={{
-                    marginTop: '10px',
-                    border: '1px solid #969696',
-                    backgroundColor: '#454344',
-                    color: 'white',
-                    fontWeight: 'normal',
-                    width: '304px',
-                    padding: '0px',
-                    marginBottom: '30px',
-                  }}
-                  scale="sm"
-                >
-                  <img
-                    src="/apple.svg"
-                    alt="logo"
-                    style={{ height: '22px', width: 'auto', marginRight: ' 12px' }}
-                  />
-                  Login with Apple
-                </Button>
-              </div>
-            </div>
-          </ContainerPopup>
-        </>
+                    variant="text"
+                    className="w-full"
+                    scale="sm"
+                  >
+                    <IconSocial src="/google.svg" alt="logo" />
+                    Login with Google
+                  </ButtonLogin>
+                  <ButtonLogin
+                    onClick={() => {
+                      onLoginSocialNetWork('apple')
+                    }}
+                    variant="text"
+                    className="w-full"
+                    scale="sm"
+                  >
+                    <IconSocial src="/apple.svg" alt="logo" />
+                    Login with Apple
+                  </ButtonLogin>
+                </div>
+              </Box>
+            </ContainerPopup>
+          </Box>
+        </Box>
       ) : (
         <>
           <ContainerPopup>
             <CardIcon>
-              <img src="/logo.svg" alt="logo" style={{ height: '44px', width: 'auto' }} />
+              <img src="/logo.png" alt="logo" style={{ height: '60px', width: 'auto' }} />
             </CardIcon>
             <Title>Welcome to DarkLand!</Title>
             <div className="w-full flex flex-col justify-center mt-2">
@@ -440,7 +166,7 @@ const PopupLogin = ({ close, setToken }) => {
             </div>
           </ContainerPopup>
           <ContainerPopup style={{ alignItems: 'center', padding: '0' }} flexDirection="column">
-            <div className="text-gray text-sm flex flex-col items-center">
+            <Box width='100%'>
               <Flex flexDirection="column" gridGap={1}>
                 <Text fontWeight="bolder">Name</Text>
                 <Input
@@ -467,7 +193,7 @@ const PopupLogin = ({ close, setToken }) => {
                   Save
                 </Button>
               </div>
-            </div>
+            </Box>
           </ContainerPopup>
         </>
       )}
@@ -481,19 +207,17 @@ const CardIcon = styled.div`
 `
 
 const Wrapper = styled(Box)`
-  background: linear-gradient(270deg, #000000b3 0, #444444c7 0.01%, #424242d1 105.1%);
-  border: 1px solid #52525270;
+  position: relative;
+  background-image: url('images/bg_login_right.png');
+  background-color: rgb(9 23 73 / 60%);
   border-radius: 12px;
   color: #fff;
-  width: 360px;
-  height: auto;
-  min-height: 360px;
-  @media screen and (max-width: 668px) {
-    width: 330px;
-  }
+  overflow: hidden;
+  border: 1px solid #415cc7;
+  margin: 0 auto;
+  width: 90%;
 `
 const Title = styled(Box)`
-  font-size: 21px;
   font-weight: 700;
 `
 const ContainerPopup = styled(Box)`
@@ -504,4 +228,32 @@ const ContainerPopup = styled(Box)`
   align-items: center;
   flex-direction: column;
 `
+
+const ButtonLogin = styled(Button)`
+  margin-top: 10px;
+  background-color: #2647CB;
+  color: white;
+  font-weight: normal;
+  min-width: 250px;
+  padding: 0px;
+  height: 2.8rem;
+  border-radius: 0;
+  border-bottom: 0.2rem solid #1A2B6D;
+`
+
+const TextTitle = styled(Text)`
+  background: linear-gradient(89.77deg, rgba(0, 34, 213, 0.44) 0.2%, rgba(0, 72, 213, 0) 83.63%);
+  padding: 0.5em;
+  border-left: 0.5rem solid #2647CB;
+`
+
+const IconSocial = styled.img`
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.2rem;
+  height: 22px;
+  width: auto;
+  margin-right: 12px;
+`
+
 export default PopupLogin

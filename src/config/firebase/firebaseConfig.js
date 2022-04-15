@@ -10,14 +10,14 @@ import * as data from 'firebase/database'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDFr1hwabJAwqd7xLLziUUv-XM6LUfpRJc",
-  authDomain: "heroes-td-6fa95.firebaseapp.com",
-  databaseURL: "https://heroes-td-6fa95-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "heroes-td-6fa95",
-  storageBucket: "heroes-td-6fa95.appspot.com",
-  messagingSenderId: "506890149448",
-  appId: "1:506890149448:web:533667c41a06638fb6c27d",
-  measurementId: "G-6T763K8X01"
+  apiKey: "AIzaSyBuz997RkVI1-sbePeQCVlNwiXW8i-NdEk",
+  authDomain: "organic-service-341708.firebaseapp.com",
+  databaseURL: "https://organic-service-341708-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "organic-service-341708",
+  storageBucket: "organic-service-341708.appspot.com",
+  messagingSenderId: "365118322152",
+  appId: "1:365118322152:web:db5aebfdd5de0ea09f205d",
+  measurementId: "G-DYHQTNTTN0"
 };
 
 // Initialize Firebase

@@ -19,43 +19,37 @@ import { getCookie } from 'utils/cookie'
 import { TOKEN_ID, TYPE_LINK_WALLET } from 'contants'
 import { useWeb3React } from '@web3-react/core'
 import useToast from 'hooks/useToast'
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from 'state'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, AppState } from 'state'
+import useWeb3Provider from 'hooks/useActiveWeb3React'
 import { updateUserInGame } from 'state/user/actions'
+import { signMessage } from 'utils/web3React'
 
 interface LinkWalletProps extends InjectedModalProps {
 	userData?: any
 }
 
-const LinkWallet: React.FC<LinkWalletProps> = ({ userData, onDismiss }) => {
+const LinkWallet: React.FC<LinkWalletProps> = ({ onDismiss }) => {
+	const userData = useSelector((state: AppState) => state.user.userInfo)
 	const dispatch = useDispatch<AppDispatch>()
 	const { account } = useWeb3React()
+	const {library} = useWeb3Provider()
 	const { toastError, toastSuccess } = useToast()
 	const [isProcess, setIsProcess] = useState(false)
 	const handleLink = async() => {
 		const tokenId = getCookie(TOKEN_ID)
 		setIsProcess(true)
-		await heroestdApi.setLinkWallet(account, tokenId)
+		const signature = await signMessage(library, account, userData?.email)
+		await heroestdApi.linkWallet(account, tokenId, userData?.email, signature)
 		.then((data: any) => {
-			// console.log("data", data.code)
-			const isValid = data?.code === 0 && toastSuccess('Success', TYPE_LINK_WALLET.SUCCESS)
-			const newData = { ...userData, walletAddress: account }
+			const isValid = data?.error_code === 0 && toastSuccess('Success', TYPE_LINK_WALLET.SUCCESS)
+			const newData = { ...userData, address: account }
 			dispatch(updateUserInGame(newData))
 			onDismiss()
 		})
 		.catch((error) => {
-			const codeType = error.response.data?.code ?? -1
-			switch(codeType) {
-				case 24:
-					toastError('Error', TYPE_LINK_WALLET.WalletAlreadyLink)
-					break
-				case 25:
-					toastError('Error', TYPE_LINK_WALLET.LinkWalletFail)
-					break
-				default:
-					toastError('Error', 'An error occurred. Please try again later.')
-					break
-			}
+			const codeType = error?.message
+			toastError('Error', codeType)
 		})
 		.finally(() => setIsProcess(false))
 	}
@@ -77,10 +71,10 @@ const LinkWallet: React.FC<LinkWalletProps> = ({ userData, onDismiss }) => {
 			<ModalBody p="24px" maxWidth="400px" width="100%">
 				<Flex minHeight={120} flexDirection='column' justifyContent='space-between'>
 					<Text color="#727272">Link your wallet address to your game account to continue.</Text>
-					<Text fontSize={12} textColor="red.500" fontWeight="bold" my={3}>{account} will link to your account with email { userData?.email }. Are you sure ?</Text>
+					<Text fontSize={12} textColor="white" fontWeight="bold" my={3}>{account} will link to your account with email { userData?.email }. Are you sure ?</Text>
 					<Button onClick={handleLink} disabled={isProcess}>{ isProcess ? 'Processing...' : `Link to ${ userData?.email }` }</Button>
 				</Flex>
-      </ModalBody>
+			</ModalBody>
 		</ModalContainer>
 	)
 }

@@ -312,3 +312,24 @@ export enum MarketplaceType {
   HERO = "hero",
   BOUNTY = "bounty"
 }
+
+export interface IBoxConfig {
+  type: string
+  image: string
+  contractAddress: Address
+  quantity: number
+}
+
+export interface IBoxData extends IBoxConfig {
+  duration: number
+  poolLimitUser: number
+  requireAmountStaking: number
+  tokenStake: string
+  totalUserStaking: number
+  users: {
+    amount: number
+    isClaimNFT: boolean
+    lastUpdateTime: number
+    isStake: boolean
+  }
+}

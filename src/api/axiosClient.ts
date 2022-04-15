@@ -36,29 +36,29 @@ axiosClient.interceptors.response.use(
     let errorMessage = error
     if (error.response) {
       const originalRequest = error.config
-      if (error.response.status === 403) {
-        if (getCookie(REFRESH_TOKEN)) {
-          const refreshtoken = getCookie(REFRESH_TOKEN)
-          const params = {
-            grant_type: 'refresh_token',
-            refresh_token: refreshtoken,
-          }
-          axios
-            .post(`https://securetoken.googleapis.com/v1/token?key=${FIREBASE_API_KEY}`, params)
-            .then(async (res) => {
-              await setCookie(TOKEN_ID, res?.data.id_token)
-              await setCookie(REFRESH_TOKEN, res?.data.refresh_token)
-              window.location.reload()
-              return axios(originalRequest)
-            })
-            .catch((err) => {
-              console.log(err, 'error')
-            })
-        }
-      }
-      errorMessage = error.response.data ? error.response.data.error : error.response.data
+      // if (error.response.status === 403) {
+      //   if (getCookie(REFRESH_TOKEN)) {
+      //     const refreshtoken = getCookie(REFRESH_TOKEN)
+      //     const params = {
+      //       grant_type: 'refresh_token',
+      //       refresh_token: refreshtoken,
+      //     }
+      //     axios
+      //       .post(`https://securetoken.googleapis.com/v1/token?key=${FIREBASE_API_KEY}`, params)
+      //       .then(async (res) => {
+      //         await setCookie(TOKEN_ID, res?.data.id_token)
+      //         await setCookie(REFRESH_TOKEN, res?.data.refresh_token)
+      //         window.location.reload()
+      //         return axios(originalRequest)
+      //       })
+      //       .catch((err) => {
+      //         console.log(err, 'error')
+      //       })
+      //   }
+      // }
+      errorMessage = error.response.data ? error.response.data.data : error.response.data
     }
-    throw error
+    throw errorMessage
   },
 )
 

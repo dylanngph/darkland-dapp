@@ -25,7 +25,7 @@ export default ({ close }) => {
       case 2:
         return <SuccessComponent close={close} tilte='Registration Complete!' content='Please check your e-mail to verify your account' link='/my-assets' />
       default:
-        return <RegisterEmail close={close} onChangeStep={setRegisterStep} />;
+        return <RegisterEmail close={close} onChangeStep={setRegisterStep} />
     }
   }
 

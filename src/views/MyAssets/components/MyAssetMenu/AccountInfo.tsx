@@ -26,7 +26,7 @@ const AccountInfo = () => {
 
   const splitAddress = () => {
     if (account) {
-      const positionSubString = 20
+      const positionSubString = 15
       const result = account.substring(0, positionSubString)
       const result2 = account.substring(account.length - 4, account.length)
 
@@ -34,35 +34,6 @@ const AccountInfo = () => {
     }
     return ''
   }
-
-
-
-  useEffect(() => {
-    const getUser = async () => {
-      // try {
-      //   const tokenID = getCookie(TOKEN_ID);
-      //   const response = await fetch(`https://alpha-dot-heroes-td-6fa95.as.r.appspot.com/login`, {
-      //     method: 'POST',
-      //     headers: { 'Content-Type': 'application/json', "Authorization": `Bearer ${tokenID}` },
-      //   })
-      //   const dataUser = await response.json()
-      //   localStorage.setItem('userInfo', JSON.stringify(dataUser.user))
-      //   setUserInfo(dataUser.user)
-      // } catch(err) {
-      //   console.log(err)
-      // }
-      try {
-        const idToken = getCookie(TOKEN_ID)
-        const dataUser: any = await heroestdApi.loginWithToken(idToken)
-        window.localStorage.setItem('userInfo', JSON.stringify(dataUser.user))
-        setUserInfo(dataUser.user)
-        dispath(updateUserInGame(dataUser))
-      } catch(err) {
-        console.log(err)
-      }
-    }
-    getUser()
-  }, [dispath])
 
   const avatar = localStorage.getItem('avatar')
 
@@ -74,37 +45,9 @@ const AccountInfo = () => {
             <img
               className="h-20 w-20"
               style={{border: '3px solid #2647CB'}}
-              src={`../images/avatars/${avatar && avatar.length > 0 ? avatar : 'BigBoss.gif'}`}
+              src='images/avatars/avatar.png'
               alt="account-info"
             />
-            <Popup
-              className="w-full"
-              modal
-              closeOnDocumentClick
-              trigger={
-                <div style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  right: '10px',
-                  width: '37px',
-                  height: '27px',
-                  backgroundImage: 'url("/images/blindbox/bg-icon-change-avatar.png")',
-                }}>
-                  <ChangeAvatarIcon
-                    className="cursor-pointer"
-                    src="../images/blindbox/arrow-swap-horizontal.png"
-                    alt="change-avatar-icon"
-                  />
-                </div>
-              }
-            >
-              {(close) => (
-                <PopupChangeAvatar
-                  close={close}
-                  currentAva={avatar && avatar.length > 0 ? avatar : 'BigBoss.gif'}
-                />
-              )}
-            </Popup>
           </CardIcon>
         </div>
         {/* <AccountDetails className="w-3/5">
@@ -114,7 +57,6 @@ const AccountInfo = () => {
       </div>
       <TextAddress className="flex justify-center">
         {splitAddress()}
-        65a6..986b8a6
         <Tooltip placement="top-start" label="Copy">
           <div
             role="button"

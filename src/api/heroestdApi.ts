@@ -3,7 +3,7 @@ import axios from 'axios'
 import axiosClient from './axiosClient'
 
 const baseURL = process.env.REACT_APP_URL_API
-const baseURLProd = process.env.REACT_APP_URL_API_PROD
+const baseURLProd = "http://103.130.219.154:5000/api/v1"
 const baseURLAlpha = "https://alpha-dot-heroes-td-6fa95.as.r.appspot.com"
 const baseURLBeta = "https://beta-dot-heroes-td-6fa95.as.r.appspot.com"
 
@@ -57,7 +57,7 @@ class HeroestdApi {
 
   getMyAssetListHeroes = (params?: any) => {
     const qs = queryString.stringify(params)
-    const url = `${baseURLBeta}/get-hero-inventory/${qs}`
+    const url = `${baseURLProd}/get-hero-inventory/${qs}`
     return axiosClient.get(url)
   }
 
@@ -74,7 +74,7 @@ class HeroestdApi {
   }
 
   getHeroDetails = (id: string) => {
-    const url = `${baseURLBeta}/get-hero-info/${id}`
+    const url = `${baseURLProd}/get-hero-info/${id}`
     return axiosClient.get(url)
   }
 
@@ -89,7 +89,7 @@ class HeroestdApi {
   }
   
   loginWithToken = (idToken: string) => {
-    const url = `${baseURLBeta}/login`
+    const url = `${baseURLProd}/login`
     const config = {
       headers: { Authorization: `Bearer ${idToken}` },
     }
@@ -108,15 +108,57 @@ class HeroestdApi {
     return axiosClient.get(url)
   }
 
-  setLinkWallet = (walletAddress: string, idToken: string) => {
-    const url = `${baseURLBeta}/linkWallet`
+  linkWallet = (walletAddress: string, idToken: string, email: string, signature: string) => {
+    const url = `${baseURLProd}/linkWallet`
     const config = {
-      headers: { Authorization: `Bearer ${idToken}` }
+      headers: { 'x-access-token': `${idToken}` }
     }
     const data = {
-      walletAddress
+      address: walletAddress,
+      email,
+      signature
     }
     return axiosClient.post(url, data, config)
+  }
+
+  register = (email: string, password: string, firstName: string, lastName: string) => {
+    const url = `${baseURLProd}/register`
+
+    const data = {
+      email,
+      password,
+      first_name: firstName,
+      last_name: lastName
+    }
+    return axiosClient.post(url, data)
+  }
+
+  profile = (idToken: string) => {
+    const url = `${baseURLProd}/profile`
+    const config = {
+      headers: { 'x-access-token': `${idToken}` }
+    }
+
+    return axiosClient.get(url, config)
+  }
+
+  login = (email: string, password: string) => {
+    const url = `${baseURLProd}/login`
+    const data = {
+      email,
+      password
+    }
+
+    return axiosClient.post(url, data)
+  }
+
+  loginFirebase = (idToken: string) => {
+    const url = `${baseURLProd}/loginFirebase`
+    const data = {
+      firebase_token: idToken
+    }
+
+    return axiosClient.post(url, data)
   }
 }
 

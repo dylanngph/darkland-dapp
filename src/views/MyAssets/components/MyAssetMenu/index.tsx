@@ -16,7 +16,6 @@ const Card = styled.div`
   width: auto;
   height: auto;
   background: #091749;
-  border: 1px solid #091749;
   box-sizing: border-box;
 `
 

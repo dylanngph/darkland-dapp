@@ -44,7 +44,8 @@ import {
   getMarketplaceContract,
   getHeroContract,
   getHoldInGameContract,
-  getVestingStrategicContract
+  getVestingStrategicContract,
+  getStakeTokenEarnNFTContract
 } from 'utils/contractHelpers'
 import {getMulticallAddress} from 'utils/addressHelpers'
 
@@ -285,6 +286,11 @@ export const useHeroContract = () => {
 export const useHoldInGameContract = () => {
   const { library } = useActiveWeb3React()
   return useMemo(() => getHoldInGameContract(library.getSigner()), [library])
+}
+
+export const useStakeTokenEarnNFTContract = (type: string) => {
+  const { library } = useActiveWeb3React()
+  return useMemo(() => getStakeTokenEarnNFTContract(type, library.getSigner()), [library, type])
 }
 
 export const useFarmAuctionContract = () => {

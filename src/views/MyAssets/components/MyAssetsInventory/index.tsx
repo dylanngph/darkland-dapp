@@ -45,7 +45,7 @@ const MyAssetsInventory = () => {
     <Card className="card text-center mt-3 md:mt-0">
       <div className="card-header" style={{fontSize: '16px'}} >
         <ul className="border-b" style={{textAlign:"left"}} >
-          <li className="list-none" style={{width: '130px', display: 'inline-block'}}>
+          {/* <li className="list-none" style={{width: '130px', display: 'inline-block'}}>
             <NavLink
               key={0}
               className="nav-link text-xs md:text-lg flex gap-2 p-2 justify-center"
@@ -53,11 +53,10 @@ const MyAssetsInventory = () => {
               onClick={() => onChangeCurrentTab(0)}
             >
               <Flex gridGap={1} alignItems="center">
-                {/* <div><img className="" src="/images/blindbox/my-asset-tab-1.png" alt="common" height="20px" width="20px" /></div> */}
                 Box
               </Flex>
             </NavLink>
-          </li>
+          </li> */}
           <li className="list-none" style={{width: '130px', display: 'inline-block'}}>
             <NavLink
               key={2}
@@ -66,12 +65,11 @@ const MyAssetsInventory = () => {
               onClick={() => onChangeCurrentTab(2)}
             >
               <Flex gridGap={1} alignItems="center">
-                {/* <div><img className="" src="/images/blindbox/my-asset-tab-2.png" alt="common" height="20px" width="20px" /></div> */}
                 Hero
               </Flex>
             </NavLink>
           </li>
-          <li className="list-none text-xs" style={{width: '130px', display: 'inline-block'}}>
+          {/* <li className="list-none text-xs" style={{width: '130px', display: 'inline-block'}}>
             <NavLink
               key={1}
               className="text-xs md:text-lg flex md:gap-2 p-2 justify-center"
@@ -79,11 +77,10 @@ const MyAssetsInventory = () => {
               onClick={() => onChangeCurrentTab(1)}
             >
               <Flex gridGap={1} alignItems="center">
-                {/* <div><img className="" src="/images/blindbox/my-asset-tab-3.png" alt="common" height="20px" width="20px" /></div> */}
                 Weapon
               </Flex>
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <CardBody className="card-body">{renderBody()}</CardBody>

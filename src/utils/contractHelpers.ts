@@ -15,7 +15,8 @@ import {
   currentBoxes,
   openBoxConfig,
   heroNftConfig,
-  holdInGameConfig
+  holdInGameConfig,
+  boxDataConfig
 } from 'config/constants'
 import {VestingTGE} from 'config/constants/vesting'
 import {claimBox} from 'views/BlindBox/Config/config'
@@ -76,7 +77,6 @@ import bunnySpecialPredictionAbi from 'config/abi/bunnySpecialPrediction.json'
 import bunnySpecialLotteryAbi from 'config/abi/bunnySpecialLottery.json'
 import farmAuctionAbi from 'config/abi/farmAuction.json'
 import airDropAbi from 'config/abi/airdrop.json'
-import babySharkAbi from 'config/abi/babyshark.json'
 import poolNftAbi from 'config/abi/kSharkFarmingNFTs.json'
 import farmNftAbi from 'config/abi/ksharkNftFarmToken.json'
 import pancakeRouterAbi from 'config/abi/pancakeRouter.json'
@@ -86,10 +86,10 @@ import vestingStrategicAbi from 'config/abi/vestingStrategic.json'
 import idoAbi from 'config/abi/ido.json'
 import lotteryBlindBoxAbi from 'config/abi/lotteryBlindBox.json'
 import blindBoxAbi from 'config/abi/blindBoxAbi.json'
-import blindBoxWhtielistAbi from 'config/abi/blindBoxWhtielist.json'
 import marketPlaceAbi from 'config/abi/marketplaceBox.json'
 import boxAbi from 'config/abi/AssetBlindBox.json'
 import openBoxAbi from 'config/abi/openBox.json'
+import poolBoxNftAbi from 'config/abi/poolNft.json'
 
 import {ROUTER_ADDRESS} from '../config/constants'
 import {ChainLinkOracleContract, FarmAuctionContract, PredictionsContract} from './types'
@@ -267,4 +267,9 @@ export const getHeroContract = (signer?: ethers.Signer | ethers.providers.Provid
 
 export const getHoldInGameContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(holdInGameConfig.abi, getAddress(holdInGameConfig.contractAddress), signer)
+}
+
+export const getStakeTokenEarnNFTContract = (type: string, signer?: ethers.Signer | ethers.providers.Provider) => {
+  const config = boxDataConfig.find((d) => d.type === type)
+  return getContract(poolBoxNftAbi, getAddress(config.contractAddress), signer)
 }

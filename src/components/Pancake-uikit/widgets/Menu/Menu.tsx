@@ -214,28 +214,17 @@ const Menu: React.FC<NavProps> = ({
         
         <Flex style={{alignItems: 'center'}}>
         {globalMenu}
-          {/* {!isLogin ? (
+          {!isLogin ? (
             <Popup
               className="w-full"
               modal
               trigger={
                 <Button
-                  style={{ backgroundColor: '#202020', width: '136px', textOverflow: 'ellipsis' }}
+                  style={{ backgroundColor: '#2647cb', width: '100px', height: '40px' , textOverflow: 'ellipsis' }}
                   variant="text"
                   scale="sm"
                   className="mr-2"
                 >
-                  <img
-                    src="/logo.svg"
-                    height="12px"
-                    style={{
-                      paddingLeft: '30px',
-                      transform: 'translateX(-15px)',
-                      height: '24px',
-                      width: 'auto',
-                    }}
-                    alt="HeroesTD"
-                  />
                   Login
                 </Button>
               }
@@ -246,7 +235,7 @@ const Menu: React.FC<NavProps> = ({
             <div className="mr-2">
             <UIKitUserMenu
               account={userData?.name ?? "Anonymous"}
-              avatarSrc="/images/blindbox/account-info.png"
+              avatarSrc="/images/avatars/avatar.png"
             >
               <NavLink to="/my-assets">
                 <UserMenuItem as="button">
@@ -266,8 +255,8 @@ const Menu: React.FC<NavProps> = ({
             </UIKitUserMenu>
             
             </div>
-          )} */}
-           {userMenu}
+          )}
+          {userMenu}
         </Flex>
       </StyledNav>
       <BodyWrapper>

@@ -1,16 +1,15 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import { IBoxData } from 'config/constants/types'
 import { Box } from '@mui/material'
 import StepBox from './StepBox'
 
 export type BoxProp = {
     isMobile?: boolean
-    boxType?: string
-    quantity?: number
-    image?: string
+    boxData: IBoxData
 }
 
-const BoxSection = ({isMobile, boxType , quantity , image}:BoxProp) => {
+const BoxSection = ({isMobile, boxData }:BoxProp) => {
   return (
     <Wrapper>
         <Flex sx={{
@@ -35,7 +34,7 @@ const BoxSection = ({isMobile, boxType , quantity , image}:BoxProp) => {
                         left: isMobile ? '20%' : '110px'
                     }
                 }}>
-                    <img src={`images/nftStaking/${image}`} alt="" />
+                    <img src={`images/nftStaking/${boxData.image}`} alt="" />
                 </StyledBox>
                 <Box sx={{
                     position: 'relative',
@@ -53,15 +52,15 @@ const BoxSection = ({isMobile, boxType , quantity , image}:BoxProp) => {
                         fontSize: '30px',
                         marginBottom: '10px'
                     }}>
-                        {boxType} Box
+                        {boxData.type} Box
                     </Box>
                     <Box sx={{fontSize: '20px'}} >
-                        <span style={{color: '#00FB28'}}>{quantity}</span>/2000
+                        <span style={{color: '#00FB28'}}>{ boxData.totalUserStaking }</span> / {boxData.poolLimitUser}
                     </Box>
                 </Box>
             </Box>
             <Box width={isMobile ? "100%" : "57%"} p="30px" mt={isMobile && '100px'}  >
-                <StepBox isMobile={isMobile} />
+                <StepBox isMobile={isMobile} boxData={boxData} />
             </Box>
         </Flex>
         

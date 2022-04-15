@@ -15,12 +15,9 @@ const SuccessComponent = ({close, tilte, content, link}) => {
         <h1 className='mt-3 text-sm text-center' style={{ color: "#A6A6A6" }} >{content}</h1>
       </SwapField>
       <WrapButton>
-        <NavLink to={link} style={{width:"100%"}} >
         <Button onClick={close} size="lg" type='button' style={{ width: "100%" }} >
           Close
         </Button>
-        </NavLink>
-
       </WrapButton>
     </div>
   )

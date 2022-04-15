@@ -1,21 +1,119 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { styled as muiStyled } from '@mui/material/styles';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import Box from '@mui/material/Box';
+import { useWeb3React } from '@web3-react/core'
 import { Stepper , Step, StepLabel } from '@mui/material';
-import { Button } from '@pancakeswap/uikit';
-
-
+import { IBoxData } from 'config/constants/types';
+import { formatNumber } from 'utils/formatBalance';
+import { Button, Text } from 'components/Pancake-uikit';
+import tokens from 'config/constants/tokens';
+import { useERC20, useStakeTokenEarnNFTContract } from 'hooks/useContract';
+import { useModal } from '@pancakeswap/uikit';
+import ApproveModal from 'components/ApproveModal/ApproveModal';
+import TokenModal from 'components/TokenModal/TokenModal';
+import { getAddress } from 'utils/addressHelpers';
+import Popup from 'reactjs-popup';
+import PendingTransactionModal from 'components/PendingTransaction/PendingTransaction';
+import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice';
+import checkAllowance from 'utils/checkAllowance'
+import checkBalance from 'utils/checkBalance'
+import ConnectWalletButton from 'components/ConnectWalletButton'
+import useToast from 'hooks/useToast'
+import Countdown from 'react-countdown';
+import CountDownRender from 'components/CountDownRender';
 
 export type StepBoxProps = {
     isMobile?: boolean
+    boxData: IBoxData
+}
 
+enum TYPE_STEP {
+  STAKE = 0,
+  WAIT = 1,
+  CLAIM = 2,
+  CLAIMED = 3
 }
 
 
-const StepBox = ({isMobile }:StepBoxProps) => {
+const StepBox = ({ isMobile, boxData }:StepBoxProps) => {
+  const [pendingTx, setPendingTx] = useState(false)
+  const [unStakingTx, setUnstakingTx] = useState(false)
+  const { account } = useWeb3React()
+  const { toastError, toastSuccess } = useToast()
+  const { callWithGasPrice } = useCallWithGasPrice()
+  const tokenContract = useERC20(getAddress(tokens.big.address))
+  const contractPoolNFT = useStakeTokenEarnNFTContract(boxData.type)
+  const [openModalApprove] = useModal(<ApproveModal 
+    contractApprove={tokenContract} 
+    contractNeedApprove={getAddress(boxData.contractAddress)}
+    title='Approve Buy Box'
+  />, false)
+  const [openModalToken] = useModal(<TokenModal symbol='BIG'/>, false)
 
+  const timeNow = new Date().getTime()
+  const isStake = boxData.users.isStake
+  const isClaimed = boxData.users.isClaimNFT
+  const timeEndWait = (boxData.users.lastUpdateTime + boxData.duration) * 1000
+  const timeCanClaim = timeEndWait < timeNow
+  const isWaitReceive = isStake && !timeCanClaim
+  const canClaim = isStake && timeCanClaim
+  const claimed = isClaimed && !isWaitReceive
+
+  const currentStep = claimed ? TYPE_STEP.CLAIMED : canClaim ? TYPE_STEP.CLAIM : isWaitReceive ? TYPE_STEP.WAIT : TYPE_STEP.STAKE
+  const isFullSlot = boxData.totalUserStaking === boxData.poolLimitUser
+
+  const handleStake = async() => {
+    try {
+      const allowance = await checkAllowance(account, tokens.big.address, boxData.contractAddress)
+      const balance = await checkBalance(account, tokens.big.address, tokens.big.decimals)
+      if (!allowance) {
+        openModalApprove()
+        return
+      } if (!balance) {
+        openModalToken()
+        return
+      }
+      setPendingTx(true)
+      const tx = await callWithGasPrice(contractPoolNFT, 'stake', [])
+      const transaction = await tx.wait()
+      toastSuccess("Success", "Staked successfully")
+    } catch(error) {
+      console.log("error")
+      toastError("Error", error?.data?.message)
+    } finally {
+      setPendingTx(false)
+    }
+  }
+
+  const handleUnstake = async() => {
+    try {
+      setUnstakingTx(true)
+      const tx = await callWithGasPrice(contractPoolNFT, 'emergencyWithdraw', [])
+      const transaction = await tx.wait()
+      toastSuccess("Success", "Unstaked successfully")
+    } catch(error) {
+      console.log("error")
+      toastError("Error", error?.data?.message)
+    } finally {
+      setUnstakingTx(false)
+    }
+  }
+
+  const handleClaim = async() => {
+    try {
+      setPendingTx(true)
+      const tx = await callWithGasPrice(contractPoolNFT, 'claim', [])
+      const transaction = await tx.wait()
+      toastSuccess("Success", "Claimed successfully")
+    } catch(error) {
+      console.log("error")
+      toastError("Error", error?.data?.message)
+    } finally {
+      setPendingTx(false)
+    }
+  }
 
   return (
     <Box sx={{ 
@@ -43,7 +141,7 @@ const StepBox = ({isMobile }:StepBoxProps) => {
     }}>
       <StyledBox>
         <Stepper
-          activeStep={0}
+          activeStep={currentStep}
           alternativeLabel
           connector={<ColorlibConnector/>}
         >
@@ -92,7 +190,7 @@ const StepBox = ({isMobile }:StepBoxProps) => {
               $BIG Staking
             </Box>
             <Box color="#FFA800" >
-              10000
+            { formatNumber(boxData.requireAmountStaking, 0, 0) }
             </Box>
           </Flex>
           <Flex>
@@ -108,13 +206,37 @@ const StepBox = ({isMobile }:StepBoxProps) => {
               Earn reward(s):
             </Box>
             <Box color="#FFA800" >
-              1 Rare Box
+              1 { boxData?.type?.toUpperCase() } BOX
             </Box>
           </Flex>
-          <StyleButton>
-            Stake
-          </StyleButton>
+          {
+            isWaitReceive && 
+            <Flex>
+              <Box>
+                Claim in: 
+              </Box>
+              <Box color="#FFA800" >
+                <Countdown date={timeEndWait} renderer={CountDownRender} />
+              </Box>
+            </Flex>
+          }
+          <Flex justifyContent='center' gap={1} flexWrap='wrap'>
+          {
+            (isStake && !claimed) && <UnstakeButton disabled={unStakingTx} onClick={handleUnstake}>Unstake</UnstakeButton>
+          }
+          { 
+            account ?
+              isWaitReceive ? null
+              : canClaim ?
+                  <StyleButton disabled={claimed || pendingTx} onClick={handleClaim}>Claim</StyleButton>  
+                : <StyleButton disabled={isFullSlot || isStake || claimed} onClick={handleStake}>{claimed ? 'Claimed' : 'Stake'}</StyleButton> 
+            : <ConnectWalletButton/>
+          }
+          </Flex>
       </StyledBox>
+      <Popup className="w-full" modal closeOnDocumentClick={false} open={pendingTx || unStakingTx}>
+        {(close) => <PendingTransactionModal/> }
+        </Popup>
     </Box>
   )
 }
@@ -154,17 +276,12 @@ const Flex = styled(Box)`
   font-weight: 700;
 `
 const StyleButton = styled(Button)`
-    background: #FFA800;
-    height: 40px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    padding-left: 60px;
-    padding-right: 60px;
-    border-radius: 0;
     border-bottom: 7px solid #C16000;
-    box-sizing: content-box;
+`
+
+const UnstakeButton = styled(Button)`
+  background-color: #00BFD5;
+  border-bottom: 7px solid #058998;
 `
 
 export default StepBox

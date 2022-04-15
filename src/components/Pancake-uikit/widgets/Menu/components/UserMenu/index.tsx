@@ -47,7 +47,8 @@ const Menu = styled.div<{isOpen: boolean}>`
   width: 280px;
   visibility: visible;
   z-index: 1001;
-
+  overflow: hidden;
+  
   ${({isOpen}) =>
     !isOpen &&
     `

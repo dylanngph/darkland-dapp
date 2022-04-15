@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useWeb3React } from '@web3-react/core'
 import Container from 'components/Layout/Container'
+import { IBoxData } from 'config/constants/types'
 import { Box } from '@mui/material'
+import useRefresh from 'hooks/useRefresh'
 import { useMatchBreakpoints } from '@pancakeswap/uikit'
+import boxData from 'config/constants/boxData'
 import BoxSection from './components/BoxSection'
-import boxData from './config/boxData'
+import { fetchFarms } from './hooks/fetchPublicUserPool'
 
 
 const NFTStaking = () => {
   const { isMobile } = useMatchBreakpoints()
+	const { account } = useWeb3React()
+	const { fastRefresh } = useRefresh()
+	const [boxDataPublic, setBoxDataPublic] = useState<IBoxData[]>([])
+
+	useEffect(() => {
+		const fetchData = async() => {
+			const userData = await fetchFarms(boxData, account)
+			setBoxDataPublic(userData)
+		}
+		if (account) fetchData()
+	}, [account, fastRefresh])
 
   return (
     <Page>
@@ -57,18 +72,7 @@ const NFTStaking = () => {
                 <img src="images/nftBox.png" alt="" width={isMobile ? "500px" : "700px"} />
             </HeroLayout>
         </Hero>
-        <StakingLayout>
-            {
-                boxData.map(item => 
-                    <BoxSection
-                        isMobile={isMobile}
-                        boxType={item.type}
-                        quantity={item.quantity}
-                        image={item.image}
-                    />
-                )
-            }
-        </StakingLayout>
+        <StakingLayout>{ boxDataPublic.map(item => <BoxSection isMobile={isMobile} boxData={item} />) }</StakingLayout>
     </Page>
   )
 }

@@ -5,9 +5,15 @@ import { Button } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import firebase, { firebaseApp } from 'config/firebase/firebaseConfig'
 import validator from 'validator'
+import heroestdApi from 'api/heroestdApi'
+import { setCookie } from 'utils/cookie'
+import { TOKEN_ID } from 'contants'
+import { useAppDispatch } from 'state'
+import { updateUserInGame } from 'state/user/actions'
 
 const RegisterEmail = ({close, onChangeStep }) => {
   const { t } = useTranslation()
+  const dispatch = useAppDispatch()
   const [errMessage, setErrMessage] = useState('');
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -22,8 +28,10 @@ const RegisterEmail = ({close, onChangeStep }) => {
   const [passwordError, setPasswordError] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
-
-
+  const [firstName, setFirstName] = useState('')
+  const [firstNameError, setFirstNameError] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [lastNameError, setLastNameError] = useState('')
 
   const handleChangeEmail = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = evt.target
@@ -79,10 +87,16 @@ const RegisterEmail = ({close, onChangeStep }) => {
   }, [codeStatus, onCountDown])
 
 
-  const onSubmit = (evt) => {
+  const onSubmit = async(evt) => {
     evt.preventDefault();
 
-    if (!email) {
+    if (!firstName) {
+      setFirstNameError('Please enter first name')
+    }
+    else if (!lastName) {
+      setLastNameError('Please enter last name')
+    }
+    else if (!email) {
       setEmailError('Please enter email')
     }
     else if (!validator.isEmail(email)) {
@@ -106,26 +120,66 @@ const RegisterEmail = ({close, onChangeStep }) => {
       setCodeError('')
     }
     else {
-      firebase.auth().createUserWithEmailAndPassword(email, password).then(result => {
-        if (result.additionalUserInfo.isNewUser) {
-          if (result.additionalUserInfo.providerId === "password") {
-            result.user.sendEmailVerification();
-            onChangeStep(2)
-          }
-        }
-      }).catch(error => {
-        console.log("message error", error.message)
-        setErrMessage(error.message)
-      })
+      try {
+        const { data: res} = await heroestdApi.register(email, password, lastName, firstName)
+        onChangeStep(2)
+      } catch(error) {
+        console.log(error)
+        setErrMessage(error?.message)
+      }
     }
   }
   return (
     <div>
       <Header>
-        <img className='h-10 w-15 mt-5' src="/images/my-assets/logoSmall.png" alt="copy" />
+        <img className='h-10 w-15 mt-5' src="/logo.png" style={{ height: '80px', marginBottom: 5 }} alt="copy" />
         <Title>{t('Register with E-mail')}</Title>
       </Header>
       <form onSubmit={onSubmit} >
+        <div className='flex'>
+          <SwapField className='w-1/2'>
+            <p className="text-sm">First name</p>
+            <InputField>
+              <Input
+                placeholder='Enter first name'
+                borderColor='#E9E9E9'
+                backgroundColor="#222"
+                autoComplete='false'
+                textColor="#b5b5b5"
+                sx={{
+                  '&:focus, &:active': {
+                    borderColor: '#ddd',
+                    boxShadow: 'none'
+                  },
+                }}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </InputField>
+            {firstNameError && <Error>{firstNameError}</Error>}
+          </SwapField>
+          <SwapField className='w-1/2'>
+            <p className="text-sm">Last name</p>
+            <InputField>
+              <Input
+                placeholder='Enter last name'
+                borderColor='#E9E9E9'
+                backgroundColor="#222"
+                autoComplete='false'
+                textColor="#b5b5b5"
+                sx={{
+                  '&:focus, &:active': {
+                    borderColor: '#ddd',
+                    boxShadow: 'none'
+                  },
+                }}
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </InputField>
+            {lastNameError && <Error>{lastNameError}</Error>}
+          </SwapField>
+        </div>
         {/* <SwapField>
           <p className='text-sm' >Username</p>
           <InputField>
@@ -167,7 +221,7 @@ const RegisterEmail = ({close, onChangeStep }) => {
               onChange={handleChangeEmail}
             />
           </InputField>
-          {emailError && <p style={{ color: "#DA3754", paddingTop: "5px" }} >{emailError}</p>}
+          {emailError && <Error>{emailError}</Error>}
         </SwapField>
         {/* <SwapField>
           <p className='text-sm' >Verification code</p>
@@ -220,7 +274,7 @@ const RegisterEmail = ({close, onChangeStep }) => {
               onChange={handleChangePassword}
             />
           </InputField>
-          {passwordError && <p style={{ color: "#DA3754", paddingTop: "5px" }} >{passwordError}</p>}
+          {passwordError && <Error>{passwordError}</Error>}
         </SwapField>
 
         <SwapField>
@@ -243,7 +297,7 @@ const RegisterEmail = ({close, onChangeStep }) => {
               onChange={handleChangeConfirmPassword}
             />
           </InputField>
-          {confirmPasswordError && <p style={{ color: "#DA3754", paddingTop: "5px" }} >{confirmPasswordError}</p>}
+          {confirmPasswordError && <Error>{confirmPasswordError}</Error>}
         </SwapField>
         <SwapField>
           <Checkbox
@@ -254,12 +308,12 @@ const RegisterEmail = ({close, onChangeStep }) => {
             scale="sm"
           >
             <p className=' text-sm' style={{ color: "#A6A6A6" }} >I have read and agree 
-            <a href='https://heroestd.io/terms-of-use' rel="noreferrer" target="_blank" style={{ color: "#ffffff" }} >(Terms of use)</a></p>
+            <a href='/#' rel="noreferrer" target="_blank" style={{ color: "#ffffff" }} > (Terms of use)</a></p>
           </Checkbox>
           {isAgreeError && <p style={{ color: "#DA3754", paddingTop: "5px" }} >{isAgreeError}</p>}
           {errMessage && <p style={{ color: "#DA3754", paddingTop: "5px" }} >{errMessage}</p>}
         </SwapField>
-        <WrapButton className='flex-col' >
+        <WrapButton className='flex-col gap-2'>
           <Button size="lg" type='submit' style={{ width: "100%", height: "40px" }} >
             Complete
           </Button>
@@ -280,7 +334,7 @@ const RegisterEmail = ({close, onChangeStep }) => {
 
 const SwapField = styled(Box)`
   color: #fff;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
 `
 const WrapButton = styled(Box)`
@@ -331,6 +385,11 @@ const Wrapper = styled(Box)`
   @media screen and (max-width: 668px) {
     width: 300px;
   }
+`
+
+const Error = styled.p`
+  color: #DA3754;
+  padding-top: 5px
 `
 
 export default RegisterEmail
