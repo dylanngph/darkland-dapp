@@ -27,14 +27,15 @@ const BoxSection = ({isMobile, boxData }:BoxProp) => {
                 </Box>
                 <StyledBox sx={{
                     'img':{
-                        width: '247px',
+                        width: '200px',
                         position: 'relative',
                         zIndex: '2',
                         top: '70px',
-                        left: isMobile ? '20%' : '110px'
+                        left: '50%',
+                        transform: 'translateX(-50%)'
                     }
                 }}>
-                    <img src={`images/nftStaking/${boxData.image}`} alt="" />
+                    <img src={`images/nftStaking/${boxData.image}`} width="100%" alt="" />
                 </StyledBox>
                 <Box sx={{
                     position: 'relative',
@@ -84,7 +85,7 @@ const Floating = keyframes`
         transform: translateY(0)
     }
     50% {
-        transform: translateY(30px)
+        transform: translateY(20px)
     }
     100% {
         transform: translateY(0px)

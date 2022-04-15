@@ -74,6 +74,7 @@ const DashboardMarket = lazy(() => import('./views/DashboardMarket'))
 const TransactionHistory = lazy(() => import('./views/TransactionHistory'))
 const PoolNft = lazy(() => import('./views/PoolNft'))
 const Rewards = lazy(() => import('./views/Rewards'))
+const PlayGame = lazy(() => import('./views/PlayGame'))
 // This config is required for number formatting
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
@@ -152,7 +153,7 @@ const App: React.FC = () => {
             <Route exact path="/create/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
             <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
             <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
-            
+            <Route exact strict path="/play-game" component={PlayGame} />
             {/* Redirect */}
             <Route path="/pool">
               <Redirect to="/liquidity" />

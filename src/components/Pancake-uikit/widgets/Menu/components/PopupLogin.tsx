@@ -115,7 +115,7 @@ const PopupLogin = ({ close, setToken }) => {
           <Box backgroundImage='/images/bg_login.png' style={{ backgroundSize: 'cover', backgroundPosition: 'top' }} flex={{ lg: '1 27%' }} />
           <Box flex={{ lg: '1 50%' }} padding='2.6rem'>
             <Box textAlign='left'>
-              <TextTitle fontSize={26}>
+              <TextTitle fontSize={26} lineHeight='40px'>
                 <Title>Login to</Title>
                 <Title>DARKLAND SURVIVAL</Title>
               </TextTitle>

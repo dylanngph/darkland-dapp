@@ -23,6 +23,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import useToast from 'hooks/useToast'
 import Countdown from 'react-countdown';
 import CountDownRender from 'components/CountDownRender';
+import ForceWithdraw from './ForceWithdraw';
 
 export type StepBoxProps = {
     isMobile?: boolean
@@ -48,10 +49,9 @@ const StepBox = ({ isMobile, boxData }:StepBoxProps) => {
   const [openModalApprove] = useModal(<ApproveModal 
     contractApprove={tokenContract} 
     contractNeedApprove={getAddress(boxData.contractAddress)}
-    title='Approve Buy Box'
+    title={`Approve Box ${boxData?.type?.toUpperCase()}`}
   />, false)
   const [openModalToken] = useModal(<TokenModal symbol='BIG'/>, false)
-
   const timeNow = new Date().getTime()
   const isStake = boxData.users.isStake
   const isClaimed = boxData.users.isClaimNFT
@@ -100,6 +100,7 @@ const StepBox = ({ isMobile, boxData }:StepBoxProps) => {
       setUnstakingTx(false)
     }
   }
+  const [openModalForceWithdraw] = useModal(<ForceWithdraw onConfirm={handleUnstake} symbol="BIG" balance={boxData.requireAmountStaking} />)
 
   const handleClaim = async() => {
     try {
@@ -222,13 +223,13 @@ const StepBox = ({ isMobile, boxData }:StepBoxProps) => {
           }
           <Flex justifyContent='center' gap={1} flexWrap='wrap'>
           {
-            (isStake && !claimed) && <UnstakeButton disabled={unStakingTx} onClick={handleUnstake}>Unstake</UnstakeButton>
+            (isStake && !claimed && isWaitReceive) && <UnstakeButton disabled={unStakingTx || !isWaitReceive} onClick={openModalForceWithdraw}>Force Withdraw</UnstakeButton>
           }
           { 
             account ?
-              isWaitReceive ? null
+              isWaitReceive ? <StyleButton disabled>Claim Reward</StyleButton>
               : canClaim ?
-                  <StyleButton disabled={claimed || pendingTx} onClick={handleClaim}>Claim</StyleButton>  
+                  <StyleButton disabled={claimed || pendingTx || isWaitReceive} onClick={handleClaim}>Claim Reward</StyleButton>  
                 : <StyleButton disabled={isFullSlot || isStake || claimed} onClick={handleStake}>{claimed ? 'Claimed' : 'Stake'}</StyleButton> 
             : <ConnectWalletButton/>
           }
@@ -276,12 +277,19 @@ const Flex = styled(Box)`
   font-weight: 700;
 `
 const StyleButton = styled(Button)`
-    border-bottom: 7px solid #C16000;
+  display: flex;
+  flex: 2;
+  border-bottom: 7px solid #C16000;
 `
 
 const UnstakeButton = styled(Button)`
+  display: flex;
+  flex: 2;
   background-color: #00BFD5;
-  border-bottom: 7px solid #058998;
+  border-bottom: 7px solid #0d7c89;
+  &.pancake-button--disabled {
+    background-color: #058998;
+  }
 `
 
 export default StepBox

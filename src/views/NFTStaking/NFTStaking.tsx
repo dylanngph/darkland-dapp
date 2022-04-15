@@ -57,7 +57,7 @@ const NFTStaking = () => {
                                 fontSize: isMobile? '56px' : '74px',
                                 fontWeight: '700',
                             }}>
-                                Earn Box
+                                Earn NFTS
                             </Box>
                         </Box>
                     </Box>
@@ -66,10 +66,10 @@ const NFTStaking = () => {
                         lineHeight: '1.5'
                     }}>
                         The Event will start from <br/>
-                        <span style={{color: '#00FB28'}}>7 AM (UTC) on Mar 20</span> to <span style={{color: '#00FB28'}}>7 AM (UTC) on April 20, 2022</span> 
+                        <span style={{color: '#00FB28'}}>13:00 UTC April 15 </span> to <span style={{color: '#00FB28'}}>13:00 UTC May 15</span> 
                     </Box>
                 </Box>
-                <img src="images/nftBox.png" alt="" width={isMobile ? "500px" : "700px"} />
+                <img src="images/nftBox.svg" alt="" width={isMobile ? "500px" : "700px"} />
             </HeroLayout>
         </Hero>
         <StakingLayout>{ boxDataPublic.map(item => <BoxSection isMobile={isMobile} boxData={item} />) }</StakingLayout>
