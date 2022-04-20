@@ -77,11 +77,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   //   icon: 'AirdropIcon',
   //   href: '/bounty',
   // },
-  // {
-  //   label: t('Blind Box'),
-  //   icon: 'BlindIcon',
-  //   href: '/blind-box',
-  // },
+  
   // {
   //   label: t('Farms'),
   //   icon: 'FarmIcon',
@@ -106,6 +102,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     label: t('Vesting'),
     icon: 'VestingIcon',
     href: '/vesting',
+  },
+  {
+    label: t('Blind Box'),
+    icon: 'BlindIcon',
+    href: '/blind-box',
   },
   {
     label: t('Stake NFT'),
