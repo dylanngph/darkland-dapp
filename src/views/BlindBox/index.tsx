@@ -5,19 +5,19 @@ import {useTranslation} from 'contexts/Localization'
 import styled from '@emotion/styled'
 import { styled as muiStyled } from '@mui/material/styles';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
-import { Box, Stepper , Step , StepLabel, StepContent } from '@mui/material'
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import { Skeleton, Text } from '@pancakeswap/uikit'
+import { Box } from '@mui/material'
 import { useMatchBreakpoints } from 'components/Pancake-uikit/hooks'
+import { blindBoxConfig } from 'config/constants'
 import BlindBoxItem from './BlindBoxItem'
+import { useBlindBox } from './hooks/useBlindBox'
+
 
 
 const steps = [
   {
     label: 'White List',
-    description: `From: 03:00 PM 22 Mar 2022.
-                  To: 03:00 PM 25 Mar 2022.`,
-  },
-  {
-    label: 'Free List',
     description: `From: 03:00 PM 22 Mar 2022.
                   To: 03:00 PM 25 Mar 2022.`,
   }
@@ -29,6 +29,7 @@ const BlindBox = () => {
   const isMobile = isXl === false
   const [activeStep, setActiveStep] = useState(0);
   const [activeTab , setActiveTab] = useState('common') 
+  const dataBlindBox = useBlindBox()
 
   const optionStyled = {
     maxWidth: isMobile ? '100%' : '300px',
@@ -54,7 +55,6 @@ const BlindBox = () => {
     }
   }
 
-
   return (
     <Wrapper>
       <Flex sx={{
@@ -62,26 +62,26 @@ const BlindBox = () => {
         gap: '40px',
         alignItems: isMobile ? 'center' : 'start'
       }}>
-        <StepBox sx={optionStyled}>
-          <Stepper
-            activeStep={0}
-            connector={<ColorlibConnector/>}
-            orientation="vertical"
-          >
-            {
-              steps.map(item => 
-                <Step>
-                  <StepLabel>
-                      <Box ml="10px">
-                          <div style={{fontWeight: '700', fontSize: '16px'}} > {item.label} </div>
-                          <div style={{fontSize: '12px'}} > {item.description} </div>
-                      </Box>
-                  </StepLabel>
-                </Step>
-              )
-            }
-          </Stepper>
-        </StepBox>
+      {
+        !dataBlindBox
+        ?
+        <>
+          <Skeleton height={30} width={100} />
+          <Skeleton height={30} width={100} />
+          <Skeleton height={30} width={100} />
+        </>
+        :
+        <>
+        <Box style={{ backgroundColor: '#00000050', padding: 20, minWidth: 350 }}>
+          <Flex gap={2}>
+            <FormatListBulletedIcon style={{ background: 'linear-gradient(198.74deg, #09E02C 19.48%, #098D1E 94.69%)', borderRadius: 50, width: 40, height: 40, padding: 10 }} />
+            <Flex flexDirection='column'>
+              <Text color='lime' mb={3}>Whitelist</Text>
+              <Text mb={2}>From: { new Date(dataBlindBox.startTimeWL * 1000).toLocaleString() }</Text>
+              <Text>To: { new Date(dataBlindBox.endTimeWL * 1000).toLocaleString() }</Text>
+            </Flex>
+          </Flex>
+        </Box>
         <Box sx={{
           width: '100%',
         }}>
@@ -110,7 +110,7 @@ const BlindBox = () => {
               className={activeTab === 'premium' ? 'active' : 'disable'}
               onClick={() => setActiveTab('premium')}
             >
-               <Box>
+              <Box>
                 <img src="images/premium_box.png" alt="" width="30px" />
               </Box>
               <Box>Premium Box</Box>
@@ -120,9 +120,22 @@ const BlindBox = () => {
               minWidth: isMobile ? '100%' : '900px',
               padding: isMobile? '30px' : '40px'
           }}>
-            <BlindBoxItem isMobile={isMobile} type={activeTab} />
+            <BlindBoxItem 
+              isMobile={isMobile} 
+              type={activeTab}
+              rate={blindBoxConfig.rate[activeTab]}
+              typeBox={blindBoxConfig.type[activeTab]}
+              dataBox={dataBlindBox[activeTab]}
+              isDiscount={dataBlindBox.userWhitelistDiscount}
+              percent={dataBlindBox.percentDiscount}
+              isUserHadBuyBox={dataBlindBox.isUserHadBuyBox}
+              isWhitelist={dataBlindBox.userWhitelist}
+            />
           </BlindBoxSection>
         </Box>
+        </>
+
+      }
       </Flex>
     </Wrapper>
   )

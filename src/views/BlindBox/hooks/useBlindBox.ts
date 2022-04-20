@@ -2,6 +2,7 @@ import {useCallback, useEffect, useState} from 'react'
 import {blindBoxConfig, ticketBoxConfig} from 'config/constants/blindBox'
 import {multicallv2} from 'utils/multicall'
 import blindBoxAbi from 'config/abi/blindBoxAbi.json'
+import blindBoxWhitelistAbi from 'config/abi/blindBoxWhtielist.json'
 import erc20ABI from 'config/abi/erc20.json'
 import BigNumber from 'bignumber.js'
 import {getAddress} from 'utils/addressHelpers'
@@ -15,148 +16,99 @@ import {PropsList, NFTDetails, TierDetails, BoxWhitelist, BasePropBox} from '../
 export const useBlindBox = () => {
   const {account} = useWeb3React()
   const {fastRefresh} = useRefresh()
-  const [data, setData] = useState<PropsList>(null)
+  const [data, setData] = useState<BasePropBox>(null)
+
   const fetchData = useCallback(async () => {
     try {
       const calls = [
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'countTicketHTD',
-          params: [],
+          name: "boxMysteryPrice"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'countTicketNFT',
-          params: [],
+          name: "boxPremiumPrice"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'maxTicketHTD',
-          params: [],
+          name: "endTimeWL"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'maxTicketNFT',
-          params: [],
+          name: "isUserHadBuyBox",
+          params: [account]
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'startTimeStakeNFTAndStakeHTD',
-          params: [],
+          name: "maxBoxMystery"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'timeEndStakeNFTAndStakeHTD',
-          params: [],
+          name: "maxBoxPremium"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'timeLockNFTAndHTD',
-          params: [],
+          name: "percentDiscount"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'totalUser',
-          params: [],
+          name: "startTimeWL"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'totalUserStakeNFT',
-          params: [],
+          name: "totalBoxMystery"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'userIsCount',
-          params: [account],
+          name: "totalBoxPremium"
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'userIsLockNFT',
-          params: [account],
+          name: "userWhitelist",
+          params: [account]
         },
         {
           address: getAddress(blindBoxConfig.contractAddress),
-          name: 'userNFTDetails',
-          params: [account],
-        },
-        {
-          address: getAddress(blindBoxConfig.contractAddress),
-          name: 'userTickets',
-          params: [account],
-        },
-        {
-          address: getAddress(blindBoxConfig.contractAddress),
-          name: 'userTierDetails',
-          params: [account],
+          name: "userWhitelistDiscount",
+          params: [account]
         },
       ]
-
-      const [allowance, balanceOf] = await multicallv2(erc20ABI, [
-        {
-          address: getAddress(blindBoxConfig.tokenRequire.address),
-          name: 'allowance',
-          params: [account, getAddress(blindBoxConfig.contractAddress)],
-        },
-        {
-          address: getAddress(blindBoxConfig.tokenRequire.address),
-          name: 'balanceOf',
-          params: [account],
-        },
-      ])
-
       const [
-        countTicketNFT,
-        countTicketHTD,
-        maxTicketNFT,
-        maxTicketHTD,
-        startTimeStakeNFTAndStakeHTD,
-        timeEndStakeNFTAndStakeHTD,
-        timeLockNFTAndHTD,
-        totalUser,
-        totalUserStakeNFT,
-        [userIsCount],
-        [userIsLockNFT],
-        userNFTDetails,
-        userTickets,
-        userTierDetails,
-      ] = await multicallv2(blindBoxAbi, calls)
-
-      const userNFTDetailsMapping: NFTDetails = {
-        nft: userNFTDetails.nft,
-        user: userNFTDetails.user,
-        tokenId: Number(new BigNumber(userNFTDetails.tokenId._hex).toJSON()),
-        isStake: userNFTDetails.isStake,
+        boxMysteryPrice, 
+        boxPremiumPrice, 
+        endTimeWL, 
+        [isUserHadBuyBox], 
+        maxBoxMystery, 
+        maxBoxPremium,
+        percentDiscount,
+        startTimeWL, 
+        totalBoxMystery,
+        totalBoxPremium,
+        [userWhitelist],
+        [userWhitelistDiscount]
+      ] = await multicallv2(blindBoxWhitelistAbi, calls)
+      
+      const result = {
+        common: {
+          price: new BigNumber(boxMysteryPrice).toNumber(),
+          maxBox: new BigNumber(maxBoxMystery).toNumber(),
+          totalBox: new BigNumber(totalBoxMystery).toNumber(),
+        },
+        premium: {
+          price: new BigNumber(boxPremiumPrice).toNumber(),
+          maxBox: new BigNumber(maxBoxPremium).toNumber(),
+          totalBox: new BigNumber(totalBoxPremium).toNumber(),
+        },
+        endTimeWL: new BigNumber(endTimeWL).toNumber(),
+        isUserHadBuyBox,
+        percentDiscount: new BigNumber(percentDiscount).toNumber(),
+        startTimeWL: new BigNumber(startTimeWL).toNumber(),
+        userWhitelist,
+        userWhitelistDiscount
       }
-
-      const userTierDetailsMapping: TierDetails = {
-        tierId: Number(new BigNumber(userTierDetails.tierID._hex).toJSON()),
-        htdAmount: Number(
-          new BigNumber(userTierDetails.htdAmount._hex).div(BIG_TEN.pow(blindBoxConfig.tokenRequire.decimals)).toJSON(),
-        ),
-      }
-
-      const result: PropsList = {
-        countTicketNFT: Number(new BigNumber(countTicketNFT).toJSON()),
-        countTicketHTD: Number(new BigNumber(countTicketHTD).toJSON()),
-        maxTicketHTD: Number(new BigNumber(maxTicketHTD).toJSON()),
-        maxTicketNFT: Number(new BigNumber(maxTicketNFT).toJSON()),
-        startTimeStakeNFTAndStakeHTD: Number(new BigNumber(startTimeStakeNFTAndStakeHTD).toJSON()),
-        timeEndStakeNFTAndStakeHTD: Number(new BigNumber(timeEndStakeNFTAndStakeHTD).toJSON()),
-        timeLockNFTAndHTD: Number(new BigNumber(timeLockNFTAndHTD).toJSON()),
-        totalUser: Number(new BigNumber(totalUser).toJSON()),
-        totalUserStakeNFT: Number(new BigNumber(totalUserStakeNFT).toJSON()),
-        userIsCount,
-        userIsLockNFT,
-        userNFTDetails: userNFTDetailsMapping,
-        userTickets: Number(new BigNumber(userTickets).toJSON()),
-        userTierDetails: userTierDetailsMapping,
-        isAllowance: new BigNumber(allowance).gt(0),
-        balanceOf: Number(new BigNumber(balanceOf).div(BIG_TEN.pow(blindBoxConfig.tokenRequire.decimals))),
-      }
-
       setData(result)
-    } catch (e) {
-      console.log(e)
+    } catch(err) {
+      console.log("Error", err)
     }
   }, [account])
 
@@ -242,7 +194,7 @@ export const useBlindBoxWhitelist = () => {
         [userWhitelist],
       ] = await multicallv2(abi, calls)
 
-      const result = {
+      const result: any = {
         startTime: Number(new BigNumber(startTime).toJSON()),
         endTime: Number(new BigNumber(endTime).toJSON()),
         totalBoxCM: Number(new BigNumber(totalBoxCM).toJSON()),
@@ -254,8 +206,6 @@ export const useBlindBoxWhitelist = () => {
         userLastTimeBuy: Number(new BigNumber(userLastTimeBuy).toJSON()),
         userWhitelist,
       }
-
-      setData(result)
     } catch (err) {
       console.log(err)
     }
@@ -274,69 +224,76 @@ export const useBlindBoxFreeZone = () => {
   const [data, setData] = useState<BasePropBox>(null)
 
   const fetchData = useCallback(async () => {
-    const contractAddress = ticketBoxConfig.contractAddress.free
-    const abi = ticketBoxConfig.abi.free
-    const calls = [
-      {
-        address: getAddress(contractAddress),
-        name: 'startTime',
-        params: [],
-      },
-      {
-        address: getAddress(contractAddress),
-        name: 'endTime',
-        params: [],
-      },
-      {
-        address: getAddress(contractAddress),
-        name: 'totalBoxCM',
-        params: [],
-      },
-      {
-        address: getAddress(contractAddress),
-        name: 'totalBoxR',
-        params: [],
-      },
-      {
-        address: getAddress(contractAddress),
-        name: 'totalBoxSR',
-        params: [],
-      },
-      {
-        address: getAddress(contractAddress),
-        name: 'totalBoxSSR',
-        params: [],
-      },
-      {
-        address: getAddress(contractAddress),
-        name: 'totalNFT',
-        params: [],
-      },
-      {
-        address: getAddress(contractAddress),
-        name: 'userLastTimeBuy',
-        params: [account],
-      },
-    ]
-
     try {
-      const [startTime, endTime, totalBoxCM, totalBoxR, totalBoxSR, totalBoxSSR, totalNFT, userLastTimeBuy] =
-        await multicallv2(abi, calls)
-
-      const result = {
-        startTime: Number(new BigNumber(startTime).toJSON()),
-        endTime: Number(new BigNumber(endTime).toJSON()),
-        totalBoxCM: Number(new BigNumber(totalBoxCM).toJSON()),
-        totalBoxR: Number(new BigNumber(totalBoxR).toJSON()),
-        totalBoxSR: Number(new BigNumber(totalBoxSR).toJSON()),
-        totalBoxSSR: Number(new BigNumber(totalBoxSSR).toJSON()),
-        totalNFT: Number(new BigNumber(totalNFT).toJSON()),
-        userLastTimeBuy: Number(new BigNumber(userLastTimeBuy).toJSON()),
-      }
-
-      setData(result)
-    } catch (err) {
-      console.log(err)
+      const calls = [
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "boxMysteryPrice"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "boxMysteryPrice"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "endTimeWL"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "isUserHadBuyBox",
+          params: [account]
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "maxBoxMystery"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "maxBoxPremium"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "percentDiscount"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "startTimeWL"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "totalBoxMystery"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "totalBoxPremium"
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "userWhitelist",
+          params: [account]
+        },
+        {
+          address: getAddress(blindBoxConfig.contractAddress),
+          name: "userWhitelistDiscount",
+          params: [account]
+        },
+      ]
+      const [
+        boxMysteryPrice, 
+        boxPremiumPrice, 
+        endTimeWL, 
+        startTimeWL, 
+        [isUserHadBuyBox], 
+        maxBoxMystery, 
+        maxBoxPremium,
+        percentDiscount,
+        totalBoxMystery,
+        totalBoxPremium,
+        [userWhitelist],
+        [userWhitelistDiscount]
+      ] = await multicallv2(blindBoxWhitelistAbi, calls)
+    } catch(err) {
+      console.log("Error", err)
     }
   }, [account])
 

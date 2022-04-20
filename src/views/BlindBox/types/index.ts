@@ -18,19 +18,26 @@ export interface PropsList {
 }
 
 export interface BasePropBox {
-  startTime: number
-  endTime: number
-  totalBoxCM: number
-  totalBoxR: number
-  totalBoxSR: number
-  totalBoxSSR: number
-  totalNFT: number
-  userLastTimeBuy: number
+  common: {
+    price: number,
+    maxBox: number,
+    totalBox: number,
+  },
+  premium: {
+    price: number,
+    maxBox: number,
+    totalBox: number,
+  },
+  endTimeWL: number,
+  isUserHadBuyBox: boolean,
+  percentDiscount: number,
+  startTimeWL: number,
+  userWhitelist: boolean,
+  userWhitelistDiscount: boolean
 }
 
 export interface BoxWhitelist extends BasePropBox {
   userAmountTicket?: number
-  userWhitelist?: boolean
 }
 
 export interface NFTDetails {

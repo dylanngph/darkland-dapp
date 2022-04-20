@@ -85,7 +85,7 @@ import vestingAbi from 'config/abi/vestingAbi.json'
 import vestingStrategicAbi from 'config/abi/vestingStrategic.json'
 import idoAbi from 'config/abi/ido.json'
 import lotteryBlindBoxAbi from 'config/abi/lotteryBlindBox.json'
-import blindBoxAbi from 'config/abi/blindBoxAbi.json'
+import blindBoxWhitelistAbi from 'config/abi/blindBoxWhtielist.json'
 import marketPlaceAbi from 'config/abi/marketplaceBox.json'
 import boxAbi from 'config/abi/AssetBlindBox.json'
 import openBoxAbi from 'config/abi/openBox.json'
@@ -208,7 +208,7 @@ export const getBountyContract = (slug: string, signer?: ethers.Signer | ethers.
 }
 
 export const getBlindBoxContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
-  return getContract(blindBoxAbi, getAddress(blindBoxConfig.contractAddress), signer)
+  return getContract(blindBoxWhitelistAbi, getAddress(blindBoxConfig.contractAddress), signer)
 }
 
 export const getIdoContract = (id: number, signer?: ethers.Signer | ethers.providers.Provider) => {

@@ -293,6 +293,7 @@ export const useStakeTokenEarnNFTContract = (type: string) => {
   return useMemo(() => getStakeTokenEarnNFTContract(type, library.getSigner()), [library, type])
 }
 
+
 export const useFarmAuctionContract = () => {
   const {account, library} = useActiveWeb3React()
   // This hook is slightly different from others

@@ -27,7 +27,7 @@ export const useNftUser = () => {
   const {account} = useWeb3React()
   const [data, setData] = useState<PropsList[]>([])
   const [isLoaded, setIsLoaded] = useState(false)
-  const nftRequires = blindBoxConfig.nftRequired
+  const nftRequires = []
 
   const fetchAssetUser = useCallback(async () => {
     try {

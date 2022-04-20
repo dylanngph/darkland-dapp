@@ -3,13 +3,35 @@ import blindBoxWhitelistAbi from 'config/abi/blindBoxWhtielist.json'
 import {addressBounty} from './bounties'
 import tokens from './tokens'
 
+enum TYPEBOX {
+  MYSTERY = 1,
+  PREMIUM = 2
+}
+
 export const blindBoxConfig = {
-  nftRequired: [addressBounty.gold, addressBounty.ruby],
   tokenRequire: tokens.big,
   contractAddress: {
-    97: '0xe6B6c2Fc829760d967AD060445EFB0b9F02c3693',
+    97: '0x3d888D089889d6c1E663760b1B0bF59170Ed0537',
     56: '0xFf6FfD60fa5445cb0e2d647A270D458c9cdb734f',
   },
+  rate: {
+    common: {
+      common: 79,
+      rare: 20,
+      epic: 1,
+      legend: 0
+    },
+    premium: {
+      common: 0,
+      rare: 0,
+      epic: 75,
+      legend: 25
+    },
+  },
+  type: {
+    common: TYPEBOX.MYSTERY,
+    premium: TYPEBOX.PREMIUM
+  }
 }
 
 export const lotteryConfig = {
