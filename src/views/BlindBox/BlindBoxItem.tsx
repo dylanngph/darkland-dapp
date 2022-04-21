@@ -150,7 +150,7 @@ const BlindBoxItem = ({ isMobile , type, rate, dataBox, isDiscount = false, perc
             <Box sx={{ color: '#C0C0C0' }}>Remaining amount: <span style={{ color: 'lime', fontWeight: 'bold' }}>{ remaining <= 0 ? 0 : remaining }</span></Box>
           </Flex>
           {
-            isWhitelist
+            (isWhitelist || isDiscount)
             ?
             <>
             <Flex sx={{alignItems: 'center',gap: '10px'}}>
