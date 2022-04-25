@@ -132,9 +132,9 @@ const App: React.FC = () => {
             <Route exact path="/nft-staking">
               <NFTStaking />
             </Route>
-            <Route exact path="/blind-box">
+            {/* <Route exact path="/blind-box">
               <BlindBox/>
-            </Route>
+            </Route> */}
             <Route exact strict path="/rewards" component={Rewards} />
 
             <Route exact strict path="/my-assets" component={MyAssets} />

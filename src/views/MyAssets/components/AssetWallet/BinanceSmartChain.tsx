@@ -50,7 +50,7 @@ const BinanceSmartChain = () => {
         {/* <h1 className='h-5' style={{ color: "#FFC247" , fontWeight: '700' }} >Binance Smart Chain</h1> */}
         <div className='flex items-center' >
           <div className='mr-3'>
-            <img className="h-15 w-15" src="/images/coins/token-dak.png" alt="BUSD" width={42} height={42} />
+            <img className="h-15 w-15" src="/images/coins/big.png" alt="BUSD" width={42} height={42} />
           </div>
           <div>
             <p className='text-white text-xl' > {formatNumber(busd) ?? 0} BIG</p>

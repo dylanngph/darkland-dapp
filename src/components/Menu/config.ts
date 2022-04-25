@@ -103,11 +103,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     icon: 'VestingIcon',
     href: '/vesting',
   },
-  {
-    label: t('Blind Box'),
-    icon: 'BlindIcon',
-    href: '/blind-box',
-  },
+  // {
+  //   label: t('Blind Box'),
+  //   icon: 'BlindIcon',
+  //   href: '/blind-box',
+  // },
   {
     label: t('Stake NFT'),
     icon: 'VestingIcon',

@@ -16,7 +16,7 @@ const ClaimToken = () => {
     <Card className='w-full lg:w-2/3' >
       <CurrencyBox>
         <div>
-          <img src='/images/coins/token-dak.png' alt='htd' className="ml-5" height={42} width={42} />
+          <img src='/images/coins/big.png' alt='htd' className="ml-5" height={42} width={42} />
         </div>
         <RightCurrency>
           <h2 className='text-xl' > {userData?.htd ?? 0}BIG </h2>
