@@ -105,7 +105,7 @@ const BlindBoxItem = ({ isMobile , type, rate, dataBox, isDiscount = false, perc
           <BoxWrapper>
             <img src={`images/blindbox/${type}_box.png`} alt="" width="250px" />
           </BoxWrapper>
-          <img src="images/tokens/box_plate.png" alt="" width="300px" />
+          <img src="images/blindbox/box_plate.png" alt="" width="300px" />
         </Col>
         <Col sx={{gap: '20px'}}>
           <Flex sx={{

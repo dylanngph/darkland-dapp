@@ -45,18 +45,7 @@ const MyAssetsInventory = () => {
     <Card className="card text-center mt-3 md:mt-0">
       <div className="card-header" style={{fontSize: '16px'}} >
         <ul className="border-b" style={{textAlign:"left"}} >
-          {/* <li className="list-none" style={{width: '130px', display: 'inline-block'}}>
-            <NavLink
-              key={0}
-              className="nav-link text-xs md:text-lg flex gap-2 p-2 justify-center"
-              style={{backgroundColor: '#0D1A4E', color: '#ffffff', fontWeight: 'bold', ...getCustomActiveTab(0)}}
-              onClick={() => onChangeCurrentTab(0)}
-            >
-              <Flex gridGap={1} alignItems="center">
-                Box
-              </Flex>
-            </NavLink>
-          </li> */}
+          
           <li className="list-none" style={{width: '130px', display: 'inline-block'}}>
             <NavLink
               key={2}
@@ -66,6 +55,18 @@ const MyAssetsInventory = () => {
             >
               <Flex gridGap={1} alignItems="center">
                 Hero
+              </Flex>
+            </NavLink>
+          </li>
+          <li className="list-none" style={{width: '130px', display: 'inline-block'}}>
+            <NavLink
+              key={0}
+              className="nav-link text-xs md:text-lg flex gap-2 p-2 justify-center"
+              style={{backgroundColor: '#0D1A4E', color: '#ffffff', fontWeight: 'bold', ...getCustomActiveTab(0)}}
+              onClick={() => onChangeCurrentTab(0)}
+            >
+              <Flex gridGap={1} alignItems="center">
+                Boxes
               </Flex>
             </NavLink>
           </li>
