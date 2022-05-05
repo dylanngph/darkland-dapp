@@ -1,6 +1,7 @@
 import React from 'react'
 import {useWeb3React} from '@web3-react/core'
 import {Flex, LogoutIcon, useModal, UserMenu as UIKitUserMenu, UserMenuDivider, UserMenuItem} from '@pancakeswap/uikit'
+import history from 'routerHistory'
 import {NavLink} from 'react-router-dom'
 import useAuth from 'hooks/useAuth'
 import {useProfile} from 'state/profile/hooks'
@@ -30,6 +31,9 @@ const UserMenu = () => {
   return (
     <UIKitUserMenu account={account} avatarSrc={avatarSrc}>
       <WalletUserMenuItem hasLowBnbBalance={hasLowBnbBalance} onPresentWalletModal={onPresentWalletModal} />
+      <UserMenuItem as="button" onClick={() => history.push('/my-assets')}>
+        {t('My Assets')}
+      </UserMenuItem>
       <UserMenuItem as="button" onClick={onPresentTransactionModal}>
         {t('Transactions')}
       </UserMenuItem>

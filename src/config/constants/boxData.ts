@@ -3,6 +3,7 @@ import { Address, IBoxConfig } from "config/constants/types"
 
 const boxData: IBoxConfig[] = [
     {
+        id: 1,
         type: 'rare',
         quantity: 1170,
         image: 'common_box.svg',
@@ -12,6 +13,7 @@ const boxData: IBoxConfig[] = [
         }
     },
     {
+        id: 2,
         type: 'epic',
         quantity: 1170,
         image: 'rare_box.svg',
@@ -21,6 +23,7 @@ const boxData: IBoxConfig[] = [
         }
     },
     {
+        id: 3,
         type: 'legendary',
         quantity: 1170,
         image: 'legendary_box.svg',

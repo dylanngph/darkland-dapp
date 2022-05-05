@@ -165,7 +165,7 @@ export const useFetchMyBox = () => {
       }))
 
       const balanceOf = await multicallv2(currentBoxes[0].abi, calls)
-
+      
       const result = currentBoxes.map((entry, i) => ({
         id: entry.id,
         label: entry.label,

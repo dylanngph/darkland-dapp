@@ -2,6 +2,7 @@ import blindBoxFreeAbi from 'config/abi/blindBoxFree.json'
 import blindBoxWhitelistAbi from 'config/abi/blindBoxWhtielist.json'
 import MysteryBoxAbi from 'config/abi/MysteryBoxAbi.json'
 import PremiumBoxAbi from 'config/abi/PremiumBoxAbi.json'
+import { BOX, BUY_BOX } from './box'
 // import {addressBounty} from './bounties'
 import tokens from './tokens'
 
@@ -12,10 +13,7 @@ enum TYPEBOX {
 
 export const blindBoxConfig = {
   tokenRequire: tokens.big,
-  contractAddress: {
-    97: '0x3d888D089889d6c1E663760b1B0bF59170Ed0537',
-    56: '0x81f6400DA44604D822B6790f0C1eD543CA20453D',
-  },
+  contractAddress: BUY_BOX,
   rate: {
     common: {
       common: 79,
@@ -36,14 +34,8 @@ export const blindBoxConfig = {
   },
   abi: blindBoxWhitelistAbi,
   boxesAddress: {
-    mystery: {
-      97: '0x0A469494Cc6F349bCD4Fcc6725c012E36612E064',
-      56: '0x4dc595c0863AF7a4b0195dE4B4F5B268Fca97e7e',
-    },
-    premium: {
-      97: '0xB8b71b1E4709F2900eD8077146Ae2c23CD8f382b',
-      56: '0xB310eed41494645AE41Fd9A8A5Fc5C85A2623B07',
-    }
+    mystery: BOX.MYSTERY,
+    premium: BOX.PREMIUM
   },
   boxesAbi: {
     mystery: MysteryBoxAbi,

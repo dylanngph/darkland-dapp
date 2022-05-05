@@ -237,13 +237,6 @@ const Menu: React.FC<NavProps> = ({
               account={userData?.name ?? "Anonymous"}
               avatarSrc="/images/avatars/avatar.png"
             >
-              <NavLink to="/my-assets">
-                <UserMenuItem as="button">
-                  <Flex alignItems="center" justifyContent="space-between" width="100%">
-                    {t('My Assets')}
-                  </Flex>
-                </UserMenuItem>
-              </NavLink>
               <NavLink to="/home">
                 <UserMenuItem as="button" onClick={() => logout()}>
                   <Flex alignItems="center" justifyContent="space-between" width="100%">

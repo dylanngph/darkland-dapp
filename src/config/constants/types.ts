@@ -318,6 +318,7 @@ export interface IBoxConfig {
   image: string
   contractAddress: Address
   quantity: number
+  id: number
 }
 
 export interface IBoxData extends IBoxConfig {

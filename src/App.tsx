@@ -132,9 +132,9 @@ const App: React.FC = () => {
             <Route exact path="/nft-staking">
               <NFTStaking />
             </Route>
-            {/* <Route exact path="/blind-box">
+            <Route exact path="/blind-box">
               <BlindBox/>
-            </Route> */}
+            </Route>
             <Route exact strict path="/rewards" component={Rewards} />
 
             <Route exact strict path="/my-assets" component={MyAssets} />
@@ -157,6 +157,7 @@ const App: React.FC = () => {
             <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
             <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
             <Route exact strict path="/play-game" component={PlayGame} />
+            <Route exact strict path="/blind-box/:boxId" component={BlindBoxDetails} />
             {/* Redirect */}
             <Route path="/pool">
               <Redirect to="/liquidity" />

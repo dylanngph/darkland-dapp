@@ -3,36 +3,65 @@ import { Button } from '@pancakeswap/uikit'
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import {useFetchMysteryBox, useFetchPremiumBox , useFetchMysteryBoxId , useFetchPremiumBoxId} from 'views/MyAssets/hooks/useFetchMysteryBox'
-
+import CardHero from 'components/CardHero/CardHero'
+import history from 'routerHistory'
 
 const Boxes = () => {
   const [pendingTx, setPendingTx] = useState(false)
   const mysteryBox = useFetchMysteryBox()
   const premiumBox = useFetchPremiumBox()
-  const mysteryId =  useFetchMysteryBoxId()
-  const premiumId = useFetchPremiumBoxId()
+  const [listBox, setListBox] = useState([
+  {
+    id: 1,
+    amount: 0,
+    image: 'common_box',
+    type: 'MYSTERY BOX',
+  },
+  {
+    id: 2,
+    amount: 0,
+    image: 'premium_box',
+    type: 'PREMIUM BOX'
+  }
+  ])
+  // const mysteryId =  useFetchMysteryBoxId()
+  // const premiumId = useFetchPremiumBoxId()
+  useEffect(() => {
+    setListBox([{
+      id: 1,
+      amount: mysteryBox,
+      image: 'common_box',
+      type: 'MYSTERY BOX',
+    },
+    {
+      id: 2,
+      amount: premiumBox,
+      image: 'premium_box',
+      type: 'PREMIUM BOX'
+    }])
+  }, [mysteryBox, premiumBox])
 
   return (
     <Box sx={{
       marginTop: '40px'
     }}>
       <Box display="flex" gap="20px" alignItems="center" flexWrap='wrap' >
-        <Card sx={{
-          alignItems: 'center'
-        }}>
-          <BoxWrapper>
-            <img src='images/blindbox/common_box.png' alt="" width="200px" />
-          </BoxWrapper>
-          <Title>Mystery Box</Title>
-          <AmountText>
-            Amount:
-            <span style={{color: '#E6AB58'}}> {mysteryBox ?? 0}</span>
-          </AmountText>
-          <OpenButton disabled >
-              Coming soon
-          </OpenButton>
-        </Card>
-        <Card sx={{
+        {
+          listBox.map((v) => <Card sx={{
+            alignItems: 'center'
+          }}>
+            <BoxWrapper>
+              <img src={`images/blindbox/${v.image}.png`} alt="" width="200px" />
+            </BoxWrapper>
+            <Title>{ v.type }</Title>
+            <AmountText>
+              Amount: {' '}
+              <span style={{color: '#E6AB58'}}>{ v.amount ?? 0 }</span>
+            </AmountText>
+            <OpenButton onClick={() => history.push(`/blind-box/${v.id}`)}>Open</OpenButton>
+          </Card>)
+        }
+        {/* <Card sx={{
           alignItems: 'center'
         }}>
           <BoxWrapper>
@@ -43,10 +72,8 @@ const Boxes = () => {
             Amount: 
             <span style={{color: '#E6AB58'}}> {premiumBox ?? 0}</span>
           </AmountText>
-          <OpenButton disabled >
-              Coming soon
-          </OpenButton>
-        </Card>
+          <OpenButton>Open</OpenButton>
+        </Card> */}
       </Box>
       
     </Box>

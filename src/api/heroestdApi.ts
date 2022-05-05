@@ -160,6 +160,12 @@ class HeroestdApi {
 
     return axiosClient.post(url, data)
   }
+
+  getHeroAttribuse = (tokenId: string) => {
+    const url = `${baseURLProd}/hero/${tokenId}`
+
+    return axiosClient.get(url)
+  }
 }
 
 const heroestdApi = new HeroestdApi()

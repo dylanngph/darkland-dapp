@@ -1,14 +1,17 @@
 import React, {useState, useMemo, useCallback, useEffect} from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import {Button, Text} from 'components/Pancake-uikit'
 import {useTranslation} from 'contexts/Localization'
 import {find, remove} from 'lodash'
+import { Box, Flex } from '@pancakeswap/uikit'
 import useToast from 'hooks/useToast'
 import Popup from 'reactjs-popup'
 import blindBoxItems from 'config/constants/blindBoxItems'
 import LoadingComponent from 'views/LoadingComponent'
 import { isMobile } from 'react-device-detect'
 import HeroesCard from 'views/HeroesCard'
+import PendingTransactionModal from 'components/PendingTransaction/PendingTransaction'
+import { StyleButton } from 'components/StyleDarkLand'
 import * as indexDb from '../../utils/services'
 import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import './blindBoxDetails.modules.scss'
@@ -39,171 +42,106 @@ const BlindBoxDetailsInfoSection = ({
 
   const {account} = useActiveWeb3React()
 
-  const savePurchaseBlindboxToRedux = async () => {
-    setPendingTx(true)
-    const currentPurchasedBlindBox = await indexDb.get('currentPurchasedBlindBox')
-    let newPurchasedBlindbox = {
-      boxId,
-      currentQuantity,
-      account,
-    }
-
-    let purchasedBlindbox = []
-
-    if (currentPurchasedBlindBox) {
-      const currentPurchasedBlindBoxArray = JSON.parse(currentPurchasedBlindBox)
-      const currentPurchasedBlindBoxObj = find(currentPurchasedBlindBoxArray, (item: any) => item.boxId === boxId)
-      if (currentPurchasedBlindBoxObj) {
-        newPurchasedBlindbox = {
-          ...newPurchasedBlindbox,
-          currentQuantity: newPurchasedBlindbox.currentQuantity + currentPurchasedBlindBoxObj.currentQuantity,
-        }
-        remove(currentPurchasedBlindBoxArray, (currentObject: any) => currentObject.boxId === boxId)
-        purchasedBlindbox = [...currentPurchasedBlindBoxArray, newPurchasedBlindbox]
-      } else {
-        purchasedBlindbox = [...currentPurchasedBlindBoxArray, newPurchasedBlindbox]
-      }
-    } else {
-      purchasedBlindbox.push(newPurchasedBlindbox)
-    }
-    indexDb.set('currentPurchasedBlindBox', JSON.stringify(purchasedBlindbox))
-
-    const toast = toastSuccess
-    toast('Purchased success')
-    setPendingTx(false)
-  }
-
-  const getOpenBlindBoxData = useCallback(
-      (msg: MessageEvent<any>) => {
-        if (msg.data === 'OpenBox') {
-          setIsShow(true)
-          const iframe = document.getElementById('boxIframe') as HTMLIFrameElement
-          if (iframe) {
-            iframe.contentWindow.postMessage(
-              {
-                eventName: 'open-box',
-                data: {
-                  boxId,
-                  heroData: JSON.stringify(dataAttr)
-                },
-              },
-              '*',
-              )
-            }
-        } else if (msg.data === 'close') {
-          setIsShow(false)
-        }
-      },
-      [boxId, dataAttr],
-    )
-  
-    useEffect(() => {
-      setIsShow(openIframe)
-      window.addEventListener('message', getOpenBlindBoxData)
-      return () => {
-        window.removeEventListener('message', getOpenBlindBoxData)
-      }
-    }, [getOpenBlindBoxData, openIframe])
 
   return (
     <Card>
       <div className="lg:flex lg:flex-row">
-        {pendingTx && (
-          <Overlay>
-            <LoadingComponent />
-          </Overlay>
-        )}
         <div className="margin-center sm:w-3/5 md:w-4/5 lg:w-2/5">
           <Block>
-            <CardIcon
-              // className="margin-center"
-              // style={{background: `url(${blindBoxItem.iconImageUrl})`, backgroundSize: 'contain'}}
-            >
-              <img src={`${blindBoxItem.iconImageUrl}`} alt="box" style={{width:"90%", height:"90%"}} />
-              </CardIcon>
-            <BlindBoxTitle>
-              <img className="margin-center" src={`${blindBoxItem.titleImageurl}`} alt={blindBoxItem.title} />
-            </BlindBoxTitle>
+            <CardIcon>
+              <Box height={320} style={{ position: "relative" }}>
+                <BoxAnim src={`${blindBoxItem.iconImageUrl}`} alt="box" />
+                <img src='/images/blindbox/conner.png' alt="conner" style={{ position: "absolute", bottom: -20 }} />
+              </Box>
+            </CardIcon>
             <CardAmount className="m-auto">
-              <Text marginTop="10px" marginRight="2px" fontSize="24px" color="#A7A7A7">
-                {' '}
-                {t('Amount:')}{' '}
-              </Text>
-              <Text marginTop="10px" fontSize="24px" color="#FFAB04">
-                {blindBoxItem.balanceOf || 0} 
-              </Text>
+              <Flex my={2}>
+                <Text fontSize='24px' mr={1}>{t('Amount:')}</Text>
+                <Text fontSize="24px" color="#FFAB04">{blindBoxItem.balanceOf || 0} </Text>
+              </Flex>
             </CardAmount>
-            {/* <CardItem>
-              <SelectQuantityComponent quantity={currentQuantity} onChangeQuantityNumber={onChangeQuantityNumber} />
-            </CardItem>
-            <CardItem>
-              <Text marginRight="2px" fontSize="12px" color="#A7A7A7">
-                {' '}
-                {t('Remaining Boxes:')}{' '}
-              </Text>
-              <Text fontSize="12px" color="#F7F7F7">
-                {blindBoxItem.remainingBoxes}
-              </Text>
-            </CardItem>
-            <CardItem>
-              <Text marginRight="10px" paddingTop="2px" fontSize="12px" color="#A7A7A7">
-                {' '}
-                {t('Total Price:')}{' '}
-              </Text>
-              <Text fontSize="12px" color="#FFC247">
-                {blindBoxItem.price * currentQuantity} {blindBoxItem.tokenPrice.symbol}
-              </Text>
-            </CardItem> */}
-            {
-              allowance ?
-              <Button className="btn-purchase w-full" style={{marginTop:"18px"}} disabled={account === undefined || blindBoxItem.balanceOf <= 0 || pendingTx} onClick={onOpen}>
-                { pendingTx ? `Processing...` : `Open Box` }
-              </Button>
-              :
-              <Button width="100%" onClick={onApprove} disabled={approveTx}>Approve box</Button>
-            }
-            
-            <Popup
-                closeOnDocumentClick
-                open={isShow}
-                onClose={() => setIsShow(false)}
-                onOpen={() => setIsShow(true)}
-                position="center center"
-                modal
-              >
-              {(close) => (
-                  <>
-                    <Button
-                      className="btn-purchase"
-                      scale="sm"
-                      style={{ right: '20px', position: 'absolute', top: '20px' }}
-                      onClick={close}
-                    >
-                      X
-                    </Button>
-                    {isMobile ?
-                        <HeroesCard hero={dataAttr} />
-                      :
-                        <iframe
-                        id="boxIframe"
-                        title="OpenBox"
-                        scrolling="no"
-                        style={{ minWidth: '100vw', maxWidth: '100%', minHeight: '100vh', maxHeight: '100%', overflow: 'hidden' }}
-                        src="https://box.heroestd.io"
-                      />
-                    }
-                  </>
-                )}
-              </Popup>
           </Block>
         </div>
-        <div className="ml-5 mr-5 sm:ml-5 sm:mr-5 sm:w-5/5 md:w-5/5 md:ml-10 md:mr-10 lg:w-3/5 lg:mr-10">
-          <BlindBoxFrame boxId={boxId} />
-        </div>
+        <Col style={{ gap: 25 }}>
+          <Flex style={{
+            alignItems: 'center',
+            gap: '10px'
+          }}>
+            <img src="/images/blindbox/TitleDivider.png" alt='' width="8px" />
+            <Col style={{gap: '10px',textTransform: 'uppercase'}}>
+              <Box style={{fontSize: '20px'}}>
+                Box
+              </Box>
+              <Box style={{
+                fontSize: '48px',
+                fontWeight: '700',
+              }}>
+              { blindBoxItem.title }
+              </Box>
+            </Col>
+          </Flex>
+          <Box style={{color: '#C0C0C0', fontSize: '20px', fontWeight: '700'}}>
+            Drop rate
+          </Box>
+          <Flex style={{gap: '20px', flexWrap: 'wrap'}}>
+            <RateBox style={{background: '#006CBE'}}>
+              <Box>Common</Box>
+              <TextRate>{blindBoxItem.rate.common}%</TextRate>
+            </RateBox>
+            <RateBox style={{background: '#7D44DB'}}>
+              <Box>Rare</Box>
+              <TextRate>{blindBoxItem.rate.rare}%</TextRate>
+            </RateBox>
+            <RateBox style={{background: '#E8A500'}}>
+              <Box>Epic</Box>
+              <TextRate>{blindBoxItem.rate.epic}%</TextRate>
+            </RateBox>
+            <RateBox style={{background: '#D40060'}}>
+              <Box>Legendary</Box>
+              <TextRate>{blindBoxItem.rate.legend}%</TextRate>
+            </RateBox>
+          </Flex>
+          <Flex>
+          {
+            allowance ?
+            <StyleButton className="w-full" disabled={account === undefined || blindBoxItem.balanceOf <= 0 || pendingTx} onClick={onOpen}>
+              { pendingTx ? `Processing...` : `Open Box` }
+            </StyleButton>
+            :
+            <StyleButton width="100%" onClick={onApprove} disabled={approveTx}>Approve box</StyleButton>
+          }
+          </Flex>
+        </Col>
+        <Popup className="w-full" modal closeOnDocumentClick={false} open={pendingTx || approveTx}>
+        {(close) => <PendingTransactionModal/> }
+        </Popup>
       </div>
     </Card>
   )
 }
+
+const Anim = keyframes`
+  0% {
+    transform: translateY(10px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(10px);
+  }
+`
+
+const BoxAnim = styled.img`
+  animation: ${Anim} 5s linear infinite;
+`
+
+const TextRate = styled(Box)`
+  font-size: 24px;
+  font-weight: 700
+`
 
 const Block = styled.div`
   width: 100%;
@@ -211,12 +149,6 @@ const Block = styled.div`
   padding-right: 48px;
 `
 
-const CardItem = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 15px;
-  justify-content: space-between;
-`
 const CardAmount = styled.div`
   display: flex;
   flex-direction: row;
@@ -231,15 +163,8 @@ const Card = styled.div`
   height: auto;
   min-height: 487px;
   color: white;
-  background: #000000;
   border-radius: 8px;
   padding-bottom: 29px;
-`
-
-const BlindBoxTitle = styled.div`
-  height: 22px;
-  margin-top:10px;
-  margin-bottom: 18px;
 `
 
 const CardIcon = styled.div`
@@ -251,14 +176,21 @@ const CardIcon = styled.div`
   justify-content: center;
   margin-top:15px;
 `
-const Overlay = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: rgb(0, 0, 0, 0.5);
-  z-index: 16;
-  backdrop-filter: blur(5px);
+
+const Col = styled(Box)`
+  display: flex;
+  flex-direction: column;
 `
+
+const RateBox = styled(Box)`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 25px;
+  border-radius: 8px;
+  flex: 1 4;
+  width: 120px;
+`
+
 export default BlindBoxDetailsInfoSection
