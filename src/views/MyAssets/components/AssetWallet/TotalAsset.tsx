@@ -21,7 +21,7 @@ const TotalAsset = () => {
     return result.reduce((a,b) => a + b, 0)
   }
 
-  const { heroData } = useSelector((state: AppState) => state.hero)
+  const { heroData } = useSelector((state: AppState) => state.hero.heroIds)
   
   return (
     <div className='w-full mt-3 lg:mt-0 lg:w-1/2' >
