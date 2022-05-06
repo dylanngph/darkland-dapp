@@ -45,7 +45,7 @@ const PopupSelectSummonHero = ({ close, onSelectHero, secondHeroDetails, firstHe
   const [filteredHeroList, setFilteredHeroList] = useState([])
   const [resErr, setResErr] = useState(false)
   const [searchingInput, setSearchingInput] = useState('')
-  const { heroData } = useSelector((state: AppState) => state.hero)
+  const { heroData } = useSelector((state: AppState) => state.hero.heroIds)
   const { heroConfig, isLogin } = useSelector((state: AppState) => state.common)
   
   useEffect(() => {
