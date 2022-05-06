@@ -32,14 +32,13 @@ export const useFetchHero = () => {
         }
       ]
       const [totalHeroes] = await multicallv2(heroNftConfig.abi, calls)
-      const heroesId = await fetchListsNFT(account, Number(new BigNumber(totalHeroes).toJSON()), getAddress(heroNftConfig.contractAddress), heroNftConfig.abi)
-
-      const result: any = await Promise.all(heroesId.map(async(d) => {
-        const heroesData = await fetchAttributeHero(d)
-        return {...heroesData, dob: null, parent1: "0", parent2: "0" }
-      }))
-      setData(result)
-      dispatch(fetchPublicHeroData(result))
+      const heroIds: any[] = await fetchListsNFT(account, Number(new BigNumber(totalHeroes).toJSON()), getAddress(heroNftConfig.contractAddress), heroNftConfig.abi)
+      // const result: any = await Promise.all(heroesId.map(async(d) => {
+      //   const heroesData = await fetchAttributeHero(d)
+      //   return {...heroesData, dob: null, parent1: "0", parent2: "0" }
+      // }))
+      setData(heroIds)
+      dispatch(fetchPublicHeroData({ heroIds }))
     } catch (e) {
       console.log(e)
     }

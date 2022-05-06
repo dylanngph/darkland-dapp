@@ -87,7 +87,7 @@ const App: React.FC = () => {
   useFetchProfile()
   usePollCoreFarmData()
   // useFetchClaimedBox()
-  // useFetchHero()
+  useFetchHero()
   // useFetchMyBox()
   // useMinPricesHero()
   // useGetHeroConfig()

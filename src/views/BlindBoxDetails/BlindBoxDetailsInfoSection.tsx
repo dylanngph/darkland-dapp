@@ -51,7 +51,7 @@ const BlindBoxDetailsInfoSection = ({
             <CardIcon>
               <Box height={320} style={{ position: "relative" }}>
                 <BoxAnim src={`${blindBoxItem.iconImageUrl}`} alt="box" />
-                <img src='/images/blindbox/conner.png' alt="conner" style={{ position: "absolute", bottom: -20 }} />
+                <img src='/images/blindbox/conner.png' alt="conner" style={{ position: "absolute", bottom: -20, zIndex: 1 }} />
               </Box>
             </CardIcon>
             <CardAmount className="m-auto">
@@ -135,6 +135,10 @@ const Anim = keyframes`
 `
 
 const BoxAnim = styled.img`
+  width: 220px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
   animation: ${Anim} 5s linear infinite;
 `
 

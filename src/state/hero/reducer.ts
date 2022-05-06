@@ -3,16 +3,16 @@ import { fetchPublicHeroData } from './actions'
 import { IBoxUser } from './types'
 
 export interface HeroState {
-  heroData: any
+  heroIds: any
 }
 
 const initialState: HeroState = {
-	heroData: null
+	heroIds: []
 }
 
 export default createReducer<HeroState>(initialState, (builder) =>
   builder
 	.addCase(fetchPublicHeroData, (state, action) => {
-		state.heroData = action.payload
+		state.heroIds = action.payload
 	}),
 )

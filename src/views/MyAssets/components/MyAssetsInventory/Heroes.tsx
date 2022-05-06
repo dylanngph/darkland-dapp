@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import PaginationCustom from 'components/Pagination/Pagination'
-import React, { useEffect, memo, useState } from 'react'
+import React, { useEffect, memo, useState, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { AppState, useAppDispatch } from 'state'
 import { fetchHeroConfig } from 'state/common/commonSlice'
@@ -13,15 +13,15 @@ import useRefresh from 'hooks/useRefresh'
 import { Tabs, TabList, TabPanels, Tab, TabPanel, Select } from '@chakra-ui/react'
 import Empty from 'components/Empty/Empty'
 import EggCard from 'views/HeroesCard/EggCard'
+import CardHero from 'components/CardHero/CardHero'
 import HeroesInWallet from './HeroesInWallet'
 
 const Heroes = ({ currentLayout }) => {
   const dispatch = useAppDispatch()
   const history = useHistory()
   const { fastRefresh } = useRefresh()
-  const { heroData } = useSelector((state: AppState) => state.hero)
-  const { heroConfig, isLogin } = useSelector((state: AppState) => state.common)
-  const dataHeroMapping = mapHeroData(heroData, heroConfig)
+  const { heroIds } = useSelector((state: AppState) => state.hero.heroIds)
+  // const dataHeroMapping = mapHeroData(heroData, heroConfig)
   const [pagination, setPagination] = useState({
     page: 1,
     limit: 12,
@@ -33,98 +33,90 @@ const Heroes = ({ currentLayout }) => {
   ]
   const [heroesList, setHeroesList] = useState([])
 
-  useEffect(() => {
-    if (!heroConfig.length) {
-      dispatch(fetchHeroConfig())
-    }
-    fetchListHeroes()
-  }, [dispatch, heroConfig, isLogin, fastRefresh])
+  // const fetchListHeroes = async (params: any = {}) => {
+  //   const { page, limit } = pagination
+  //   const customParams = {
+  //     page: params.page || page,
+  //     limit: params.limit || limit,
+  //   }
+  //   try {
+  //     const { data } = await heroestdApi.getMyAssetListHeroes(customParams)
+  //     const heroeslist = mapHeroData(data.docs, [])
 
-  const fetchListHeroes = async (params: any = {}) => {
-    const { page, limit } = pagination
-    const customParams = {
-      page: params.page || page,
-      limit: params.limit || limit,
-    }
+  //     setPagination({
+  //       page: data.page,
+  //       limit: data.limit,
+  //       total: data.totalDocs,
+  //     })
+  //     setHeroesList(heroeslist)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  // const handleChagePage = ({ page }) => {
+  //   const param = {
+  //     page,
+  //   }
+  //   fetchListHeroes(param)
+  // }
+
+  const fetchHeroList = useCallback(async() => {
     try {
-      const { data } = await heroestdApi.getMyAssetListHeroes(customParams)
-      const heroeslist = mapHeroData(data.docs, heroConfig)
-
-      setPagination({
-        page: data.page,
-        limit: data.limit,
-        total: data.totalDocs,
+      const result: any = await heroestdApi.getHeroesList(heroIds)
+      const newData = result.map((d) => {
+        return {...d, tokenId: d.seq_id, heroName: d.name}
       })
-      setHeroesList(heroeslist)
-    } catch (error) {
-      console.log(error)
+      setHeroesList(newData)
+    } catch(error) {
+      console.log("error", error)
     }
-  }
+  }, [heroIds])
 
-  const handleChagePage = ({ page }) => {
-    const param = {
-      page,
+  useEffect(() => {
+    if (heroIds) {
+      fetchHeroList()
     }
-    fetchListHeroes(param)
-  }
+  }, [heroIds, fetchHeroList])
 
   // if (!isLogin) return null
 
   return (
     <Container>
       <div className='mt-4 flex justify-between'>
-        <div style={{fontSize: '24px', fontWeight: 'bold'}}>{dataHeroMapping?.length ?? 0} Heroes</div>
-        <div style={{width: '200px'}}>
+        <div style={{fontSize: '24px', fontWeight: 'bold'}}>{heroesList?.length ?? 0} Heroes</div>
+        {/* <div style={{width: '200px'}}>
           <Select color='white' sx={{borderRadius: '0', borderColor: '#00BFD5', backgroundColor: '#091749'}}>
           {listTabs.map((item) => (
             <option style={{ color: 'black' }} key={item.value} value={item.value}>{item.label}</option>
           ))}
         </Select>
-        </div>
+        </div> */}
       </div>
 
-      <div>
+      {/* <div>
         <HeroesListWrap>
-          <HeroesInWallet dataHeroes={dataHeroMapping} />
+          <HeroesInWallet dataHeroes={heroIds} />
         </HeroesListWrap>
-      </div>
+      </div> */}
 
-      <div>
-      {isLogin ? (
-        <>
-          <div className="flex flex-wrap justify-center">
-            <div id="heroes-id">
-              {currentLayout === 0 && (
-                <HeroesListWrap>
-                  {heroesList?.map((hero: any) => (
-                    <RubyBlock
-                      key={hero?._id}
-                      className="flex flex-row flex-wrap cursor-pointer"
-                      onClick={() => {
-                        history.push({
-                          pathname: `/heroes-details/${hero._id}`,
-                          state: '/my-assets',
-                        })
-                      }}
-                    >
-                      <HeroesCard hero={hero} />
-                    </RubyBlock>
-                  ))}
-                </HeroesListWrap>
-              )}
+      <div className="flex flex-wrap justify-center">
+        <div id="heroes-id">
+          <HeroesListWrap>
+          {
+            heroesList?.map((hero: any) => (
+              <CardHero data={hero} />
+            ))
+          }
+          </HeroesListWrap>
 
-              <PaginationCustom
-                current={pagination.page}
-                total={pagination.total}
-                onChange={handleChagePage}
-                pageSize={pagination.limit}
-              />
-            </div>
-          </div>
-        </>
-      ) : (
-        <Empty message="Please login to see your data" />
-      )}
+          {/* <PaginationCustom
+            current={pagination.page}
+            total={pagination.total}
+            onChange={handleChagePage}
+            pageSize={pagination.limit}
+          /> */}
+        </div>
       </div>
       
       {/* <Tabs variant="soft-rounded" mt={5}>

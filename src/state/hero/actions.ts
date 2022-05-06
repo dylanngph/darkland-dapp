@@ -1,3 +1,3 @@
 import {createAction} from '@reduxjs/toolkit'
 
-export const fetchPublicHeroData = createAction<{ heroData: any }>('hero/fetchPublicHeroData')
+export const fetchPublicHeroData = createAction<{ heroIds: any[] }>('hero/fetchPublicHeroData')
