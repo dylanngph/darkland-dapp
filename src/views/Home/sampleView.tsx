@@ -42,7 +42,7 @@ const SampleView = () => {
     return (
         <Wrapper>
             <VideoWrap>
-                <Header src="https://slate.textile.io/ipfs/bafybeihsb6mjre37jrvlz3jz7f6o5lzoxp55aoywc4z7in5npt44n6swau" loop autoPlay muted/>
+                <Header src="https://ipfs.infura.io/ipfs/bafybeihsb6mjre37jrvlz3jz7f6o5lzoxp55aoywc4z7in5npt44n6swau" loop autoPlay muted/>
                 <WrapImage>
                     <PlayToEarn onClick={() => history.push('/play-game')}>PLAY TO EARN NOW</PlayToEarn>
                     <Socials>
