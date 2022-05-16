@@ -20,10 +20,12 @@ import { getAddress } from 'utils/addressHelpers'
 import BigNumber from 'bignumber.js'
 import { useSelector } from 'react-redux'
 import getBalanceOf from 'utils/getBalanceOf'
+import heroestdApi from 'api/heroestdApi'
 import { BIG_TEN } from 'utils/bigNumber'
 import tokens from 'config/constants/tokens'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useIsApprovedForAll from 'hooks/useIsApprovedForAll'
+import getOwner from 'utils/getOwner'
 import useToast from 'hooks/useToast'
 import { useMarketplaceBox, useHeroContract, useHoldInGameContract } from 'hooks/useContract'
 import LinkWallet from 'components/LinkWallet'
@@ -37,9 +39,7 @@ import PopupSummonHero from './components/PopupSummonHero'
 const HeroNftDetails = () => {
   const { id }: any = useParams()
   const [heroesDetail, setHeroesDetail] = useState({
-    heroId: 0,
-    owner: null,
-    gen: 0
+    owner: null
   })
   const { account } = useWeb3React()
   const [idHero, setIdHero] = useState(0)
@@ -63,7 +63,7 @@ const HeroNftDetails = () => {
   const userData = useSelector((state: AppState) => state.user.userInfo)
   const minPrices = useSelector((state: AppState) => state.marketplace.minPrices)
   const tokenNeedHold = useSelector((state: AppState) => state.user.tokenNeedHold)
-  const minPrice = Number(new BigNumber(minPrices[heroesDetail.gen] ?? 0).div(BIG_TEN.pow(tokens.busd.decimals)))
+  const minPrice = Number(new BigNumber(minPrices[heroesDetail?.gen] ?? 0).div(BIG_TEN.pow(tokens.busd.decimals)))
   const walletInGame = userData.walletAddress
   const [openLinkWallet] = useModal(<LinkWallet userData={userData} />)
   const [openBuyToken] = useModal(<BuyToken tokenNeedHold={tokenNeedHold} />)
@@ -72,9 +72,11 @@ const HeroNftDetails = () => {
     const fetchData = async () => {
       try {
         const balance = await getBalanceOf(account, tokens.big.address)
-        const res: any = await fetchAttributeHero(id)
-        setIdHero(id)
-        setHeroesDetail(res)
+        const ownerToken = await getOwner(heroNftConfig.contractAddress, id)
+        const res: any = await heroestdApi.getHeroAttribuse(id)
+        const newData: any = {...res, owner: ownerToken}
+
+        setHeroesDetail(newData)
         setBalanceToken(balance)
       } catch (error) {
         setResErr(true);
@@ -84,10 +86,10 @@ const HeroNftDetails = () => {
     fetchData()
   }, [id, history, path, account])
 
-  useEffect(() => {
-    dispatch(fetchItemConfig())
-    dispatch(fetchRuneConfig())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchItemConfig())
+  //   dispatch(fetchRuneConfig())
+  // }, [dispatch])
 
   const handleApprove = async(contractNeedApprove) => {
     try {
@@ -175,8 +177,8 @@ const HeroNftDetails = () => {
         <Hero>
           <Heading as="h2" size="xl" color="#ffffff">
             <NavLink to={`${history.location.state ?? '#'}`}>
-              <div className="flex btn-back ">
-                <img src="/images/marketplace/left-arrow.png" alt="back" className="p-1" />
+              <div className="flex">
+                <img src='/images/marketplace/left-arrow.svg' alt='back' className='p-1' />
                 <p style={{ fontSize: '20px', paddingLeft: '16px' }}>{t('Back')}</p>
               </div>
             </NavLink>
@@ -341,7 +343,7 @@ const HeroNftDetails = () => {
         </Flex>
       </Flex>
       }
-      <HeroDetails idHero={idHero} heroesDetail={heroesDetail} isNFT />
+      <HeroDetails idHero={id} heroesDetail={heroesDetail} isNFT />
     </Page>
     :
     <Page>

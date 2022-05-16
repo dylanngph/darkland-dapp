@@ -135,6 +135,7 @@ const App: React.FC = () => {
             <Route exact path="/blind-box">
               <BlindBox/>
             </Route>
+            <Route exact strict path="/hero/:id" component={HeroNftDetails} />
             <Route exact strict path="/rewards" component={Rewards} />
 
             <Route exact strict path="/my-assets" component={MyAssets} />

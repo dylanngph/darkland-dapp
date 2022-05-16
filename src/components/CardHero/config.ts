@@ -5,6 +5,13 @@ export const RARITY = {
     3: '#A10048'
 }
 
+export const RARITY_CODE = {
+    0: "Common",
+    1: "Rare",
+    2: "Epic",
+    3: "Legendary"
+}
+
 export const CLASS = {
     0: {
         primary: '#8FFF35',
