@@ -84,11 +84,6 @@ const MarketPlace = () => {
               _focus={{ border: 'unset' }}
               _active={{ border: 'unset' }}
             >
-              <img
-                style={{ width: 23, height: 23, marginRight: 5 }}
-                src={tabItem.icon}
-                alt={tabItem.icon}
-              />
               {tabItem.label}
             </TabCustom>
           )
@@ -122,11 +117,6 @@ const MarketPlace = () => {
 
   return (
     <Page>
-      <Hero>
-        <Heading as="h1" size="xl" color="#ffffff">
-          {t('NFT Marketplace')}
-        </Heading>
-      </Hero>
       {renderTabHeader()}
       {renderTabContent()}
     </Page>
