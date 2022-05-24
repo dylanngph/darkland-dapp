@@ -93,7 +93,7 @@ export const initialState: UserState = {
     balanceOf: 0,
     isLoaded: false
   },
-  userSelected: 0,
+  userSelected: 1,
   isAllowanceInWallet: false,
   tokenNeedHold: 0
 }
