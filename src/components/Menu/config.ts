@@ -89,6 +89,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   //   href: '/rewards',
   // },
   {
+    label: t('Marketplace'),
+    icon: 'TradeIcon',
+    href: '/marketplace',
+  },
+  {
     label: t('Liquidity'),
     icon: 'TradeIcon',
     href: '/liquidity',

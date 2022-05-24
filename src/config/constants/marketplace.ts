@@ -8,7 +8,7 @@ export const marketplaceConfig = {
             56: "0xD0409C274014cde04F72Eb1DC8295CAdC3b7864e"
         },
         hero: {
-            97: "0x73a5A82b06cAE54388cCa9e46d7e872d80dafD76",
+            97: "0x6C95908561Ab1B1a468f7Ef183DB10401aA7D99A",
             56: "0xFF088f2F6A7B6aE33AdcD0b2fbA7cCfd06aEc519"
         }
     },

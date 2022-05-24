@@ -20,7 +20,7 @@ const HeroesInWallet = ({ dataHeroes }) => {
                 history.push({ pathname: `/heroes-nft-details/${d.tokenId}`, state: '/my-assets' })
               }
             >
-              <HeroesCard hero={d} />
+              {/* <HeroesCard hero={d} /> */}
             </RubyBlock>
           )
         })}

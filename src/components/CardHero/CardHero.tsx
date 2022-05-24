@@ -1,5 +1,7 @@
 import { Box, Flex } from "@pancakeswap/uikit"
 import React from "react"
+import { NavLink } from "react-router-dom"
+import history from "routerHistory"
 import styled from "styled-components"
 import { formatNumber } from "utils/formatBalance"
 import BackgroundCard from "./components/BackgroundCard"
@@ -8,6 +10,7 @@ import { BaseHero } from "./types"
 
 const CardHero: React.FC<BaseHero> = ({ data: { classType, heroName, image, level, rarity, skill, star, tokenId, price } }) => {
 	return(
+		<NavLink to={`/hero/${tokenId}`}>
 		<BackgroundCard rarity={rarity} >
 			<Flex height={25} justifyContent='space-between'>
 				<TagID rarity={rarity}>
@@ -44,14 +47,15 @@ const CardHero: React.FC<BaseHero> = ({ data: { classType, heroName, image, leve
 				<Box style={{ fontSize: 38, zIndex: 1, fontWeight: 'bold', color: '#FFA800' }}>{TAG[rarity]}</Box>
 			</Flex>
 			{
-				price !== undefined ?? <Flex alignItems='center' justifyContent='center' mt="21px" height="47px" mx={3} overflow="hidden">
+				price !== undefined ? <Flex alignItems='center' justifyContent='center' mt="8px" height="47px" mx={3} overflow="hidden">
 					<Flex alignItems="center" style={{ gap: 5 }}>
 						<img src="/images/coins/big.png" width={30} alt="token" />
 						<Box style={{ fontWeight: 'bold', color: "#fff" }}>{ formatNumber(price) } BIG</Box>
 					</Flex>
-				</Flex>
+				</Flex> : null
 			}
 		</BackgroundCard>
+		</NavLink>
 	)
 }
 

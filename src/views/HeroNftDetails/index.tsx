@@ -27,11 +27,15 @@ import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useIsApprovedForAll from 'hooks/useIsApprovedForAll'
 import getOwner from 'utils/getOwner'
 import useToast from 'hooks/useToast'
-import { useMarketplaceBox, useHeroContract, useHoldInGameContract } from 'hooks/useContract'
+import { useMarketplaceBox, useHeroContract, useHoldInGameContract, useERC20 } from 'hooks/useContract'
 import LinkWallet from 'components/LinkWallet'
 import BuyToken from 'components/BuyToken'
 import PopupLogin from 'components/Pancake-uikit/widgets/Menu/components/PopupLogin'
+import checkBalance from 'utils/checkBalance'
+import checkAllowance from 'utils/checkAllowance'
+import ApproveModal from 'components/ApproveModal/ApproveModal'
 import PopupComplete from 'components/Popup/PopupComplete'
+import TokenModal from 'components/TokenModal/TokenModal'
 import PopupSellHero from './components/PopupSellHero'
 import PopupTransferHero from './components/PopupTransferHero'
 import PopupSummonHero from './components/PopupSummonHero'
@@ -39,7 +43,11 @@ import PopupSummonHero from './components/PopupSummonHero'
 const HeroNftDetails = () => {
   const { id }: any = useParams()
   const [heroesDetail, setHeroesDetail] = useState({
-    owner: null
+    owner: null,
+    seller: null,
+    orderId: null,
+    status: -1,
+    price: null
   })
   const { account } = useWeb3React()
   const [idHero, setIdHero] = useState(0)
@@ -63,10 +71,17 @@ const HeroNftDetails = () => {
   const userData = useSelector((state: AppState) => state.user.userInfo)
   const minPrices = useSelector((state: AppState) => state.marketplace.minPrices)
   const tokenNeedHold = useSelector((state: AppState) => state.user.tokenNeedHold)
-  const minPrice = Number(new BigNumber(minPrices[heroesDetail?.gen] ?? 0).div(BIG_TEN.pow(tokens.busd.decimals)))
+  const minPrice = 0
   const walletInGame = userData.walletAddress
+  const tokenContract = useERC20(getAddress(tokens.big.address))
   const [openLinkWallet] = useModal(<LinkWallet userData={userData} />)
   const [openBuyToken] = useModal(<BuyToken tokenNeedHold={tokenNeedHold} />)
+  const [openModalToken] = useModal(<TokenModal symbol='BIG'/>, false)
+  const [openModalApprove] = useModal(<ApproveModal 
+    contractApprove={tokenContract} 
+    contractNeedApprove={getAddress(marketplaceConfig.contractAddress.hero)}
+    title="Enable NFT Purchase"
+  />, false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,8 +89,9 @@ const HeroNftDetails = () => {
         const balance = await getBalanceOf(account, tokens.big.address)
         const ownerToken = await getOwner(heroNftConfig.contractAddress, id)
         const res: any = await heroestdApi.getHeroAttribuse(id)
-        const newData: any = {...res, owner: ownerToken}
-
+        const dataMarket: any = await heroestdApi.getHeroOnMarket(id)
+        const newData: any = {...res, owner: ownerToken, ...dataMarket.data}
+        console.log("newData", newData)
         setHeroesDetail(newData)
         setBalanceToken(balance)
       } catch (error) {
@@ -113,7 +129,7 @@ const HeroNftDetails = () => {
       const tx = await callWithGasPrice(
         marketplaceContract, 
         'startSales', 
-        [id, new BigNumber(prices).multipliedBy(BIG_TEN.pow(tokens.busd.decimals)).toString(), getAddress(heroNftConfig.contractAddress), getAddress(tokens.busd.address)]
+        [id, new BigNumber(prices).multipliedBy(BIG_TEN.pow(tokens.big.decimals)).toString(), getAddress(heroNftConfig.contractAddress), getAddress(tokens.big.address)]
       )
       const receipt = await tx.wait()
       toastSuccess('Success', 'Selling order successful')
@@ -129,7 +145,7 @@ const HeroNftDetails = () => {
   const handleSend = async(accountRecive: string) => {
     try {
       setPendingTx(true)
-      const tx = await callWithGasPrice(heroContract, 'transferFrom', [account, accountRecive, idHero])
+      const tx = await callWithGasPrice(heroContract, 'transferFrom', [account, accountRecive, id])
       const receipt = await tx.wait()
       toastSuccess('Success', 'Send successful')
       history.push('/my-assets')
@@ -169,6 +185,47 @@ const HeroNftDetails = () => {
     }
   }
 
+  const handleCancel = async() => {
+    try {
+      setPendingTx(true)
+      const tx = await callWithGasPrice(marketplaceContract, 'cancelSales', [heroesDetail.orderId])
+      const receipt = await tx.wait()
+      toastSuccess('Success', 'Cancellation successful')
+      history.push('/marketplace')
+    } catch (error) {
+      toastError("Error", error?.data?.message)
+    } finally {
+      setPendingTx(false)
+    }
+  }
+
+  const handleBuy = async() => {
+    try {
+      setPendingTx(true)
+      const balance = await checkBalance(account, tokens.big.address, tokens.big.decimals)
+      const allowanceToken = await checkAllowance(account, tokens.big.address, marketplaceConfig.contractAddress.hero)
+      if (!allowanceToken) {
+        openModalApprove()
+        return
+      }
+      if (balance < heroesDetail.price) {
+        openModalToken()
+        return
+      }
+      console.log("heroesDetail.orderId", heroesDetail.orderId)
+      const tx = await callWithGasPrice(marketplaceContract, 'buy', [heroesDetail.orderId])
+      const receipt = await tx.wait()
+      toastSuccess('Success', 'You\'ve successfully bought the NFT')
+      history.push('/marketplace')
+    } catch(error) {
+      console.log(error)
+    } finally {
+      setPendingTx(false)
+    }
+  }
+
+  const isOwner = account?.toLowerCase() === heroesDetail?.seller?.toLowerCase()
+
   return (
     !resErr
     ?
@@ -185,23 +242,49 @@ const HeroNftDetails = () => {
           </Heading>
         </Hero>
       </Header>
+      <Flex justifyContent='flex-end'>
+        <Flex>
+        {
+          isOwner
+          ?
+          <Button
+            onClick={handleCancel}
+            disabled={pendingTx}
+            variant="warning"
+            style={{ flex: 1 }}
+          >
+            { pendingTx ? 'Canceling...' : 'Cancel' }
+          </Button>
+          :
+            heroesDetail.status === 0
+            ?
+            <Button
+              onClick={handleBuy}
+              disabled={pendingTx}
+              style={{ flex: 1 }}
+            >
+              { pendingTx ? 'Processing...' : 'Purchase' }
+            </Button>
+          : null
+        }
+        </Flex>
+      </Flex>
       {
-        account === heroesDetail.owner && <Flex justifyContent={{ md: 'flex-end' }}>
-        <Flex alignItems="center" gridGap={2} flexDirection={{ base: 'column', md: 'row' }} width={{ base: '100%', md: 'auto' }}>
-          <Flex gridGap={2} width={{ base: '100%' }} justifyContent="flex-end">
+        account === heroesDetail.owner && <Flex justifyContent='flex-end'>
+        <Flex alignItems="center" gridGap={2} justifyContent='flex-end' flexDirection={{ base: 'column', md: 'row' }} width={{ base: '100%', md: 'auto' }}>
+          <Flex gridGap={5} width={{ base: '100%' }} justifyContent="flex-end">
             <Popup
               className="w-full"
               modal
               trigger={
                 <Button
-                  variant="tertiary"
-                  style={{ flex: 1, padding: '0 25px' }}
-                  scale="sm"
-                  className='flex border border-solid border-gray-500'
+                  variant="primary"
+                  style={{ flex: 1, padding: '0 50px', backgroundColor: '#00BFD5' }}
+                  className='flex'
                 >
                   <div className="flex flex-row justify-center items-center gap-2">
-                    <img src="https://cdn.heroestd.io/Images/sell.png" alt="coin" className="w-5" />
-                    <Text style={{ color: 'white', fontWeight: 'nornal', fontSize: '12px' }}>Sell</Text>
+                    <img src="/images/sell.svg" alt="coin" className="w-5" />
+                    <Text style={{ color: 'white', fontWeight: 'nornal', fontSize: '16px' }}>Sell</Text>
                   </div>
                 </Button>
               }
@@ -211,7 +294,7 @@ const HeroNftDetails = () => {
                   <PopupSellHero 
                     close={close} 
                     heroesDetail={heroesDetail} 
-                    idHero={idHero} 
+                    idHero={id} 
                     isAllowance={allowance}
                     onApprove={() => handleApprove(marketplaceConfig.contractAddress.hero)}
                     approveTx={approveTx}
@@ -236,14 +319,12 @@ const HeroNftDetails = () => {
               modal
               trigger={
                 <Button
-                  variant="tertiary"
-                  style={{ flex: 1, padding: '0 25px' }}
-                  scale="sm"
-                  className='flex border border-solid border-gray-500'
+                  style={{ flex: 1, padding: '0 50px', backgroundColor: '#00BFD5' }}
+                  className='flex'
                 >
                   <div className="flex flex-row justify-center items-center gap-2">
-                    <img src="https://cdn.heroestd.io/Images/transfer.png" alt="coin" className="w-5" />
-                    <Text style={{ color: 'white', fontWeight: 'nornal', fontSize: '12px' }}>Transfer</Text>
+                    <img src="/images/transfer.svg" alt="coin" className="w-5" />
+                    <Text style={{ color: 'white', fontWeight: 'nornal', fontSize: '16px' }}>Transfer</Text>
                   </div>
                 </Button>
               }
@@ -253,7 +334,7 @@ const HeroNftDetails = () => {
                   <PopupTransferHero 
                     close={close} 
                     heroesDetail={heroesDetail} 
-                    idHero={idHero} 
+                    idHero={id} 
                     pendingTx={pendingTx}
                     onSend={handleSend}
                   />
@@ -269,7 +350,7 @@ const HeroNftDetails = () => {
                 )
               }
             </Popup>
-            <Popup
+            {/* <Popup
               className="w-full"
               modal
               trigger={
@@ -287,8 +368,8 @@ const HeroNftDetails = () => {
               }
             >
               {(close) => <PopupSummonHero close={close} heroesDetail={heroesDetail} />}
-            </Popup>
-            {
+            </Popup> */}
+            {/* {
               allowanceHold ?
                 userData?.userID
                 ?
@@ -338,7 +419,7 @@ const HeroNftDetails = () => {
                 >
                 { approveTx ? 'Processing...' : 'Approve to game' }
                 </Button>
-            }
+            } */}
           </Flex>
         </Flex>
       </Flex>

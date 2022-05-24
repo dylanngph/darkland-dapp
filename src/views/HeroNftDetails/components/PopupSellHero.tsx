@@ -10,7 +10,7 @@ import Fee from 'components/Popup/Fee'
 
 const PopupSellHero = ({ close, heroesDetail, idHero, isAllowance, onApprove, approveTx, onSell, pendingTx, minPrice }) => {
 	const FEE = 4.68
-	const MAX_VALUE = 1000000000
+	const MAX_VALUE = 1000000
 	const heroProps = heroConfig[heroesDetail.heroId - 1]
 	const newHero = Object.assign(heroesDetail, heroProps)
 	const [prices, setPrices] = useState('')
@@ -54,12 +54,13 @@ const PopupSellHero = ({ close, heroesDetail, idHero, isAllowance, onApprove, ap
 							max={MAX_VALUE}
 							onChange={handleChange}
 							_focus={{
-								borderColor: 'none'
+								border: 'none'
 							}}
+							width='100%'
 						/>
 						<InputRightAddon backgroundColor="#333" borderColor="#555">
 							<Flex gridGap={1} alignItems="center">
-								<img src='/images/coins/busd.png' alt='busd' className="w-5 h-5 object-cover" /> BUSD
+								<img src='/images/coins/big.png' alt='big' className="w-5 h-5 object-cover" /> BIG
 							</Flex>
 						</InputRightAddon>
 					</InputGroup>
@@ -69,10 +70,10 @@ const PopupSellHero = ({ close, heroesDetail, idHero, isAllowance, onApprove, ap
 				</Flex>
 				{
 					Number(prices) > 0 && <Flex>
-					<Text>Selling <span className='text-yellow-400'>{ newHero.name } - #{idHero}</span> with <span className='font-bold text-yellow-400'>{formatNumber(Number(prices))}</span> BUSD ?</Text>
+					<Text>Selling <span className='text-yellow-400'>{ newHero.name } - #{idHero}</span> with <span className='font-bold text-yellow-400'>{formatNumber(Number(prices))}</span> BIG ?</Text>
 				</Flex>
 				}
-				<Fee fee={FEE} prices={prices} symbol='BUSD'/>
+				<Fee fee={FEE} prices={prices} symbol='BIG'/>
 				<Flex justifyContent="space-between">
 					<Button variant='text' onClick={close}>Cancel</Button>
 					{
@@ -91,7 +92,7 @@ const PopupSellHero = ({ close, heroesDetail, idHero, isAllowance, onApprove, ap
 }
 
 const Container = styled(Box)`
-  padding: 20px 30px;
+  padding: 20px 0;
   display: flex;
   width: 100%;
   justify-content: space-between;

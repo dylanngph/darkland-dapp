@@ -3,6 +3,7 @@ import axios from 'axios'
 import axiosClient from './axiosClient'
 
 const baseURL = process.env.REACT_APP_URL_API
+const baseMarketPlace = "https://seal-app-ad86z.ondigitalocean.app"
 const baseURLProd = "https://api.darkland.io/api/v1"
 const baseURLAlpha = "https://alpha-dot-heroes-td-6fa95.as.r.appspot.com"
 const baseURLBeta = "https://beta-dot-heroes-td-6fa95.as.r.appspot.com"
@@ -11,7 +12,7 @@ let cancelToken
 class HeroestdApi {
   getHeroList = (params: any) => {
     const qs = queryString.stringify(params)
-    const url = `${baseURLProd}/get-hero-market-list/${qs}`
+    const url = `${baseMarketPlace}/marketplace/on-sale-list?${qs}`
     if (typeof cancelToken !== typeof undefined) {
       cancelToken.cancel('Operation canceled due to new request.')
     }
@@ -163,6 +164,11 @@ class HeroestdApi {
 
   getHeroAttribuse = (tokenId: string) => {
     const url = `${baseURLProd}/hero/${tokenId}`
+    return axiosClient.get(url)
+  }
+
+  getHeroOnMarket = (tokenId: string) => {
+    const url = `${baseMarketPlace}/marketplace/on-sale-hero?tokenId=${tokenId}`
     return axiosClient.get(url)
   }
 

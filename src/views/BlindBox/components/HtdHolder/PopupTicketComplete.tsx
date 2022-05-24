@@ -15,7 +15,7 @@ export default ({close, clearPurchasedTx, currentSlots}) => {
     <Wrapper>
       <ContainerPopupComplete>
         <CardIcon>
-          <img src="https://cdn.heroestd.io/DappUI/Checkout.svg" alt={SuccessImage} />
+          <img src="/images/Checkout.svg" alt={SuccessImage} />
         </CardIcon>
         <Title>Transaction Successful !</Title>
       </ContainerPopupComplete>

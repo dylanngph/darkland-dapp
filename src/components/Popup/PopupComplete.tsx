@@ -29,7 +29,7 @@ const PopupComplete: React.FC<IPopupComplete> = ({ close, clearPopup, descriptio
     <Wrapper>
       <ContainerPopupComplete>
         <CardIcon>
-          <img src="https://cdn.heroestd.io/DappUI/Checkout.svg" alt="complete" />
+          <img src="/images/Checkout.svg" alt="complete" />
         </CardIcon>
         <Title>{ title }</Title>
       </ContainerPopupComplete>

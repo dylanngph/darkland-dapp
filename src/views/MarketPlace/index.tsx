@@ -16,7 +16,7 @@ import { tabMarket } from './constant'
 const MarketPlace = () => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
-  const { itemConfig, runeConfig } = useSelector((state: AppState) => state.common)
+  // const { itemConfig, runeConfig } = useSelector((state: AppState) => state.common)
   const tabSelected = useSelector<AppState, AppState['user']['userSelected']>((state: AppState) => state.user.userSelected)
   const [tab, setTab] = useState(tabSelected)
 
@@ -40,14 +40,14 @@ const MarketPlace = () => {
   //   }
   // }, [dispatch])
 
-  useEffect(() => {
-    if (!runeConfig.length) {
-      dispatch(fetchRuneConfig())
-    }
-    if (!itemConfig.length) {
-      dispatch(fetchItemConfig())
-    }
-  }, [dispatch, itemConfig, runeConfig])
+  // useEffect(() => {
+  //   if (!runeConfig.length) {
+  //     dispatch(fetchRuneConfig())
+  //   }
+  //   if (!itemConfig.length) {
+  //     dispatch(fetchItemConfig())
+  //   }
+  // }, [dispatch, itemConfig, runeConfig])
 
   useEffect(() => {
     setTab(tabSelected)
@@ -94,7 +94,7 @@ const MarketPlace = () => {
 
   const renderTabContent = useCallback(() => {
     const tabs = {
-      0: <BoxesTab />,
+      // 0: <BoxesTab />,
       1: <HeroesTab />,
       // NFT: <Runes />,
     }
@@ -117,7 +117,7 @@ const MarketPlace = () => {
 
   return (
     <Page>
-      {renderTabHeader()}
+      {/* {renderTabHeader()} */}
       {renderTabContent()}
     </Page>
   )

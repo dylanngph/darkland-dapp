@@ -66,7 +66,7 @@ const HeroesCardWrapper = ({ heroes }) => {
                   key={hero?._id}
                   className="flex flex-row flex-wrap cursor-pointer"
                 >
-                  <HeroesCard hero={hero} />
+                  {/* <HeroesCard hero={hero} /> */}
                 </RubyBlock>
                 
               ))}

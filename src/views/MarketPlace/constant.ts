@@ -2,7 +2,7 @@ import heroIcon from 'assets/icons/heroIcon.svg'
 import nftIcon from 'assets/icons/nftIcon.svg'
 import boxIcon from 'assets/icons/boxIcon.svg'
 
-export const GROUP_FILTER = ['General', 'Item', 'Runes']
+export const GROUP_FILTER = ['General']
 
 export const MARKET_FILTER = [
   // {
@@ -41,9 +41,9 @@ export const MARKET_FILTER = [
 ]
 
 export const tabMarket = [
-  { index: 0, label: 'Boxes', icon: boxIcon },
-  { index: 1, label: 'Heroes', icon: heroIcon },
-  { index: 2, label: 'NFT Bounty', icon: nftIcon },
+  // { index: 0, label: 'Boxes', icon: boxIcon },
+  // { index: 1, label: 'Heroes', icon: heroIcon },
+  // { index: 2, label: 'NFT Bounty', icon: nftIcon },
 ]
 
 export const tabDashboard = [

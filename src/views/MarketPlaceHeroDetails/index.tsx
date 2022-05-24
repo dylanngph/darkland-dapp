@@ -184,7 +184,7 @@ const MarketPlaceHeroDetails = () => {
             variant="warning"
             style={{ flex: 1 }}
           >
-          { pendingTx ? 'Canceling...' : 'Cancel'}
+            { pendingTx ? 'Canceling...' : 'Cancel'}
           </Button>
           :
           account ?

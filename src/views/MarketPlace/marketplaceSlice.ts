@@ -24,15 +24,6 @@ export interface marketPlaceState {
 const initialState: marketPlaceState = {
   paramFilterHero: {
     name: undefined,
-    items: [],
-    heroClasses: [],
-    heroOrigins: [],
-    maxFusisionTime: 7,
-    minFusionTime: 0,
-    runes: [],
-    heroGen: undefined,
-    targetFilters: [],
-    status: [],
     page: 1,
     limit: 15,
     seller: 0,
@@ -85,16 +76,14 @@ export const fetchListHero = createAsyncThunk(
         delete temp.time
       }
       // @ts-ignore
-      const { common } = getState()
-      const { data } = await heroestdApi.getHeroList(temp)
-      const heros = mapHeroData(data.docs, common?.heroConfig)
-
+      const result: any = await heroestdApi.getHeroList(temp)
+      const heros = result.data
       // const containerEl = document.getElementById('market-hero-id')
       // if (containerEl) {
       //   containerEl.scrollTo({ top: 0, behavior: 'smooth' })
       // }
 
-      return { heros, data }
+      return { heros, data: result }
     } catch (error) {
       console.log(error)
     }
@@ -225,7 +214,7 @@ export const marketplaceSlice = createSlice({
         return {
           ...state,
           loading: false,
-          heroList: [...payload.heros],
+          heroList: [...payload?.heros],
           pagination: {
             page: payload?.data?.page,
             limit: payload?.data?.limit,

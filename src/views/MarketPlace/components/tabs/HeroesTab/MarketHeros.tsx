@@ -1,10 +1,9 @@
 import bnbIcon from 'assets/icons/bnb-usd-icon.svg'
 import BigNumber from 'bignumber.js'
 import PaginationCustom from 'components/Pagination/Pagination'
-import React, { memo, useEffect } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { AppState, useAppDispatch } from 'state'
-import { fetchHeroConfig } from 'state/common/commonSlice'
 import styled from 'styled-components'
 import { formatNumber, getBalanceNumber } from 'utils/formatBalance'
 import HeroesCard from 'views/HeroesCard'
@@ -13,12 +12,14 @@ import HeroesListColumnItem from 'views/HeroesCard/HeroesListColumnItem'
 import useRefresh from 'hooks/useRefresh'
 import { fetchListHero, setParamSearchHero } from 'views/MarketPlace/marketplaceSlice'
 import { useHistory } from 'react-router-dom'
+import CardHero from 'components/CardHero/CardHero'
 
 const Market = ({ currentLayout }) => {
   const dispatch = useAppDispatch()
   const history = useHistory()
   const { fastRefresh } = useRefresh()
-  const { heroConfig } = useSelector((state: AppState) => state.common)
+  const [orderList, setOrderList] = useState([])
+  // const { heroConfig } = useSelector((state: AppState) => state.common)
   const { heroList, pagination, paramFilterHero } = useSelector(
     (state: AppState) => state.marketplace,
   )
@@ -27,15 +28,21 @@ const Market = ({ currentLayout }) => {
   // const { account } = useWeb3React()
   // const { poolsNft: poolsWithoutAutoVault, userDataLoaded } = usePoolsNft(account)
 
+  // useEffect(() => {
+  //   if (!heroConfig.length) {
+  //     dispatch(fetchHeroConfig())
+  //   }
+  // }, [dispatch, heroConfig.length])
+
   useEffect(() => {
-    if (!heroConfig.length) {
-      dispatch(fetchHeroConfig())
+    if (heroList.length) {
+      setOrderList(heroList.map((hero) => { return {...hero.attributes, price: hero.price, tokenId: hero.tokenId, heroName: hero.attributes.name}}))
     }
-  }, [dispatch, heroConfig.length])
+  }, [heroList])
 
   useEffect(() => {
     dispatch(fetchListHero(paramFilterHero))
-  }, [dispatch, paramFilterHero, heroConfig.length, fastRefresh])
+  }, [dispatch, paramFilterHero, fastRefresh])
 
   const handleChagePage = ({ page }) => {
     const filterParams = { ...paramFilterHero }
@@ -53,16 +60,17 @@ const Market = ({ currentLayout }) => {
     <Container>
       {currentLayout === 0 && (
         <MarketHerosWrap>
-          {heroList?.map((hero: any) => (
+          {orderList?.map((hero: any) => (
             <RubyBlock
               onClick={() => {
-                history.push( {pathname: `/heroes-order/${hero?.tokenId}`, state: '/marketplace'})
+                history.push( {pathname: `/hero/${hero?.tokenId}`, state: '/marketplace'})
               }}
               key={hero?._id}
               className="flex flex-row flex-wrap cursor-pointer"
             >
-              <HeroesCard hero={hero} />
-              <PriceBlock>
+              {/* <HeroesCard hero={hero} /> */}
+              <CardHero data={hero} />
+              {/* <PriceBlock>
                 <PriceBUSD className="flex">
                   <img
                     style={{ display: 'inline', verticalAlign: 'middle' }}
@@ -74,7 +82,7 @@ const Market = ({ currentLayout }) => {
                   </span>
                   BUSD
                 </PriceBUSD>
-              </PriceBlock>
+              </PriceBlock> */}
             </RubyBlock>
           ))}
         </MarketHerosWrap>
@@ -118,12 +126,9 @@ const MarketHerosWrap = styled.div`
 
 const RubyBlock = styled.div`
   position: relative;
-  background-color: #000000;
   flex-direction: column;
   height: 100%;
   width: auto;
-  border-radius: 10px;
-  border: 2px solid #434344;
   padding-top: 10px;
   > div {
     transform: ${({ theme }) => theme.mediaQueries.lg ? 'scale(0.7)' : 'none'};

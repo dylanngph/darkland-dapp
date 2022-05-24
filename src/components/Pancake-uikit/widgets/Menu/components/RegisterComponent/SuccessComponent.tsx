@@ -8,7 +8,7 @@ const SuccessComponent = ({close, tilte, content, link}) => {
   return (
     <div >
       <WrapImg>
-        <img src="https://cdn.heroestd.io/DappUI/Checkout.svg" alt="complete" />
+        <img src="/images/Checkout.svg" alt="complete" />
       </WrapImg>
       <SwapField>
         <h1 className='text-2xl text-center' >{tilte}</h1>

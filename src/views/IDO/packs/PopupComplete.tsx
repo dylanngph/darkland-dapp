@@ -14,7 +14,7 @@ export default ({close, clearPurchasedTx}) => {
     <Wrapper>
       <ContainerPopupComplete>
         <CardIcon>
-          <img src="https://cdn.heroestd.io/DappUI/Checkout.svg" alt="complete" />
+          <img src="/images/Checkout.svg" alt="complete" />
         </CardIcon>
         <Title>Complete!</Title>
       </ContainerPopupComplete>

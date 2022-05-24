@@ -1,3 +1,4 @@
+import { Text } from '@chakra-ui/react'
 import CheckBoxCustom from 'components/CheckboxCustom/CheckboxCustom'
 import SliderCustom from 'components/SliderCustom/SliderCustom'
 import React, { memo } from 'react'
@@ -20,11 +21,12 @@ const General = () => {
     <Container>
       {GENERAL_CHECKBOX.map(({ label, value, color }) => (
         <WrapCheckboxCustom key={label} className="custom-checkbox">
-          <h1 style={{ color: `${color}` }}>{label}</h1>
+          <Text color='white' fontSize={20} fontWeight='700'>{label}</Text>
+          <hr style={{ margin: '10px 0'}}/>
           <CheckBoxCustom list={value} defaultValue={paramFilterHero} onChange={handleFilter} />
         </WrapCheckboxCustom>
       ))}
-      <SliderCustom filter={GENERAL_FILTER} />
+      {/* <SliderCustom filter={GENERAL_FILTER} /> */}
     </Container>
   )
 }
@@ -35,25 +37,20 @@ const Container = styled.div`
   flex-wrap: wrap;
 `
 const WrapCheckboxCustom = styled.div`
+  background-color: #091749;
+  padding: 1rem;
   width: 100%;
+  margin-bottom: .8rem;
   > h1 {
     font-size: 16px;
     line-height: 20px;
     color: #9e9e9e;
   }
   > div {
-    padding: 10px;
     width: 100%;
-    background: linear-gradient(180deg, #2a2a2a 0%, #262424 100%);
     border: 1px solid;
     border-image-source: linear-gradient(180deg, #464646 0%, rgba(224, 224, 224, 0) 100%);
     border-radius: 5px;
-    margin: 10px 0px;
-    > div {
-      > div {
-        padding: 5px;
-      }
-    }
   }
 `
 

@@ -14,9 +14,10 @@ const Container = styled(Box)`
   background: linear-gradient(270deg, #000000b3 0, #444444c7 0.01%, #424242d1 105.1%);
   border: 1px solid #52525270;
   border-radius: 12px;
+  padding: 15px;
   color: #fff;
   width: 100%;
-  max-width: 360px;
+  max-width: 460px;
   min-height: 200px;
   ${({ theme }) => theme.mediaQueries.md} {
     min-width: 360px;

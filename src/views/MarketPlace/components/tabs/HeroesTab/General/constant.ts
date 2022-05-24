@@ -11,26 +11,21 @@ export const HERO_GEN_CHECKBOX = {
   name: 'heroGen',
   type: 'radio',
   data: [
-    { name: '0', label: 'C', type: 'radio', color: '#9E9E9E', icon: GenC },
-    { name: '1', label: 'R', type: 'radio', color: '#00A3FF', icon: GenR },
-    { name: '2', label: 'SR', type: 'radio', color: '#EB00FF', icon: GenSR },
-    { name: '3', label: 'SSR', type: 'radio', color: '#FF8000', icon: GenSSR },
+    { name: '0', label: 'Common', type: 'radio', color: '#9E9E9E', icon: '' },
+    { name: '1', label: 'Rare', type: 'radio', color: '#00A3FF', icon: '' },
+    { name: '2', label: 'Epic', type: 'radio', color: '#EB00FF', icon: '' },
+    { name: '3', label: 'Legendary', type: 'radio', color: '#FF8000', icon: '' },
   ],
 }
 export const CLASS_CHECKBOX = {
   name: 'heroClasses',
   type: 'checkbox',
   data: [
-    { name: '1', label: 'Assassin', icon: ImageClass.AssassinIcon },
-    { name: '7', label: 'Duelist', icon: ImageClass.DuelistIcon },
-    { name: '4', label: 'Elderwood', icon: ImageClass.ElderwoodIcon },
-    { name: '9', label: 'Enlightened', icon: ImageClass.EnlightenedIcon },
-    { name: '10', label: 'Fortune', icon: ImageClass.FortuneIcon },
-    { name: '5', label: 'Hunter', icon: ImageClass.HunterIcon },
-    { name: '2', label: 'Slayer', icon: ImageClass.SlayerIcon },
-    { name: '6', label: 'Warlock', icon: ImageClass.WarlockIcon },
-    { name: '3', label: 'Warlord', icon: ImageClass.WarlordIcon },
-    { name: '8', label: 'Wizard', icon: ImageClass.WizardIcon },
+    { name: '0', label: 'Assault', icon: ImageClass.AssassinIcon },
+    { name: '1', label: 'Heavy', icon: ImageClass.DuelistIcon },
+    { name: '2', label: 'Archer', icon: ImageClass.ElderwoodIcon },
+    { name: '3', label: 'Sniper', icon: ImageClass.EnlightenedIcon },
+    { name: '4', label: 'Grenade', icon: ImageClass.FortuneIcon },
   ],
 }
 export const ORIGIN_CHECKBOX = {
@@ -84,7 +79,7 @@ export const GENERAL_FILTER = [
 export const GENERAL_CHECKBOX = [
   { label: 'Hero Rarity', value: HERO_GEN_CHECKBOX, color: '' },
   { label: 'Class', value: CLASS_CHECKBOX, color: '#00A3FF' },
-  { label: 'Origins', value: ORIGIN_CHECKBOX, color: '#EB00FF' },
-  { label: 'Target Type', value: TARGET_CHECKBOX, color: '' },
-  { label: 'Status', value: STATUS_CHECKBOX, color: '' },
+  // { label: 'Origins', value: ORIGIN_CHECKBOX, color: '#EB00FF' },
+  // { label: 'Target Type', value: TARGET_CHECKBOX, color: '' },
+  // { label: 'Status', value: STATUS_CHECKBOX, color: '' },
 ]

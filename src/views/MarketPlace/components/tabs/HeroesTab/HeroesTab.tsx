@@ -22,7 +22,7 @@ import Runes from './Runes/Runes'
 const HeroesTab = () => {
   const { account } = useWeb3React()
   const dispatch = useAppDispatch()
-  const { heroConfig } = useSelector((state: AppState) => state.common)
+  // const { heroConfig } = useSelector((state: AppState) => state.common)
   const { paramFilterHero, pagination } = useSelector((state: AppState) => state.marketplace)
 
   const { t } = useTranslation()
@@ -70,18 +70,14 @@ const HeroesTab = () => {
   const renderGroupFilter = useCallback(() => {
     const tabs = {
       General: <General />,
-      Item: <Items />,
-      Runes: <Runes />,
+      // Item: <Items />,
+      // Runes: <Runes />,
     }
     return tabs[groupFilter] || <Text>Not Found</Text>
   }, [groupFilter])
 
   const countGeneral = () => {
     const compareObject = {
-      heroClasses: [],
-      heroOrigins: [],
-      maxFusisionTime: 7,
-      heroGen: undefined,
       targetFilters: [],
       status: [],
     }
@@ -138,12 +134,6 @@ const HeroesTab = () => {
 
   const countAllFilter = () => {
     const compareObject = {
-      items: [],
-      heroClasses: [],
-      heroOrigins: [],
-      maxFusisionTime: 7,
-      runes: [],
-      heroGen: undefined,
       targetFilters: [],
       status: [],
     }
@@ -174,42 +164,7 @@ const HeroesTab = () => {
 
   return (
     <Container>
-      <ButtonFilter onClick={toggleFilterContainer}>Filter ({countAllFilter()})</ButtonFilter>
-
-      <LeftContainer>
-        <WrapHeader>
-          <div className="flex">
-            <LayoutMenu
-              className={`flex justify-center items-center ${currentLayout === 0 && 'active'}`}
-              role="button"
-              onClick={() => setCurrentLayout(0)}
-            >
-              <img src="../images/grid.png" alt="grid" />
-            </LayoutMenu>
-            <LayoutMenu
-              className={`flex justify-center items-center ${currentLayout === 1 && 'active'}`}
-              role="button"
-              onClick={() => setCurrentLayout(1)}
-            >
-              <img src="../images/list.png" alt="list" />
-            </LayoutMenu>
-            <Box>{pagination.total} Heroes</Box>
-          </div>
-          <WrapSearch>
-            <AutoCompleteCustom
-              handleOnChange={handleChangeFilter}
-              defaultValue={paramFilterHero}
-            />
-            <SearchOption
-              filter={MARKET_FILTER}
-              onChange={handleChangeFilter}
-              defaultValue={paramFilterHero}
-            />
-          </WrapSearch>
-        </WrapHeader>
-        <MarketHeros currentLayout={currentLayout} />
-      </LeftContainer>
-
+      {/* <ButtonFilter onClick={toggleFilterContainer}>Filter ({countAllFilter()})</ButtonFilter> */}
       <RightContainer id="filter-container">
         {/* Right Header */}
         <RightBlockHeader>
@@ -224,13 +179,46 @@ const HeroesTab = () => {
 
           <ClearFilter onClick={clearFilter}>Clear Filter</ClearFilter>
         </RightBlockHeader>
-        {renderGroupFilterButton()}
+        {/* {renderGroupFilterButton()} */}
         {/* End of Right Header */}
 
         {/* Right Body */}
         <OptionStyle>{renderGroupFilter()}</OptionStyle>
         {/* End of Right Body */}
       </RightContainer>
+      <LeftContainer>
+        <WrapHeader>
+          <div className="flex">
+            {/* <LayoutMenu
+              className={`flex justify-center items-center ${currentLayout === 0 && 'active'}`}
+              role="button"
+              onClick={() => setCurrentLayout(0)}
+            >
+              <img src="../images/grid.png" alt="grid" />
+            </LayoutMenu>
+            <LayoutMenu
+              className={`flex justify-center items-center ${currentLayout === 1 && 'active'}`}
+              role="button"
+              onClick={() => setCurrentLayout(1)}
+            >
+              <img src="../images/list.png" alt="list" />
+            </LayoutMenu> */}
+            <Box>{pagination.total} Heroes</Box>
+          </div>
+          <WrapSearch>
+            {/* <AutoCompleteCustom
+              handleOnChange={handleChangeFilter}
+              defaultValue={paramFilterHero}
+            /> */}
+            <SearchOption
+              filter={MARKET_FILTER}
+              onChange={handleChangeFilter}
+              defaultValue={paramFilterHero}
+            />
+          </WrapSearch>
+        </WrapHeader>
+        <MarketHeros currentLayout={currentLayout} />
+      </LeftContainer>
     </Container>
   )
 }
@@ -311,13 +299,11 @@ const LeftContainer = styled.div`
 `
 
 const RightContainer = styled.div`
-  background-color: #000;
   padding: 0 10px;
-  border-radius: 8px;
   min-width: 340px;
   max-width: 340px;
   height: calc(100vh - 80px);
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
   display: block;
 
@@ -335,6 +321,7 @@ const RightBlockHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: .7rem;
 `
 
 const OptionStyle = styled.div`
@@ -358,13 +345,11 @@ const OptionStyle = styled.div`
 
 const ClearFilter = styled(Button)`
   float: left;
-  background: transparent;
 
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 21px;
-  color: #9e9e9e;
 `
 
 const TextFilter = styled(Text)`
@@ -404,7 +389,7 @@ const WrapHeader = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
   @media screen and (max-width: 1180px) {

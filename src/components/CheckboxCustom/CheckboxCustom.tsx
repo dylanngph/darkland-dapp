@@ -38,7 +38,7 @@ const CheckBoxCustom = ({ list, onChange, defaultValue }: Props) => {
       case 'checkbox': {
         return (
           <CheckboxGroup
-            colorScheme="red"
+            colorScheme="orange"
             value={defaultValue[content.name]}
             onChange={handleChangeCheckbox(content.name)}
           >
@@ -51,14 +51,14 @@ const CheckBoxCustom = ({ list, onChange, defaultValue }: Props) => {
                       boxShadow: 'none',
                       borderColor: '#686868',
                       outline: 'none',
-                      color: 'red',
+                      color: 'orange',
                     }}
                   >
                     <LabelText
                       style={{ color: `${color}` }}
                       className={defaultValue[content.name]?.includes(name) && 'checkbox-active'}
                     >
-                      {icon && (
+                      {/* {icon && (
                         <img
                           src={icon}
                           alt={icon}
@@ -73,7 +73,7 @@ const CheckBoxCustom = ({ list, onChange, defaultValue }: Props) => {
                             verticalAlign: 'middle',
                           }}
                         />
-                      )}
+                      )} */}
                       {label}
                     </LabelText>
                   </Checkbox>

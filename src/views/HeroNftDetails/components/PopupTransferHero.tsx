@@ -41,10 +41,10 @@ const PopupTransferHero = ({ close, heroesDetail, idHero, pendingTx, onSend }) =
 					<CloseIcon />
 				</Box>
 			</Container>
-			<Flex flexDirection="column" justifyContent="flex-start" width="100%" gridGap={5} padding={5} minHeight={100}>
+			<Flex flexDirection="column" justifyContent="flex-start" width="100%" gridGap={1} padding={5} minHeight={100}>
 				<Flex flexDirection="column" gridGap={1}>
-					<Text color="#b5b5b5" fontSize={14}>You are about to transfer <Text as="span" textColor='yellow.500'>{newHero.name} - #{idHero}</Text></Text>
-					<Text fontSize={12}>Wallet Address:</Text>
+					<Text color="#b5b5b5" fontSize={14}>You are about to transfer <Text as="span" textColor='yellow.500'>{heroesDetail.name} - #{heroesDetail.seq_id}</Text></Text>
+					<Text fontSize={12} mt={5}>Wallet Address:</Text>
 					<Flex flexDirection="column" gridGap={1}>
 						<Input 
 							placeholder='Enter wallet address'
@@ -68,11 +68,11 @@ const PopupTransferHero = ({ close, heroesDetail, idHero, pendingTx, onSend }) =
 					</Flex>
 					{
 						(walletAddress && validAddress && !isYour) && <Text my={2} fontSize={12}>
-						You will send <span className='font-bold text-yellow-400'>{newHero.name} - #{idHero}</span> to <span className='text-yellow-400 font-bold'>{walletAddress}</span>
+						You will send <span className='font-bold text-yellow-400'>{heroesDetail.name} - #{heroesDetail.seq_id}</span> to <span className='text-yellow-400 font-bold'>{walletAddress}</span>
 						</Text>
 					}
 				</Flex>
-				<Flex justifyContent="space-between">
+				<Flex justifyContent="space-between" mt={5}>
 					<Button variant='text' onClick={close}>Cancel</Button>
 					<Button disabled={pendingTx} onClick={() => onSend(walletAddress)}>{ pendingTx ? 'Sending...' : 'Send' }</Button>
 				</Flex>
@@ -82,7 +82,7 @@ const PopupTransferHero = ({ close, heroesDetail, idHero, pendingTx, onSend }) =
 }
 
 const Container = styled(Box)`
-	padding: 20px 30px;
+	padding: 10px 30px;
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
