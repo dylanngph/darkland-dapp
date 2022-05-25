@@ -30,28 +30,7 @@ function AutoCompleteCustom({ handleOnChange, defaultValue }) {
     handleOnChange('name')
   }
 
-  const list = [
-    { id: 'Lucia', name: 'Lucia', image: heroFaceImage.Lucia },
-    { id: 'X', name: 'X', image: heroFaceImage.X },
-    { id: 'Karla', name: 'Karla', image: heroFaceImage.Kalar },
-    { id: 'Hunken', name: 'Hunken', image: heroFaceImage.Hunken },
-    { id: 'Dart', name: 'Dart', image: heroFaceImage.Dart },
-    { id: 'Balthazar', name: 'Balthazar', image: heroFaceImage.Balthazar },
-    { id: 'Wukong', name: 'Wukong', image: heroFaceImage.Wukong },
-    { id: 'Anub', name: 'Anub', image: heroFaceImage.Anub },
-    { id: 'Zandalor', name: 'Zandalor', image: heroFaceImage.Zandalor },
-    { id: 'Yol', name: 'Yol', image: heroFaceImage.Yol },
-    { id: 'Amuka', name: 'Amuka', image: heroFaceImage.Amuka },
-    { id: 'Lenus', name: 'Lenus', image: heroFaceImage.Lenus },
-    { id: 'Sena', name: 'Sena', image: heroFaceImage.Sena },
-    { id: 'Lonah', name: 'Lonah', image: heroFaceImage.Lonah },
-    { id: 'Fangorn', name: 'Fangorn', image: heroFaceImage.Fangorn },
-    { id: 'Harley', name: 'Harley', image: heroFaceImage.Harley },
-    { id: 'Ragnar', name: 'Ragnar', image: heroFaceImage.Ragnar },
-    { id: 'Thanatos', name: 'Thanatos', image: heroFaceImage.Tharnatos },
-    { id: 'Clemens', name: 'Clemens', image: heroFaceImage.Clemens },
-    { id: 'Leah', name: 'Leah', image: heroFaceImage.Leah },
-  ]
+  const list = []
 
   // const Items = heroConfig.reduce((pre, cur) => {
   //   list.forEach((item) => {
@@ -114,9 +93,9 @@ function AutoCompleteCustom({ handleOnChange, defaultValue }) {
           flexDirection: 'column',
           width: '100%',
           height: '38px',
-          border: '1px solid rgba(151, 151, 151, 0.69)',
+          border: '1px solid #00BFD5',
           borderRadius: '4px',
-          backgroundColor: '#272727',
+          backgroundColor: '#091749',
           color: '#fff',
           fontSize: '14px',
           zIndex: 2,

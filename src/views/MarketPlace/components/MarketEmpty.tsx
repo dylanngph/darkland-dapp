@@ -10,7 +10,7 @@ const MarketEmpty = (props) => {
   return (
     <Container>
       <img src={MarketEmptyImage} alt={MarketEmptyImage} />
-      <Text> No result found</Text>
+      <Text>No result found</Text>
     </Container>
   )
 }
@@ -22,7 +22,7 @@ const Container = styled.div`
   flex-direction: column;
 `
 const Text = styled.div`
-  color: #9e9e9e;
+  color: #fff;
 `
 
 export default MarketEmpty

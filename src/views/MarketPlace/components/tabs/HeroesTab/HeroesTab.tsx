@@ -156,7 +156,6 @@ const HeroesTab = () => {
       filterParams[key] = Array.isArray(value) ? value : value ?? undefined
       filterParams.page = 1
       filterParams.account = account
-      // filterParams.seller = value === 1 ? account : 0
       dispatch(setParamSearchHero(filterParams))
     },
     [dispatch, paramFilterHero, account],
@@ -188,8 +187,8 @@ const HeroesTab = () => {
       </RightContainer>
       <LeftContainer>
         <WrapHeader>
-          <div className="flex">
-            {/* <LayoutMenu
+          {/* <div className="flex">
+            <LayoutMenu
               className={`flex justify-center items-center ${currentLayout === 0 && 'active'}`}
               role="button"
               onClick={() => setCurrentLayout(0)}
@@ -202,17 +201,17 @@ const HeroesTab = () => {
               onClick={() => setCurrentLayout(1)}
             >
               <img src="../images/list.png" alt="list" />
-            </LayoutMenu> */}
+            </LayoutMenu>
             <Box>{pagination.total} Heroes</Box>
-          </div>
+          </div> */}
           <WrapSearch>
-            {/* <AutoCompleteCustom
-              handleOnChange={handleChangeFilter}
-              defaultValue={paramFilterHero}
-            /> */}
             <SearchOption
               filter={MARKET_FILTER}
               onChange={handleChangeFilter}
+              defaultValue={paramFilterHero}
+            />
+            <AutoCompleteCustom
+              handleOnChange={handleChangeFilter}
               defaultValue={paramFilterHero}
             />
           </WrapSearch>
@@ -293,7 +292,6 @@ const ColorButton = styled(Button)`
 `
 
 const LeftContainer = styled.div`
-  margin-top: 15px;
   width: 100%;
   border-radius: 8px;
 `
@@ -392,20 +390,17 @@ const WrapHeader = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
-  @media screen and (max-width: 1180px) {
-    // justify-content: center;
-    margin-top: 5px;
-  }
+  margin-bottom: 15px;
 `
 const WrapSearch = styled.div`
-  // width: calc(100% - 240px);
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 5px;
   @media screen and (max-width: 992px) {
-    // justify-content: center;
+    // justify-content: space-between;
     margin-top: 5px;
   }
 `

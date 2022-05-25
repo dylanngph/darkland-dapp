@@ -63,6 +63,8 @@ export const fetchListHero = createAsyncThunk(
       const temp = { ...params }
       if (temp.seller === 1) {
         temp.seller = temp.account
+      } else {
+        delete temp.seller
       }
       if (temp.price === 0) {
         temp.time = -1

@@ -11,7 +11,7 @@ const Empty: React.FC<Props> = ({ message }, ...props) => {
   return (
     <Container>
       <img src={MarketEmptyImage} alt={MarketEmptyImage} />
-      <Text color='#9e9e9e' bold fontSize='20px'>{ message }</Text>
+      <Text color='#fff' bold fontSize='20px'>{ message }</Text>
     </Container>
   )
 }

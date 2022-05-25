@@ -43,7 +43,7 @@ const SearchOption = ({ filter, onChange, defaultValue }: Props) => {
             switch (item.type) {
               case 'select':
                 return (
-                  <WrapSelect key={item.name} className="form-item">
+                  <WrapSelect key={item.name}>
                     <Select
                       {...item}
                       name={item.name}
@@ -55,13 +55,13 @@ const SearchOption = ({ filter, onChange, defaultValue }: Props) => {
                         }),
                         option: (provided, state) => ({
                           ...provided,
-                          background: '#272727',
+                          background: '#091749',
                           color: state.isSelected ? '#fff' : '#9e9e9e',
                         }),
                         control: (provided) => ({
                           ...provided,
-                          border: '1px solid rgba(151,151,151,0.69)',
-                          background: '#272727',
+                          border: '1px solid #00BFD5',
+                          background: '#091749',
                           color: '#fff',
                         }),
                         singleValue: (provided) => ({
@@ -100,13 +100,13 @@ const SearchOption = ({ filter, onChange, defaultValue }: Props) => {
                         type={item.isNumber ? 'number' : 'text'}
                         defaultValue={defaultValue[item.name] || item.defaultValue}
                         sx={{
-                          borderColor: 'rgba(151,151,151,0.69)',
-                          backgroundColor: '#272727',
+                          borderColor: '#00BFD5',
+                          backgroundColor: '#091749',
                           borderRadius: 5,
                           padding: '0 35px',
                         }}
-                        _hover={{ border: '1px solid rgba(151,151,151,0.69)' }}
-                        _focus={{ border: '1px solid rgba(151,151,151,0.69)' }}
+                        _hover={{ border: '1px solid #00BFD5' }}
+                        _focus={{ border: '1px solid #00BFD5' }}
                         onChange={handleChangeInput}
                         readOnly
                       />
@@ -128,6 +128,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  gap: 10px;
   // @media screen and (max-width: 839px) {
   //   justify-content: center;
   // }
