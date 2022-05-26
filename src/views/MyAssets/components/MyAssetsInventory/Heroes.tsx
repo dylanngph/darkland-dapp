@@ -105,7 +105,15 @@ const Heroes = ({ currentLayout }) => {
           <HeroesListWrap>
           {
             heroesList?.map((hero: any) => (
-              <CardHero data={hero} />
+              <RubyBlock
+                onClick={() => {
+                  history.push( {pathname: `/hero/${hero?.tokenId}`, state: '/my-assets'})
+                }}
+                key={hero?._id}
+                className="flex flex-row flex-wrap cursor-pointer"
+              >
+                <CardHero data={hero} />
+              </RubyBlock>
             ))
           }
           </HeroesListWrap>
@@ -204,13 +212,9 @@ const HeroesListWrap = styled.div`
 
 const RubyBlock = styled.div`
   position: relative;
-  background-color: #000000;
   flex-direction: column;
   height: 100%;
   width: auto;
-  border-radius: 10px;
-  border: 1px solid #434344;
-  padding-top: 10px;
   > div {
     transform: ${({ theme }) => (theme.mediaQueries.lg ? 'scale(0.7)' : 'none')};
     border: unset;

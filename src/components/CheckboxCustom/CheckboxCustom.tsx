@@ -89,13 +89,13 @@ const CheckBoxCustom = ({ list, onChange, defaultValue }: Props) => {
             {content?.data.map(({ label, name, icon, color }) => (
               <Col key={name}>
                 <Checkbox
-                  colorScheme="red"
+                  colorScheme="orange"
                   isChecked={defaultValue[content.name] === name}
                   onChange={handleChangeRadio(content.name, name)}
                   _focus={{ boxShadow: 'unset' }}
                   sx={{
                     borderColor: '#686868',
-                    outline: 'none',
+                    outline: 'orange',
                     color: 'red',
                   }}
                 >
