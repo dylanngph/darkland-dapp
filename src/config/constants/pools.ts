@@ -16,6 +16,20 @@ const pools: PoolConfig[] = [
     tokenPerBlock: '50000000000000000',
     tokenReward: '0',
   },
+  {
+    sousId: 1,
+    stakingToken: tokens.big,
+    earningToken: tokens.big,
+    contractAddress: {
+      97: '',
+      56: '0xE241f84770402CdbC8E378112d51cb1b62C7544A',
+    },
+    poolCategory: PoolCategory.CORE,
+    harvest: true,
+    sortOrder: 999,
+    tokenPerBlock: '85000000000000000',
+    tokenReward: '0',
+  },
   // {
   //   sousId: 209,
   //   stakingToken: tokens.kshark,
