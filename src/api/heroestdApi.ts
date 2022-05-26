@@ -3,7 +3,7 @@ import axios from 'axios'
 import axiosClient from './axiosClient'
 
 const baseURL = process.env.REACT_APP_URL_API
-const baseMarketPlace = "https://seal-app-ad86z.ondigitalocean.app"
+const baseMarketPlace = process.env.REACT_APP_MARKETPLACE_API
 const baseURLProd = "https://api.darkland.io/api/v1"
 const baseURLAlpha = "https://alpha-dot-heroes-td-6fa95.as.r.appspot.com"
 const baseURLBeta = "https://beta-dot-heroes-td-6fa95.as.r.appspot.com"
