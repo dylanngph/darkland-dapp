@@ -140,7 +140,7 @@ const StepBox = ({ isMobile, boxData }:StepBoxProps) => {
           }
         }
     }}>
-      <StyledBox>
+      {/* <StyledBox>
         <Stepper
           activeStep={currentStep}
           alternativeLabel
@@ -171,7 +171,7 @@ const StepBox = ({ isMobile, boxData }:StepBoxProps) => {
               </StepLabel>
           </Step>
         </Stepper>
-      </StyledBox>
+      </StyledBox> */}
       <StyledBox sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -242,27 +242,27 @@ const StepBox = ({ isMobile, boxData }:StepBoxProps) => {
   )
 }
 
-const ColorlibConnector = muiStyled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 17,
-    color: '#747475'
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      background: '#00FB28',
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      background: '#00FB28',
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 2,
-    border: 0,
-    backgroundColor: '#747475',
-  },
-}));
+// const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
+//   [`&.${stepConnectorClasses.alternativeLabel}`]: {
+//     top: 17,
+//     color: '#747475'
+//   },
+//   [`&.${stepConnectorClasses.active}`]: {
+//     [`& .${stepConnectorClasses.line}`]: {
+//       background: '#00FB28',
+//     },
+//   },
+//   [`&.${stepConnectorClasses.completed}`]: {
+//     [`& .${stepConnectorClasses.line}`]: {
+//       background: '#00FB28',
+//     },
+//   },
+//   [`& .${stepConnectorClasses.line}`]: {
+//     height: 2,
+//     border: 0,
+//     backgroundColor: '#747475',
+//   },
+// }));
 
 const StyledBox = styled(Box)`
   background: rgba(38, 71, 203, 0.5);

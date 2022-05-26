@@ -3,6 +3,7 @@ import {light, dark} from 'components/Pancake-uikit'
 import {ModalProvider} from '@pancakeswap/uikit'
 import {Web3ReactProvider} from '@web3-react/core'
 import {HelmetProvider} from 'react-helmet-async'
+import {ChakraProvider} from '@chakra-ui/react'
 import {Provider} from 'react-redux'
 import {ThemeProvider} from 'styled-components'
 import {useThemeManager} from 'state/user/hooks'
@@ -26,7 +27,9 @@ const Providers: React.FC = ({children}) => {
             <ThemeProviderWrapper>
               <LanguageProvider>
                 <RefreshContextProvider>
-                  <ModalProvider>{children}</ModalProvider>
+                  <ChakraProvider>
+                    <ModalProvider>{children}</ModalProvider>
+                  </ChakraProvider>
                 </RefreshContextProvider>
               </LanguageProvider>
             </ThemeProviderWrapper>

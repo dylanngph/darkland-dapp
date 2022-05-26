@@ -34,12 +34,12 @@ function Blocklist({children}: {children: ReactNode}) {
 ReactDOM.render(
   <React.StrictMode>
       <Blocklist>
-        <ChakraProvider>
+        {/* <ChakraProvider> */}
           <Providers>
             <Updaters />
             <App />
           </Providers>
-        </ChakraProvider>
+        {/* </ChakraProvider> */}
       </Blocklist>
   </React.StrictMode>,
   document.getElementById('root'),
