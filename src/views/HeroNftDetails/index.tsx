@@ -31,6 +31,7 @@ import { useMarketplaceBox, useHeroContract, useHoldInGameContract, useERC20 } f
 import LinkWallet from 'components/LinkWallet'
 import BuyToken from 'components/BuyToken'
 import PopupLogin from 'components/Pancake-uikit/widgets/Menu/components/PopupLogin'
+import { formatNumber } from 'utils/formatBalance'
 import checkBalance from 'utils/checkBalance'
 import checkAllowance from 'utils/checkAllowance'
 import ApproveModal from 'components/ApproveModal/ApproveModal'
@@ -258,13 +259,19 @@ const HeroNftDetails = () => {
           :
             heroesDetail.status === 0
             ?
-            <Button
-              onClick={handleBuy}
-              disabled={pendingTx}
-              style={{ flex: 1 }}
-            >
-              { pendingTx ? 'Processing...' : 'Purchase' }
-            </Button>
+            <Flex alignItems='center' gridGap={5}>
+              <Flex alignItems='center' gridGap={2}>
+                <Box><img src='/images/coins/big.png' alt='token' width={30} /></Box>
+                <Text fontSize='24px' fontWeight='bold'>{formatNumber(heroesDetail.price ?? 0)} BIG</Text>
+              </Flex>
+              <Button
+                onClick={handleBuy}
+                disabled={pendingTx}
+                style={{ flex: 1 }}
+              >
+                { pendingTx ? 'Processing...' : 'Purchase' }
+              </Button>
+            </Flex>
           : null
         }
         </Flex>
