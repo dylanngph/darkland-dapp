@@ -47,7 +47,7 @@ export const useFetchVestingTGE = (): vestingPropsType => {
   const [state, setState] = useState(vestingData)
 
   const fetchVestingTGE = useCallback(async () => {
-    const contractAddress = vestingData.contractAddress.strategic
+    const contractAddress = vestingData.contractAddress.privateSale
     try {
       const calls = [
         {

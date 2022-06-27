@@ -43,7 +43,7 @@ export const useFetchVestingTGE = (): vestingPropsType => {
   const [state, setState] = useState(vestingData)
 
   const fetchVestingTGE = useCallback(async () => {
-    const contractAddress = vestingData.contractAddress.privateSale
+    const contractAddress = vestingData.contractAddress.strategic
     try {
       const calls = [
         {
@@ -75,6 +75,7 @@ export const useFetchVestingTGE = (): vestingPropsType => {
         infoWallet: infoWallet.map(entry => Number(new BigNumber(entry._hex).toJSON())),
         balanceOf: Number(new BigNumber(balanceOf / 10 ** vestingData.token.decimals).toJSON()),
       }
+      
       setState(result)
     } catch (err) {
       console.log(err)
