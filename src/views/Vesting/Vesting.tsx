@@ -25,7 +25,7 @@ export const DONT_SHOW_AGAIN = 'DONT_SHOW_AGAIN'
 const Vesting = () => {
   const {account} = useWeb3React()
   const {isXl} = useMatchBreakpoints()
-  const privateSaleData = useFetchPrivate()
+  // const privateSaleData = useFetchPrivate()
 
 
   // const stageData = useFetchVestingStage()
@@ -67,9 +67,6 @@ const Vesting = () => {
   //   }
   // }
 
-  const percentRemaining = Number.isNaN((privateSaleData.userRemaining / privateSaleData.totalTokenLock) * 100)
-    ? 0
-    : (privateSaleData.userRemaining / privateSaleData.totalTokenLock) * 100
 
   const isMobile = isXl === false
 
