@@ -8,22 +8,22 @@ import BackgroundCard from "./components/BackgroundCard"
 import { CLASS, CLASS_IMG, RARITY, SKILL, TAG } from "./config"
 import { BaseHero } from "./types"
 
-const CardHero: React.FC<BaseHero> = ({ data: { classType, heroName, image, level, rarity, skill, star, tokenId, price } }) => {
+const CardHero: React.FC<BaseHero> = ({ data }) => {
 	return(
-		<NavLink to={`/hero/${tokenId}`}>
-		<BackgroundCard rarity={rarity} >
+		<NavLink to={`/hero/${data?.tokenId}`}>
+		<BackgroundCard rarity={data?.rarity} >
 			<Flex height={25} justifyContent='space-between'>
-				<TagID rarity={rarity}>
-					<Box maxWidth='95%' margin='0 auto' style={{ color: '#fff', textAlign: "center" }}>#{tokenId}</Box>
+				<TagID rarity={data?.rarity}>
+					<Box maxWidth='95%' margin='0 auto' style={{ color: '#fff', textAlign: "center" }}>#{data?.tokenId}</Box>
 				</TagID>
-				<Level height='100%' mt='5px'>Level {level}</Level>
+				<Level height='100%' mt='5px'>Level {data?.level}</Level>
 			</Flex>
 			<Flex mt='15px' mx={3} justifyContent='space-between'>
-				<Class rarity={rarity} name={CLASS_IMG[classType]} classType={classType} />
-				<Skill skill={skill} />
+				<Class rarity={data?.rarity} name={CLASS_IMG[data?.classType]} classType={data?.classType} />
+				<Skill skill={data?.skill} />
 			</Flex>
 			<Box 
-				backgroundImage={`url(${image})`}
+				backgroundImage={`url(${data?.image})`}
 				backgroundRepeat='no-repeat'
 				backgroundPosition='center'
 				backgroundSize='200px'
@@ -32,7 +32,7 @@ const CardHero: React.FC<BaseHero> = ({ data: { classType, heroName, image, leve
 				style={{ position: 'absolute', top: -15, left: 0 }}
 			/>
 			<Box
-				backgroundImage={`linear-gradient(${CLASS[rarity].secondary}00, ${CLASS[rarity].secondary})`}
+				backgroundImage={`linear-gradient(${CLASS[data?.rarity].secondary}00, ${CLASS[data?.rarity].secondary})`}
 				style={{
 					position: 'absolute',
 					left: 0,
@@ -43,14 +43,14 @@ const CardHero: React.FC<BaseHero> = ({ data: { classType, heroName, image, leve
 				}}
 			/>
 			<Flex mt='8.8rem' height='40px' mx={3} justifyContent='space-between' alignItems='end'>
-				<Info star={star} heroName={heroName} />
-				<Box style={{ fontSize: 38, zIndex: 1, fontWeight: 'bold', color: '#FFA800' }}>{TAG[rarity]}</Box>
+				<Info star={data?.star} heroName={data?.heroName} />
+				<Box style={{ fontSize: 38, zIndex: 1, fontWeight: 'bold', color: '#FFA800' }}>{TAG[data?.rarity]}</Box>
 			</Flex>
 			{
-				price !== undefined ? <Flex alignItems='center' justifyContent='center' mt="8px" height="47px" mx={3} overflow="hidden">
+				data?.price !== undefined ? <Flex alignItems='center' justifyContent='center' mt="8px" height="47px" mx={3} overflow="hidden">
 					<Flex alignItems="center" style={{ gap: 5 }}>
 						<img src="/images/coins/big.png" width={30} alt="token" />
-						<Box style={{ fontWeight: 'bold', color: "#fff" }}>{ formatNumber(price) } BIG</Box>
+						<Box style={{ fontWeight: 'bold', color: "#fff" }}>{ formatNumber(data?.price) } BIG</Box>
 					</Flex>
 				</Flex> : null
 			}

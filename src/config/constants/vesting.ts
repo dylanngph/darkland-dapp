@@ -5,11 +5,11 @@ export const VestingTGE = {
   slug: 'TGE',
   contractAddress: {
     privateSale: {
-      56: '0xd9D9B64CA9DE6e0646138cA5bF55B7De69810933',
+      56: '0xe9561cd0d190e78d9953f7b1c80f89983f1b795a',
       97: '0x95f07fA694002dD5982375Ed795F5b660E7a1eA1',
     },
     strategic: {
-      56: '0x98F0D525405a861C0439d6A627dAa13c45FA81D8',
+      56: '0x7ceabe8d40363992012a887a6fedb9bec7fb9266',
       97: '0x14eC49aa453967DD6cf728D499DcC1e57b06aD73',
     },
   },
