@@ -1,6 +1,7 @@
 import {Contract} from '@ethersproject/contracts'
 import {getAddress} from '@ethersproject/address'
 import {AddressZero} from '@ethersproject/constants'
+import crypto from "crypto"
 import {JsonRpcSigner, Web3Provider} from '@ethersproject/providers'
 import {BigNumber} from '@ethersproject/bignumber'
 import {abi as IUniswapV2Router02ABI} from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
@@ -102,4 +103,21 @@ export function escapeRegExp(string: string): string {
 export function isTokenOnList(defaultTokens: TokenAddressMap, currency?: Currency): boolean {
   if (currency === ETHER) return true
   return Boolean(currency instanceof Token && defaultTokens[currency.chainId]?.[currency.address])
+}
+
+
+export function generateSignature(data: any) {
+
+  // console.log(data);
+  const  accessKey = process.env.REACT_APP_GS_ACCESS_KEY;
+  const  secretKey = process.env.REACT_APP_GS_SECRET_KEY;
+
+  const signData = JSON.stringify({
+    accessKey,
+    ...data,
+  });
+  const hmac = crypto.createHmac('sha512', secretKey);
+
+  return hmac.update(Buffer.from(signData, 'utf-8')).digest('hex');
+
 }

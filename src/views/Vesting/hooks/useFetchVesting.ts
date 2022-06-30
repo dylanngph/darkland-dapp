@@ -39,6 +39,8 @@ export const useFetchVestingTGE = (): vestingPropsType => {
   const vestingData = VestingTGE
   const {account} = useWeb3React()
 
+  // const account = "0x40D2a4C05d863B5355Abe3C606100d6843C21041"
+
   const {fastRefresh} = useRefresh()
   const [state, setState] = useState(vestingData)
 

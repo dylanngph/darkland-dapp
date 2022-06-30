@@ -1,10 +1,18 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { Box, Input } from '@chakra-ui/react'
+import { useWeb3React } from '@web3-react/core'
 import { Button } from '@pancakeswap/uikit'
+import { generateSignature } from 'utils'
 import { useTranslation } from 'contexts/Localization'
-import Column, { AutoColumn } from '../../../components/Layout/Column'
+import heroestdApi from 'api/heroestdApi'
+import useWeb3Provider from 'hooks/useActiveWeb3React'
+import { signMessage } from 'utils/web3React'
+import { useSelector } from 'react-redux'
+import useToast from 'hooks/useToast'
+import { AppState } from 'state'
 import { ArrowWrapper, SwapCallbackError, Wrapper } from '../../Swap/components/styleds'
+import Column, { AutoColumn } from '../../../components/Layout/Column'
 import { AppHeader, AppBody } from '../../../components/App'
 import { AutoRow, RowBetween } from '../../../components/Layout/Row'
 
@@ -62,35 +70,56 @@ const ArrowDownIcon = () => (
   </svg>
 )
 
-export default ({ close, currencyType }) => {
+export default ({ close, currencyType, valueToken = 0 }) => {
   const { t } = useTranslation()
+  const {library} = useWeb3Provider()
+  const { account } = useWeb3React()
+  const { toastError, toastSuccess } = useToast()
+  const userData = useSelector((state: AppState) => state.user.userInfo)
   const [isReverseCurrency, setIsReverseCurrency] = useState(false);
   const [amount, setAmount] = useState('');
-  const [maxAmount, setMaxAmount] = useState(1000000)
+  const [maxAmount, setMaxAmount] = useState(valueToken)
   const [exchangeAmount, setExchangeAmount] = useState('0')
-  const MAX_VALUE = 1000000
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.currentTarget
     const price = Number(value) > maxAmount ? maxAmount : Number(value)
     setAmount(price.toString())
     if (isReverseCurrency) {
-      const tokenResult = price * 10
+      const tokenResult = price * 100
       setExchangeAmount(tokenResult.toString())
     }
     else {
-      const exchangeResult = price / 10
+      const exchangeResult = price / 100
       setExchangeAmount(exchangeResult.toString())
+    }
+  }
+
+  const handleClaim = async() => {
+    const dataClaim = {
+      "userId": userData.id,
+      "big_t": amount
+    }
+    const signature = generateSignature(dataClaim)
+    try {
+      const res: any = await heroestdApi.claimTokenReward(signature, dataClaim)
+      if (res.error_code === 0) {
+        toastSuccess("Claim successful !")
+        close()
+      }
+    } catch(error) {
+      console.log(error.message)
+      toastError(error.message)
     }
   }
 
   const onSetMax = () => {
     setAmount(maxAmount.toString());
     if (isReverseCurrency) {
-      const tokenResult = maxAmount * 10
+      const tokenResult = maxAmount * 100
       setExchangeAmount(tokenResult.toString())
     }
     else {
-      const exchangeResult = maxAmount / 10
+      const exchangeResult = maxAmount / 100
       setExchangeAmount(exchangeResult.toString())
     }
   }
@@ -120,7 +149,7 @@ export default ({ close, currencyType }) => {
       </Box>
 
       <Title>{t('Claim Token')}</Title>
-      <p style={{ color: "#CBCBCB" }} >{t(`You are about to conver ${!isReverseCurrency ? 'e' : ''}${currencyType} to ${isReverseCurrency ? 'e' : ''}${currencyType}`)}</p>
+      <p style={{ color: "#CBCBCB" }} >{t(`You are about to conver ${currencyType}${!isReverseCurrency ? 't' : ''} to ${currencyType}${isReverseCurrency ? 't' : ''}`)}</p>
       <form onSubmit={onSubmit} >
         <SwapField>
           <p className='text-sm' >From</p>
@@ -149,7 +178,7 @@ export default ({ close, currencyType }) => {
               </Button>
               <WrapCurrency>
                 <img src={`/images/coins/${currencyType}${!isReverseCurrency ? '_token' : ''}.png`} alt='BIG' className="ml-5" height={30} width={30} />
-                <p className='px-4 pt-1' > {t(`${!isReverseCurrency ? 'e' : ''}${currencyType}`)} </p>
+                <p className='px-4 pt-1' > {t(`${currencyType}${!isReverseCurrency ? 't' : ''}`)} </p>
               </WrapCurrency>
             </div>
           </InputField>
@@ -159,7 +188,6 @@ export default ({ close, currencyType }) => {
             <AutoRow justify="center" style={{ padding: '0 1rem' }}>
               <ArrowWrapper
                 clickable
-                onClick={onChangeCurrency}
               >
                 <ArrowDownIcon />
               </ArrowWrapper>
@@ -173,12 +201,12 @@ export default ({ close, currencyType }) => {
             <div className='flex flex-row' >
               <WrapCurrency>
                 <img src={`/images/coins/${currencyType}${isReverseCurrency ? '_token' : ''}.png`} alt='BIG' className="ml-5" height={30} width={30} />
-                <p className='px-4 pt-1' > {t(`${isReverseCurrency ? 'e' : ''}${currencyType}`)} </p>
+                <p className='px-4 pt-1' > {t(`${currencyType}${isReverseCurrency ? 't' : ''}`)} </p>
               </WrapCurrency>
             </div>
           </InputField>
         </SwapField>
-      <Button style={{ width: "100%" }} size="lg" type='submit' >
+      <Button style={{ width: "100%" }} size="lg" type='submit' onClick={handleClaim} >
         Claim
       </Button>
       </form>

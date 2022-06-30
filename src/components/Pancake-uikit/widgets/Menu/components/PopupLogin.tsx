@@ -80,6 +80,7 @@ const PopupLogin = ({ close, setToken }) => {
         }
       })
       .catch((error) => {
+        console.log(error)
         toastError(`Login with ${type} Error `, error.message)
       })
   }

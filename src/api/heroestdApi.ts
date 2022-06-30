@@ -179,6 +179,24 @@ class HeroestdApi {
     }
     return axiosClient.post(url, params)
   }
+
+  getTokenReward = (tokenId: string) => {
+    const url = `${baseURLProd}/bigt`
+    const config = {
+      headers: { 'x-access-token': `${tokenId}` }
+    }
+
+    return axiosClient.get(url, config) 
+  }
+
+  claimTokenReward = async(signature: string, data) => {
+    const url = `${baseURLProd}/claimBigT`
+    const config = {
+      headers: { 'x-signature': `${signature}` }
+    }
+
+    return axiosClient.post(url, data, config) 
+  }
 }
 
 const heroestdApi = new HeroestdApi()
