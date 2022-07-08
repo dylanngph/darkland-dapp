@@ -38,7 +38,7 @@ const PrivateZone = () => {
           toastSuccess('Success', 'Your transaction was successful')
         } catch (e) {
           console.log(e)
-          toastError('Error', 'Please try again. Confirm the transaction and make sure you are paying enough gas!')
+          toastError('Error', e?.data?.message)
         } finally {
           setPendingTx(false)
         }
