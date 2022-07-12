@@ -42,7 +42,7 @@ const ClaimToken = () => {
             <h2 className='text-xl' > {formatNumber(data, 0, 0)} BIGt </h2>
           </RightCurrency>
         </Flex>
-        { data > 0 && <Popup
+        {/* { data > 0 && <Popup
           className='w-full'
           modal
           closeOnDocumentClick
@@ -52,7 +52,18 @@ const ClaimToken = () => {
               Claim reward
             </Button>
           }>{(close) => <PopupSwap close={close} currencyType="BIG" valueToken={data} />}
-        </Popup> }
+        </Popup> } */}
+        <Popup
+          className='w-full'
+          modal
+          closeOnDocumentClick
+          onClose={fetchData}
+          trigger={
+            <Button disabled={data <= 0}>
+              Claim reward
+            </Button>
+          }>{(close) => <PopupSwap close={close} currencyType="BIG" valueToken={data} />}
+        </Popup>
       </CurrencyBox>
 
       {
