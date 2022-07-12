@@ -2,7 +2,7 @@ import cliamBIG from 'config/abi/cliamBIG.json'
 
 const claimInGameConfig = {
     contractAddress: {
-        97: "0xf35166FAd471c73e57bF9B6f7Bd43e0751d0A36a",
+        97: "0x568B7aC5828C5b5e9c99B26657E1AaA7bC0bD9a8",
         56: "",
     },
     abi: cliamBIG

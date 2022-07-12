@@ -122,7 +122,7 @@ export default ({ close, currencyType, valueToken = 0 }) => {
       }
     } catch (error) {
       console.log(error);
-      toastError('Please enter more than 30.000');
+      toastError('Something wrong!');
       setTxPending(false);
     }
     // const dataClaim = {
