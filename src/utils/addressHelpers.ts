@@ -84,6 +84,7 @@ export const getMemberOfKSharkAddress = () => {
 export const getKSharkAddress = () => {
   return getAddress(tokens.kshark.address)
 }
+
 export const getReferralsAddress = () => {
   return getAddress(addresses.referrals)
 }

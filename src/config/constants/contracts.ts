@@ -87,4 +87,8 @@ export default {
     97: '',
     56: '0x2b84f27f6af42e68e0840f57d544229cf5c6e321',
   },
+  bigClaim: {
+    97: '0x97E03ed34E8864681Fa185739D1EfE8b250c9733',
+    56: '',
+  }
 }

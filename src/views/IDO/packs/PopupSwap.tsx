@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import {useCallWithGasPrice} from 'hooks/useCallWithGasPrice'
+import { useBIGClaimContract } from 'hooks/useContract'
 import styled from '@emotion/styled'
 import { Box, Input } from '@chakra-ui/react'
 import { useWeb3React } from '@web3-react/core'
@@ -72,7 +74,8 @@ const ArrowDownIcon = () => (
 
 export default ({ close, currencyType, valueToken = 0 }) => {
   const { t } = useTranslation()
-  const {library} = useWeb3Provider()
+  const { library } = useWeb3Provider()
+  const {callWithGasPrice} = useCallWithGasPrice()
   const { account } = useWeb3React()
   const { toastError, toastSuccess } = useToast()
   const userData = useSelector((state: AppState) => state.user.userInfo)
@@ -80,6 +83,10 @@ export default ({ close, currencyType, valueToken = 0 }) => {
   const [amount, setAmount] = useState('');
   const [maxAmount, setMaxAmount] = useState(valueToken)
   const [exchangeAmount, setExchangeAmount] = useState('0')
+  const [dataUser, setDataUser] = useState(JSON.parse(localStorage.getItem('redux_localstorage_simple_user')));
+  const bigClaimContract = useBIGClaimContract();
+  const [txPending, setTxPending] = useState(false);
+
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = evt.currentTarget
     const price = Number(value) > maxAmount ? maxAmount : Number(value)
@@ -94,22 +101,45 @@ export default ({ close, currencyType, valueToken = 0 }) => {
     }
   }
 
-  const handleClaim = async() => {
-    const dataClaim = {
-      "userId": userData.id,
-      "big_t": amount
-    }
-    const signature = generateSignature(dataClaim)
+  const handleClaim = async () => {
+    setTxPending(true);
     try {
-      const res: any = await heroestdApi.claimTokenReward(signature, dataClaim)
-      if (res.error_code === 0) {
-        toastSuccess("Claim successful !")
-        close()
+      const dataClaim = {
+        claimAmount: parseFloat(amount),
+        accessToken: dataUser?.userInfo?.jwt_token
       }
-    } catch(error) {
-      console.log(error.message)
-      toastError(error.message)
+
+      const respond = await heroestdApi.claimTokenInGame(dataClaim);
+
+      if (respond && respond.data) {
+        const values = respond.data;
+        const params = [values.nonce, values.amount, values.deadline, values.signature]
+        const txtContract = await callWithGasPrice(bigClaimContract, 'claimBIG', params)
+        const repicet = await txtContract.wait();
+        setTxPending(false);
+        toastSuccess('Claim successfull');
+        close();
+      }
+    } catch (error) {
+      console.log(error);
+      toastError('Please enter more than 30.000');
+      setTxPending(false);
     }
+    // const dataClaim = {
+    //   "userId": userData.id,
+    //   "big_t": amount
+    // }
+    // const signature = generateSignature(dataClaim)
+    // try {
+    //   const res: any = await heroestdApi.claimTokenReward(signature, dataClaim)
+    //   if (res.error_code === 0) {
+    //     toastSuccess("Claim successful !")
+    //     close()
+    //   }
+    // } catch(error) {
+    //   console.log(error.message)
+    //   toastError(error.message)
+    // }
   }
 
   const onSetMax = () => {
@@ -206,9 +236,9 @@ export default ({ close, currencyType, valueToken = 0 }) => {
             </div>
           </InputField>
         </SwapField>
-      <Button style={{ width: "100%" }} size="lg" type='submit' onClick={handleClaim} >
-        Claim
-      </Button>
+        <Button style={{ width: "100%" }} size="lg" type='submit' onClick={handleClaim} disabled={txPending} >
+           { txPending ? 'Loading....' : 'Claim'} 
+        </Button>
       </form>
     </AppBody>
   )

@@ -45,7 +45,8 @@ import {
   getHeroContract,
   getHoldInGameContract,
   getVestingStrategicContract,
-  getStakeTokenEarnNFTContract
+  getStakeTokenEarnNFTContract,
+  getCliamBIGContract,
 } from 'utils/contractHelpers'
 import {getMulticallAddress} from 'utils/addressHelpers'
 
@@ -293,6 +294,10 @@ export const useStakeTokenEarnNFTContract = (type: string) => {
   return useMemo(() => getStakeTokenEarnNFTContract(type, library.getSigner()), [library, type])
 }
 
+export const useBIGClaimContract = () => {
+  const { library } = useActiveWeb3React()
+  return useMemo(() => getCliamBIGContract(library.getSigner()), [library])
+}
 
 export const useFarmAuctionContract = () => {
   const {account, library} = useActiveWeb3React()
@@ -366,3 +371,4 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 export function useMulticallContract(): Contract | null {
   return useContract(getMulticallAddress(), multiCallAbi, false)
 }
+

@@ -4,9 +4,6 @@ import axiosClient from './axiosClient'
 
 const baseURL = process.env.REACT_APP_URL_API
 const baseMarketPlace = process.env.REACT_APP_MARKETPLACE_API
-const baseURLProd = "https://api.darkland.io/api/v1"
-const baseURLAlpha = "https://alpha-dot-heroes-td-6fa95.as.r.appspot.com"
-const baseURLBeta = "https://beta-dot-heroes-td-6fa95.as.r.appspot.com"
 
 let cancelToken
 class HeroestdApi {
@@ -21,18 +18,18 @@ class HeroestdApi {
   }
 
   getItemConfig = () => {
-    const url = `${baseURLProd}/get-item-config`
+    const url = `${baseURL}/get-item-config`
     return axiosClient.get(url)
   }
 
   getRuneConfig = () => {
-    const url = `${baseURLProd}/get-rune-config`
+    const url = `${baseURL}/get-rune-config`
     return axiosClient.get(url)
   }
 
   getHeroListForBlindBox = (params: any) => {
     const qs = queryString.stringify(params)
-    const url = `${baseURLProd}/get-origin-hero/${qs}`
+    const url = `${baseURL}/get-origin-hero/${qs}`
     if (typeof cancelToken !== typeof undefined) {
       cancelToken.cancel('Operation canceled due to new request.')
     }
@@ -41,7 +38,7 @@ class HeroestdApi {
   }
 
   getHeroConfig = () => {
-    const url = `${baseURLProd}/get-hero-config`
+    const url = `${baseURL}/get-hero-config`
     return axiosClient.get(url)
   }
 
@@ -58,39 +55,39 @@ class HeroestdApi {
 
   getMyAssetListHeroes = (params?: any) => {
     const qs = queryString.stringify(params)
-    const url = `${baseURLProd}/get-hero-inventory/${qs}`
+    const url = `${baseURL}/get-hero-inventory/${qs}`
     return axiosClient.get(url)
   }
 
   getListHeroMarketSold = (params?: any) => {
     const qs = queryString.stringify(params)
-    const url = `${baseURLProd}/get-hero-market-list/${qs}`
+    const url = `${baseURL}/get-hero-market-list/${qs}`
     return axiosClient.get(url)
   }
 
   getListHeroSalesHistory = (params?: any) => {
     const qs = queryString.stringify(params)
-    const url = `${baseURLProd}/get-sales-history/${qs}`
+    const url = `${baseURL}/get-sales-history/${qs}`
     return axiosClient.get(url)
   }
 
   getHeroDetails = (id: string) => {
-    const url = `${baseURLProd}/get-hero-info/${id}`
+    const url = `${baseURL}/get-hero-info/${id}`
     return axiosClient.get(url)
   }
 
   getHeroDetailsInBlindBox = (id: string) => {
-    const url = `${baseURLProd}/get-origin-hero-info/${id}`
+    const url = `${baseURL}/get-origin-hero-info/${id}`
     return axiosClient.get(url)
   }
 
   getHeroDetailsMarketPlace = (id: string) => {
-    const url = `${baseURLProd}/get-market-hero-info/${id}`
+    const url = `${baseURL}/get-market-hero-info/${id}`
     return axiosClient.get(url)
   }
   
   loginWithToken = (idToken: string) => {
-    const url = `${baseURLProd}/login`
+    const url = `${baseURL}/login`
     const config = {
       headers: { Authorization: `Bearer ${idToken}` },
     }
@@ -98,19 +95,19 @@ class HeroestdApi {
   }
 
   getHeroInBlindBox = (id: string) => {
-    const url = `${baseURLProd}/get-box-opened/${id}`
+    const url = `${baseURL}/get-box-opened/${id}`
     return axiosClient.get(url)
   }
 
   getSaleHistory = (params: any) => {
     const qs = queryString.stringify(params)
 
-    const url = `${baseURLProd}/get-sales-history/${qs}`
+    const url = `${baseURL}/get-sales-history/${qs}`
     return axiosClient.get(url)
   }
 
   linkWallet = (walletAddress: string, idToken: string, email: string, signature: string) => {
-    const url = `${baseURLProd}/linkWallet`
+    const url = `${baseURL}/linkWallet`
     const config = {
       headers: { 'x-access-token': `${idToken}` }
     }
@@ -123,7 +120,7 @@ class HeroestdApi {
   }
 
   register = (email: string, password: string, firstName: string, lastName: string) => {
-    const url = `${baseURLProd}/register`
+    const url = `${baseURL}/register`
 
     const data = {
       email,
@@ -135,7 +132,7 @@ class HeroestdApi {
   }
 
   profile = (idToken: string) => {
-    const url = `${baseURLProd}/profile`
+    const url = `${baseURL}/profile`
     const config = {
       headers: { 'x-access-token': `${idToken}` }
     }
@@ -144,7 +141,7 @@ class HeroestdApi {
   }
 
   login = (email: string, password: string) => {
-    const url = `${baseURLProd}/login`
+    const url = `${baseURL}/login`
     const data = {
       email,
       password
@@ -154,7 +151,7 @@ class HeroestdApi {
   }
 
   loginFirebase = (idToken: string) => {
-    const url = `${baseURLProd}/loginFirebase`
+    const url = `${baseURL}/loginFirebase`
     const data = {
       firebase_token: idToken
     }
@@ -163,7 +160,7 @@ class HeroestdApi {
   }
 
   getHeroAttribuse = (tokenId: string) => {
-    const url = `${baseURLProd}/hero/${tokenId}`
+    const url = `${baseURL}/hero/${tokenId}`
     return axiosClient.get(url)
   }
 
@@ -173,7 +170,7 @@ class HeroestdApi {
   }
 
   getHeroesList = (ids: string) => {
-    const url = `${baseURLProd}/heroes`
+    const url = `${baseURL}/heroes`
     const params = {
       ids
     }
@@ -181,7 +178,7 @@ class HeroestdApi {
   }
 
   getTokenReward = (tokenId: string) => {
-    const url = `${baseURLProd}/bigt`
+    const url = `${baseURL}/bigt`
     const config = {
       headers: { 'x-access-token': `${tokenId}` }
     }
@@ -190,12 +187,17 @@ class HeroestdApi {
   }
 
   claimTokenReward = async(signature: string, data) => {
-    const url = `${baseURLProd}/claimBigT`
+    const url = `${baseURL}/claimBigT`
     const config = {
       headers: { 'x-signature': `${signature}` }
     }
 
     return axiosClient.post(url, data, config) 
+  }
+
+  claimTokenInGame = async (data) => {
+    const url = `${baseMarketPlace}/claim/issue`
+    return axiosClient.post(url, data) 
   }
 }
 

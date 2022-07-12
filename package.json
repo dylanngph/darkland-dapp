@@ -8,7 +8,7 @@
     "start:dev": "env-cmd -f .env.development craco start",
     "build:prod": "GENERATE_SOURCEMAP=false env-cmd -f .env.production craco build && rm -rf build-product && mv build build-product",
     "build:win": "set GENERATE_SOURCEMAP=false && craco build",
-    "build:dev": "GENERATE_SOURCEMAP=false env-cmd -f .env.development craco build && rm -rf build-nginx && mv build build-nginx",
+    "build:dev": "env-cmd -f .env.development craco build && rm -rf build-nginx && mv build build-nginx",
     "test": "craco test",
     "eject": "craco eject",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",

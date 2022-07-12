@@ -16,7 +16,8 @@ import {
   openBoxConfig,
   heroNftConfig,
   holdInGameConfig,
-  boxDataConfig
+  boxDataConfig,
+  claimInGameConfig
 } from 'config/constants'
 import {VestingTGE} from 'config/constants/vesting'
 import {claimBox} from 'views/BlindBox/Config/config'
@@ -90,6 +91,7 @@ import marketPlaceAbi from 'config/abi/marketplaceBox.json'
 import boxAbi from 'config/abi/AssetBlindBox.json'
 import openBoxAbi from 'config/abi/openBox.json'
 import poolBoxNftAbi from 'config/abi/poolNft.json'
+import cliamBIG from 'config/abi/cliamBIG.json'
 
 import {ROUTER_ADDRESS} from '../config/constants'
 import {ChainLinkOracleContract, FarmAuctionContract, PredictionsContract} from './types'
@@ -272,4 +274,8 @@ export const getHoldInGameContract = (signer?: ethers.Signer | ethers.providers.
 export const getStakeTokenEarnNFTContract = (type: string, signer?: ethers.Signer | ethers.providers.Provider) => {
   const config = boxDataConfig.find((d) => d.type === type)
   return getContract(poolBoxNftAbi, getAddress(config.contractAddress), signer)
+}
+
+export const getCliamBIGContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
+  return getContract(claimInGameConfig.abi, getAddress(claimInGameConfig.contractAddress), signer)
 }
