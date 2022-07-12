@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {useCallWithGasPrice} from 'hooks/useCallWithGasPrice'
+import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useBIGClaimContract } from 'hooks/useContract'
 import styled from '@emotion/styled'
 import { Box, Input } from '@chakra-ui/react'
@@ -75,7 +75,7 @@ const ArrowDownIcon = () => (
 export default ({ close, currencyType, valueToken = 0 }) => {
   const { t } = useTranslation()
   const { library } = useWeb3Provider()
-  const {callWithGasPrice} = useCallWithGasPrice()
+  const { callWithGasPrice } = useCallWithGasPrice()
   const { account } = useWeb3React()
   const { toastError, toastSuccess } = useToast()
   const userData = useSelector((state: AppState) => state.user.userInfo)
@@ -179,7 +179,13 @@ export default ({ close, currencyType, valueToken = 0 }) => {
       </Box>
 
       <Title>{t('Claim Token')}</Title>
-      <p style={{ color: "#CBCBCB" }} >{t(`You are about to conver ${currencyType}${!isReverseCurrency ? 't' : ''} to ${currencyType}${isReverseCurrency ? 't' : ''}`)}</p>
+      {/* <p style={{ color: "#CBCBCB" }} >{t(`You are about to conver ${currencyType}${!isReverseCurrency ? 't' : ''} to ${currencyType}${isReverseCurrency ? 't' : ''}`)}</p> */}
+      <p style={{ color: "#CBCBCB", marginTop: '20px' }}>
+        • You need atleast <span style={{ color: "#FFFFFF" }}>10000 BIGt</span> to claim BIG
+      </p>
+      <p style={{ color: "#CBCBCB" }}>
+        • Please make sure you have BNB fee before claiming
+      </p>
       <form onSubmit={onSubmit} >
         <SwapField>
           <p className='text-sm' >From</p>
@@ -236,8 +242,11 @@ export default ({ close, currencyType, valueToken = 0 }) => {
             </div>
           </InputField>
         </SwapField>
+        <p style={{ color: "#FFFFFF", fontWeight: 600, textAlign: 'center', marginBottom: '20px', marginTop: '-9px' }}>
+          100 BIGt = 1 BIG
+        </p>
         <Button style={{ width: "100%" }} size="lg" type='submit' onClick={handleClaim} disabled={txPending} >
-           { txPending ? 'Loading....' : 'Claim'} 
+          {txPending ? 'Loading....' : 'Claim'}
         </Button>
       </form>
     </AppBody>
