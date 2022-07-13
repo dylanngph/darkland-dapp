@@ -181,7 +181,7 @@ export default ({ close, currencyType, valueToken = 0 }) => {
       <Title>{t('Claim Token')}</Title>
       {/* <p style={{ color: "#CBCBCB" }} >{t(`You are about to conver ${currencyType}${!isReverseCurrency ? 't' : ''} to ${currencyType}${isReverseCurrency ? 't' : ''}`)}</p> */}
       <p style={{ color: "#CBCBCB", marginTop: '20px' }}>
-        • You need atleast <span style={{ color: "#FFFFFF" }}>10000 BIGt</span> to claim BIG
+        • You need atleast <span style={{ color: "#FFFFFF" }}>30.000 BIGt</span> to claim BIG
       </p>
       <p style={{ color: "#CBCBCB" }}>
         • Please make sure you have BNB fee before claiming
