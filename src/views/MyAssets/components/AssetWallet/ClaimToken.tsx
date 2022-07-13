@@ -22,7 +22,7 @@ const ClaimToken = () => {
   const fetchData = useCallback(async() => {
     try {
       const res = await heroestdApi.getTokenReward(tokenId)
-      setData(res.data.max_claim_big_t)
+      setData(res.data.max_claim_big_t > 0 ? res.data.max_claim_big_t : 0);
     } catch(err) {
       console.log(err)
     }
