@@ -59,7 +59,7 @@ const SampleView = () => {
     const totalReward = ((earningsSum + earningsPool) * tokenPrice) || 0;
 
     const liquidity = useMemo(() => {
-        const farmLiq = farms.reduce((acc, farm) => Number(farm.lpTotalInQuoteToken ?? 0) + acc, 0)
+        // const farmLiq = farms.reduce((acc, farm) => Number(farm.lpTotalInQuoteToken ?? 0) + acc, 0)
         const poolLiq = pools.reduce((acc, pool) => {
             if (pool.isFinished !== undefined && !pool.isFinished) {
                 return (
@@ -75,8 +75,8 @@ const SampleView = () => {
             return 0
         }, 0)
 
-        return farmLiq + poolLiq
-    }, [farms, pools])
+        return poolLiq
+    }, [pools])
 
     return (
         <Wrapper>
@@ -117,7 +117,7 @@ const SampleView = () => {
             </Section>
             <Section className='farm-pool' sx={{}}>
                 <Box sx={{ maxWidth: '1440px', margin: 'auto' }}>
-                    <Title mb={5} text="Farm & Pool" icon='/images/icons/farm-pool-icon.png' />
+                    <Title mb={5} text="Pools" icon='/images/icons/farm-pool-icon.png' />
                     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                         <FarmPoolItem title='Liquidity' price={`$${formatNumber(liquidity, 2, 3)}`} />
                         <FarmPoolItem title='Your investment' price={`$${formatNumber(totalInvest, 2, 3)}`} />
