@@ -33,11 +33,6 @@ const FarmPoolItem = (prop) => {
                     ?
                     <FlexBox flexDirection="row" gap='15px'>
                         <Button onClick={() => {
-                            history.push('farms')
-                        }}>
-                            Go to Farms
-                        </Button>
-                        <Button onClick={() => {
                             history.push('pools')
                         }}>
                             Go to Pools
