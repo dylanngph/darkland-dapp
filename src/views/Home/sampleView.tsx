@@ -55,7 +55,7 @@ const SampleView = () => {
     const { account } = useWeb3React()
     const { data: farms } = useFarms()
     const { pools } = usePools(account)
-    const totalInvest = (lpPrice * stakedFarm + stakedPool * tokenPrice) || 0;
+    const totalInvest = (stakedPool * tokenPrice) || 0;
     const totalReward = ((earningsSum + earningsPool) * tokenPrice) || 0;
 
     const liquidity = useMemo(() => {
