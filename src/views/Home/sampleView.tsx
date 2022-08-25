@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from '@emotion/styled'
 import {
     Box
@@ -6,8 +6,17 @@ import {
 import history from 'routerHistory'
 import { Button, useMatchBreakpoints } from '@pancakeswap/uikit'
 import Title from 'components/Layout/Title'
+import { useWeb3React } from '@web3-react/core'
+import { formatNumber } from 'utils/formatBalance';
+import { useFarms, useLpTokenPrice, usePriceHtdBusd } from 'state/farms/hooks';
+import { usePools } from 'state/pools/hooks'
+import { formatEther } from 'ethers/lib/utils'
+import usePoolsWithBalance from './hooks/usePoolsWithBalance'
+import useFarmsWithBalance from './hooks/useFarmsWithBalance'
 import MarketplaceItem from './components/MarketplaceItem';
 import FarmPoolItem from './components/FarmPoolItem';
+
+const LP_SYMBOL = 'BIG-BUSD'
 
 const SampleView = () => {
     const { isMobile } = useMatchBreakpoints()
@@ -38,11 +47,41 @@ const SampleView = () => {
             image: '/images/socials/youtube.svg'
         },
     ]
+    const tokenPrice = Number(usePriceHtdBusd())
+    const lpPrice = Number(useLpTokenPrice(LP_SYMBOL))
+    const { farmsWithStakedBalance, earningsSum, staked: stakedFarm } = useFarmsWithBalance()
+    const { poolsWithStakedBalance, earningsPool, staked: stakedPool } = usePoolsWithBalance()
+
+    const { account } = useWeb3React()
+    const { data: farms } = useFarms()
+    const { pools } = usePools(account)
+    const totalInvest = (lpPrice * stakedFarm + stakedPool * tokenPrice) || 0;
+    const totalReward = ((earningsSum + earningsPool) * tokenPrice) || 0;
+
+    const liquidity = useMemo(() => {
+        const farmLiq = farms.reduce((acc, farm) => Number(farm.lpTotalInQuoteToken ?? 0) + acc, 0)
+        const poolLiq = pools.reduce((acc, pool) => {
+            if (pool.isFinished !== undefined && !pool.isFinished) {
+                return (
+                    Number(
+                        formatEther(
+                            pool?.totalStaked?.toString() !== 'NaN' ? pool?.totalStaked?.toString() : 0,
+                        ),
+                    ) *
+                    pool.earningTokenPrice +
+                    acc
+                )
+            }
+            return 0
+        }, 0)
+
+        return farmLiq + poolLiq
+    }, [farms, pools])
 
     return (
         <Wrapper>
             <VideoWrap>
-                <Header src="https://ipfs.infura.io/ipfs/bafybeihsb6mjre37jrvlz3jz7f6o5lzoxp55aoywc4z7in5npt44n6swau" loop autoPlay muted/>
+                <Header src="https://ipfs.infura.io/ipfs/bafybeihsb6mjre37jrvlz3jz7f6o5lzoxp55aoywc4z7in5npt44n6swau" loop autoPlay muted />
                 <WrapImage>
                     <PlayToEarn onClick={() => history.push('/play-game')}>PLAY TO EARN NOW</PlayToEarn>
                     <Socials>
@@ -62,7 +101,7 @@ const SampleView = () => {
                 
             </Section> */}
             <Section className='marketplace'>
-                <Box sx={{maxWidth: '1440px', margin: 'auto'}}>
+                <Box sx={{ maxWidth: '1440px', margin: 'auto' }}>
                     <Title mb={5} text="Marketplace" icon='/images/icons/marketplace-icon.png' />
                     <WrapMarketplaceItem className='grid'>
                         <MarketplaceItem buttonTitle='MYSTERY BOX' imageUrl='/images/marketplace-images/MYSTERY-BOX.png' />
@@ -77,12 +116,12 @@ const SampleView = () => {
                 <ImageDecord className='decord-right' src="/images/avarta-arrow/girld-arrow.png" alt="girld-arrow" />
             </Section>
             <Section className='farm-pool' sx={{}}>
-                <Box sx={{maxWidth: '1440px', margin: 'auto'}}>
+                <Box sx={{ maxWidth: '1440px', margin: 'auto' }}>
                     <Title mb={5} text="Farm & Pool" icon='/images/icons/farm-pool-icon.png' />
-                    <Box sx={{display: 'flex', flexWrap: 'wrap'}}>
-                        <FarmPoolItem title='Liquidity' price='$456.565' />
-                        <FarmPoolItem title='Your investment' price='$0.000' />
-                        <FarmPoolItem title='Your reward' price='$0.000' buttonTitle='Connect Wallet' />
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                        <FarmPoolItem title='Liquidity' price={`$${formatNumber(liquidity, 2, 3)}`} />
+                        <FarmPoolItem title='Your investment' price={`$${formatNumber(totalInvest, 2, 3)}`} />
+                        <FarmPoolItem title='Your reward' price={`$${formatNumber(totalReward)}`} buttonTitle='Connect Wallet' />
                     </Box>
                 </Box>
             </Section>

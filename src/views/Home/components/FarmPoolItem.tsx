@@ -3,13 +3,15 @@ import styled from '@emotion/styled'
 import {
     Box
 } from '@mui/material'
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useHistory } from 'react-router-dom'
+import { useMatchBreakpoints, Button } from '@pancakeswap/uikit'
 import { style } from '@mui/system'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 
 const FarmPoolItem = (prop) => {
     const { isMobile } = useMatchBreakpoints()
-    const {buttonTitle, title, price, mt, mb} = prop;
+    const { buttonTitle, title, price, mt, mb } = prop;
+    const history = useHistory()
 
     const Price = styled.p`
         color: #FFFFFF;
@@ -19,18 +21,38 @@ const FarmPoolItem = (prop) => {
         line-height: 54px;
         letter-spacing: 1px;
         margin: 0;
-        ${buttonTitle ? 'margin-bottom: 24px;' : '' }
+        ${buttonTitle ? 'margin-bottom: 24px;' : ''}
     `
 
     return (
         <Item mt={mt} mb={mb}>
             <Title>{title}</Title>
             <Price>{price}</Price>
-            {buttonTitle ? <ConnectWalletButton /> : null}
+            {
+                buttonTitle
+                    ?
+                    <FlexBox flexDirection="row" gap='15px'>
+                        <Button onClick={() => {
+                            history.push('farms')
+                        }}>
+                            Go to Farms
+                        </Button>
+                        <Button onClick={() => {
+                            history.push('pools')
+                        }}>
+                            Go to Pools
+                        </Button>
+                    </FlexBox>
+                    :
+                    null
+            }
         </Item>
     )
 }
 
+const FlexBox = styled(Box)`
+    display: flex;
+`
 const Item = styled(Box)`
     display: inline-flex;
     width: 100%;
